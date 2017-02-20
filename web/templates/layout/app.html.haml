@@ -15,10 +15,14 @@
       %header.header
         %nav(role="navigation")
           %ul.nav.nav-pills.pull-right
-            %li
-              = link "Register", to: user_path(@conn, :new)
-            %li
-              = link "Sign in", to: session_path(@conn, :new)
+            - if @current_user do
+              %li
+                = link "Sign out", to: session_path(@conn, :delete, @current_user), method: :delete
+            - else
+              %li
+                = link "Register", to: user_path(@conn, :new)
+              %li
+                = link "Sign in", to: session_path(@conn, :new)
         %span.logo
 
       %p.alert.alert-info(role="alert")= get_flash(@conn, :info)

@@ -9,8 +9,16 @@ defmodule Pedal.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :with_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+    plug Pedal.CurrentUser
+  end
+
   scope "/", Pedal do
-    pipe_through :browser
+    pipe_through [:browser, :with_session]
+
+    get "/", PageController, :index
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 

@@ -3,35 +3,17 @@ defmodule Pedal.SessionController do
 
   plug :scrub_params, "session" when action in ~w(create)a
 
-  import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
-
-  alias Pedal.User
-
   def new(conn, _) do
     render conn, "new.html"
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
 
-    user = Repo.get_by(User, email: email)
-
-    result = cond do
-      user && checkpw(password, user.password_hash) ->
-        {:ok, login(conn, user)}
-
-      user ->
-        {:error, :unauthorized, conn}
-
-      true ->
-        dummy_checkpw()
-        {:error, :not_found, conn}
-    end
-
-    case result do
+    case Pedal.Auth.login_by_email_and_pass(conn, email, password) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: page_path(conn, :index))
 
       {:error, _reason, conn} ->
         conn
@@ -41,10 +23,9 @@ defmodule Pedal.SessionController do
   end
 
   def delete(conn, _) do
-    # todo
-  end
-
-  defp login(conn, user) do
-    Guardian.Plug.sign_in(conn, user)
+    conn
+    |> Pedal.Auth.logout
+    |> put_flash(:info, "Logged out")
+    |> redirect(to: page_path(conn, :index))
   end
 end
