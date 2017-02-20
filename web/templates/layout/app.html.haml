@@ -16,7 +16,7 @@
         %nav(role="navigation")
           %ul.nav.nav-pills.pull-right
             %li
-              = link "Register", to: rider_path(@conn, :new)
+              = link "Register", to: user_path(@conn, :new)
             %li
               = link "Sign in", to: session_path(@conn, :new)
         %span.logo

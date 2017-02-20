@@ -14,7 +14,7 @@ defmodule Pedal.Router do
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
-    resources "/riders", RiderController, only: [:show, :new, :create]
+    resources "/users", UserController, only: [:show, :new, :create]
   end
 
 end

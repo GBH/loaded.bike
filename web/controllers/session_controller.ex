@@ -5,7 +5,7 @@ defmodule Pedal.SessionController do
 
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
-  alias Pedal.Rider
+  alias Pedal.User
 
   def new(conn, _) do
     render conn, "new.html"
@@ -13,13 +13,13 @@ defmodule Pedal.SessionController do
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
 
-    rider = Repo.get_by(Rider, email: email)
+    user = Repo.get_by(User, email: email)
 
     result = cond do
-      rider && checkpw(password, rider.password_hash) ->
-        {:ok, login(conn, rider)}
+      user && checkpw(password, user.password_hash) ->
+        {:ok, login(conn, user)}
 
-      rider ->
+      user ->
         {:error, :unauthorized, conn}
 
       true ->
@@ -31,7 +31,7 @@ defmodule Pedal.SessionController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome")
-        |> redirect(to: rider_path(conn, :show, rider))
+        |> redirect(to: user_path(conn, :show, user))
 
       {:error, _reason, conn} ->
         conn
@@ -44,7 +44,7 @@ defmodule Pedal.SessionController do
     # todo
   end
 
-  defp login(conn, rider) do
-    Guardian.Plug.sign_in(conn, rider)
+  defp login(conn, user) do
+    Guardian.Plug.sign_in(conn, user)
   end
 end

@@ -1,7 +1,7 @@
-defmodule Pedal.Rider do
+defmodule Pedal.User do
   use Pedal.Web, :model
 
-  schema "riders" do
+  schema "users" do
     field :email,         :string
     field :name,          :string
     field :password_hash, :string

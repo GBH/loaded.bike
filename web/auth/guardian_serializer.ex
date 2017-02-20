@@ -2,11 +2,11 @@ defmodule Pedal.GuardianSerializer do
   @behavior Guardian.Serializer
 
   alias Pedal.Repo
-  alias Pedal.Rider
+  alias Pedal.User
 
-  def for_token(rider = %Rider{}), do: {:ok, "Rider:#{rider.id}"}
+  def for_token(user = %User{}), do: {:ok, "User:#{user.id}"}
   def for_token(_), do: {:error, "Unknown resource type"}
 
-  def from_token("Rider:" <> id), do: {:ok, Repo.get(Rider, id)}
+  def from_token("User:" <> id), do: {:ok, Repo.get(User, id)}
   def from_token(_), do: {:error, "Unknown resource type"}
 end
