@@ -22,6 +22,16 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :phoenix, :template_engines,
+  haml: PhoenixHaml.Engine
+
+config :guardian, Guardian,
+  issuer: "Pedal.#{Mix.env}",
+  ttl: {30, :days},
+  verify_issuer: true,
+  serializer: Pedal.GuardianSerializer,
+  secret_key: to_string(Mix.env) <> "to_be_replaced_with_env_key_later"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

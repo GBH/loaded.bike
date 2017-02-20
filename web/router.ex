@@ -9,18 +9,12 @@ defmodule Pedal.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", Pedal do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
-    get "/", PageController, :index
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
+
+    resources "/riders", RiderController, only: [:show, :new, :create]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Pedal do
-  #   pipe_through :api
-  # end
 end
