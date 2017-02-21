@@ -1,4 +1,4 @@
-defmodule Pedal.Repo.Migrations.CreateUser do
+defmodule PedalApp.Repo.Migrations.CreateUser do
   use Ecto.Migration
 
   def change do

@@ -1,5 +1,5 @@
-defmodule Pedal.ErrorView do
-  use Pedal.Web, :view
+defmodule PedalApp.ErrorView do
+  use PedalApp.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

@@ -1,3 +1,3 @@
-defmodule Pedal.SessionView do
-  use Pedal.Web, :view
+defmodule PedalApp.SessionView do
+  use PedalApp.Web, :view
 end

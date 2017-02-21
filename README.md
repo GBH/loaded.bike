@@ -1,4 +1,4 @@
-# Pedal
+# PedalApp
 
 To start your Phoenix app:
 

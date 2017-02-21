@@ -1,4 +1,4 @@
-defmodule Pedal.Repo.Migrations.CreateTour do
+defmodule PedalApp.Repo.Migrations.CreateTour do
   use Ecto.Migration
 
   def change do

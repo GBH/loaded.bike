@@ -1,12 +1,12 @@
-defmodule Pedal.Web do
+defmodule PedalApp.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Pedal.Web, :controller
-      use Pedal.Web, :view
+      use PedalApp.Web, :controller
+      use PedalApp.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,12 +30,12 @@ defmodule Pedal.Web do
     quote do
       use Phoenix.Controller
 
-      alias Pedal.Repo
+      alias PedalApp.Repo
       import Ecto
       import Ecto.Query
 
-      import Pedal.Router.Helpers
-      import Pedal.Gettext
+      import PedalApp.Router.Helpers
+      import PedalApp.Gettext
     end
   end
 
@@ -49,9 +49,9 @@ defmodule Pedal.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Pedal.Router.Helpers
-      import Pedal.ErrorHelpers
-      import Pedal.Gettext
+      import PedalApp.Router.Helpers
+      import PedalApp.ErrorHelpers
+      import PedalApp.Gettext
     end
   end
 
@@ -65,10 +65,10 @@ defmodule Pedal.Web do
     quote do
       use Phoenix.Channel
 
-      alias Pedal.Repo
+      alias PedalApp.Repo
       import Ecto
       import Ecto.Query
-      import Pedal.Gettext
+      import PedalApp.Gettext
     end
   end
 

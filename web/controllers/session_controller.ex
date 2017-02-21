@@ -1,5 +1,5 @@
-defmodule Pedal.SessionController do
-  use Pedal.Web, :controller
+defmodule PedalApp.SessionController do
+  use PedalApp.Web, :controller
 
   plug :scrub_params, "session" when action in ~w(create)a
 
@@ -9,7 +9,7 @@ defmodule Pedal.SessionController do
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
 
-    case Pedal.Auth.login_by_email_and_pass(conn, email, password) do
+    case PedalApp.Auth.login_by_email_and_pass(conn, email, password) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome")
@@ -24,7 +24,7 @@ defmodule Pedal.SessionController do
 
   def delete(conn, _) do
     conn
-    |> Pedal.Auth.logout
+    |> PedalApp.Auth.logout
     |> put_flash(:info, "Logged out")
     |> redirect(to: page_path(conn, :index))
   end

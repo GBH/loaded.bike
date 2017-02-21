@@ -1,8 +1,8 @@
-defmodule Pedal.GuardianSerializer do
-  @behavior Guardian.Serializer
+defmodule PedalApp.GuardianSerializer do
+  @behaviour Guardian.Serializer
 
-  alias Pedal.Repo
-  alias Pedal.User
+  alias PedalApp.Repo
+  alias PedalApp.User
 
   def for_token(user = %User{}), do: {:ok, "User:#{user.id}"}
   def for_token(_), do: {:error, "Unknown resource type"}

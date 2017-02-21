@@ -1,7 +1,7 @@
-defmodule Pedal.UserController do
-  use Pedal.Web, :controller
+defmodule PedalApp.UserController do
+  use PedalApp.Web, :controller
 
-  alias Pedal.User
+  alias PedalApp.User
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})
@@ -14,7 +14,7 @@ defmodule Pedal.UserController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
-        |> Pedal.Auth.login(user)
+        |> PedalApp.Auth.login(user)
         |> put_flash(:info, "#{user.name} created")
         |> redirect(to: user_path(conn, :show, user))
 

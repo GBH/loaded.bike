@@ -1,7 +1,7 @@
-defmodule Pedal.Endpoint do
+defmodule PedalApp.Endpoint do
   use Phoenix.Endpoint, otp_app: :pedal
 
-  socket "/socket", Pedal.UserSocket
+  socket "/socket", PedalApp.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule Pedal.Endpoint do
     key: "_pedal_key",
     signing_salt: "ALstBhsg"
 
-  plug Pedal.Router
+  plug PedalApp.Router
 end

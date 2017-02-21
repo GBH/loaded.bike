@@ -1,4 +1,4 @@
-defmodule Pedal.CurrentUser do
+defmodule PedalApp.CurrentUser do
   import Plug.Conn
   import Guardian.Plug
 

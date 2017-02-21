@@ -1,8 +1,8 @@
-defmodule Pedal.Auth do
+defmodule PedalApp.Auth do
 
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
 
-  alias Pedal.{User, Repo}
+  alias PedalApp.{User, Repo}
 
   def login_by_email_and_pass(conn, email, pass) do
     user = Repo.get_by(User, email: email)
@@ -15,7 +15,7 @@ defmodule Pedal.Auth do
         {:error, :unauthorized, conn}
 
       true ->
-        dummy_checkpw
+        dummy_checkpw()
         {:error, :not_found, conn}
     end
   end

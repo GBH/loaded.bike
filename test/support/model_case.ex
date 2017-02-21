@@ -1,4 +1,4 @@
-defmodule Pedal.ModelCase do
+defmodule PedalApp.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,20 +16,20 @@ defmodule Pedal.ModelCase do
 
   using do
     quote do
-      alias Pedal.Repo
+      alias PedalApp.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Pedal.ModelCase
+      import PedalApp.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Pedal.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PedalApp.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Pedal.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(PedalApp.Repo, {:shared, self()})
     end
 
     :ok
@@ -59,7 +59,7 @@ defmodule Pedal.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&Pedal.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&PedalApp.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

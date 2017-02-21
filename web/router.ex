@@ -1,5 +1,5 @@
-defmodule Pedal.Router do
-  use Pedal.Web, :router
+defmodule PedalApp.Router do
+  use PedalApp.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,10 +12,10 @@ defmodule Pedal.Router do
   pipeline :with_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
-    plug Pedal.CurrentUser
+    plug PedalApp.CurrentUser
   end
 
-  scope "/", Pedal do
+  scope "/", PedalApp do
     pipe_through [:browser, :with_session]
 
     get "/", PageController, :index

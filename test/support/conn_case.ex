@@ -1,4 +1,4 @@
-defmodule Pedal.ConnCase do
+defmodule PedalApp.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,23 +20,23 @@ defmodule Pedal.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias Pedal.Repo
+      alias PedalApp.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import Pedal.Router.Helpers
+      import PedalApp.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Pedal.Endpoint
+      @endpoint PedalApp.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Pedal.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PedalApp.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Pedal.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(PedalApp.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

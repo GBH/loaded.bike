@@ -1,4 +1,4 @@
 ExUnit.start
 
-Ecto.Adapters.SQL.Sandbox.mode(Pedal.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(PedalApp.Repo, :manual)
 

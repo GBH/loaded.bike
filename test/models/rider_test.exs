@@ -1,7 +1,7 @@
-defmodule Pedal.RiderTest do
-  use Pedal.ModelCase
+defmodule PedalApp.RiderTest do
+  use PedalApp.ModelCase
 
-  alias Pedal.Rider
+  alias PedalApp.Rider
 
   @valid_attrs %{email: "some content", name: "some content", password_hash: "some content"}
   @invalid_attrs %{}

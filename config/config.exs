@@ -7,14 +7,14 @@ use Mix.Config
 
 # General application configuration
 config :pedal,
-  ecto_repos: [Pedal.Repo]
+  ecto_repos: [PedalApp.Repo]
 
 # Configures the endpoint
-config :pedal, Pedal.Endpoint,
+config :pedal, PedalApp.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "/A/ThS5sAqrDfxkKO8WQCRpHxbf09KM3zwGQZ917Adaqss5SLowezF+Xegrt3HJz",
-  render_errors: [view: Pedal.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Pedal.PubSub,
+  render_errors: [view: PedalApp.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: PedalApp.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -26,10 +26,10 @@ config :phoenix, :template_engines,
   haml: PhoenixHaml.Engine
 
 config :guardian, Guardian,
-  issuer: "Pedal.#{Mix.env}",
+  issuer: "PedalApp.#{Mix.env}",
   ttl: {30, :days},
   verify_issuer: true,
-  serializer: Pedal.GuardianSerializer,
+  serializer: PedalApp.GuardianSerializer,
   secret_key: to_string(Mix.env) <> "to_be_replaced_with_env_key_later"
 
 # Import environment specific config. This must remain at the bottom

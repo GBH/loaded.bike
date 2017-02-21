@@ -1,3 +1,3 @@
-defmodule Pedal.UserView do
-  use Pedal.Web, :view
+defmodule PedalApp.UserView do
+  use PedalApp.Web, :view
 end

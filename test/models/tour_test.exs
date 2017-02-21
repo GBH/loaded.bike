@@ -1,7 +1,7 @@
-defmodule Pedal.TourTest do
-  use Pedal.ModelCase
+defmodule PedalApp.TourTest do
+  use PedalApp.ModelCase
 
-  alias Pedal.Tour
+  alias PedalApp.Tour
 
   @valid_attrs %{description: "some content", title: "some content"}
   @invalid_attrs %{}

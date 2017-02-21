@@ -1,4 +1,4 @@
-defmodule Pedal.ChannelCase do
+defmodule PedalApp.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule Pedal.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Pedal.Repo
+      alias PedalApp.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint Pedal.Endpoint
+      @endpoint PedalApp.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Pedal.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PedalApp.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Pedal.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(PedalApp.Repo, {:shared, self()})
     end
 
     :ok

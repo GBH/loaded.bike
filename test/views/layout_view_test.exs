@@ -1,3 +1,3 @@
-defmodule Pedal.LayoutViewTest do
-  use Pedal.ConnCase, async: true
+defmodule PedalApp.LayoutViewTest do
+  use PedalApp.ConnCase, async: true
 end

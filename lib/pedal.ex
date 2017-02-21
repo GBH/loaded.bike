@@ -1,4 +1,4 @@
-defmodule Pedal do
+defmodule PedalApp do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -9,23 +9,23 @@ defmodule Pedal do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(Pedal.Repo, []),
+      supervisor(PedalApp.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Pedal.Endpoint, []),
-      # Start your own worker by calling: Pedal.Worker.start_link(arg1, arg2, arg3)
-      # worker(Pedal.Worker, [arg1, arg2, arg3]),
+      supervisor(PedalApp.Endpoint, []),
+      # Start your own worker by calling: PedalApp.Worker.start_link(arg1, arg2, arg3)
+      # worker(PedalApp.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Pedal.Supervisor]
+    opts = [strategy: :one_for_one, name: PedalApp.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Pedal.Endpoint.config_change(changed, removed)
+    PedalApp.Endpoint.config_change(changed, removed)
     :ok
   end
 end

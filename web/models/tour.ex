@@ -1,11 +1,11 @@
-defmodule Pedal.Tour do
-  use Pedal.Web, :model
+defmodule PedalApp.Tour do
+  use PedalApp.Web, :model
 
   schema "tours" do
     field :title,       :string
     field :description, :string
 
-    belongs_to :rider, Pedal.Rider
+    belongs_to :rider, PedalApp.Rider
 
     timestamps()
   end

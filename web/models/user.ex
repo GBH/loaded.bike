@@ -1,5 +1,5 @@
-defmodule Pedal.User do
-  use Pedal.Web, :model
+defmodule PedalApp.User do
+  use PedalApp.Web, :model
 
   schema "users" do
     field :email,         :string
@@ -7,7 +7,7 @@ defmodule Pedal.User do
     field :password_hash, :string
     field :password,      :string, virtual: true
 
-    has_many :tours, Pedal.Tour
+    has_many :tours, PedalApp.Tour
 
     timestamps()
   end
