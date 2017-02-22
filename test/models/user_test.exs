@@ -1,8 +1,6 @@
 defmodule PedalApp.UserTest do
   use PedalApp.ModelCase
 
-  import PedalApp.TestFactory
-
   alias PedalApp.User
 
   describe "changeset" do

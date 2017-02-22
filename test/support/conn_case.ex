@@ -26,6 +26,8 @@ defmodule PedalApp.ConnCase do
       import Ecto.Query
 
       import PedalApp.Router.Helpers
+      import PedalApp.TestFactory
+      import unquote(__MODULE__)
 
       # The default endpoint for testing
       @endpoint PedalApp.Endpoint
@@ -40,5 +42,20 @@ defmodule PedalApp.ConnCase do
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  # checking what template are we rendering here
+  def assert_template(conn, template_name) do
+    assert conn.private.phoenix_template == template_name
+  end
+
+  # helper to fetch assigns from the connection
+  def assigns(conn, name) do
+    case conn.assigns[name] do
+      nil ->
+        flunk "Cannot find :#{name} in assigns"
+      data ->
+        data
+    end
   end
 end
