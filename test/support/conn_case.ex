@@ -21,6 +21,7 @@ defmodule PedalApp.ConnCase do
       use Phoenix.ConnTest
 
       alias PedalApp.Repo
+      alias PedalApp.{User}
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
@@ -49,7 +50,7 @@ defmodule PedalApp.ConnCase do
     assert conn.private.phoenix_template == template_name
   end
 
-  # helper to fetch assigns from the connection
+  # fetching assigns data from the connection. Will flunk if assign isn't found
   def assigns(conn, name) do
     case conn.assigns[name] do
       nil ->
