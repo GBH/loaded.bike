@@ -7,7 +7,8 @@ defmodule PedalApp.TourTest do
 
   describe "changeset" do
     test "with valid attributes" do
-      changeset = Tour.changeset(%Tour{}, params_for(:tour))
+      user = insert(:user)
+      changeset = Tour.changeset(%Tour{}, %{params_for(:tour) | user_id: user.id})
       assert changeset.valid?
     end
 
@@ -18,8 +19,8 @@ defmodule PedalApp.TourTest do
   end
 
   test "insert" do
-    {status, huh} = Repo.insert(Tour.changeset(%Tour{}, params_for(:tour)))
-    IO.inspect huh
+    user = insert(:user)
+    {status, _} = Repo.insert(Tour.changeset(%Tour{}, %{params_for(:tour) | user_id: user.id}))
     assert status == :ok
   end
 end

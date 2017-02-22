@@ -12,8 +12,8 @@ defmodule PedalApp.Tour do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description])
-    |> validate_required([:title])
+    |> cast(params, [:user_id, :title, :description])
+    |> validate_required([:user_id, :title])
     |> assoc_constraint(:user)
   end
 end
