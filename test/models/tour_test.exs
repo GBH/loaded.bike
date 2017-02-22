@@ -1,18 +1,25 @@
 defmodule PedalApp.TourTest do
   use PedalApp.ModelCase
 
+  import PedalApp.TestFactory
+
   alias PedalApp.Tour
 
-  @valid_attrs %{description: "some content", title: "some content"}
-  @invalid_attrs %{}
+  describe "changeset" do
+    test "with valid attributes" do
+      changeset = Tour.changeset(%Tour{}, params_for(:tour))
+      assert changeset.valid?
+    end
 
-  test "changeset with valid attributes" do
-    changeset = Tour.changeset(%Tour{}, @valid_attrs)
-    assert changeset.valid?
+    test "with invalid attributes" do
+      changeset = Tour.changeset(%Tour{}, %{})
+      refute changeset.valid?
+    end
   end
 
-  test "changeset with invalid attributes" do
-    changeset = Tour.changeset(%Tour{}, @invalid_attrs)
-    refute changeset.valid?
+  test "insert" do
+    {status, huh} = Repo.insert(Tour.changeset(%Tour{}, params_for(:tour)))
+    IO.inspect huh
+    assert status == :ok
   end
 end
