@@ -1,6 +1,14 @@
 defmodule PedalApp.Router do
   use PedalApp.Web, :router
 
+  pipeline :login_required do
+
+  end
+
+  pipeline :admin_required do
+
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -22,7 +30,15 @@ defmodule PedalApp.Router do
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
-    resources "/users", UserController, only: [:show, :new, :create]
+    resources "/tours", TourController, only: [:index, :show]
+
+    resources "/riders", UserController, only: [:show] do
+      resources "/tours", TourController, only: [:index, :show]
+    end
+
+    resources "/rider", UserController, only: [:new, :create, :edit, :update], singleton: true do
+      resources "/tours", TourController
+    end
   end
 
 end

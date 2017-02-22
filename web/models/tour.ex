@@ -5,7 +5,7 @@ defmodule PedalApp.Tour do
     field :title,       :string
     field :description, :string
 
-    belongs_to :rider, PedalApp.Rider
+    belongs_to :user, PedalApp.User
 
     timestamps()
   end
@@ -14,6 +14,6 @@ defmodule PedalApp.Tour do
     struct
     |> cast(params, [:title, :description])
     |> validate_required([:title])
-    |> assoc_constraint(:rider)
+    |> assoc_constraint(:user)
   end
 end

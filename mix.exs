@@ -2,7 +2,7 @@ defmodule PedalApp.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :pedal,
+    [app: :pedal_app,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -23,7 +23,7 @@ defmodule PedalApp.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "web", "test/support", "test/factories"]
   defp elixirc_paths(_),     do: ["lib", "web"]
 
   # Specifies your project dependencies.
@@ -41,7 +41,8 @@ defmodule PedalApp.Mixfile do
       {:cowboy,               "~> 1.0"},
       {:phoenix_haml,         "~> 0.2.1"},
       {:comeonin,             "~> 3.0"},
-      {:guardian,             "~> 0.14"}
+      {:guardian,             "~> 0.14"},
+      {:ex_machina,           "~> 1.0", only: :test}
     ]
   end
 

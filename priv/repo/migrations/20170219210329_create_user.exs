@@ -7,6 +7,8 @@ defmodule PedalApp.Repo.Migrations.CreateUser do
       add :name,          :string, null: false
       add :password_hash, :string, null: false
 
+      add :is_admin, :boolean, null: false, default: false
+
       timestamps()
     end
 
