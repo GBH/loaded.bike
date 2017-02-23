@@ -5,7 +5,7 @@ defmodule PedalApp.UserControllerTest do
     conn = get build_conn(), "/rider/new"
     assert response(conn, 200)
     assert assigns(conn, :changeset)
-    assert_template conn, "new.html"
+    assert template(conn) == "new.html"
   end
 
   test "show" do
@@ -13,7 +13,7 @@ defmodule PedalApp.UserControllerTest do
     conn = get build_conn(), "/riders/#{user.id}"
     assert response(conn, 200)
     assert assigns(conn, :user).__struct__ == PedalApp.User
-    assert_template conn, "show.html"
+    assert template(conn) == "show.html"
   end
 
   test "show not found" do
@@ -24,8 +24,8 @@ defmodule PedalApp.UserControllerTest do
 
   test "creation" do
     conn = post build_conn(), "/rider", user: %{
-      email: "test@test.test",
-      name: "Tester",
+      email:    "test@test.test",
+      name:     "Tester",
       password: "password"
     }
 
@@ -37,6 +37,6 @@ defmodule PedalApp.UserControllerTest do
   test "creation with error" do
     conn = post build_conn(), "/rider", user: %{}
     assert response(conn, 200)
-    assert_template conn, "new.html"
+    assert template(conn) == "new.html"
   end
 end

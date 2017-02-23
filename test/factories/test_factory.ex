@@ -6,7 +6,7 @@ defmodule PedalApp.TestFactory do
 
   def user_factory do
     %User{
-      email:          sequence(:email, &"test-#{&1}@example.org"),
+      email:          "test@example.org",
       name:           "Test User",
       password_hash:  Comeonin.Bcrypt.hashpwsalt("password")
     }

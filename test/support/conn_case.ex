@@ -32,6 +32,31 @@ defmodule PedalApp.ConnCase do
 
       # The default endpoint for testing
       @endpoint PedalApp.Endpoint
+
+      # guardian login
+      def login(user = %User{}, token \\ :token, opts \\ []) do
+        build_conn()
+        |> bypass_through(PedalApp.Router, [:browser])
+        |> get("/")
+        |> Guardian.Plug.sign_in(user, token, opts)
+        |> send_resp(200, "Flushing session")
+        |> recycle()
+      end
+
+      # checking what template are we rendering here
+      def template(conn) do
+        conn.private.phoenix_template
+      end
+
+      # fetching assigns data from the connection. Will flunk if assign isn't found
+      def assigns(conn, name) do
+        case conn.assigns[name] do
+          nil ->
+            flunk "Cannot find :#{name} in assigns"
+          data ->
+            data
+        end
+      end
     end
   end
 
@@ -43,20 +68,5 @@ defmodule PedalApp.ConnCase do
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
-  end
-
-  # checking what template are we rendering here
-  def assert_template(conn, template_name) do
-    assert conn.private.phoenix_template == template_name
-  end
-
-  # fetching assigns data from the connection. Will flunk if assign isn't found
-  def assigns(conn, name) do
-    case conn.assigns[name] do
-      nil ->
-        flunk "Cannot find :#{name} in assigns"
-      data ->
-        data
-    end
   end
 end

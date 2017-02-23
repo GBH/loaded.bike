@@ -17,7 +17,7 @@
           %ul.nav.nav-pills.pull-right
             - if @current_user do
               %li
-                = link "Sign out", to: session_path(@conn, :delete, @current_user), method: :delete
+                = link "Sign out", to: session_path(@conn, :delete), method: :delete
             - else
               %li
                 = link "Register", to: user_path(@conn, :new)

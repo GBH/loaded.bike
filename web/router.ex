@@ -28,7 +28,10 @@ defmodule PedalApp.Router do
 
     get "/", PageController, :index
 
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    # session management
+    get     "/login",   SessionController, :new
+    post    "/login",   SessionController, :create
+    delete  "/logout",  SessionController, :delete
 
     resources "/tours", TourController, only: [:index, :show]
 
