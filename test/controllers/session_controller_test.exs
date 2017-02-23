@@ -33,9 +33,12 @@ defmodule PedalApp.SessionControllerTest do
     user = insert(:user)
     conn = login(user)
 
-    IO.inspect Guardian.Plug.current_resource(conn)
+    assert Guardian.Plug.current_resource(conn).id == user.id
 
-    #assert redirected_to(conn) == "/"
-    #assert get_flash(conn, :info) == ""
+    conn = delete conn, "/logout"
+    assert redirected_to(conn) == "/"
+    assert get_flash(conn, :info) == "Logged out"
+
+    refute Guardian.Plug.current_resource(conn)
   end
 end

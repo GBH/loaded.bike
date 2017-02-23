@@ -35,12 +35,8 @@ defmodule PedalApp.ConnCase do
 
       # guardian login
       def login(user = %User{}, token \\ :token, opts \\ []) do
-        build_conn()
-        |> bypass_through(PedalApp.Router, [:browser])
-        |> get("/")
+        Plug.Test.init_test_session(build_conn(), %{})
         |> Guardian.Plug.sign_in(user, token, opts)
-        |> send_resp(200, "Flushing session")
-        |> recycle()
       end
 
       # checking what template are we rendering here
