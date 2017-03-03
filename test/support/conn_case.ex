@@ -1,4 +1,4 @@
-defmodule PedalApp.ConnCase do
+defmodule PedalApp.Web.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -26,12 +26,12 @@ defmodule PedalApp.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import PedalApp.Router.Helpers
+      import PedalApp.Web.Router.Helpers
       import PedalApp.TestFactory
       import unquote(__MODULE__)
 
       # The default endpoint for testing
-      @endpoint PedalApp.Endpoint
+      @endpoint PedalApp.Web.Endpoint
 
       # guardian login
       def login(user = %User{}, token \\ :token, opts \\ []) do

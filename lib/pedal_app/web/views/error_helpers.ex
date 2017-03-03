@@ -1,4 +1,4 @@
-defmodule PedalApp.ErrorHelpers do
+defmodule PedalApp.Web.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule PedalApp.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(PedalApp.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(PedalApp.Web.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(PedalApp.Gettext, "errors", msg, opts)
+      Gettext.dgettext(PedalApp.Web.Gettext, "errors", msg, opts)
     end
   end
 end

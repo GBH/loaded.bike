@@ -1,4 +1,4 @@
-defmodule PedalApp.PageController do
+defmodule PedalApp.Web.PageController do
   use PedalApp.Web, :controller
 
   def index(conn, _params) do

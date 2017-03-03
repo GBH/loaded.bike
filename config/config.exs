@@ -10,10 +10,10 @@ config :pedal_app,
   ecto_repos: [PedalApp.Repo]
 
 # Configures the endpoint
-config :pedal_app, PedalApp.Endpoint,
+config :pedal_app, PedalApp.Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "/A/ThS5sAqrDfxkKO8WQCRpHxbf09KM3zwGQZ917Adaqss5SLowezF+Xegrt3HJz",
-  render_errors: [view: PedalApp.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: PedalApp.Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: PedalApp.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

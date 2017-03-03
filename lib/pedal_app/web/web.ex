@@ -28,20 +28,20 @@ defmodule PedalApp.Web do
 
   def controller do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, namespace: PedalApp.Web
 
       alias PedalApp.Repo
       import Ecto
       import Ecto.Query
 
-      import PedalApp.Router.Helpers
-      import PedalApp.Gettext
+      import PedalApp.Web.Router.Helpers
+      import PedalApp.Web.Gettext
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "web/templates"
+      use Phoenix.View, root: "lib/pedal_app/web/templates", namespace: PedalApp.Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
@@ -49,9 +49,9 @@ defmodule PedalApp.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import PedalApp.Router.Helpers
-      import PedalApp.ErrorHelpers
-      import PedalApp.Gettext
+      import PedalApp.Web.Router.Helpers
+      import PedalApp.Web.ErrorHelpers
+      import PedalApp.Web.Gettext
     end
   end
 

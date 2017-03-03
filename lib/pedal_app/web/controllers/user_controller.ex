@@ -1,4 +1,4 @@
-defmodule PedalApp.UserController do
+defmodule PedalApp.Web.UserController do
   use PedalApp.Web, :controller
 
   alias PedalApp.User

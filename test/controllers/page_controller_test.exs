@@ -1,5 +1,5 @@
 defmodule PedalApp.PageControllerTest do
-  use PedalApp.ConnCase
+  use PedalApp.Web.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

@@ -1,4 +1,4 @@
-defmodule PedalApp.SessionController do
+defmodule PedalApp.Web.SessionController do
   use PedalApp.Web, :controller
 
   plug :scrub_params, "session" when action in ~w(create)a

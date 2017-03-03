@@ -1,5 +1,5 @@
 defmodule PedalApp.SessionControllerTest do
-  use PedalApp.ConnCase
+  use PedalApp.Web.ConnCase
 
   test "new" do
     conn = get build_conn(), "/login"

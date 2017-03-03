@@ -1,4 +1,4 @@
-defmodule PedalApp.Endpoint do
+defmodule PedalApp.Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :pedal_app
 
   socket "/socket", PedalApp.UserSocket
@@ -38,5 +38,5 @@ defmodule PedalApp.Endpoint do
     key: "_pedal_app_key",
     signing_salt: "ALstBhsg"
 
-  plug PedalApp.Router
+  plug PedalApp.Web.Router
 end

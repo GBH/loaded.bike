@@ -1,4 +1,4 @@
-defmodule PedalApp.ErrorView do
+defmodule PedalApp.Web.ErrorView do
   use PedalApp.Web, :view
 
   def render("404.html", _assigns) do

@@ -1,4 +1,4 @@
-defmodule PedalApp.Router do
+defmodule PedalApp.Web.Router do
   use PedalApp.Web, :router
 
   pipeline :login_required do
@@ -23,7 +23,7 @@ defmodule PedalApp.Router do
     plug PedalApp.CurrentUser
   end
 
-  scope "/", PedalApp do
+  scope "/", PedalApp.Web do
     pipe_through [:browser, :with_session]
 
     get "/", PageController, :index
