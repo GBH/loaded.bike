@@ -39,9 +39,12 @@ defmodule PedalApp.Web.Router do
       resources "/tours", TourController, only: [:index, :show]
     end
 
-    resources "/rider", UserController, only: [:new, :create, :edit, :update], singleton: true do
+    resources "/rider", UserController,
+      only:       [:new, :create, :edit, :update],
+      name:       "current_user",
+      singleton:  true
+    do
       resources "/tours", TourController
     end
   end
-
 end

@@ -20,7 +20,7 @@
                 = link "Sign out", to: session_path(@conn, :delete), method: :delete
             - else
               %li
-                = link "Register", to: user_path(@conn, :new)
+                = link "Register", to: current_user_path(@conn, :new)
               %li
                 = link "Sign in", to: session_path(@conn, :new)
         %span.logo
