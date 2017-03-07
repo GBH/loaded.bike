@@ -44,7 +44,9 @@ defmodule PedalApp.Web.Router do
       name:       "current_user",
       singleton:  true
     do
-      resources "/tours", TourController
+      resources "/tours", TourController do
+        resources "/waypoints", WaypointController
+      end
     end
   end
 end
