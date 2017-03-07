@@ -38,9 +38,9 @@ defmodule PedalApp.Mixfile do
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
       {:gettext,              "~> 0.11"},
       {:cowboy,               "~> 1.0"},
-      {:phoenix_haml,         path: "deps/phoenix_haml"},
+      {:phoenix_haml,         github: "GBH/phoenix_haml"},
       {:comeonin,             "~> 3.0"},
-      {:guardian,             path: "deps/guardian"},
+      {:guardian,             github: "GBH/guardian"},
       {:ex_machina,           "~> 1.0", only: :test}
     ]
   end
