@@ -1,7 +1,7 @@
 defmodule PedalApp.Web.TourController do
   use PedalApp.Web, :controller
 
-  alias PedalApp.{User, Tour}
+  alias PedalApp.Tour
 
   plug :scrub_params, "tour" when action in [:create, :update]
 
@@ -9,6 +9,7 @@ defmodule PedalApp.Web.TourController do
     apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
   end
 
+  # -- Actions -----------------------------------------------------------------
   def index(conn, _, current_user) do
     tours = Repo.all(assoc(current_user, :tours))
     render(conn, "index.html", tours: tours)
@@ -36,7 +37,7 @@ defmodule PedalApp.Web.TourController do
       {:ok, tour} ->
         conn
         |> put_flash(:info, "Tour created")
-        |> redirect(to: current_user_tour_path(conn, :index))
+        |> redirect(to: current_user_tour_path(conn, :show, tour))
       {:error, changeset} ->
         conn
         |> render("new.html", changeset: changeset)

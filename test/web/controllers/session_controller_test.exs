@@ -1,4 +1,4 @@
-defmodule PedalApp.SessionControllerTest do
+defmodule PedalApp.Web.SessionControllerTest do
   use PedalApp.Web.ConnCase
 
   test "new" do

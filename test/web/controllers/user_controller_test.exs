@@ -1,4 +1,4 @@
-defmodule PedalApp.UserControllerTest do
+defmodule PedalApp.Web.UserControllerTest do
   use PedalApp.Web.ConnCase
 
   test "new" do
@@ -17,8 +17,8 @@ defmodule PedalApp.UserControllerTest do
   end
 
   test "show not found" do
-    assert_error_sent 400, fn ->
-      get(build_conn(), "/riders/invalid")
+    assert_error_sent 404, fn ->
+      get(build_conn(), "/riders/0")
     end
   end
 
