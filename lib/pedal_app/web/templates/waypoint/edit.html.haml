@@ -1,0 +1,3 @@
+%h1 Editing waypoint
+
+= render "form.html", changeset: @changeset, action: current_user_tour_waypoint_path(@conn, :update, @tour, @waypoint)

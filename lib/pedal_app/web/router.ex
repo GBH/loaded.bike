@@ -36,7 +36,9 @@ defmodule PedalApp.Web.Router do
     resources "/tours", TourController, only: [:index, :show]
 
     resources "/riders", UserController, only: [:show] do
-      resources "/tours", TourController, only: [:index, :show]
+      resources "/tours", TourController, only: [:index, :show] do
+        resources "/waypoints", WaypointController, only: [:index, :show]
+      end
     end
 
     resources "/rider", UserController,

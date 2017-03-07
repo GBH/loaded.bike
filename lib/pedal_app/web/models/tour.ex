@@ -7,6 +7,8 @@ defmodule PedalApp.Tour do
 
     belongs_to :user, PedalApp.User
 
+    has_many :waypoints, PedalApp.Waypoint
+
     timestamps()
   end
 

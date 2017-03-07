@@ -1,15 +1,3 @@
-- form_for @changeset, current_user_tour_path(@conn, :create), fn f ->
+%h1 New Tour
 
-  - if @changeset.action do
-    .alert.alert-danger
-      %p There are some errors
-
-  .form-group
-    = text_input f, :title, placeholder: "Title", class: "form-control"
-    = error_tag f, :title
-
-  .form-group
-    = textarea f, :description, placeholder: "Description", class: "form-control"
-    = error_tag f, :description
-
-  = submit "Create Tour", class: "btn btn-primary"
+= render "form.html", changeset: @changeset, action: current_user_tour_path(@conn, :create)
