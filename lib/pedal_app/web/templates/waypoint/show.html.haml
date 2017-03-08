@@ -6,3 +6,7 @@
 
 = @waypoint.lat
 = @waypoint.long
+
+- for photo <- @waypoint.photos do
+  - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :thumb)
+  %img{src: "#{url}"}

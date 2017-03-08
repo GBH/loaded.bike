@@ -41,13 +41,16 @@ defmodule PedalApp.Web.Router do
       end
     end
 
+    # -- logged-in user routes -------------------------------------------------
     resources "/rider", UserController,
       only:       [:new, :create, :edit, :update],
       name:       "current_user",
       singleton:  true
     do
       resources "/tours", TourController do
-        resources "/waypoints", WaypointController
+        resources "/waypoints", WaypointController do
+          resources "/photos", PhotoController
+        end
       end
     end
   end

@@ -9,6 +9,8 @@ defmodule PedalApp.Waypoint do
 
     belongs_to :tour, PedalApp.Tour
 
+    has_many :photos, PedalApp.Photo
+
     timestamps()
   end
 

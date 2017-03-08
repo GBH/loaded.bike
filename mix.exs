@@ -19,7 +19,7 @@ defmodule PedalApp.Mixfile do
   def application do
     [mod: {PedalApp, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+                    :phoenix_ecto, :postgrex, :comeonin, :arc_ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,17 +31,19 @@ defmodule PedalApp.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix,              "~> 1.3.0-rc"},
+      {:phoenix,              "~> 1.3.0-rc", override: true},
       {:phoenix_pubsub,       "~> 1.0"},
       {:phoenix_ecto,         "~> 3.0"},
       {:postgrex,             ">= 0.0.0"},
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
       {:gettext,              "~> 0.11"},
       {:cowboy,               "~> 1.0"},
-      {:phoenix_haml,         github: "GBH/phoenix_haml"},
+      {:phoenix_haml,         "~> 0.2.3"},
       {:comeonin,             "~> 3.0"},
-      {:guardian,             github: "GBH/guardian"},
-      {:ex_machina,           "~> 1.0", only: :test}
+      {:guardian,             "~> 0.14"},
+      {:ex_machina,           "~> 1.0", only: :test},
+      {:arc,                  "~> 0.7.0", override: true}, # PR: https://github.com/stavro/arc_ecto/pull/64
+      {:arc_ecto,             "~> 0.5.0"}
     ]
   end
 

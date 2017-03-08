@@ -1,0 +1,17 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      Error. Check errors below.
+
+  .form-group
+    = label f, :file, class: "control-label"
+    = file_input f, :file, class: "form-control"
+    = error_tag f, :file
+
+  .form-group
+    = label f, :description, class: "control-label"
+    = textarea f, :description, class: "form-control"
+    = error_tag f, :description
+
+  .form-group
+    = submit "Submit", class: "btn btn-primary"

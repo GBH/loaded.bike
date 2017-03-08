@@ -26,6 +26,7 @@ defmodule PedalApp.Web.WaypointController do
 
   def show(conn, %{"id" => id}, tour) do
     waypoint = Repo.get!(assoc(tour, :waypoints), id)
+    waypoint = Repo.preload(waypoint, :photos)
     render conn, "show.html", tour: tour, waypoint: waypoint
   end
 
