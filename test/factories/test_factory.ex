@@ -2,7 +2,7 @@ defmodule PedalApp.TestFactory do
 
   use ExMachina.Ecto, repo: PedalApp.Repo
 
-  alias PedalApp.{User, Tour, Waypoint}
+  alias PedalApp.{User, Tour, Waypoint, Photo}
 
   def user_factory do
     %User{
@@ -16,7 +16,7 @@ defmodule PedalApp.TestFactory do
     %Tour{
       user:         build(:user),
       title:        "Test Tour",
-      description:  "Test Description"
+      description:  "Test Tour Description"
     }
   end
 
@@ -24,9 +24,18 @@ defmodule PedalApp.TestFactory do
     %Waypoint{
       tour:         build(:tour),
       title:        "Test Waypoint",
-      description:  "Test Description",
+      description:  "Test Waypoint Description",
       lat:          49.262206,
       long:         -123.2616348
+    }
+  end
+
+  def photo_factory do
+    %Photo{
+      waypoint:     build(:waypoint),
+      uuid:         "fa196fb0-9445-4da1-923e-d71f43ee170e",
+      description:  "Test Photo Description",
+      file:         %{file_name: "test/files/test.jpg", updated_at: Ecto.DateTime.utc}
     }
   end
 end

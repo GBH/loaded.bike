@@ -8,6 +8,7 @@ defmodule PedalApp.Repo.Migrations.CreatePhoto do
       add :file, :string
       add :description, :text
       add :position, :integer
+      add :uuid, :string, null: false
 
       timestamps()
     end

@@ -3,16 +3,21 @@ defmodule PedalApp.PhotoTest do
 
   alias PedalApp.Photo
 
-  @valid_attrs %{description: "some description", file: "some file", position: 42}
-  @invalid_attrs %{}
-
-  test "changeset with valid attributes" do
-    changeset = Photo.changeset(%Photo{}, @valid_attrs)
-    assert changeset.valid?
+  defp build_upload(path \\ "test/files/test.jpg") do
+    %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: Path.basename(path)}
   end
 
-  test "changeset with invalid attributes" do
-    changeset = Photo.changeset(%Photo{}, @invalid_attrs)
-    refute changeset.valid?
+  describe "changeset" do
+    test "with valid attributes" do
+      waypoint = insert(:waypoint)
+      changeset = Photo.changeset(%Photo{}, %{params_for(:photo) | waypoint_id: waypoint.id, file: build_upload()})
+      assert changeset.valid?
+    end
+
+    test "with invalid attributes" do
+      changeset = Photo.changeset(%Photo{}, %{})
+      refute changeset.valid?
+    end
   end
+
 end
