@@ -1,0 +1,3 @@
+%h1 Editing photo
+
+= render "form.html", changeset: @changeset, action: current_user_tour_waypoint_photo_path(@conn, :update, @tour, @waypoint, @photo)

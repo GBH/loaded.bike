@@ -7,6 +7,15 @@
 = @waypoint.lat
 = @waypoint.long
 
-- for photo <- @waypoint.photos do
-  - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :thumb)
-  %img{src: "#{url}"}
+= link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-default"
+
+%table
+  - for photo <- @waypoint.photos do
+    %tr
+      %td
+        - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :thumb)
+        %img{src: "#{url}"}
+      %td
+        = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-default btn-xs"
+
+        = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
