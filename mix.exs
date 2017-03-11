@@ -35,15 +35,20 @@ defmodule PedalApp.Mixfile do
       {:phoenix_pubsub,       "~> 1.0"},
       {:phoenix_ecto,         "~> 3.0"},
       {:postgrex,             ">= 0.0.0"},
-      {:phoenix_live_reload,  "~> 1.0", only: :dev},
       {:gettext,              "~> 0.11"},
       {:cowboy,               "~> 1.0"},
+
       {:phoenix_haml,         "~> 0.2.3"},
       {:comeonin,             "~> 3.0"},
       {:guardian,             "~> 0.14"},
-      {:ex_machina,           "~> 1.0", only: :test},
-      {:arc,                  "~> 0.7.0", override: true}, # PR: https://github.com/stavro/arc_ecto/pull/64
-      {:arc_ecto,             "~> 0.5.0"}
+      {:arc,                  "~> 0.7.0", override: true},
+      {:arc_ecto,             "~> 0.5.0"},
+      {:earmark,              "~> 1.2.0"},
+      {:html_sanitize_ex,     "~> 1.1.0"},
+
+      {:phoenix_live_reload,  "~> 1.0", only: :dev},
+
+      {:ex_machina,           "~> 1.0", only: :test}
     ]
   end
 
