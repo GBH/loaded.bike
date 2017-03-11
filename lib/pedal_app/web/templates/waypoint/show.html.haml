@@ -1,21 +1,28 @@
-%h1 Waypoint
+%h1= @waypoint.title
 
-= @waypoint.title
+.waypoint
 
-= markdown(@waypoint.description)
+  .actions
+    = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm"
+    = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-danger btn-sm", method: :delete, data: [confirm: "Are you sure?"]
 
-= @waypoint.lat
-= @waypoint.long
+  #map(data-lat: "#{@waypoint.lat}", data-long: "#{@waypoint.long}")
 
-= link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-default"
+  .description
+    = markdown(@waypoint.description)
 
-%table
+.photos
+  .actions
+    = link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-primary btn-sm"
   - for photo <- @waypoint.photos do
-    %tr
-      %td
+    .photo
+      .image
         - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :thumb)
-        %img{src: "#{url}"}
-      %td
-        = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-default btn-xs"
+        %img(src: "#{url}")
+      .description
+        = markdown(photo.description)
+      .actions
 
-        = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+        = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm"
+
+        = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm"
