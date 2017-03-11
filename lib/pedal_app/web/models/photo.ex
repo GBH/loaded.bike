@@ -25,7 +25,7 @@ defmodule PedalApp.Photo do
   defp set_uuid(struct) do
     case get_field(struct, :uuid) do
       nil -> put_change(struct, :uuid, Ecto.UUID.generate)
-      _ -> struct
+      _   -> struct
     end
   end
 end
