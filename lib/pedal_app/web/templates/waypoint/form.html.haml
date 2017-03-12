@@ -1,7 +1,21 @@
+- lat   = Ecto.Changeset.get_field(@changeset, :lat)
+- long  = Ecto.Changeset.get_field(@changeset, :long)
+#map(data-lat: "#{lat}", data-long: "#{long}")
+
 - form_for @changeset, @action, fn f ->
   - if @changeset.action do
     .alert.alert-danger
       Error. Check errors below.
+
+  .form-group
+    = label f, :lat, class: "control-label"
+    = text_input f, :lat, class: "form-control"
+    = error_tag f, :lat
+
+  .form-group
+    = label f, :lng, class: "control-label"
+    = text_input f, :lng, class: "form-control"
+    = error_tag f, :lng
 
   .form-group
     = label f, :title, class: "control-label"
@@ -12,17 +26,6 @@
     = label f, :description, class: "control-label"
     = textarea f, :description, class: "form-control"
     = error_tag f, :description
-
-  .form-group
-    = label f, :lat, class: "control-label"
-    = text_input f, :lat, class: "form-control"
-    = error_tag f, :lat
-
-  .form-group
-    = label f, :long, class: "control-label"
-    = text_input f, :long, class: "form-control"
-    = error_tag f, :long
-
 
   .form-group
     = submit "Submit", class: "btn btn-primary"

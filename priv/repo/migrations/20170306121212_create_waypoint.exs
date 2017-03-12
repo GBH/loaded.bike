@@ -8,7 +8,7 @@ defmodule PedalApp.Repo.Migrations.CreateWaypoint do
       add :title,       :string, null: false
       add :description, :text
       add :lat,         :float, null: false
-      add :long,        :float, null: false
+      add :lng,         :float, null: false
 
       add :is_published, :boolean, null: false, default: false
 

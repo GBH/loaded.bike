@@ -5,7 +5,7 @@ defmodule PedalApp.Waypoint do
     field :title,       :string
     field :description, :string
     field :lat,         :float
-    field :long,        :float
+    field :lng,         :float
 
     belongs_to :tour, PedalApp.Tour
 
@@ -16,8 +16,8 @@ defmodule PedalApp.Waypoint do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:tour_id, :title, :description, :lat, :long])
-    |> validate_required([:tour_id, :title, :lat, :long])
+    |> cast(params, [:tour_id, :title, :description, :lat, :lng])
+    |> validate_required([:tour_id, :title, :lat, :lng])
     |> assoc_constraint(:tour)
   end
 end
