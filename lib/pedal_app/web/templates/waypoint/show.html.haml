@@ -6,7 +6,7 @@
     = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm"
     = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-danger btn-sm", method: :delete, data: [confirm: "Are you sure?"]
 
-  #map(data-lat: "#{@waypoint.lat}", data-long: "#{@waypoint.long}")
+  #map(data-lat: "#{@waypoint.lat}", data-long: "#{@waypoint.lng}")
 
   .description
     = markdown(@waypoint.description)

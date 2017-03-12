@@ -26,7 +26,7 @@ defmodule PedalApp.TestFactory do
       title:        "Test Waypoint",
       description:  "Test Waypoint Description",
       lat:          49.262206,
-      long:         -123.2616348
+      lng:          -123.2616348
     }
   end
 

@@ -45,7 +45,7 @@ defmodule PedalApp.Web.WaypointControllerTest do
       title:        "Test Waypoint",
       description:  "Test Description",
       lat:          "12.34",
-      long:         "56.78"
+      lng:          "56.78"
     }
     waypoint = Repo.one(Waypoint)
     assert redirected_to(conn) == "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
