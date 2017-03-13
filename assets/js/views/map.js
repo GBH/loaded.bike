@@ -24,6 +24,23 @@ export default class Map {
     this.map.addControl(layer)
   }
 
+  addCrosshair() {
+    const icon = L.icon({
+      iconUrl: '/images/map/crosshair.png',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
+    })
+    const marker = L.marker(this.map.getCenter(), {
+      icon:       icon,
+      clickable:  false
+    })
+    this.map.addControl(marker)
+
+    this.map.on('move', (e) => {
+      marker.setLatLng(this.map.getCenter())
+    })
+  }
+
   geolocate() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
@@ -32,7 +49,7 @@ export default class Map {
     }
   }
 
-  sync_form_fields() {
+  syncFormFields() {
     const lat_field   = document.getElementById("waypoint_lat")
     const long_field  = document.getElementById("waypoint_lng")
 

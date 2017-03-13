@@ -7,7 +7,8 @@ export default class WaypointEditView extends MainView {
 
     var map = new Map()
     map.init()
-    map.sync_form_fields()
+    map.syncFormFields()
+    map.addCrosshair()
   }
 
   unmount(){

@@ -15,7 +15,8 @@ export default class WaypointNewView extends MainView {
       map.geolocate()
     }
 
-    map.sync_form_fields()
+    map.syncFormFields()
+    map.addCrosshair()
   }
 
   unmount(){
