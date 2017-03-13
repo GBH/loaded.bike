@@ -1,5 +1,5 @@
 import MainView from "../main"
-import Map from "../map"
+import Map      from "../map"
 
 export default class WaypointEditView extends MainView {
   mount(){
@@ -7,7 +7,7 @@ export default class WaypointEditView extends MainView {
 
     var map = new Map()
     map.init()
-    map.update_form_fields()
+    map.sync_form_fields()
   }
 
   unmount(){

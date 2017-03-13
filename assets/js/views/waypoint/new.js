@@ -1,5 +1,5 @@
 import MainView from "../main"
-import Map from "../map"
+import Map      from "../map"
 
 export default class WaypointNewView extends MainView {
   mount(){
@@ -7,8 +7,15 @@ export default class WaypointNewView extends MainView {
 
     var map = new Map()
     map.init()
-    map.geolocate()
-    map.update_form_fields()
+
+    // geolocate only if lat/long fields are blank
+    const lat_field   = document.getElementById("waypoint_lat")
+    const long_field  = document.getElementById("waypoint_lng")
+    if(lat_field.value == "" || long_field.value == "") {
+      map.geolocate()
+    }
+
+    map.sync_form_fields()
   }
 
   unmount(){
