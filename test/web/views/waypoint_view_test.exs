@@ -8,6 +8,10 @@ defmodule PedalApp.Web.WaypointViewTest do
     assert html == "<p><strong>bold</strong></p>"
   end
 
+  test "markdown with nil" do
+    assert WaypointView.markdown(nil) == ""
+  end
+
   test "markdown sanitized" do
     {:safe, html} = WaypointView.markdown("<script>alert('test')</script>")
     assert html == "<p>alert(‘test’)</p>"
