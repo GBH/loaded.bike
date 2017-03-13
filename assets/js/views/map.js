@@ -4,7 +4,7 @@ export default class Map {
     const id = container_id || "map"
     const container = document.getElementById(id)
 
-    this.map  = L.map(container)
+    this.map  = L.map(container, {attributionControl: false})
 
     // defaulting location to Stanley Park if geolocation fails
     this.lat  = container.dataset.lat   || 49.3019608
@@ -14,18 +14,14 @@ export default class Map {
   init() {
     const apiToken = "pk.eyJ1IjoiZ3JvY2VyeSIsImEiOiJjajA1cTZjdzQwNWR5Mndwa2dqM2l3ZnI4In0.MoTpE4qEHYKKYyOcfhd1Rg"
 
-    const attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="http://mapbox.com">Mapbox</a>'
-
     this.map.setView([this.lat, this.long], 13);
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + apiToken, {
+    const layer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + apiToken, {
       maxZoom:      18,
       minZoom:      8,
-      attribution:  attribution,
       id:           'mapbox.streets'
-    }).addTo(this.map)
+    })
+    this.map.addControl(layer)
   }
 
   geolocate() {
