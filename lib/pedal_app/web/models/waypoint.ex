@@ -18,6 +18,8 @@ defmodule PedalApp.Waypoint do
     struct
     |> cast(params, [:tour_id, :title, :description, :lat, :lng])
     |> validate_required([:tour_id, :title, :lat, :lng])
+    |> validate_number(:lat, greater_than_or_equal_to: -90, less_than_or_equal_to: 90)
+    |> validate_number(:lng, greater_than_or_equal_to: -180, less_than_or_equal_to: 180)
     |> assoc_constraint(:tour)
   end
 end
