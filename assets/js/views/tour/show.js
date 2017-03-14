@@ -7,6 +7,7 @@ export default class TourShowView extends MainView {
 
     var map = new Map()
     map.init()
+    map.load_markers()
   }
 
   unmount(){

@@ -1,14 +1,13 @@
 export default class Map {
 
   constructor(container_id) {
-    const id = container_id || "map"
-    const container = document.getElementById(id)
 
-    this.map  = L.map(container, {attributionControl: false})
+    this.container = document.getElementById(container_id || "map")
+    this.map  = L.map(this.container, {attributionControl: false})
 
     // defaulting location to Stanley Park if geolocation fails
-    this.lat  = container.dataset.lat   || 49.3019608
-    this.long = container.dataset.long  || -123.1507388
+    this.lat  = this.container.dataset.lat   || 49.3019608
+    this.long = this.container.dataset.long  || -123.1507388
   }
 
   init() {
@@ -22,6 +21,20 @@ export default class Map {
       id:           'mapbox.streets'
     })
     this.map.addControl(layer)
+  }
+
+  load_markers() {
+    const markers_json = JSON.parse(this.container.dataset.markers)
+    let markers = []
+
+    for (let marker_json of markers_json) {
+      let marker = L.marker([marker_json.lat, marker_json.lng], {title: marker_json.title})
+      marker.addTo(this.map)
+      markers.push(marker)
+    }
+
+    let group = new L.featureGroup(markers)
+    this.map.fitBounds(group.getBounds())
   }
 
   addCrosshair() {
