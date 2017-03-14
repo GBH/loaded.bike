@@ -11,18 +11,21 @@
 # and so on) as they will fail if something goes wrong.
 
 alias PedalApp.{Repo, Tour, Waypoint}
+
 json = File.read!("priv/repo/seed_data/waypoints.json")
-
-
 
 data = Poison.Parser.parse!(json)
 
-Enum.each(data, fn(wp) ->
-  tour = Repo.get!(Tour, 5)
+tour = Repo.get!(Tour, 1)
+
+data
+|> Enum.with_index
+|> Enum.each(fn({wp, index}) ->
   changeset = Waypoint.changeset(Ecto.build_assoc(tour, :waypoints), %{
-    title:  wp["title"],
-    lat:    wp["lat"],
-    lng:    wp["lng"]
+    title:    wp["title"],
+    lat:      wp["lat"],
+    lng:      wp["lng"],
+    position: index
   })
   Repo.insert!(changeset)
 end)

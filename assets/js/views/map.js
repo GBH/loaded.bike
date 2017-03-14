@@ -18,7 +18,7 @@ export default class Map {
 
     const layer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + apiToken, {
       maxZoom:      18,
-      minZoom:      8,
+      minZoom:      3,
       id:           'mapbox.streets'
     })
     this.map.addControl(layer)

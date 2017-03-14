@@ -1,12 +1,11 @@
 %h1 Waypoints
 
 %table
-
   - for waypoint <- @waypoints do
     %tr
       %td
         = waypoint.title
       %td
-        = link "Show", to: current_user_tour_waypoint_path(@conn, :show, @tour, waypoint), class: "btn btn-default btn-xs"
-        = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-default btn-xs"
-        = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, waypoint), class: "btn btn-danger btn-xs", method: :delete, data: [confirm: "Are you sure?"]
+        = link "Show", to: current_user_tour_waypoint_path(@conn, :show, @tour, waypoint), class: "btn btn-secondary btn-sm"
+        = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm"
+        = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, waypoint), class: "btn btn-danger btn-sm", method: :delete, data: [confirm: "Are you sure?"]

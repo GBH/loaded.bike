@@ -23,6 +23,7 @@ defmodule PedalApp.Web.TourControllerTest do
     assert response(conn, 200)
     assert template(conn) == "show.html"
     assert assigns(conn, :tour)
+    assert assigns(conn, :waypoints)
   end
 
   test "show not found", %{conn: conn} do

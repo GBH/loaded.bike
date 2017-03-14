@@ -23,4 +23,9 @@ defmodule PedalApp.WaypointTest do
     {status, _} = Repo.insert(Waypoint.changeset(%Waypoint{}, %{params_for(:waypoint) | tour_id: tour.id}))
     assert status == :ok
   end
+
+  test "to_json" do
+    waypoint = insert(:waypoint)
+    assert Poison.encode!(waypoint) == "{\"title\":\"Test Waypoint\",\"lng\":-123.2616348,\"lat\":49.262206}"
+  end
 end

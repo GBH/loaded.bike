@@ -20,7 +20,7 @@ defmodule PedalApp.Web.WaypointController do
 
   # -- Actions -----------------------------------------------------------------
   def index(conn, _, tour) do
-    waypoints = Repo.all(assoc(tour, :waypoints))
+    waypoints = Repo.all(from w in assoc(tour, :waypoints), order_by: w.inserted_at)
     render(conn, "index.html", tour: tour, waypoints: waypoints)
   end
 

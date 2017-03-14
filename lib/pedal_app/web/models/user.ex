@@ -16,6 +16,7 @@ defmodule PedalApp.User do
     struct
     |> cast(params, [:email, :name])
     |> validate_required([:email, :name])
+    |> validate_format(:email, ~r/@/)
   end
 
   def registration_changeset(struct, params) do

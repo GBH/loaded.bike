@@ -1,6 +1,8 @@
 defmodule PedalApp.Waypoint do
   use PedalApp.Web, :model
 
+  @derive {Poison.Encoder, only: [:title, :lat, :lng]}
+
   schema "waypoints" do
     field :title,       :string
     field :description, :string
