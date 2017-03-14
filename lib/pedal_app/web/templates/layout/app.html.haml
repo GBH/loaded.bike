@@ -15,23 +15,27 @@
     %link(rel="stylesheet" href='#{static_path(@conn, "/css/app.css")}')
 
   - page_id = page_identifier(@conn)
-  %body(class: "#{Macro.underscore(page_id)}" data-page-identifier: "#{page_id}")
-    .container
-      %header.header
-        %nav(role="navigation")
-          %ul.nav.nav-pills.pull-right
-            - if @current_user do
-              %li
-                = link "Sign out", to: session_path(@conn, :delete), method: :delete
-            - else
-              %li
-                = link "Register", to: current_user_path(@conn, :new)
-              %li
-                = link "Sign in", to: session_path(@conn, :new)
-        %span.logo
+  %body(class="#{Macro.underscore(page_id)}" data-page-identifier="#{page_id}")
 
-      %p.alert.alert-info(role="alert")= get_flash(@conn, :info)
-      %p.alert.alert-danger(role="alert")= get_flash(@conn, :error)
+    %nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse
+      .container
+        %button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbarSupportedContent")
+          %span.navbar-toggler-icon
+        %a.navbar-brand(href="#") Loaded.bike
+
+        .collapse.navbar-collapse#navbarSupportedContent
+          %ul.navbar-nav.mr-auto
+            - if @current_user do
+              %li.nav-item
+                = link "Sign out", to: session_path(@conn, :delete), method: :delete, class: "nav-link"
+            - else
+              %li.nav-item
+                = link "Register", to: current_user_path(@conn, :new), class: "nav-link"
+              %li.nav-item
+                = link "Sign in", to: session_path(@conn, :new), class: "nav-link"
+
+    .container
+      = flash_alert(@conn)
 
       %main(role="main")
         = render @view_module, @view_template, assigns
