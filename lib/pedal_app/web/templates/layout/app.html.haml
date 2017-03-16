@@ -34,7 +34,7 @@
               %li.nav-item
                 = link "Sign in", to: session_path(@conn, :new), class: "nav-link"
 
-    .container
+    .container.content
       = flash_alert(@conn)
 
       %main(role="main")

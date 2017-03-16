@@ -1,6 +1,15 @@
-.navbar
-  margin-bottom: 20px
+body
+  background: #e6e4e0 url(/images/bg_ultrawide.png) center
+
+.container.content
+  padding: 15px
+  background-color: #fff
 
 .waypoint_show_view, .waypoint_edit_view, .waypoint_new_view, .tour_show_view
   #map
     height: 300px
+
+// setting max width for content
+@media (min-width: 1200px)
+  .container
+    max-width: 960px
