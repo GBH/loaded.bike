@@ -1,7 +1,4 @@
 - form_for @changeset, @action, fn f ->
-  - if @changeset.action do
-    .alert.alert-danger
-      Error. Check errors below.
 
   .form-group
     = label f, :title, class: "control-label"
@@ -14,5 +11,8 @@
     = error_tag f, :description
 
   .form-group
-    = submit "Submit", class: "btn btn-primary"
+    = checkbox f, :is_published
+    = label f, :is_published, "Published"
 
+  .form-group
+    = submit "Submit", class: "btn btn-primary"

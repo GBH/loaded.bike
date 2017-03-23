@@ -45,12 +45,14 @@ defmodule PedalApp.Web.TourControllerTest do
     }
     tour = Repo.one(Tour)
     assert redirected_to(conn) == "/rider/tours/#{tour.id}"
+    assert get_flash(conn, :info) == "Tour created"
   end
 
   test "create failure", %{conn: conn} do
     conn = post conn, "/rider/tours", tour: %{}
     assert response(conn, 200)
     assert template(conn) == "new.html"
+    assert get_flash(conn, :error) == "Failed to create Tour"
   end
 
   test "edit", %{conn: conn, user: user} do
@@ -68,6 +70,7 @@ defmodule PedalApp.Web.TourControllerTest do
       title: "Updated tour"
     }
     assert redirected_to(conn) == "/rider/tours/#{tour.id}"
+    assert get_flash(conn, :info) == "Tour updated"
     assert Repo.get_by(Tour, id: tour.id, title: "Updated tour")
   end
 
@@ -78,6 +81,7 @@ defmodule PedalApp.Web.TourControllerTest do
     }
     assert response(conn, 200)
     assert template(conn) == "edit.html"
+    assert get_flash(conn, :error) == "Failed to update Tour"
     refute Repo.get_by(Tour, id: tour.id, title: "")
   end
 

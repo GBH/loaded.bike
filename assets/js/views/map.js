@@ -1,8 +1,8 @@
 export default class Map {
 
-  constructor(container_id) {
+  constructor(container) {
 
-    this.container = document.getElementById(container_id || "map")
+    this.container = container || document.getElementById('map')
     this.map  = L.map(this.container, {attributionControl: false})
 
     // defaulting location to Stanley Park if geolocation fails
@@ -16,23 +16,31 @@ export default class Map {
     this.map.setView([this.lat, this.long], 13);
 
     const layer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + apiToken, {
-      maxZoom:      18,
-      minZoom:      3,
-      id:           'mapbox.streets'
+      maxZoom: 18,
+      minZoom: 3,
+      id:      'mapbox.streets'
     })
     this.map.addControl(layer)
   }
 
   load_markers() {
     const markers_json = JSON.parse(this.container.dataset.markers)
-    let markers = []
 
+    // no markers to show, centering map on current location
+    if (markers_json.length == 0) {
+      this.geolocate()
+      return false
+    }
+
+    // adding markers to the map
+    let markers = []
     for (let marker_json of markers_json) {
       let marker = L.marker([marker_json.lat, marker_json.lng], {title: marker_json.title})
       marker.addTo(this.map)
       markers.push(marker)
     }
 
+    // centering map on all markers
     let group = new L.featureGroup(markers)
     this.map.fitBounds(group.getBounds())
   }

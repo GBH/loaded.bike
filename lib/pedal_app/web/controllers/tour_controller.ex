@@ -11,7 +11,11 @@ defmodule PedalApp.Web.TourController do
 
   # -- Actions -----------------------------------------------------------------
   def index(conn, _, current_user) do
-    tours = Repo.all(assoc(current_user, :tours))
+    tours = Repo.all(
+      from t in assoc(current_user, :tours),
+      order_by: [desc: t.inserted_at],
+      preload:  [:waypoints]
+    )
     render(conn, "index.html", tours: tours)
   end
 
@@ -41,6 +45,7 @@ defmodule PedalApp.Web.TourController do
         |> redirect(to: current_user_tour_path(conn, :show, tour))
       {:error, changeset} ->
         conn
+        |> put_flash(:error, "Failed to create Tour")
         |> render("new.html", changeset: changeset)
     end
   end
@@ -61,7 +66,9 @@ defmodule PedalApp.Web.TourController do
         |> put_flash(:info, "Tour updated")
         |> redirect(to: current_user_tour_path(conn, :show, tour))
       {:error, changeset} ->
-        render(conn, "edit.html", tour: tour, changeset: changeset)
+        conn
+        |> put_flash(:error, "Failed to update Tour")
+        |> render("edit.html", tour: tour, changeset: changeset)
     end
   end
 

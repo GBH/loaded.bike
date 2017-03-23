@@ -1,16 +1,16 @@
 %h1 Tours
 
-= link "New Tour", to: current_user_tour_path(@conn, :new), class: "btn btn-info"
-
-%table
-
+.tours
   - for tour <- @tours do
-    %tr
-      %td
-        = tour.title
-      %td
-        = link "Show", to: current_user_tour_path(@conn, :show, tour), class: "btn btn-default btn-xs"
-        = link "Waypoints", to: current_user_tour_waypoint_path(@conn, :index, tour), class: "btn btn-default btn-xs"
-        = link "Edit", to: current_user_tour_path(@conn, :edit, tour), class: "btn btn-default btn-xs"
-        = link "Delete", to: current_user_tour_path(@conn, :delete, tour), class: "btn btn-danger btn-xs", method: :delete, data: [confirm: "Are you sure?"]
+    .tour
+      %h2.title
+        = link tour.title, to: current_user_tour_path(@conn, :show, tour)
+
+      .map{data-map: "true", data-markers: "#{waypoints_to_json(tour.waypoints)}"}
+
+      .description
+        = markdown(tour.description)
+
+.actions.clearfix
+  = link "New Tour", to: current_user_tour_path(@conn, :new), class: "btn btn-primary float-lg-right"
 

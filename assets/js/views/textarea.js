@@ -10,5 +10,5 @@ export default function autoResizeTextArea(){
 }
 
 function resizeTextArea(textarea){
-  textarea.style.height = textarea.scrollHeight + "px"
+  textarea.style.height = textarea.scrollHeight + 2 + "px" // 2px border width
 }
