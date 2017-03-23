@@ -14,8 +14,9 @@
 
     - for waypoint <- @waypoints do
       %tr
-        %td.text-center
+        %td
           %strong
+            Day
             = waypoint.position
         %td
           = published_badge(waypoint.is_published)

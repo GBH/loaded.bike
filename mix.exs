@@ -45,10 +45,12 @@ defmodule PedalApp.Mixfile do
       {:arc_ecto,             "~> 0.5.0"},
       {:earmark,              "~> 1.2.0"},
       {:html_sanitize_ex,     "~> 1.1.0"},
+      {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
 
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
 
-      {:ex_machina,           "~> 1.0", only: :test}
+      {:ex_machina,           "~> 1.0", only: :test},
+      {:floki,                "~> 0.14.0", only: :test}
     ]
   end
 
