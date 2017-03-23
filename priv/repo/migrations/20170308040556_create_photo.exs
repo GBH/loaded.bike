@@ -3,7 +3,7 @@ defmodule PedalApp.Repo.Migrations.CreatePhoto do
 
   def change do
     create table(:photos) do
-      add :waypoint_id, references(:waypoints, on_delete: :nothing)
+      add :waypoint_id, references(:waypoints, on_delete: :delete_all)
 
       add :file, :string
       add :description, :text

@@ -1,19 +1,29 @@
+%h1= @tour.title
+
+.actions.clearfix
+  = published_badge(@tour.is_published)
+  = link "Edit", to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm float-lg-right"
+
 #map(data-markers: "#{waypoints_to_json(@waypoints)}")
 
-%h2= @tour.title
+.user-content
+  = markdown(@tour.description)
 
-= markdown(@tour.description)
+.table-responsive
+  %table.table.table-sm
 
-%table.table.table-sm
+    - for waypoint <- @waypoints do
+      %tr
+        %td.text-center
+          %strong
+            = waypoint.position
+        %td
+          = published_badge(waypoint.is_published)
+        %td.main
+          = link waypoint.title, to: current_user_tour_waypoint_path(@conn, :show, @tour, waypoint)
+        %td
+          .btn-group
+            = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm"
 
-  - for waypoint <- @waypoints do
-    %tr
-      %td
-        = waypoint.title
-      %td
-        .btn-group
-          = link "Show", to: current_user_tour_waypoint_path(@conn, :show, @tour, waypoint), class: "btn btn-secondary btn-sm"
-          = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm"
-          = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, waypoint), class: "btn btn-danger btn-sm", method: :delete, data: [confirm: "Are you sure?"]
-
-= link "Add Waypoint", to: current_user_tour_waypoint_path(@conn, :new, @tour), class: "btn btn-primary"
+.actions.clearfix
+  = link "Add Waypoint", to: current_user_tour_waypoint_path(@conn, :new, @tour), class: "btn btn-primary float-lg-right"

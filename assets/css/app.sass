@@ -1,5 +1,11 @@
+@import "bootstrap"
+
 body
-  background: #e6e4e0 url(/images/bg_ultrawide.png) center
+  background: $white url(/images/bg_ultrawide.png) top center
+
+.actions
+  background-color: $gray-lightest
+  padding: 5px
 
 .container.content
   padding: 15px
@@ -8,8 +14,18 @@ body
 .waypoint_show_view, .waypoint_edit_view, .waypoint_new_view, .tour_show_view
   #map
     height: 300px
+    margin-bottom: 15px
 
 // setting max width for content
-@media (min-width: 1200px)
+@media(min-width: 1200px)
   .container
     max-width: 960px
+
+table.table
+  td.main
+    width: 100%
+
+.container.footer
+  padding: 15px
+  background: $gray
+  color: $white

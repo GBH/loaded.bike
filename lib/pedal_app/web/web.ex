@@ -52,6 +52,8 @@ defmodule PedalApp.Web do
       import PedalApp.Web.Router.Helpers
       import PedalApp.Web.ErrorHelpers
       import PedalApp.Web.Gettext
+
+      import PedalApp.Web.HtmlHelpers
     end
   end
 

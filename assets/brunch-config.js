@@ -53,7 +53,11 @@ exports.config = {
       ignore: [/vendor/]
     },
     sass: {
-      mode: "native"
+      mode: "native",
+      options: {
+        includePaths: ["node_modules/bootstrap/scss"], // tell sass-brunch where to look for files to @import
+        precision: 8 // minimum precision required by bootstrap-sass
+      }
     }
   },
 
@@ -64,6 +68,12 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    globals: { // bootstrap-sass' JavaScript requires both '$' and 'jQuery' in global scope
+      $: 'jquery',
+      jQuery: 'jquery',
+      Tether: 'tether',
+      bootstrap: 'bootstrap'
+    }
   }
 };
