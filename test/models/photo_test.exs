@@ -39,4 +39,10 @@ defmodule PedalApp.PhotoTest do
     {status, _} = Repo.insert(Photo.changeset(%Photo{}, params))
     assert status == :ok
   end
+
+  test "delete!" do
+    photo = insert(:photo)
+    Photo.delete!(photo)
+    refute Repo.get(Photo, photo.id)
+  end
 end
