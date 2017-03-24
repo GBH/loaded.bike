@@ -7,6 +7,7 @@ export default class WaypointShowView extends MainView {
 
     var map = new Map()
     map.init()
+    map.loadMarkers()
   }
 
   unmount(){

@@ -10,15 +10,6 @@ defmodule PedalApp.Web.WaypointControllerTest do
     {:ok, conn: conn, tour: tour}
   end
 
-  test "index", %{conn: conn, tour: tour} do
-    insert(:waypoint, %{tour: tour})
-    conn = get conn, "/rider/tours/#{tour.id}/waypoints"
-    assert response(conn, 200)
-    assert template(conn) == "index.html"
-    assert assigns(conn, :tour)
-    assert length(assigns(conn, :waypoints)) == 1
-  end
-
   test "show", %{conn: conn, tour: tour} do
     waypoint = insert(:waypoint, %{tour: tour})
     conn = get conn, "rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
@@ -49,12 +40,14 @@ defmodule PedalApp.Web.WaypointControllerTest do
     }
     waypoint = Repo.one(Waypoint)
     assert redirected_to(conn) == "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
+    assert get_flash(conn, :info) == "Waypoint created"
   end
 
   test "create failure", %{conn: conn, tour: tour} do
     conn = post conn, "/rider/tours/#{tour.id}/waypoints", waypoint: %{}
     assert response(conn, 200)
     assert template(conn) == "new.html"
+    assert get_flash(conn, :error) == "Failed to create Waypoint"
   end
 
   test "edit", %{conn: conn, tour: tour} do
@@ -72,6 +65,7 @@ defmodule PedalApp.Web.WaypointControllerTest do
       title: "Updated waypoint"
     }
     assert redirected_to(conn) == "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
+    assert get_flash(conn, :info) == "Waypoint updated"
     assert Repo.get_by(Waypoint, id: waypoint.id, title: "Updated waypoint")
   end
 
@@ -82,13 +76,14 @@ defmodule PedalApp.Web.WaypointControllerTest do
     }
     assert response(conn, 200)
     assert template(conn) == "edit.html"
+    assert get_flash(conn, :error) == "Failed to update Waypoint"
     refute Repo.get_by(Waypoint, id: waypoint.id, title: "")
   end
 
   test "delete", %{conn: conn, tour: tour} do
     waypoint = insert(:waypoint, tour: tour)
     conn = delete conn, "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
-    assert redirected_to(conn) == "/rider/tours/#{tour.id}/waypoints"
+    assert redirected_to(conn) == "/rider/tours/#{tour.id}"
     refute Repo.get(Waypoint, waypoint.id)
   end
 end

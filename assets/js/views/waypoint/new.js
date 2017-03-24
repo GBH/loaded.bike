@@ -1,5 +1,6 @@
-import MainView from "../main"
-import Map      from "../map"
+import MainView           from "../main"
+import Map                from "../map"
+import autoResizeTextArea from "../textarea"
 
 export default class WaypointNewView extends MainView {
   mount(){
@@ -18,6 +19,8 @@ export default class WaypointNewView extends MainView {
     map.syncFormFields()
     map.addCrosshair()
     map.loadMarkers()
+
+    autoResizeTextArea()
   }
 
   unmount(){

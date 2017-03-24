@@ -6,10 +6,6 @@
   = hidden_input f, :lat
   = hidden_input f, :lng
 
-  - if @changeset.action do
-    .alert.alert-danger
-      Error. Check errors below.
-
   .form-group
     = label f, :title, class: "control-label"
     = text_input f, :title, class: "form-control"
@@ -17,7 +13,7 @@
 
   .form-group
     = label f, :description, class: "control-label"
-    = textarea f, :description, class: "form-control"
+    = textarea f, :description, class: "form-control", data: [autoresize: true]
     = error_tag f, :description
 
   .form-group

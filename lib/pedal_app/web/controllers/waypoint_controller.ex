@@ -22,11 +22,6 @@ defmodule PedalApp.Web.WaypointController do
   end
 
   # -- Actions -----------------------------------------------------------------
-  def index(conn, _, tour) do
-    waypoints = Repo.all(from w in assoc(tour, :waypoints), order_by: w.inserted_at)
-    render(conn, "index.html", tour: tour, waypoints: waypoints)
-  end
-
   def show(conn, %{"id" => id}, tour) do
     waypoint = Repo.get!(assoc(tour, :waypoints), id)
     waypoint = Repo.preload(waypoint, :photos)
@@ -87,6 +82,6 @@ defmodule PedalApp.Web.WaypointController do
 
     conn
     |> put_flash(:info, "Waypoint deleted")
-    |> redirect(to: current_user_tour_waypoint_path(conn, :index, tour))
+    |> redirect(to: current_user_tour_path(conn, :show, tour))
   end
 end

@@ -48,7 +48,7 @@ defmodule PedalApp.Web.Router do
       singleton:  true
     do
       resources "/tours", TourController do
-        resources "/waypoints", WaypointController do
+        resources "/waypoints", WaypointController, except: [:index] do
           resources "/photos", PhotoController
         end
       end

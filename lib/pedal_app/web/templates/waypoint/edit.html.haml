@@ -1,3 +1,5 @@
+= link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-danger btn-sm float-lg-right", method: :delete, data: [confirm: "Are you sure?"]
+
 %h1 Editing waypoint
 
 = render "form.html", tour: @tour, changeset: @changeset, action: current_user_tour_waypoint_path(@conn, :update, @tour, @waypoint)
