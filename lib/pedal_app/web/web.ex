@@ -36,6 +36,8 @@ defmodule PedalApp.Web do
 
       import PedalApp.Web.Router.Helpers
       import PedalApp.Web.Gettext
+
+      use Breadcrumble
     end
   end
 

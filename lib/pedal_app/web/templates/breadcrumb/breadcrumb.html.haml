@@ -1,0 +1,5 @@
+- for trail <- @breadcrumb_trails do
+  %ol.breadcrumb
+    - for crumb <- trail do
+      %li.breadcrumb-item
+        = link crumb[:name], to: crumb[:url]

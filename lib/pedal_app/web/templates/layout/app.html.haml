@@ -36,11 +36,15 @@
     .container.content
       = flash_alert(@conn)
 
+      - if assigns[:breadcrumb_trails] do
+        = render PedalApp.Web.BreadcrumbView, "breadcrumb.html", assigns
+
       %main(role="main")
         = render @view_module, @view_template, assigns
 
-    .container.footer
-      Footer content
+    %footer.text-muted
+      .container
+        Footer content
 
     %script(src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js")
 

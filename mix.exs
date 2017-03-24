@@ -45,6 +45,7 @@ defmodule PedalApp.Mixfile do
       {:arc_ecto,             "~> 0.5.0"},
       {:earmark,              "~> 1.2.0"},
       {:html_sanitize_ex,     "~> 1.1.0"},
+      {:breadcrumble,         "~> 1.0.0"},
       {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
 
       {:phoenix_live_reload,  "~> 1.0", only: :dev},

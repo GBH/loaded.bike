@@ -1,18 +1,22 @@
-require IEx
-
 defmodule PedalApp.Web.WaypointController do
   use PedalApp.Web, :controller
-
   alias PedalApp.Waypoint
 
   plug :scrub_params, "waypoint" when action in [:create, :update]
   plug :load_tour
+  plug :set_breadcrumbs
 
   defp load_tour(conn, _) do
     %{"tour_id" => tour_id} = conn.params
     tour = Repo.get!(assoc(conn.assigns.current_user, :tours), tour_id)
     tour = Repo.preload(tour, :waypoints)
     assign(conn, :tour, tour)
+  end
+
+  defp set_breadcrumbs(conn, _) do
+    conn
+    |> add_breadcrumb(name: "My Tours", url: current_user_tour_path(conn, :index))
+    |> add_breadcrumb(name: "Tour", url: current_user_tour_path(conn, :show, conn.assigns.tour))
   end
 
   defp action(conn, _) do
