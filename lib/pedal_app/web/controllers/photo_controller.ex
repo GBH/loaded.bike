@@ -47,7 +47,9 @@ defmodule PedalApp.Web.PhotoController do
         |> put_flash(:info, "Photo created")
         |> redirect(to: current_user_tour_waypoint_path(conn, :show, tour, waypoint))
       {:error, changeset} ->
-        render conn, "new.html", changeset: changeset
+        conn
+        |> put_flash(:error, "Failed to create Photo")
+        |> render("new.html", changeset: changeset)
     end
   end
 
@@ -67,12 +69,14 @@ defmodule PedalApp.Web.PhotoController do
         |> put_flash(:info, "Photo updated")
         |> redirect(to: current_user_tour_waypoint_path(conn, :show, tour, waypoint))
       {:error, changeset} ->
-        render(conn, "edit.html", tour: tour, waypoint: waypoint, photo: photo, changeset: changeset)
+        conn
+        |> put_flash(:error, "Failed to update Photo")
+        |> render("edit.html", tour: tour, waypoint: waypoint, photo: photo, changeset: changeset)
     end
   end
 
   def delete(conn, %{"id" => _id}, tour, waypoint) do
-    Repo.delete!(conn.assigns.photo)
+    Photo.delete!(conn.assigns.photo)
 
     conn
     |> put_flash(:info, "Photo deleted")

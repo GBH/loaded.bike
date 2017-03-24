@@ -21,6 +21,20 @@ defmodule PedalApp.Photo do
     |> validate_required([:file, :uuid])
   end
 
+  # deleting record and cleaning up attached files
+  def delete!(photo) do
+    PedalApp.Repo.delete!(photo)
+
+    path =
+      PedalApp.Web.PhotoUploader.url({photo.file, photo})
+      |> String.split("?")
+      |> List.first
+
+    spawn fn ->
+      PedalApp.Web.PhotoUploader.delete({path, photo})
+    end
+  end
+
   # because of reasons, we need uuid to link uploaded files properly
   defp set_uuid(struct) do
     case get_field(struct, :uuid) do
