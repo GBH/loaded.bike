@@ -2,7 +2,7 @@ defmodule PedalApp.Web.PhotoUploader do
   use Arc.Definition
   use Arc.Ecto.Definition
 
-  @versions [:original, :thumb]
+  @versions [:original, :large]
 
   # local storage
   def __storage, do: Arc.Storage.Local
@@ -13,8 +13,8 @@ defmodule PedalApp.Web.PhotoUploader do
   end
 
   # Define a thumbnail transformation:
-  def transform(:thumb, _) do
-    {:convert, "-strip -thumbnail 100x100^ -gravity center -extent 100x100 -format jpg", :jpg}
+  def transform(:large, _) do
+    {:convert, "-strip -thumbnail 930x -gravity center -extent 930x -format jpg", :jpg}
   end
 
   # Override the persisted filenames:

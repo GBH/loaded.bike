@@ -4,8 +4,11 @@ import TourNewView      from "./tour/new"
 import TourShowView     from "./tour/show"
 import TourEditView     from "./tour/edit"
 import WaypointShowView from "./waypoint/show"
-import WaypointEditView from "./waypoint/edit"
 import WaypointNewView  from "./waypoint/new"
+import WaypointEditView from "./waypoint/edit"
+import PhotoNewView     from "./photo/new"
+import PhotoEditView    from "./photo/edit"
+
 
 const views = {
   TourIndexView,
@@ -15,6 +18,8 @@ const views = {
   WaypointShowView,
   WaypointEditView,
   WaypointNewView,
+  PhotoNewView,
+  PhotoEditView
 }
 
 export default function loadView(viewName){

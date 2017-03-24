@@ -1,3 +1,8 @@
+= link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, @photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-lg-right"
+
 %h1 Editing photo
+
+- url = PedalApp.Web.PhotoUploader.url({@photo.file, @photo}, :large)
+%img(src: "#{url}")
 
 = render "form.html", changeset: @changeset, action: current_user_tour_waypoint_photo_path(@conn, :update, @tour, @waypoint, @photo)

@@ -12,17 +12,19 @@
     = markdown(@waypoint.description)
 
 .photos
-  .actions.clearfix
-    = link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-primary float-lg-right"
   - for photo <- @waypoint.photos do
     .photo
       .image
-        - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :thumb)
+        = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm"
+        - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :large)
         %img(src: "#{url}")
+
       .description
         = markdown(photo.description)
-      .actions
 
-        = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm"
+  .actions.clearfix
+    = link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-primary float-lg-right"
 
-        = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm"
+
+
+
