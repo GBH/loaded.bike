@@ -8,6 +8,9 @@ export default class Map {
     // defaulting location to Stanley Park if geolocation fails
     this.lat  = this.container.dataset.lat   || 49.3019608
     this.long = this.container.dataset.long  || -123.1507388
+
+    // markers container
+    this.markers = []
   }
 
   init() {
@@ -23,7 +26,7 @@ export default class Map {
     this.map.addControl(layer)
   }
 
-  load_markers() {
+  loadMarkers() {
     const markers_json = JSON.parse(this.container.dataset.markers)
 
     // no markers to show, centering map on current location
@@ -37,25 +40,18 @@ export default class Map {
     for (let marker_json of markers_json) {
       let marker = L.marker([marker_json.lat, marker_json.lng], {title: marker_json.title})
       marker.addTo(this.map)
-      markers.push(marker)
+      this.markers.push(marker)
     }
+  }
 
-    // centering map on all markers
-    let group = new L.featureGroup(markers)
+  centerMarkers(){
+    let group = new L.featureGroup(this.markers)
     this.map.fitBounds(group.getBounds())
   }
 
   addCrosshair() {
-    const icon = L.icon({
-      iconUrl: '/images/map/crosshair.png',
-      iconSize: [20, 20],
-      iconAnchor: [10, 10]
-    })
-    const marker = L.marker(this.map.getCenter(), {
-      icon:       icon,
-      clickable:  false
-    })
-    this.map.addControl(marker)
+    let marker = L.marker(this.map.getCenter(), {clickable: false})
+    marker.addTo(this.map)
 
     this.map.on('move', (e) => {
       marker.setLatLng(this.map.getCenter())
@@ -65,6 +61,7 @@ export default class Map {
   geolocate() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
+        console.log([pos.coords.latitude, pos.coords.longitude])
         this.map.setView([pos.coords.latitude, pos.coords.longitude], 13)
       })
     }

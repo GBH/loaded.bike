@@ -17,6 +17,7 @@ export default class WaypointNewView extends MainView {
 
     map.syncFormFields()
     map.addCrosshair()
+    map.loadMarkers()
   }
 
   unmount(){

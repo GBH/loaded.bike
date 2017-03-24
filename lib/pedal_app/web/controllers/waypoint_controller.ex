@@ -1,3 +1,5 @@
+require IEx
+
 defmodule PedalApp.Web.WaypointController do
   use PedalApp.Web, :controller
 
@@ -9,6 +11,7 @@ defmodule PedalApp.Web.WaypointController do
   defp load_tour(conn, _) do
     %{"tour_id" => tour_id} = conn.params
     tour = Repo.get!(assoc(conn.assigns.current_user, :tours), tour_id)
+    tour = Repo.preload(tour, :waypoints)
     assign(conn, :tour, tour)
   end
 
@@ -50,12 +53,14 @@ defmodule PedalApp.Web.WaypointController do
         |> redirect(to: current_user_tour_waypoint_path(conn, :show, tour, waypoint))
       {:error, changeset} ->
         conn
+        |> put_flash(:error, "Failed to create Waypoint")
         |> render("new.html", changeset: changeset)
     end
   end
 
   def edit(conn, %{"id" => id}, tour) do
     waypoint = Repo.get!(assoc(tour, :waypoints), id)
+    tour = %{tour | waypoints: Enum.reject(tour.waypoints, fn(w) -> w.id == waypoint.id end)}
     changeset = Waypoint.changeset(waypoint)
     render conn, "edit.html", tour: tour, waypoint: waypoint, changeset: changeset
   end
@@ -70,7 +75,9 @@ defmodule PedalApp.Web.WaypointController do
         |> put_flash(:info, "Waypoint updated")
         |> redirect(to: current_user_tour_waypoint_path(conn, :show, tour, waypoint))
       {:error, changeset} ->
-        render(conn, "edit.html", tour: tour, waypoint: waypoint, changeset: changeset)
+        conn
+        |> put_flash(:error, "Failed to update Waypoint")
+        |> render("edit.html", tour: tour, waypoint: waypoint, changeset: changeset)
     end
   end
 

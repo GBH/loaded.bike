@@ -9,6 +9,7 @@ export default class WaypointEditView extends MainView {
     map.init()
     map.syncFormFields()
     map.addCrosshair()
+    map.loadMarkers()
   }
 
   unmount(){

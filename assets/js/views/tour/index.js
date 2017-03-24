@@ -9,7 +9,8 @@ export default class TourIndexView extends MainView {
     for (let map of maps) {
       var map = new Map(map)
       map.init()
-      map.load_markers()
+      map.loadMarkers()
+      map.centerMarkers()
     }
   }
 

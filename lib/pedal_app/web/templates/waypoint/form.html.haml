@@ -1,6 +1,6 @@
 - lat   = Ecto.Changeset.get_field(@changeset, :lat)
 - long  = Ecto.Changeset.get_field(@changeset, :lng)
-#map(data-lat: "#{lat}", data-long: "#{long}")
+#map{data-lat: "#{lat}", data-long: "#{long}", data-markers: "#{waypoints_to_json(@tour.waypoints)}"}
 
 - form_for @changeset, @action, fn f ->
   = hidden_input f, :lat
@@ -19,6 +19,10 @@
     = label f, :description, class: "control-label"
     = textarea f, :description, class: "form-control"
     = error_tag f, :description
+
+  .form-group
+    = checkbox f, :is_published
+    = label f, :is_published, "Published"
 
   .form-group
     = submit "Submit", class: "btn btn-primary"
