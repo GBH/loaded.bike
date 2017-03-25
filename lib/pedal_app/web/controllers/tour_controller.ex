@@ -3,10 +3,16 @@ defmodule PedalApp.Web.TourController do
 
   alias PedalApp.Tour
 
-  plug :scrub_params, "tour" when action in [:create, :update]
+  plug :load_tour, "id"       when action in [:show, :edit, :update, :delete]
+  plug :scrub_params, "tour"  when action in [:create, :update]
 
-  def action(conn, _) do
-    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
+  defp action(conn, _) do
+    attrs = if conn.assigns[:tour] do
+      [conn, conn.params, conn.assigns.current_user, conn.assigns.tour]
+    else
+      [conn, conn.params, conn.assigns.current_user]
+    end
+    apply(__MODULE__, action_name(conn), attrs)
   end
 
   # -- Actions -----------------------------------------------------------------
@@ -16,11 +22,13 @@ defmodule PedalApp.Web.TourController do
       order_by: [desc: t.inserted_at],
       preload:  [:waypoints]
     )
-    render(conn, "index.html", tours: tours)
+
+    conn
+    |> add_breadcrumb(name: "Tours")
+    |> render("index.html", tours: tours)
   end
 
-  def show(conn, %{"id" => id}, current_user) do
-    tour = Repo.get!(assoc(current_user, :tours), id)
+  def show(conn, _params, current_user, tour) do
     waypoints = Repo.all(from w in assoc(tour, :waypoints), order_by: w.inserted_at)
     render(conn, "show.html", tour: tour, waypoints: waypoints)
   end
@@ -30,7 +38,9 @@ defmodule PedalApp.Web.TourController do
     |> build_assoc(:tours)
     |> Tour.changeset
 
-    render(conn, "new.html", changeset: changeset)
+    conn
+    |> add_breadcrumb(name: "New Tour")
+    |> render("new.html", changeset: changeset)
   end
 
   def create(conn, %{"tour" => tour_params}, current_user) do
@@ -46,18 +56,19 @@ defmodule PedalApp.Web.TourController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to create Tour")
+        |> add_breadcrumb(name: "New Tour")
         |> render("new.html", changeset: changeset)
     end
   end
 
-  def edit(conn, %{"id" => id}, current_user) do
-    tour = Repo.get!(assoc(current_user, :tours), id)
+  def edit(conn, _params, current_user, tour) do
     changeset = Tour.changeset(tour)
-    render(conn, "edit.html", tour: tour, changeset: changeset)
+    conn
+    |> add_breadcrumb(name: "Edit")
+    |> render("edit.html", tour: tour, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "tour" => tour_params}, current_user) do
-    tour = Repo.get!(assoc(current_user, :tours), id)
+  def update(conn, %{"tour" => tour_params}, current_user, tour) do
     changeset = Tour.changeset(tour, tour_params)
 
     case Repo.update(changeset) do
@@ -68,12 +79,12 @@ defmodule PedalApp.Web.TourController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to update Tour")
+        |> add_breadcrumb(name: "Edit")
         |> render("edit.html", tour: tour, changeset: changeset)
     end
   end
 
-  def delete(conn, %{"id" => id}, current_user) do
-    tour = Repo.get!(assoc(current_user, :tours), id)
+  def delete(conn, _params, current_user, tour) do
     Repo.delete!(tour)
 
     conn

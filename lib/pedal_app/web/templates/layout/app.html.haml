@@ -34,10 +34,10 @@
                 = link "Sign in", to: session_path(@conn, :new), class: "nav-link"
 
     .container.content
-      = flash_alert(@conn)
-
       - if assigns[:breadcrumb_trails] do
         = render PedalApp.Web.BreadcrumbView, "breadcrumb.html", assigns
+
+      = flash_alert(@conn)
 
       %main(role="main")
         = render @view_module, @view_template, assigns

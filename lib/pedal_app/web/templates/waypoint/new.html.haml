@@ -1,3 +1,3 @@
-%h1 New Waypoint
-
-= render "form.html", tour: @tour, changeset: @changeset, action: current_user_tour_waypoint_path(@conn, :create, @tour)
+- action_url = current_user_tour_waypoint_path(@conn, :create, @tour)
+- cancel_url = current_user_tour_path(@conn, :show, @tour)
+= render "form.html", tour: @tour, changeset: @changeset, action: action_url, cancel_url: cancel_url

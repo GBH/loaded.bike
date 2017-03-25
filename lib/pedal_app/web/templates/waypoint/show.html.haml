@@ -1,7 +1,4 @@
-%h1= @waypoint.title
-
 .waypoint
-
   .actions.clearfix
     = published_badge(@waypoint.is_published)
     = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm float-lg-right"
@@ -11,9 +8,9 @@
   .description
     = markdown(@waypoint.description)
 
-.photos
+.photos#photos
   - for photo <- @waypoint.photos do
-    .photo
+    .photo{id: "#{PedalApp.Photo.dom_id(photo)}"}
       .image
         = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm"
         - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :large)

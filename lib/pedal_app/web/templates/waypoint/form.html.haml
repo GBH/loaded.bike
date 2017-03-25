@@ -20,5 +20,6 @@
     = checkbox f, :is_published
     = label f, :is_published, "Published"
 
-  .form-group
+  .form-group.form-actions
     = submit "Submit", class: "btn btn-primary"
+    = link "Cancel", to: @cancel_url, class: "btn btn-link"

@@ -1,5 +1,6 @@
-= link "Delete", to: current_user_tour_path(@conn, :delete, @tour), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm float-lg-right"
+- action_url = current_user_tour_path(@conn, :update, @tour)
+- cancel_url = current_user_tour_path(@conn, :show, @tour)
+= render "form.html", changeset: @changeset, action: action_url, cancel_url: cancel_url
 
-%h1 Editing tour
-
-= render "form.html", changeset: @changeset, action: current_user_tour_path(@conn, :update, @tour)
+.form-group.form-actions
+  = link "Delete", to: current_user_tour_path(@conn, :delete, @tour), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger btn-sm"

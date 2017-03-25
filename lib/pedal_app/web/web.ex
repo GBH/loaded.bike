@@ -23,6 +23,8 @@ defmodule PedalApp.Web do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+
+      use PedalApp.Model.Helpers
     end
   end
 
@@ -38,6 +40,7 @@ defmodule PedalApp.Web do
       import PedalApp.Web.Gettext
 
       use Breadcrumble
+      use PedalApp.Web.Controller.Helpers
     end
   end
 

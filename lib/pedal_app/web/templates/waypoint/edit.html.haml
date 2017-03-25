@@ -1,5 +1,6 @@
-= link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-danger btn-sm float-lg-right", method: :delete, data: [confirm: "Are you sure?"]
+- action_url = current_user_tour_waypoint_path(@conn, :update, @tour, @waypoint)
+- cancel_url = current_user_tour_waypoint_path(@conn, :show, @tour, @waypoint)
+= render "form.html", tour: @tour, changeset: @changeset, action: action_url, cancel_url: cancel_url
 
-%h1 Editing waypoint
-
-= render "form.html", tour: @tour, changeset: @changeset, action: current_user_tour_waypoint_path(@conn, :update, @tour, @waypoint)
+.form-group.form-actions
+  = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-sm btn-outline-danger", method: :delete, data: [confirm: "Are you sure?"]

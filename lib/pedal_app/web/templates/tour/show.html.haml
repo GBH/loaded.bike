@@ -1,5 +1,3 @@
-%h1= @tour.title
-
 .actions.clearfix
   = published_badge(@tour.is_published)
   = link "Edit", to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm float-lg-right"

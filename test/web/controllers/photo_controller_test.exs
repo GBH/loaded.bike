@@ -24,8 +24,8 @@ defmodule PedalApp.Web.PhotoControllerTest do
       file:         build_upload(),
       description:  "Test Description"
     }
-    assert Repo.one(Photo)
-    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}"
+    photo = Repo.one(Photo)
+    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}#photo-#{photo.id}"
   end
 
   test "create failure", %{conn: conn, waypoint: wp} do
@@ -54,7 +54,7 @@ defmodule PedalApp.Web.PhotoControllerTest do
     conn = put conn, "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}/photos/#{photo.id}", photo: %{
       description: "Updated photo"
     }
-    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}"
+    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}#photo-#{photo.id}"
     assert Repo.get_by(Photo, id: photo.id, description: "Updated photo")
   end
 
@@ -70,7 +70,7 @@ defmodule PedalApp.Web.PhotoControllerTest do
   test "delete", %{conn: conn, waypoint: wp} do
     photo = insert(:photo, waypoint: wp)
     conn = delete conn, "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}/photos/#{photo.id}"
-    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}"
+    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}#photos"
     refute Repo.get(Photo, photo.id)
   end
 end

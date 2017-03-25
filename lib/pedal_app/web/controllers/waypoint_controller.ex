@@ -1,34 +1,23 @@
 defmodule PedalApp.Web.WaypointController do
   use PedalApp.Web, :controller
-  alias PedalApp.Waypoint
+  alias PedalApp.{Waypoint, Photo}
 
-  plug :scrub_params, "waypoint" when action in [:create, :update]
-  plug :load_tour
-  plug :set_breadcrumbs
-
-  defp load_tour(conn, _) do
-    %{"tour_id" => tour_id} = conn.params
-    tour = Repo.get!(assoc(conn.assigns.current_user, :tours), tour_id)
-    tour = Repo.preload(tour, :waypoints)
-    assign(conn, :tour, tour)
-  end
-
-  defp set_breadcrumbs(conn, _) do
-    conn
-    |> add_breadcrumb(name: "My Tours", url: current_user_tour_path(conn, :index))
-    |> add_breadcrumb(name: "Tour", url: current_user_tour_path(conn, :show, conn.assigns.tour))
-  end
+  plug :load_tour, "tour_id"
+  plug :load_waypoint, "id"       when action in [:show, :edit, :update, :delete]
+  plug :scrub_params, "waypoint"  when action in [:create, :update]
 
   defp action(conn, _) do
-    apply(__MODULE__, action_name(conn),
+    attrs = if conn.assigns[:waypoint] do
+      [conn, conn.params, conn.assigns.tour, conn.assigns.waypoint]
+    else
       [conn, conn.params, conn.assigns.tour]
-    )
+    end
+    apply(__MODULE__, action_name(conn), attrs)
   end
 
   # -- Actions -----------------------------------------------------------------
-  def show(conn, %{"id" => id}, tour) do
-    waypoint = Repo.get!(assoc(tour, :waypoints), id)
-    waypoint = Repo.preload(waypoint, :photos)
+  def show(conn, _params, tour, waypoint) do
+    waypoint = Repo.preload(waypoint, photos: from(p in Photo, order_by: p.inserted_at))
     render conn, "show.html", tour: tour, waypoint: waypoint
   end
 
@@ -37,7 +26,9 @@ defmodule PedalApp.Web.WaypointController do
     |> build_assoc(:waypoints)
     |> Waypoint.changeset
 
-    render(conn, "new.html", tour: tour, changeset: changeset)
+    conn
+    |> add_breadcrumb(name: "New Waypoint")
+    |> render("new.html", tour: tour, changeset: changeset)
   end
 
   def create(conn, %{"waypoint" => waypoint_params}, tour) do
@@ -53,19 +44,21 @@ defmodule PedalApp.Web.WaypointController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to create Waypoint")
+        |> add_breadcrumb(name: "New Waypoint")
         |> render("new.html", changeset: changeset)
     end
   end
 
-  def edit(conn, %{"id" => id}, tour) do
-    waypoint = Repo.get!(assoc(tour, :waypoints), id)
+  def edit(conn, _params, tour, waypoint) do
     tour = %{tour | waypoints: Enum.reject(tour.waypoints, fn(w) -> w.id == waypoint.id end)}
     changeset = Waypoint.changeset(waypoint)
-    render conn, "edit.html", tour: tour, waypoint: waypoint, changeset: changeset
+
+    conn
+    |> add_breadcrumb(name: "Edit")
+    |> render("edit.html", tour: tour, waypoint: waypoint, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "waypoint" => waypoint_params}, tour) do
-    waypoint = Repo.get!(assoc(tour, :waypoints), id)
+  def update(conn, %{"waypoint" => waypoint_params}, tour, waypoint) do
     changeset = Waypoint.changeset(waypoint, waypoint_params)
 
     case Repo.update(changeset) do
@@ -76,12 +69,12 @@ defmodule PedalApp.Web.WaypointController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to update Waypoint")
+        |> add_breadcrumb(name: "Edit")
         |> render("edit.html", tour: tour, waypoint: waypoint, changeset: changeset)
     end
   end
 
-  def delete(conn, %{"id" => id}, tour) do
-    waypoint = Repo.get!(assoc(tour, :waypoints), id)
+  def delete(conn, _params, tour, waypoint) do
     Repo.delete!(waypoint)
 
     conn
