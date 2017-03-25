@@ -1,25 +1,35 @@
 @import "bootstrap"
 
+// -- Structure ----------------------------------------------------------------
+@media(min-width: 1200px)
+  .container
+    max-width: 960px
+
 body
   background: $white url(/images/bg_ultrawide.png) top center
 
+  footer
+    padding: 4em 0
+    font-size: 85%
+    background-color: $white
+
+// - Common elements -----------------------------------------------------------
 .actions
   background-color: $gray-lightest
   padding: 5px
+
+.form-actions
+  background-color: $gray-lightest
+  padding: 15px
 
 .container.content
   padding: 15px
   background-color: #fff
 
-.waypoint_show_view, .waypoint_edit_view, .waypoint_new_view, .tour_show_view
-  #map
-    height: 300px
-    margin-bottom: 15px
-
-// setting max width for content
-@media(min-width: 1200px)
-  .container
-    max-width: 960px
+.map
+  height: 300px
+  margin-bottom: 15px
+  background-color: $gray-lightest
 
 table.table
   th, td
@@ -33,28 +43,17 @@ table.table
 .pull-left
   float: left
 
-.form-actions
-  background-color: $gray-lightest
-  padding: 15px
-
 textarea[data-autoresize]
   height: 300px
 
-footer
-  padding: 4em 0
-  font-size: 85%
-  background-color: $white
-
+// - Page specific styles ------------------------------------------------------
 .tour_index_view
   .tour
     margin-bottom: 30px
-    .map
-      height: 300px
-      margin-bottom: 15px
-      background-color: $gray-lightest
 
 .waypoint_show_view
   .photos
+    margin-bottom: 15px
     .photo
       margin-bottom: 15px
       .image
