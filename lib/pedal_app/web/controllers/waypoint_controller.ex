@@ -7,11 +7,8 @@ defmodule PedalApp.Web.WaypointController do
   plug :scrub_params, "waypoint"  when action in [:create, :update]
 
   defp action(conn, _) do
-    attrs = if conn.assigns[:waypoint] do
-      [conn, conn.params, conn.assigns.tour, conn.assigns.waypoint]
-    else
-      [conn, conn.params, conn.assigns.tour]
-    end
+    attrs = [conn, conn.params, conn.assigns.tour]
+    attrs = if conn.assigns[:waypoint], do: attrs ++ [conn.assigns.waypoint], else: attrs
     apply(__MODULE__, action_name(conn), attrs)
   end
 

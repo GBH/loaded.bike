@@ -3,27 +3,14 @@ defmodule PedalApp.Web.PhotoController do
 
   alias PedalApp.Photo
 
-  plug :load_tour, "tour_id"
-  plug :load_waypoint, "waypoint_id"
-  plug :load_photo            when action in [:edit, :update, :delete]
-  plug :scrub_params, "photo" when action in [:create, :update]
-
-  defp load_photo(conn, _) do
-    %{"id" => id} = conn.params
-    photo = Repo.get!(assoc(conn.assigns.waypoint, :photos), id)
-    dom_id = Photo.dom_id(photo)
-    url = current_user_tour_waypoint_path(conn, :show, conn.assigns.tour, conn.assigns.waypoint) <> "##{dom_id}"
-    conn
-    |> add_breadcrumb(name: "Photo", url: url)
-    |> assign(:photo, photo)
-  end
+  plug :load_tour,      "tour_id"
+  plug :load_waypoint,  "waypoint_id"
+  plug :load_photo,     "id"          when action in [:edit, :update, :delete]
+  plug :scrub_params,   "photo"       when action in [:create, :update]
 
   defp action(conn, _) do
-    attrs = if conn.assigns[:photo] do
-      [conn, conn.params, conn.assigns.tour, conn.assigns.waypoint, conn.assigns.photo]
-    else
-      [conn, conn.params, conn.assigns.tour, conn.assigns.waypoint]
-    end
+    attrs = [conn, conn.params, conn.assigns.tour, conn.assigns.waypoint]
+    attrs = if conn.assigns[:photo], do: attrs ++ [conn.assigns.photo], else: attrs
     apply(__MODULE__, action_name(conn), attrs)
   end
 

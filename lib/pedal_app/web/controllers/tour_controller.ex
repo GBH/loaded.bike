@@ -7,11 +7,8 @@ defmodule PedalApp.Web.TourController do
   plug :scrub_params, "tour"  when action in [:create, :update]
 
   defp action(conn, _) do
-    attrs = if conn.assigns[:tour] do
-      [conn, conn.params, conn.assigns.current_user, conn.assigns.tour]
-    else
-      [conn, conn.params, conn.assigns.current_user]
-    end
+    attrs = [conn, conn.params, conn.assigns.current_user]
+    attrs = if conn.assigns[:tour], do: attrs ++ [conn.assigns.tour], else: attrs
     apply(__MODULE__, action_name(conn), attrs)
   end
 
@@ -28,7 +25,7 @@ defmodule PedalApp.Web.TourController do
     |> render("index.html", tours: tours)
   end
 
-  def show(conn, _params, current_user, tour) do
+  def show(conn, _params, _current_user, tour) do
     waypoints = Repo.all(from w in assoc(tour, :waypoints), order_by: w.inserted_at)
     render(conn, "show.html", tour: tour, waypoints: waypoints)
   end
@@ -61,14 +58,14 @@ defmodule PedalApp.Web.TourController do
     end
   end
 
-  def edit(conn, _params, current_user, tour) do
+  def edit(conn, _params, _current_user, tour) do
     changeset = Tour.changeset(tour)
     conn
     |> add_breadcrumb(name: "Edit")
     |> render("edit.html", tour: tour, changeset: changeset)
   end
 
-  def update(conn, %{"tour" => tour_params}, current_user, tour) do
+  def update(conn, %{"tour" => tour_params}, _current_user, tour) do
     changeset = Tour.changeset(tour, tour_params)
 
     case Repo.update(changeset) do
@@ -84,7 +81,7 @@ defmodule PedalApp.Web.TourController do
     end
   end
 
-  def delete(conn, _params, current_user, tour) do
+  def delete(conn, _params, _current_user, tour) do
     Repo.delete!(tour)
 
     conn

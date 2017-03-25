@@ -28,6 +28,16 @@ defmodule PedalApp.Web.Controller.Helpers do
             url: current_user_tour_waypoint_path(conn, :show, conn.assigns.tour, waypoint))
       end
 
+      defp load_photo(conn, param_key) do
+        %{^param_key => id} = conn.params
+        photo = PedalApp.Repo.get!(assoc(conn.assigns.waypoint, :photos), id)
+        dom_id = PedalApp.Photo.dom_id(photo)
+        url = current_user_tour_waypoint_path(conn, :show, conn.assigns.tour, conn.assigns.waypoint) <> "##{dom_id}"
+        conn
+        |> add_breadcrumb(name: "Photo", url: url)
+        |> assign(:photo, photo)
+      end
+
     end
   end
 end
