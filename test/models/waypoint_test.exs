@@ -17,10 +17,16 @@ defmodule PedalApp.WaypointTest do
       refute changeset.valid?
     end
 
-    test "position increment" do
+    test "position setting" do
       waypoint = insert(:waypoint)
       changeset = Waypoint.changeset(%Waypoint{}, %{params_for(:waypoint) | tour_id: waypoint.tour_id})
       assert changeset.changes.position == 1
+    end
+
+    test "position setting for existing record" do
+      waypoint = insert(:waypoint, position: 99)
+      changeset = Waypoint.changeset(waypoint, %{title: "Updated"})
+      refute changeset.changes[:position]
     end
   end
 

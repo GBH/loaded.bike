@@ -15,7 +15,24 @@ defmodule PedalApp.Web.WaypointController do
   # -- Actions -----------------------------------------------------------------
   def show(conn, _params, tour, waypoint) do
     waypoint = Repo.preload(waypoint, photos: from(p in Photo, order_by: p.inserted_at))
-    render conn, "show.html", tour: tour, waypoint: waypoint
+
+    q = from w in assoc(tour, :waypoints),
+      where: w.position < ^waypoint.position,
+      order_by: [desc: w.position],
+      limit: 1
+    prev_waypoint = Repo.one(q)
+
+    q = from w in assoc(tour, :waypoints),
+      where: w.position > ^waypoint.position,
+      order_by: w.position,
+      limit: 1
+    next_waypoint = Repo.one(q)
+
+    render conn, "show.html",
+      tour:           tour,
+      waypoint:       waypoint,
+      next_waypoint:  next_waypoint,
+      prev_waypoint:  prev_waypoint
   end
 
   def new(conn, _, tour) do

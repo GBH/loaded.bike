@@ -29,9 +29,14 @@ defmodule PedalApp.Waypoint do
   end
 
   defp set_position(struct) do
-    tour_id = get_field(struct, :tour_id)
-    q = from __MODULE__, where: [tour_id: ^tour_id]
-    count = PedalApp.Repo.aggregate(q, :count, :id)
-    put_change(struct, :position, count)
+    case get_field(struct, :position) do
+      nil ->
+        tour_id = get_field(struct, :tour_id)
+        q = from __MODULE__, where: [tour_id: ^tour_id]
+        count = PedalApp.Repo.aggregate(q, :count, :id)
+        put_change(struct, :position, count)
+      _ ->
+        struct
+    end
   end
 end
