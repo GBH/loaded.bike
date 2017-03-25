@@ -3,7 +3,7 @@
     = published_badge(@waypoint.is_published)
     = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm pull-right"
 
-  .map#map{data-latlng: "#{to_json([@waypoint.lat, @waypoint.lng])}", data-markers: "#{to_json(@tour.waypoints)}"}
+  .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{to_json(@tour.waypoints)}"}
 
   .description
     = markdown(@waypoint.description)
