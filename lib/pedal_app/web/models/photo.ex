@@ -36,10 +36,12 @@ defmodule PedalApp.Photo do
   end
 
   # because of reasons, we need uuid to link uploaded files properly
-  defp set_uuid(struct) do
-    case get_field(struct, :uuid) do
-      nil -> put_change(struct, :uuid, Ecto.UUID.generate)
-      _   -> struct
+  defp set_uuid(changeset) do
+    case Ecto.get_meta(changeset.data, :state) do
+      :built ->
+        put_change(changeset, :uuid, Ecto.UUID.generate)
+      :loaded ->
+        changeset
     end
   end
 end

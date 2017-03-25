@@ -26,7 +26,7 @@ defmodule PedalApp.PhotoTest do
     end
 
     test "with existing uuid" do
-      photo = build(:photo)
+      photo = insert(:photo)
       uuid = photo.uuid
       changeset = Photo.changeset(photo, %{uuid: "invalid"})
       assert get_field(changeset, :uuid) == uuid

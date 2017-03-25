@@ -20,7 +20,7 @@ defmodule PedalApp.Waypoint do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:tour_id, :title, :description, :lat, :lng, :is_published])
+    |> cast(params, [:tour_id, :title, :description, :lat, :lng, :position, :is_published])
     |> set_position
     |> validate_required([:tour_id, :title, :lat, :lng])
     |> validate_number(:lat, greater_than_or_equal_to: -90, less_than_or_equal_to: 90)
@@ -28,15 +28,15 @@ defmodule PedalApp.Waypoint do
     |> assoc_constraint(:tour)
   end
 
-  defp set_position(struct) do
-    case get_field(struct, :position) do
-      nil ->
-        tour_id = get_field(struct, :tour_id)
+  defp set_position(changeset) do
+    case Ecto.get_meta(changeset.data, :state) do
+      :built ->
+        tour_id = get_field(changeset, :tour_id)
         q = from __MODULE__, where: [tour_id: ^tour_id]
         count = PedalApp.Repo.aggregate(q, :count, :id)
-        put_change(struct, :position, count)
-      _ ->
-        struct
+        put_change(changeset, :position, count)
+      :loaded ->
+        changeset
     end
   end
 end
