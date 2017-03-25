@@ -10,8 +10,8 @@ defmodule PedalApp.Web.HtmlHelpers do
     content_tag(:span, "Draft", class: "badge badge-pill badge-default")
   end
 
-  def waypoints_to_json(waypoints) do
-    Poison.encode!(waypoints)
+  def to_json(data) do
+    Poison.encode!(data)
   end
 
   def markdown(nil), do: ""

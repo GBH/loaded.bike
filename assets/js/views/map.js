@@ -3,11 +3,10 @@ export default class Map {
   constructor(container) {
 
     this.container = container || document.getElementById('map')
-    this.map  = L.map(this.container, {attributionControl: false})
+    this.map = L.map(this.container, {attributionControl: false})
 
     // defaulting location to Stanley Park if geolocation fails
-    this.lat  = this.container.dataset.lat   || 49.3019608
-    this.long = this.container.dataset.long  || -123.1507388
+    this.latlng = JSON.parse(this.container.dataset.latlng || null) || [49.3019608, -123.1507388]
 
     // markers container
     this.markers = []
@@ -16,7 +15,7 @@ export default class Map {
   init() {
     const apiToken = "pk.eyJ1IjoiZ3JvY2VyeSIsImEiOiJjajA1cTZjdzQwNWR5Mndwa2dqM2l3ZnI4In0.MoTpE4qEHYKKYyOcfhd1Rg"
 
-    this.map.setView([this.lat, this.long], 13);
+    this.map.setView(this.latlng, 13);
 
     const layer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + apiToken, {
       maxZoom: 18,

@@ -1,6 +1,6 @@
 - lat   = Ecto.Changeset.get_field(@changeset, :lat)
 - long  = Ecto.Changeset.get_field(@changeset, :lng)
-.map#map{data-lat: "#{lat}", data-long: "#{long}", data-markers: "#{waypoints_to_json(@tour.waypoints)}"}
+.map#map{data-latlng: "#{to_json([lat, long])}", data-markers: "#{to_json(@tour.waypoints)}"}
 
 - form_for @changeset, @action, fn f ->
   = hidden_input f, :lat

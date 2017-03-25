@@ -19,10 +19,10 @@ defmodule PedalApp.Web.MarkdownHelperTest do
     assert html == "<p>alert(‘test’)</p>"
   end
 
-  test "waypoints_to_json" do
+  test "to_json" do
     waypoint = insert(:waypoint)
     json = "[{\"title\":\"Test Waypoint\",\"lng\":-123.2616348,\"lat\":49.262206}]"
-    assert HtmlHelpers.waypoints_to_json([waypoint]) == json
+    assert HtmlHelpers.to_json([waypoint]) == json
   end
 
   test "published_badge" do
