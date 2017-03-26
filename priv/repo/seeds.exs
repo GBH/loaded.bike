@@ -1,46 +1,4 @@
-alias PedalApp.{Repo, User, Tour, Waypoint}
-
-lorem = ~s"""
-# Repetit modo admovique pietas lateri stabat coniuge
-
-Lorem markdownum gratus. *Vel deus motis* oculi errare sors ore [taedis
-est](http://quodquedes.com/) malas est. *Pellem* geminae infringere venit licent
-amantem adulterium perire Hector nec?
-
-## Habebunt unum
-
-*Ignes* est non; ademit Alpes fingetur audierit, se ille. Columbam terris centum
-dentes laqueos pectore coniuge. Nostri urbes. Patriis sed quas. Certamen mediae.
-
-1. Et vulnera et ipse
-2. Imis erat Dixit caelum manus
-3. Dum sonant nervos facibus et cingo non
-4. Conlaudat virides
-
-Aequales iam surgis **Phineus rapta**. Fatebitur annis. Humo huic **haut**
-videntur buxum, est hac et miserum poterentur ipse erroribus [Veneris
-Maeoniam](http://tesopor.com/pericula-casside). Perpetiar vipera tormentis eruit
-concussaque agat hominum tantum atque daedalus mutare? Ille per mille et unde
-**me sollicitis Aiaci** miserum visa sinus, nymphae Procrin mediis et aere
-perlucida ignes.
-
-**Vultus rege manus**, sua hinc tura aversa; est altoque dabat stamina via. Est
-pro vitae mors, vix *hos Creten*, licet hauriret! Quaecumque rupem quoque silva
-colle et istis in semina volentem ab meaque bibes.
-
-Via visu secrevit, disparibus simul unius, Danais undas. Nostra saxum vidisti
-veteres exclamo.
-
-Illa illam deperit leve. Vitat ad esse creditus celeri de cumque! Sonabat
-tamquam: nomen paries omnia, vulnera longum flebat donec pater confessis
-**lassataque isset** utraque. In Parosque veteres vestigia creatis *moverat*;
-vos ait qui, de oceano. Cycnus aeterna Hectoris lumina Pelethronium noverat ausa
-ipse dissipat capillis functaque!
-
-Arces queant vectabantur [cetera ferre](http://contagia.com/), verba agit
-recepta abstulit. Exercita quoque amans ego formosissimus inpia ignes ne puro
-aut nullos *hic* non clamor nactusque. Auro aeternus, Melantho parente.
-"""
+alias PedalApp.{Repo, User, Tour, Waypoint, Photo}
 
 # create user
 user = Repo.insert!(%User{
@@ -52,14 +10,31 @@ user = Repo.insert!(%User{
 # create tour
 tour = Repo.insert!(%Tour{
   user_id:      user.id,
-  title:        "Test Tour of 2017",
-  description:  lorem,
+  title:        "Can-Am Tour of 2016",
+  description:  "",
   is_published: true
 })
 
 # create waypoints
 json = File.read!("priv/repo/seed_data/waypoints.json")
 data = Poison.Parser.parse!(json)
+
+build_photo_upload = fn(index, filename) ->
+  path = "/home/oleg/Pictures/#{index}/#{filename}"
+  %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: filename}
+end
+
+format_description = fn(string) ->
+  case string do
+    nil ->
+      ""
+    _ ->
+      string
+      |> String.split("\n")
+      |> Enum.map(&String.trim_leading(&1))
+      |> Enum.join("\n")
+  end
+end
 
 data
 |> Enum.with_index
@@ -69,8 +44,16 @@ data
     lat:          wp["lat"],
     lng:          wp["lng"],
     position:     index,
-    description:  lorem,
+    description:  format_description.(wp["description"]),
     is_published: true
   })
-  Repo.insert!(changeset)
+  waypoint = Repo.insert!(changeset)
+
+  Enum.each(wp["photos"] || [], fn(photo) ->
+    changeset = Photo.changeset(Ecto.build_assoc(waypoint, :photos), %{
+      file:         build_photo_upload.(index, photo["file"]),
+      description:  format_description.(photo["description"])
+    })
+    Repo.insert!(changeset)
+  end)
 end)

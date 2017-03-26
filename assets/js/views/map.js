@@ -39,6 +39,7 @@ export default class Map {
     let markers = []
     for (let marker_json of markers_json) {
       let marker = L.marker([marker_json.lat, marker_json.lng], {title: marker_json.title})
+      marker.bindPopup(marker_json.title)
       marker.addTo(this.map)
       this.markers.push(marker)
     }

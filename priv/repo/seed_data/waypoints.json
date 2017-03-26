@@ -1,78 +1,506 @@
 [
-  {"title":"Mississauga, ON","lat":43.606693,"lng":-79.652758},
-  {"title":"Primrose Park","lat":44.0876845,"lng":-80.138124},
-  {"title":"Owen Sound KOA","lat":44.565259,"lng":-80.887695},
-  {"title":"MacIver's Motel & Campground","lat":46.19813,"lng":-83.024539},
-  {"title":"South Bay Resort","lat":45.5689461,"lng":-82.0117417},
-  {"title":"Lake Apsey Resort","lat":46.2298133,"lng":-81.7482888},
-  {"title":"Summer House Park","lat":45.098694,"lng":-81.403087},
-  {"title":"Bel Air Motel & Restaurant","lat":46.5178029,"lng":-84.3190046},
-  {"title":"Straits State Park","lat":45.85507,"lng":-84.719492},
-  {"title":"Traverse City State Park","lat":44.7462151,"lng":-85.5512237},
-  {"title":"Maple Leaf Motel","lat":45.3054272,"lng":-85.2588754},
-  {"title":"Sleeping Bear Dunes-Platte River Campground","lat":44.715108,"lng":-86.1212445},
-  {"title":"Cartier Park Campground","lat":43.9768312,"lng":-86.4595136},
-  {"title":"Lakeview Campground","lat":44.0435501,"lng":-88.2812582},
-  {"title":"Madison KOA","lat":43.2486748,"lng":-89.3700138},
-  {"title":"Lena KOA","lat":42.357625,"lng":-89.822361},
-  {"title":"Rock Island / Quad Cities KOA","lat":41.444403,"lng":-90.598493},
-  {"title":"Thomson Causeway Recreation Area","lat":41.9488809,"lng":-90.116595},
-  {"title":"Spring Lake Campground","lat":40.7377116,"lng":-91.1430026},
-  {"title":"DRIFTWOOD RV PARK","lat":39.960008,"lng":-91.414008},
-  {"title":"Two Rivers Marina","lat":39.461447,"lng":-91.0411879},
-  {"title":"Klondike Park","lat":38.5840686,"lng":-90.8334801},
-  {"title":"Cooper's Landing Campgrounds & Marina","lat":38.8161618,"lng":-92.383194},
-  {"title":"Vinchester Inn","lat":38.705271,"lng":-91.436443},
-  {"title":"Osage Prairie RV Park","lat":37.8537063,"lng":-94.3463085},
-  {"title":"Farrington Park","lat":38.5306716,"lng":-93.5114015},
-  {"title":"Iola RV Park & Storage","lat":37.9217611,"lng":-95.4158775},
-  {"title":"Blue Stem Lodge","lat":37.8178054,"lng":-96.2733817},
-  {"title":"Newton Bike Shop","lat":38.048592,"lng":-97.346975},
-  {"title":"Pine Haven Retreat RV Park","lat":37.955513,"lng":-98.706895},
-  {"title":"Gunsmoke RV Park","lat":37.7560334,"lng":-100.0685592},
-  {"title":"Deerfield Beach Campground","lat":37.9683435,"lng":-101.1219392},
-  {"title":"Lakeview RV Campground Bait and Grocery","lat":38.0875683,"lng":-102.9583415},
-  {"title":"North Rim Campground","lat":36.2097538,"lng":-112.0599781},
-  {"title":"Miles Court","lat":38.0536202,"lng":-102.1264024},
-  {"title":"La Junta KOA Journey","lat":37.998535,"lng":-103.589331},
-  {"title":"Cotopaxi / Arkansas River KOA","lat":38.379014,"lng":-105.667199},
-  {"title":"Juniper Breaks Campground","lat":38.2767286,"lng":-104.752863},
-  {"title":"Gunnison KOA","lat":38.529586,"lng":-106.945774},
-  {"title":"Priest Gulch Campground","lat":37.584321,"lng":-108.16065},
-  {"title":"Poncha Lodge","lat":38.5187744,"lng":-106.078811},
-  {"title":"Hite Marina Campground","lat":37.8738477,"lng":-110.3926733},
-  {"title":"Country Inn Motel","lat":37.765469,"lng":-108.910979},
-  {"title":"Pa-Co-Chu-Puk Campground","lat":38.2465054,"lng":-107.7610946},
-  {"title":"Duke's Slick Rock Grill","lat":38.3747881,"lng":-110.7086785},
-  {"title":"Wonderland RV Park","lat":38.2983243,"lng":-111.4022974},
-  {"title":"Canyons of Escalante RV Park","lat":37.770284,"lng":-111.609639},
-  {"title":"Hitch-N-Post RV Park","lat":37.042901,"lng":-112.524313},
-  {"title":"Kaibab Camper Village","lat":36.7094073,"lng":-112.2313002},
-  {"title":"Ruby's Inn RV Park & Campground","lat":37.668416,"lng":-112.158598},
-  {"title":"Kampark Campground","lat":37.6127676,"lng":-109.4780516},
-  {"title":"Hitch-N-Post Campground","lat":37.829276,"lng":-112.435441},
-  {"title":"Richfield KOA","lat":38.7598242,"lng":-112.0954078},
-  {"title":"Phillips RV Park","lat":41.270175,"lng":-110.946595},
-  {"title":"Jackson Hole / Snake River KOA","lat":43.341156,"lng":-110.723907},
-  {"title":"Missoula KOA Holiday","lat":46.896633,"lng":-114.042369},
-  {"title":"Grant Village Campground","lat":44.394028,"lng":-110.56346},
-  {"title":"Safari Motel","lat":39.7023064,"lng":-111.8358281},
-  {"title":"Hailstone Campground","lat":40.6199585,"lng":-111.425353},
-  {"title":"Flat Creek RV Park & Cabins","lat":42.9106897,"lng":-110.9968227},
-  {"title":"Bear Lake North RV Park Camp","lat":42.1159221,"lng":-111.3884794},
-  {"title":"Camper Corner","lat":45.3491361,"lng":-111.7339655},
-  {"title":"Twin Bridges Bike Camp","lat":45.5448767,"lng":-112.3347083},
-  {"title":"Hideaway RV Park","lat":44.6644012,"lng":-111.1042891},
-  {"title":"Travellers Rest Cabins and RV Park","lat":46.0257857,"lng":-114.1783326},
-  {"title":"Nugget RV Park","lat":47.2903679,"lng":-115.0833807},
-  {"title":"Kahnderosa RV Park & Campgrounds","lat":47.545808,"lng":-116.332695},
-  {"title":"K/M Resorts - Old American Kampground","lat":48.18712,"lng":-117.0404418},
-  {"title":"Beaver Lodge Resort & Campground","lat":48.6133272,"lng":-117.546821},
-  {"title":"The Bunkhouse Hotel","lat":45.3683711,"lng":-113.4095565},
-  {"title":"Ferry County Fair Association","lat":48.650807,"lng":-118.6920898},
-  {"title":"Tonasket Visitor & Business Resource Center","lat":48.7056766,"lng":-119.4384147},
-  {"title":"Pine Near RV Park & Campground","lat":48.476934,"lng":-120.179928},
-  {"title":"Alpine RV Park","lat":48.550464,"lng":-121.425185},
-  {"title":"Sumas RV Park","lat":48.988082,"lng":-122.26535},
-  {"title":"Finish","lat":49.281139,"lng":-123.023482}
+  {
+    "title": "Mississauga, ON - Start",
+    "lat": 43.606693,
+    "lng": -79.652758,
+    "description": " Starting day of May 29th, 2016 ",
+    "photos": [
+      {
+        "file": "IMG_0857.JPG",
+        "description": " Surly Ogre. "
+      },
+      {
+        "file": "IMG_0868.JPG",
+        "description": " Surly Ogre fully loaded. "
+      }
+    ]
+  },
+  {
+    "title": "Shelburne, ON - Primrose Park",
+    "lat": 44.0876845,
+    "lng": -80.138124,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_0872.JPG",
+        "discription": "Turtles"
+      },
+      {
+        "file": "IMG_0875.JPG",
+        "description": "First camp"
+      }
+    ]
+  },
+  {
+    "title": "Owen Sound, ON - KOA",
+    "lat": 44.565259,
+    "lng": -80.887695,
+    "description": "Stopping at KOA. Shitty road until a good section of rail-to-trail",
+    "photos": [
+      {
+        "file": "IMG_0893.JPG",
+        "description": "Finally a good stretch of a trail"
+      },
+      {
+        "file": "IMG_0897.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Miller Lake, ON - Summer House Park",
+    "lat": 45.098694,
+    "lng": -81.403087,
+    "description": "Place I was planning to stop actually was permanently closed. Ended up pedaling a bit more ahead to the Summer House Park campground place. It was pricy and they had no food.",
+    "photos": [
+      {
+        "file": "IMG_0912.JPG",
+        "description": "Welcome to Bruce Country"
+      },
+      {
+        "file": "IMG_0917.JPG",
+        "description": "Camp for tonight"
+      }
+    ]
+  },
+  {
+    "title": "South Baymouth, ON - South Bay Resort",
+    "lat": 45.5689461,
+    "lng": -82.0117417,
+    "description": "Today I needed to get on the ferry to cross to the Manitoulin Island. Stopped at the Southbay Resort Campground but I really should've noticed a place just across the road. It would've been a lot cheaper. Maybe no view of the lake though. Found a diner place nearby. Got about a pound of crappy fries. At least wasn't hungry after that.",
+    "photos": [
+      {
+        "file": "IMG_0922.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0923.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0933.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0943.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0955.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Espanola, ON - Lake Apsey Resort",
+    "lat": 46.2298133,
+    "lng": -81.7482888,
+    "description": "There were some brutal climbs at the end of the day. Something you're not really ready for in just few days into a tour. Lake Apsey Resort. I think I rode into town to get food and then backtracked back to the campground. There's a big hill in the way unfortunately.",
+    "photos": [
+      {
+        "file": "IMG_0959.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0964.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0983.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_0987.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Blind River, ON - MacIver's Motel & Campground",
+    "lat": 46.19813,
+    "lng": -83.024539,
+    "description": "No choice but to ride along Hwy17. Gotta suck it up and be on it for two days. Wish we had wider roads here, but it's the rocks everywhere. It's narrow and full of trucks. Get food in town as there's nothing near campground.",
+    "photos": [
+      {
+        "file": "IMG_1003.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1006.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1011.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1032.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Sault Ste. Marie, ON - Bel Air Motel & Restaurant",
+    "lat": 46.5178029,
+    "lng": -84.3190046,
+    "description": "Stopped at the cheapo motel to wait out the rain and plan my route into States.",
+    "photos": [
+      {
+        "file": "IMG_1042.JPG",
+        "description": "I didn't have to cross this bridge. It just looked neat."
+      },
+      {
+        "file": "IMG_1045.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1047.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1054.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Saint Ignace, MI - Straits State Park",
+    "lat": 45.85507,
+    "lng": -84.719492
+  },
+  {
+    "title": "Traverse City State Park",
+    "lat": 44.7462151,
+    "lng": -85.5512237
+  },
+  {
+    "title": "Maple Leaf Motel",
+    "lat": 45.3054272,
+    "lng": -85.2588754
+  },
+  {
+    "title": "Sleeping Bear Dunes-Platte River Campground",
+    "lat": 44.715108,
+    "lng": -86.1212445
+  },
+  {
+    "title": "Cartier Park Campground",
+    "lat": 43.9768312,
+    "lng": -86.4595136
+  },
+  {
+    "title": "Lakeview Campground",
+    "lat": 44.0435501,
+    "lng": -88.2812582
+  },
+  {
+    "title": "Madison KOA",
+    "lat": 43.2486748,
+    "lng": -89.3700138
+  },
+  {
+    "title": "Lena KOA",
+    "lat": 42.357625,
+    "lng": -89.822361
+  },
+  {
+    "title": "Rock Island / Quad Cities KOA",
+    "lat": 41.444403,
+    "lng": -90.598493
+  },
+  {
+    "title": "Thomson Causeway Recreation Area",
+    "lat": 41.9488809,
+    "lng": -90.116595
+  },
+  {
+    "title": "Spring Lake Campground",
+    "lat": 40.7377116,
+    "lng": -91.1430026
+  },
+  {
+    "title": "DRIFTWOOD RV PARK",
+    "lat": 39.960008,
+    "lng": -91.414008
+  },
+  {
+    "title": "Two Rivers Marina",
+    "lat": 39.461447,
+    "lng": -91.0411879
+  },
+  {
+    "title": "Klondike Park",
+    "lat": 38.5840686,
+    "lng": -90.8334801
+  },
+  {
+    "title": "Cooper's Landing Campgrounds & Marina",
+    "lat": 38.8161618,
+    "lng": -92.383194
+  },
+  {
+    "title": "Vinchester Inn",
+    "lat": 38.705271,
+    "lng": -91.436443
+  },
+  {
+    "title": "Osage Prairie RV Park",
+    "lat": 37.8537063,
+    "lng": -94.3463085
+  },
+  {
+    "title": "Farrington Park",
+    "lat": 38.5306716,
+    "lng": -93.5114015
+  },
+  {
+    "title": "Iola RV Park & Storage",
+    "lat": 37.9217611,
+    "lng": -95.4158775
+  },
+  {
+    "title": "Blue Stem Lodge",
+    "lat": 37.8178054,
+    "lng": -96.2733817
+  },
+  {
+    "title": "Newton Bike Shop",
+    "lat": 38.048592,
+    "lng": -97.346975
+  },
+  {
+    "title": "Pine Haven Retreat RV Park",
+    "lat": 37.955513,
+    "lng": -98.706895
+  },
+  {
+    "title": "Gunsmoke RV Park",
+    "lat": 37.7560334,
+    "lng": -100.0685592
+  },
+  {
+    "title": "Deerfield Beach Campground",
+    "lat": 37.9683435,
+    "lng": -101.1219392
+  },
+  {
+    "title": "Lakeview RV Campground Bait and Grocery",
+    "lat": 38.0875683,
+    "lng": -102.9583415
+  },
+  {
+    "title": "North Rim Campground",
+    "lat": 36.2097538,
+    "lng": -112.0599781
+  },
+  {
+    "title": "Miles Court",
+    "lat": 38.0536202,
+    "lng": -102.1264024
+  },
+  {
+    "title": "La Junta KOA Journey",
+    "lat": 37.998535,
+    "lng": -103.589331
+  },
+  {
+    "title": "Cotopaxi / Arkansas River KOA",
+    "lat": 38.379014,
+    "lng": -105.667199
+  },
+  {
+    "title": "Juniper Breaks Campground",
+    "lat": 38.2767286,
+    "lng": -104.752863
+  },
+  {
+    "title": "Gunnison KOA",
+    "lat": 38.529586,
+    "lng": -106.945774
+  },
+  {
+    "title": "Priest Gulch Campground",
+    "lat": 37.584321,
+    "lng": -108.16065
+  },
+  {
+    "title": "Poncha Lodge",
+    "lat": 38.5187744,
+    "lng": -106.078811
+  },
+  {
+    "title": "Hite Marina Campground",
+    "lat": 37.8738477,
+    "lng": -110.3926733
+  },
+  {
+    "title": "Country Inn Motel",
+    "lat": 37.765469,
+    "lng": -108.910979
+  },
+  {
+    "title": "Pa-Co-Chu-Puk Campground",
+    "lat": 38.2465054,
+    "lng": -107.7610946
+  },
+  {
+    "title": "Duke's Slick Rock Grill",
+    "lat": 38.3747881,
+    "lng": -110.7086785
+  },
+  {
+    "title": "Wonderland RV Park",
+    "lat": 38.2983243,
+    "lng": -111.4022974
+  },
+  {
+    "title": "Canyons of Escalante RV Park",
+    "lat": 37.770284,
+    "lng": -111.609639
+  },
+  {
+    "title": "Hitch-N-Post RV Park",
+    "lat": 37.042901,
+    "lng": -112.524313
+  },
+  {
+    "title": "Kaibab Camper Village",
+    "lat": 36.7094073,
+    "lng": -112.2313002
+  },
+  {
+    "title": "Ruby's Inn RV Park & Campground",
+    "lat": 37.668416,
+    "lng": -112.158598
+  },
+  {
+    "title": "Kampark Campground",
+    "lat": 37.6127676,
+    "lng": -109.4780516
+  },
+  {
+    "title": "Hitch-N-Post Campground",
+    "lat": 37.829276,
+    "lng": -112.435441
+  },
+  {
+    "title": "Richfield KOA",
+    "lat": 38.7598242,
+    "lng": -112.0954078
+  },
+  {
+    "title": "Phillips RV Park",
+    "lat": 41.270175,
+    "lng": -110.946595
+  },
+  {
+    "title": "Jackson Hole / Snake River KOA",
+    "lat": 43.341156,
+    "lng": -110.723907
+  },
+  {
+    "title": "Missoula KOA Holiday",
+    "lat": 46.896633,
+    "lng": -114.042369
+  },
+  {
+    "title": "Grant Village Campground",
+    "lat": 44.394028,
+    "lng": -110.56346
+  },
+  {
+    "title": "Safari Motel",
+    "lat": 39.7023064,
+    "lng": -111.8358281
+  },
+  {
+    "title": "Hailstone Campground",
+    "lat": 40.6199585,
+    "lng": -111.425353
+  },
+  {
+    "title": "Flat Creek RV Park & Cabins",
+    "lat": 42.9106897,
+    "lng": -110.9968227
+  },
+  {
+    "title": "Bear Lake North RV Park Camp",
+    "lat": 42.1159221,
+    "lng": -111.3884794
+  },
+  {
+    "title": "Camper Corner",
+    "lat": 45.3491361,
+    "lng": -111.7339655
+  },
+  {
+    "title": "Twin Bridges Bike Camp",
+    "lat": 45.5448767,
+    "lng": -112.3347083
+  },
+  {
+    "title": "Hideaway RV Park",
+    "lat": 44.6644012,
+    "lng": -111.1042891
+  },
+  {
+    "title": "Travellers Rest Cabins and RV Park",
+    "lat": 46.0257857,
+    "lng": -114.1783326
+  },
+  {
+    "title": "Nugget RV Park",
+    "lat": 47.2903679,
+    "lng": -115.0833807
+  },
+  {
+    "title": "Kahnderosa RV Park & Campgrounds",
+    "lat": 47.545808,
+    "lng": -116.332695
+  },
+  {
+    "title": "K/M Resorts - Old American Kampground",
+    "lat": 48.18712,
+    "lng": -117.0404418
+  },
+  {
+    "title": "Beaver Lodge Resort & Campground",
+    "lat": 48.6133272,
+    "lng": -117.546821
+  },
+  {
+    "title": "The Bunkhouse Hotel",
+    "lat": 45.3683711,
+    "lng": -113.4095565
+  },
+  {
+    "title": "Ferry County Fair Association",
+    "lat": 48.650807,
+    "lng": -118.6920898
+  },
+  {
+    "title": "Tonasket Visitor & Business Resource Center",
+    "lat": 48.7056766,
+    "lng": -119.4384147
+  },
+  {
+    "title": "Pine Near RV Park & Campground",
+    "lat": 48.476934,
+    "lng": -120.179928
+  },
+  {
+    "title": "Alpine RV Park",
+    "lat": 48.550464,
+    "lng": -121.425185
+  },
+  {
+    "title": "Sumas RV Park",
+    "lat": 48.988082,
+    "lng": -122.26535
+  },
+  {
+    "title": "Finish",
+    "lat": 49.281139,
+    "lng": -123.023482
+  }
 ]
