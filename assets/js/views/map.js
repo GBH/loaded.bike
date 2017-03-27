@@ -93,10 +93,10 @@ export default class Map {
     if(!(this.currentMarker && this.previousMarker)){ return }
 
     let line = new L.polyline([this.previousMarker.getLatLng(), this.currentMarker.getLatLng()], {
-      color: 'gray',
-      weight: 2,
-      opacity: 0.5,
-      dashArray: "5",
+      color:        '#4294cf',
+      weight:       2,
+      opacity:      0.5,
+      dashArray:    '2, 5',
       smoothFactor: 1
     })
     line.addTo(this.map)

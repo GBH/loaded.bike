@@ -1,7 +1,7 @@
 defmodule PedalApp.Web.TourController do
   use PedalApp.Web, :controller
 
-  alias PedalApp.Tour
+  alias PedalApp.{Tour, Waypoint}
 
   plug :load_tour, "id"       when action in [:show, :edit, :update, :delete]
   plug :scrub_params, "tour"  when action in [:create, :update]
@@ -14,11 +14,8 @@ defmodule PedalApp.Web.TourController do
 
   # -- Actions -----------------------------------------------------------------
   def index(conn, _, current_user) do
-    tours = Repo.all(
-      from t in assoc(current_user, :tours),
-      order_by: [desc: t.inserted_at],
-      preload:  [:waypoints]
-    )
+    tours = Repo.all(from t in assoc(current_user, :tours), order_by: [desc: t.inserted_at])
+      |> Repo.preload(waypoints: from(w in Waypoint, order_by: w.position))
 
     conn
     |> add_breadcrumb(name: "Tours")
