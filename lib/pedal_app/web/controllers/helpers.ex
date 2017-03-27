@@ -8,7 +8,7 @@ defmodule PedalApp.Web.Controller.Helpers do
         %{^param_key => tour_id} = conn.params
         tour =
           PedalApp.Repo.get!(assoc(conn.assigns.current_user, :tours), tour_id)
-          |> PedalApp.Repo.preload(:waypoints)
+          |> PedalApp.Repo.preload(waypoints: from(w in PedalApp.Waypoint, order_by: w.position))
 
         conn
         |> assign(:tour, tour)
