@@ -166,57 +166,255 @@
   {
     "title": "Saint Ignace, MI - Straits State Park",
     "lat": 45.85507,
-    "lng": -84.719492
+    "lng": -84.719492,
+    "description": "Today we're crossing the border into Michigan State. Gotta ride onto the bridge. It's a bit stechy, but there's no other way.",
+    "photos": [
+      {
+        "file": "IMG_1058.JPG",
+        "description": "The bridge. No, there's no bike path there, so hope for a very light traffic."
+      },
+      {
+        "file": "IMG_1060.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1066.JPG",
+        "description": "Saint Ignace has extreme amount of motels, hotels and resorts. All them are incredibly cheap off-season. I should've stayed in one instead of tenting in the park. It would've been ten bucks more, but hey."
+      },
+      {
+        "file": "IMG_1078.JPG",
+        "description": "Bridge to Mackinaw City"
+      }
+    ]
   },
   {
-    "title": "Traverse City State Park",
-    "lat": 44.7462151,
-    "lng": -85.5512237
-  },
-  {
-    "title": "Maple Leaf Motel",
+    "title": "Charlevoix, MI - Maple Leaf Motel",
     "lat": 45.3054272,
-    "lng": -85.2588754
+    "lng": -85.2588754,
+    "description": "Little pretty town",
+    "photos": [
+      {
+        "file": "IMG_1090.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1092.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1098.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1104.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Sleeping Bear Dunes-Platte River Campground",
+    "title": "Traverse City, MI - Traverse City State Park",
+    "lat": 44.7462151,
+    "lng": -85.5512237,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1117.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1128.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1135.JPG",
+        "description": "Kite-surfers"
+      }
+    ]
+  },
+
+  {
+    "title": "Beulah, MI - Sleeping Bear Dunes-Platte River Campground",
     "lat": 44.715108,
-    "lng": -86.1212445
+    "lng": -86.1212445,
+    "description": "Today looks like a short ride, but it isn't so. We're going to visit Sleeping Bear Dunes. So we're sticking to the #22 and going via Suttons Bay. Camping at the state park is extremely expensive I thought.",
+    "photos": [
+      {
+        "file": "IMG_1145.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1152.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1153.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1163.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Cartier Park Campground",
+    "title": "Ludington, MI - Cartier Park Campground",
     "lat": 43.9768312,
-    "lng": -86.4595136
+    "lng": -86.4595136,
+    "description": "Camping next to the cementary.",
+    "photos": [
+      {
+        "file": "IMG_1202.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1208.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1214.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1226.JPG",
+        "description": "Like a pound of meat on a circle of dough."
+      }
+    ]
   },
   {
-    "title": "Lakeview Campground",
+    "title": "Stockbridge, MI - Lakeview Campground",
     "lat": 44.0435501,
-    "lng": -88.2812582
+    "lng": -88.2812582,
+    "description": "Taking a ferry across Michigan lake in order to bypass Chicago. Don't like being near large metro areas. Heavier traffic, shittier roads, harder to find campgrounds.",
+    "photos": [
+      {
+        "file": "IMG_1228.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1230.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1243.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Madison KOA",
+    "title": "Madison MI - Madison KOA",
     "lat": 43.2486748,
-    "lng": -89.3700138
+    "lng": -89.3700138,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1252.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1257.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1259.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1261.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Lena KOA",
+    "title": "Lena, IL - Lena KOA",
     "lat": 42.357625,
-    "lng": -89.822361
+    "lng": -89.822361,
+    "description": "Madison is a very bike-friendly city. They even have bicycle specific traffic lights in places.",
+    "photos": [
+      {
+        "file": "IMG_1273.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1274.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1277.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1285.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Rock Island / Quad Cities KOA",
-    "lat": 41.444403,
-    "lng": -90.598493
-  },
-  {
-    "title": "Thomson Causeway Recreation Area",
+    "title": "Thompson, IL - Thomson Causeway Recreation Area",
     "lat": 41.9488809,
-    "lng": -90.116595
+    "lng": -90.116595,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1305.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1308.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1314.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1319.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Spring Lake Campground",
+    "title": "Rock Island, IL - Rock Island / Quad Cities KOA",
+    "lat": 41.444403,
+    "lng": -90.598493,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1322.JPG",
+        "description": "IMG_1322.JPG"
+      },
+      {
+        "file": "IMG_1323.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1325.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1327.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1329.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Wever, IA - Spring Lake Campground",
     "lat": 40.7377116,
-    "lng": -91.1430026
+    "lng": -91.1430026,
+    "description": "Campground from Deliverance",
+    "photos": [
+      {
+        "file": "IMG_1344.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1346.JPG",
+        "description": ""
+      }
+    ]
   },
   {
     "title": "DRIFTWOOD RV PARK",
