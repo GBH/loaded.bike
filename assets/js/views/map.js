@@ -9,8 +9,10 @@ export default class Map {
     this.lat = this.container.dataset.lat || 49.3019608
     this.lng = this.container.dataset.lng || -123.1507388
 
-    // markers container
+    // marker containers
     this.markers = []
+    this.currentMarker = null
+    this.previousMarker = null
   }
 
   init() {
@@ -35,28 +37,72 @@ export default class Map {
       return false
     }
 
-    // adding markers to the map
-    let markers = []
-    for (let marker_json of markers_json) {
-      let marker = L.marker([marker_json.lat, marker_json.lng], {title: marker_json.title})
-      marker.bindPopup(marker_json.title)
+    let iconDefault = this._getIcon()
+    for (let [index, marker_json] of markers_json.entries()) {
+
+      // selecting icon
+      let icon = iconDefault
+      if(marker_json.is_current){
+        icon = this._getIcon('yellow')
+      } else if (index == 0) {
+        icon = this._getIcon('green')
+      } else if (markers_json.length - 1 == index) {
+        icon = this._getIcon('red')
+      }
+
+      // putting marker on map
+      let marker = L.marker([marker_json.lat, marker_json.lng], {
+        icon:   icon,
+        title:  marker_json.title
+      })
+      marker.bindPopup("<a href='" + marker_json.url + "'>"+ marker_json.title +"</a>")
+      marker.addEventListener('click', (m) => {
+        this.map.setView(m.latlng, 13)
+      })
       marker.addTo(this.map)
+
+      // registering markers for the map
       this.markers.push(marker)
+      if(marker_json.is_current){
+        this.currentMarker = marker
+        marker.openPopup()
+      }
+      if(marker_json.is_previous){ this.previousMarker = marker }
     }
   }
 
   centerMarkers(){
-    let group = new L.featureGroup(this.markers)
-    this.map.fitBounds(group.getBounds())
+    let markers = []
+    if(this.currentMarker){markers.push(this.currentMarker)}
+    if(this.previousMarker){markers.push(this.previousMarker)}
+    if(markers.length == 0){markers = this.markers}
+    let group = new L.featureGroup(markers)
+    this.map.fitBounds(group.getBounds(), {maxZoom: 13, padding: [30, 30]})
   }
 
   addCrosshair() {
-    let marker = L.marker(this.map.getCenter(), {clickable: false})
+    let marker = L.marker(this.map.getCenter(), {
+      icon: this._getIcon('yellow'),
+      clickable: false}
+    )
     marker.addTo(this.map)
 
     this.map.on('move', (e) => {
       marker.setLatLng(this.map.getCenter())
     })
+  }
+
+  addPath() {
+    if(!(this.currentMarker && this.previousMarker)){ return }
+
+    let line = new L.polyline([this.previousMarker.getLatLng(), this.currentMarker.getLatLng()], {
+      color: 'gray',
+      weight: 2,
+      opacity: 0.5,
+      dashArray: "5",
+      smoothFactor: 1
+    })
+    line.addTo(this.map)
   }
 
   geolocate() {
@@ -77,5 +123,20 @@ export default class Map {
       lat_field.value   = center.lat
       long_field.value  = center.lng
     })
+  }
+
+  _getIcon(color) {
+    if (color === undefined) { return new L.Icon.Default() }
+    return new CustomIcon({
+      iconRetinaUrl:  "marker-icon-" + color + "-2x.png",
+      iconUrl:        "marker-icon-" + color + ".png"
+    })
+  }
+}
+
+class CustomIcon extends L.Icon.Default {
+  constructor(options) {
+    options.imagePath = "/images/map/"
+    super(options)
   }
 }

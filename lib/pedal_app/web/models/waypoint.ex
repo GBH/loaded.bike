@@ -1,7 +1,8 @@
 defmodule PedalApp.Waypoint do
   use PedalApp.Web, :model
 
-  @derive {Poison.Encoder, only: [:title, :lat, :lng]}
+  # is_current, is_previous, url are virtual attrs we populate on the view
+  @derive {Poison.Encoder, only: [:title, :lat, :lng, :is_current, :is_previous, :url]}
 
   schema "waypoints" do
     field :title,         :string

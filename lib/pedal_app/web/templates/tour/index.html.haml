@@ -4,7 +4,7 @@
       %h2.title
         = link tour.title, to: current_user_tour_path(@conn, :show, tour)
 
-      .map{data-map: "true", data-markers: "#{to_json(tour.waypoints)}"}
+      .map{data-map: "true", data-markers: "#{waypoints_to_json(@conn, tour.waypoints)}"}
 
       .description
         = markdown(tour.description)
