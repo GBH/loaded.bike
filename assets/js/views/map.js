@@ -56,9 +56,6 @@ export default class Map {
         title:  marker_json.title
       })
       marker.bindPopup("<a href='" + marker_json.url + "'>"+ marker_json.title +"</a>")
-      marker.addEventListener('click', (m) => {
-        this.map.setView(m.latlng, 13)
-      })
       marker.addTo(this.map)
 
       // registering markers for the map
