@@ -1,0 +1,5 @@
+.actions.waypoint-nav.clearfix
+  - if @prev_waypoint do
+    = link "Previous Waypoint", to: current_user_tour_waypoint_path(@conn, :show, @tour, @prev_waypoint), class: "btn btn-secondary btn-sm pull-left"
+  - if @next_waypoint do
+    = link "Next Waypoint", to: current_user_tour_waypoint_path(@conn, :show, @tour, @next_waypoint), class: "btn btn-secondary btn-sm pull-right"

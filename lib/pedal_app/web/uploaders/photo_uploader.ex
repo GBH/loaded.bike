@@ -2,7 +2,7 @@ defmodule PedalApp.Web.PhotoUploader do
   use Arc.Definition
   use Arc.Ecto.Definition
 
-  @versions [:original, :large]
+  @versions [:large]
 
   # local storage
   def __storage, do: Arc.Storage.Local
