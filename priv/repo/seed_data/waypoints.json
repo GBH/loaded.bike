@@ -380,7 +380,7 @@
     "photos": [
       {
         "file": "IMG_1322.JPG",
-        "description": "IMG_1322.JPG"
+        "description": ""
       },
       {
         "file": "IMG_1323.JPG",
@@ -417,39 +417,160 @@
     ]
   },
   {
-    "title": "DRIFTWOOD RV PARK",
+    "title": "Quincy, IL - Driftwood RV Park",
     "lat": 39.960008,
-    "lng": -91.414008
+    "lng": -91.414008,
+    "description": "Stopped at the RV park. Ended up getting free dinner from people there.",
+    "photos": [
+      {
+        "file": "IMG_1355.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1356.JPG",
+        "description": "Stumbled upon Nauvoo. An important place for Mormons."
+      },
+      {
+        "file": "IMG_1361.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Two Rivers Marina",
+    "title": "Rockport, IL - Two Rivers Marina",
     "lat": 39.461447,
-    "lng": -91.0411879
+    "lng": -91.0411879,
+    "description": "It's a marina, but they also have RV parking. So you can pitch your tent there too. There are 'deluxe' shower/washroom facilities too. Amazing. You can ride into town for foods. Bridge is a bit sketch, so be careful and try to cross it as fast as you can.",
+    "photos": [
+      {
+        "file": "IMG_1373.JPG",
+        "description": "Endless corn all day long. There's nothing but corn."
+      }
+    ]
   },
   {
-    "title": "Klondike Park",
+    "title": "Augusta, MO - Klondike Park",
     "lat": 38.5840686,
-    "lng": -90.8334801
+    "lng": -90.8334801,
+    "description": "Today we're doing to reach Katy Trail that will take us along Missouri River for a good number of days. It's the longest rail-to-trail in the States. Honestly, it's pretty hard to get down there. There's no obvious routes to take. Roads are narrow and some have pretty heavy truck traffic. I ended up riding on some backroads most of the way. It was incredibly hilly. Never mind that heat was intense that day. One of the toughest days.",
+    "photos": [
+      {
+        "file": "IMG_1378.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1384.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1385.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1386.JPG",
+        "description": ""
+      },
+      {
+        "file":"IMG_1394.JPG",
+        "description": "I thought I was about to get a heatstroke. Park had no food or drinks. Riding into Augusta wasn't an option at the time for me. Found kitchen building and make myself a cool bath. I had coke in the bottle that boiled during the day, so it was cooling off as well."
+      }
+    ]
   },
   {
-    "title": "Cooper's Landing Campgrounds & Marina",
-    "lat": 38.8161618,
-    "lng": -92.383194
-  },
-  {
-    "title": "Vinchester Inn",
+    "title": "Hermann, MO - Vinchester Inn",
     "lat": 38.705271,
-    "lng": -91.436443
+    "lng": -91.436443,
+    "description": "Heat was still crazy. Decided to make a short day and hole-up in a motel for a day or two.",
+    "photos": [
+      {
+        "file": "IMG_1397.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1398.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1401.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1402.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1405.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Osage Prairie RV Park",
-    "lat": 37.8537063,
-    "lng": -94.3463085
+    "title": "Easly, MO - Cooper's Landing Campgrounds & Marina",
+    "lat": 38.8161618,
+    "lng": -92.383194,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1413.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1418.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1425.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Farrington Park",
+    "title": "Windsor, MO - Farrington City Park",
     "lat": 38.5306716,
-    "lng": -93.5114015
+    "lng": -93.5114015,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1431.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1432.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1433.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1434.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Nevada, MO - Osage Prairie RV Park",
+    "lat": 37.8537063,
+    "lng": -94.3463085,
+    "description": "Howdy Cowboy!",
+    "photos": [
+      {
+        "file": "IMG_1446.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1450.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1459.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1460.JPG",
+        "description": "Blam! Blam!"
+      }
+    ]
   },
   {
     "title": "Iola RV Park & Storage",

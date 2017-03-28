@@ -23,8 +23,7 @@ defmodule PedalApp.Web.TourController do
   end
 
   def show(conn, _params, _current_user, tour) do
-    waypoints = Repo.all(from w in assoc(tour, :waypoints), order_by: w.inserted_at)
-    render(conn, "show.html", tour: tour, waypoints: waypoints)
+    render(conn, "show.html", tour: tour, waypoints: tour.waypoints)
   end
 
   def new(conn, _, current_user) do
