@@ -32,6 +32,7 @@ defmodule PedalApp.Web.Controller.Helpers do
       defp load_photo(conn, param_key) do
         %{^param_key => id} = conn.params
         photo = PedalApp.Repo.get!(assoc(conn.assigns.waypoint, :photos), id)
+        photo = %{photo | waypoint: conn.assigns.waypoint}
         dom_id = PedalApp.Photo.dom_id(photo)
         url = current_user_tour_waypoint_path(conn, :show, conn.assigns.tour, conn.assigns.waypoint) <> "##{dom_id}"
         conn

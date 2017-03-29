@@ -16,7 +16,7 @@
     .photo{id: "#{PedalApp.Photo.dom_id(photo)}"}
       .image
         = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm"
-        - url = PedalApp.Web.PhotoUploader.url({photo.file, photo}, :large)
+        - url = PedalApp.Web.PhotoUploader.url({photo.file, %{photo | waypoint: @waypoint}}, :large)
         %img(src: "#{url}")
 
       .description

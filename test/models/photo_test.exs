@@ -11,7 +11,11 @@ defmodule PedalApp.PhotoTest do
     test "with valid attributes" do
       waypoint = insert(:waypoint)
       params = %{params_for(:photo) | file: build_upload()}
-      changeset = Photo.changeset(build_assoc(waypoint, :photos), params)
+
+      photo = build_assoc(waypoint, :photos)
+      |> Map.put(:waypoint, waypoint)
+
+      changeset = Photo.changeset(photo, params)
       assert changeset.valid?
     end
 
@@ -36,7 +40,11 @@ defmodule PedalApp.PhotoTest do
   test "insert" do
     waypoint = insert(:waypoint)
     params = %{params_for(:photo) | file: build_upload()}
-    {status, _} = Repo.insert(Photo.changeset(build_assoc(waypoint, :photos), params))
+
+    photo = build_assoc(waypoint, :photos)
+      |> Map.put(:waypoint, waypoint)
+
+    {status, _} = Repo.insert(Photo.changeset(photo, params))
     assert status == :ok
   end
 

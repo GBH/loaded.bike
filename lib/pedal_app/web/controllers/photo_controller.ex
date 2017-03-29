@@ -23,7 +23,9 @@ defmodule PedalApp.Web.PhotoController do
   end
 
   def create(conn, %{"photo" => photo_params}, tour, waypoint) do
-    changeset = Photo.changeset(build_assoc(waypoint, :photos), photo_params)
+    changeset = build_assoc(waypoint, :photos)
+      |> Map.put(:waypoint, waypoint)
+      |> Photo.changeset(photo_params)
 
     case Repo.insert(changeset) do
       {:ok, photo} ->

@@ -1,7 +1,6 @@
 defmodule PedalApp.Web.PhotoUploader do
   use Arc.Definition
   use Arc.Ecto.Definition
-  import Ecto.Query
 
   @versions [:large]
 
@@ -27,7 +26,7 @@ defmodule PedalApp.Web.PhotoUploader do
   end
 
   # Override the storage directory:
-  def storage_dir(version, {_file, photo}) do
-    "uploads/waypoints/#{photo.waypoint_id}/photos/#{photo.uuid}/"
+  def storage_dir(_version, {_file, photo}) do
+    "uploads/tours/#{photo.waypoint.tour_id}/waypoints/#{photo.waypoint.id}/photos/#{photo.uuid}/"
   end
 end
