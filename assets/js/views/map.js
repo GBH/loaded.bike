@@ -6,8 +6,8 @@ export default class Map {
     this.map  = L.map(this.container, {attributionControl: false})
 
     // defaulting location to Stanley Park if geolocation fails
-    this.lat = this.container.dataset.lat || 49.3019608
-    this.lng = this.container.dataset.lng || -123.1507388
+    this.lat = this.container.dataset.lat || 32.7507794
+    this.lng = this.container.dataset.lng || -114.7650004
 
     // marker containers
     this.markers = []
@@ -73,6 +73,9 @@ export default class Map {
     if(this.currentMarker){markers.push(this.currentMarker)}
     if(this.previousMarker){markers.push(this.previousMarker)}
     if(markers.length == 0){markers = this.markers}
+
+    if(markers.length == 0){return false}
+
     let group = new L.featureGroup(markers)
     this.map.fitBounds(group.getBounds(), {maxZoom: 13, padding: [30, 30]})
   }
@@ -105,7 +108,6 @@ export default class Map {
   geolocate() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
-        console.log([pos.coords.latitude, pos.coords.longitude])
         this.map.setView([pos.coords.latitude, pos.coords.longitude], 13)
       })
     }

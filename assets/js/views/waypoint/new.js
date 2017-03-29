@@ -10,9 +10,9 @@ export default class WaypointNewView extends MainView {
     map.init()
 
     // geolocate only if lat/long fields are blank
-    const lat_field   = document.getElementById("waypoint_lat")
-    const long_field  = document.getElementById("waypoint_lng")
-    if(lat_field.value == "" || long_field.value == "") {
+    const lat_field = document.getElementById("waypoint_lat")
+    const lng_field = document.getElementById("waypoint_lng")
+    if(lat_field.value == "" || lng_field.value == "") {
       map.geolocate()
     }
 
