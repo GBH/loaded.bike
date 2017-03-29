@@ -20,7 +20,7 @@ json = File.read!("priv/repo/seed_data/waypoints.json")
 data = Poison.Parser.parse!(json)
 
 build_photo_upload = fn(index, filename) ->
-  path = "/home/oleg/Pictures/#{index}/#{filename}"
+  path = "/home/oleg/vm_share/Pictures/#{index}/#{filename}"
   %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: filename}
 end
 

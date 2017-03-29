@@ -940,175 +940,812 @@
       }
     ]
   },
-
   {
-    "title": "North Rim Campground",
-    "lat": 36.2097538,
-    "lng": -112.0599781
-  },
-
-
-  {
-    "title": "Hite Marina Campground",
+    "title": "Lake Powell, UT - Hite RV Village",
     "lat": 37.8738477,
-    "lng": -110.3926733
+    "lng": -110.3926733,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_1979.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1980.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1982.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_1989.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2003.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2007.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2013.JPG",
+        "description": ""
+      }
+    ]
   },
-
-
   {
-    "title": "Duke's Slick Rock Grill",
+    "title": "Hanksville, UT - Duke's Slick Rock Grill",
     "lat": 38.3747881,
-    "lng": -110.7086785
+    "lng": -110.7086785,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2017.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2019.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2021.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2023.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2025.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Wonderland RV Park",
+    "title": "Torrey, UT - Wonderland RV Park",
     "lat": 38.2983243,
-    "lng": -111.4022974
+    "lng": -111.4022974,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2052.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2059.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2065.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2068.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2070.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2076.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Canyons of Escalante RV Park",
+    "title": "Escalante, UT - Canyons of Escalante RV Park",
     "lat": 37.770284,
-    "lng": -111.609639
+    "lng": -111.609639,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2098.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2109.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2139.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2144.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2150.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2151.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2159.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Hitch-N-Post RV Park",
-    "lat": 37.042901,
-    "lng": -112.524313
-  },
-  {
-    "title": "Kaibab Camper Village",
-    "lat": 36.7094073,
-    "lng": -112.2313002
-  },
-  {
-    "title": "Ruby's Inn RV Park & Campground",
+    "title": "Bryce Canyon, UT - Ruby's Inn RV Park & Campground",
     "lat": 37.668416,
-    "lng": -112.158598
+    "lng": -112.158598,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2180.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2181.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2191.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2195.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2196.JPG",
+        "description": ""
+      }
+    ]
   },
-
   {
-    "title": "Hitch-N-Post Campground",
+    "title": "Kanab, UT - Hitch-N-Post RV Park",
+    "lat": 37.042901,
+    "lng": -112.524313,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2206.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2209.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2213.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2232.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2234.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Grand Cayon, AZ - Kaibab Camper Village",
+    "lat": 36.7094073,
+    "lng": -112.2313002,
+    "description": "Technically it's possible to ride all the way to the North Rim, but it's all the way uphill. I figured I should split it in two days. Will arrive at North Rim early so it will give me a lot of time to walk around there.",
+    "photos": [
+      {
+        "file": "IMG_2240.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2243.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2245.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Grand Cayon, AZ - North Rim Campground",
+    "lat": 36.2097538,
+    "lng": -112.0599781,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2252.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2256.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2262.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2282.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Kanab, UT - Hitch-N-Post RV Park",
+    "lat": 37.042901,
+    "lng": -112.524313,
+    "description": "Going back to Kanab. It's all rolling downhill now, so it will be great",
+    "photos": [
+      {
+        "file": "IMG_2289.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2293.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2295.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Panguitch, UT - Hitch-N-Post Campground",
     "lat": 37.829276,
-    "lng": -112.435441
+    "lng": -112.435441,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2316.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2318.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Richfield KOA",
+    "title": "Richfield, UT - Richfield KOA",
     "lat": 38.7598242,
-    "lng": -112.0954078
+    "lng": -112.0954078,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2330.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2336.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2344.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2342.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Phillips RV Park",
-    "lat": 41.270175,
-    "lng": -110.946595
-  },
-  {
-    "title": "Jackson Hole / Snake River KOA",
-    "lat": 43.341156,
-    "lng": -110.723907
-  },
-  {
-    "title": "Missoula KOA Holiday",
-    "lat": 46.896633,
-    "lng": -114.042369
-  },
-  {
-    "title": "Grant Village Campground",
-    "lat": 44.394028,
-    "lng": -110.56346
-  },
-  {
-    "title": "Safari Motel",
+    "title": "Nephi, UT - Safari Motel",
     "lat": 39.7023064,
-    "lng": -111.8358281
+    "lng": -111.8358281,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2357.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2359.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Hailstone Campground",
+    "title": "Heber City, UT - Hailstone Campground",
     "lat": 40.6199585,
-    "lng": -111.425353
+    "lng": -111.425353,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2368.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2370.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2371.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2373.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2393.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Flat Creek RV Park & Cabins",
-    "lat": 42.9106897,
-    "lng": -110.9968227
+    "title": "Evanston, WY - Phillips RV Park",
+    "lat": 41.270175,
+    "lng": -110.946595,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2397.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2401.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2403.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2405.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Bear Lake North RV Park Camp",
+    "title": "St. Charles, ID - Bear Lake North RV Park Camp",
     "lat": 42.1159221,
-    "lng": -111.3884794
+    "lng": -111.3884794,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2421.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2422.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2426.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2432.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Camper Corner",
-    "lat": 45.3491361,
-    "lng": -111.7339655
+    "title": "Thayne, WY - Flat Creek RV Park & Cabins",
+    "lat": 42.9106897,
+    "lng": -110.9968227,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2447.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2448.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2456.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Twin Bridges Bike Camp",
-    "lat": 45.5448767,
-    "lng": -112.3347083
+    "title": "Jackson, WY - Jackson Hole / Snake River KOA",
+    "lat": 43.341156,
+    "lng": -110.723907,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2463.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2466.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2480.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Hideaway RV Park",
+    "title": "Colter Bay Village, WY",
+    "lat": 43.9046647,
+    "lng": -110.6429541,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2484.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2489.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2496.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2511.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2531.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Grant Village Campground, WY",
+    "lat": 44.394028,
+    "lng": -110.56346,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2542.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2563.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2547.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "West Yellowstone, MT - Hideaway RV Park",
     "lat": 44.6644012,
-    "lng": -111.1042891
+    "lng": -111.1042891,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2582.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2615.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2627.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2636.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Travellers Rest Cabins and RV Park",
-    "lat": 46.0257857,
-    "lng": -114.1783326
+    "title": "Ennis, MT - Camper Corner",
+    "lat": 45.3491361,
+    "lng": -111.7339655,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2671.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2675.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2677.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Nugget RV Park",
-    "lat": 47.2903679,
-    "lng": -115.0833807
+    "title": "Twin Bridges, MT - Twin Bridges Bike Camp",
+    "lat": 45.5448767,
+    "lng": -112.3347083,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2691.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2695.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2702.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2716.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Kahnderosa RV Park & Campgrounds",
-    "lat": 47.545808,
-    "lng": -116.332695
-  },
-  {
-    "title": "K/M Resorts - Old American Kampground",
-    "lat": 48.18712,
-    "lng": -117.0404418
-  },
-  {
-    "title": "Beaver Lodge Resort & Campground",
-    "lat": 48.6133272,
-    "lng": -117.546821
-  },
-  {
-    "title": "The Bunkhouse Hotel",
+    "title": "Jackson, MT - The Bunkhouse Hotel",
     "lat": 45.3683711,
-    "lng": -113.4095565
+    "lng": -113.4095565,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2719.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2723.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Ferry County Fair Association",
+    "title": "Darby, MT - Travellers Rest Cabins and RV Park",
+    "lat": 46.0257857,
+    "lng": -114.1783326,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2740.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2741.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2742.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Missoula, MT - Missoula KOA Holiday",
+    "lat": 46.896633,
+    "lng": -114.042369,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2751.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2753.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "St. Regis, MT - Nugget RV Park",
+    "lat": 47.2903679,
+    "lng": -115.0833807,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2761.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2767.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2772.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2786.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Cataldo, ID - Kahnderosa RV Park & Campgrounds",
+    "lat": 47.545808,
+    "lng": -116.332695,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2790.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2791.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2794.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2796.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2803.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Newport, WA - Old American Kampground",
+    "lat": 48.18712,
+    "lng": -117.0404418,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2816.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2820.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Colville, WA - Beaver Lodge Resort & Campground",
+    "lat": 48.6133272,
+    "lng": -117.546821,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2831.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2836.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2837.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2846.JPG",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "title": "Republic, WA - Ferry County Fair Association",
     "lat": 48.650807,
-    "lng": -118.6920898
+    "lng": -118.6920898,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2849.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2852.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2854.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2866.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Tonasket Visitor & Business Resource Center",
+    "title": "Tonasket, WA - Tonasket Visitor & Business Resource Center",
     "lat": 48.7056766,
-    "lng": -119.4384147
+    "lng": -119.4384147,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2873.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2874.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Pine Near RV Park & Campground",
+    "title": "Winthrop, WA - Pine Near RV Park & Campground",
     "lat": 48.476934,
-    "lng": -120.179928
+    "lng": -120.179928,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2889.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2890.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2896.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Alpine RV Park",
+    "title": "Marblemount, WA - Alpine RV Park",
     "lat": 48.550464,
-    "lng": -121.425185
+    "lng": -121.425185,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2908.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2913.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2917.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2924.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2925.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Sumas RV Park",
+    "title": "Sumas, WA - Sumas RV Park",
     "lat": 48.988082,
-    "lng": -122.26535
+    "lng": -122.26535,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2931.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2935.JPG",
+        "description": ""
+      }
+    ]
   },
   {
-    "title": "Finish",
+    "title": "Burnaby, BC - Finish",
     "lat": 49.281139,
-    "lng": -123.023482
+    "lng": -123.023482,
+    "description": "",
+    "photos": [
+      {
+        "file": "IMG_2938.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2941.JPG",
+        "description": ""
+      },
+      {
+        "file": "IMG_2942.JPG",
+        "description": ""
+      }
+    ]
   }
 ]

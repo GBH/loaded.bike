@@ -1,6 +1,8 @@
 defmodule PedalApp.Web.PhotoUploader do
   use Arc.Definition
   use Arc.Ecto.Definition
+  import Ecto
+  import Ecto.Query
 
   @versions [:large]
 
@@ -9,7 +11,10 @@ defmodule PedalApp.Web.PhotoUploader do
 
   # Whitelist file extensions:
   def validate({file, _}) do
-    ~w(.jpg .jpeg) |> Enum.member?(String.downcase(Path.extname(file.file_name)))
+    ext = file.file_name
+      |> Path.extname
+      |> String.downcase
+    Enum.member?(~w(.jpg .jpeg), ext)
   end
 
   # Define a thumbnail transformation:
@@ -24,6 +29,8 @@ defmodule PedalApp.Web.PhotoUploader do
 
   # Override the storage directory:
   def storage_dir(version, {file, photo}) do
-    "uploads/photos/#{photo.uuid}/"
+    waypoint_id = photo.waypoint_id
+    tour_id = PedalApp.Repo.one!(from w in PedalApp.Waypoint, select: w.tour_id, where: w.id == ^waypoint_id)
+    "uploads/tours/#{tour_id}/waypoints/#{waypoint_id}/photos/#{photo.uuid}/"
   end
 end
