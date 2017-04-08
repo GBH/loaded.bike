@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.WaypointControllerTest do
+defmodule PedalApp.Web.User.WaypointControllerTest do
   use PedalApp.Web.ConnCase
 
   alias PedalApp.Waypoint

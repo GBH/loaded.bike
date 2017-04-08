@@ -1,25 +1,25 @@
-import MainView         from "./main"
-import TourIndexView    from "./tour/index"
-import TourNewView      from "./tour/new"
-import TourShowView     from "./tour/show"
-import TourEditView     from "./tour/edit"
-import WaypointShowView from "./waypoint/show"
-import WaypointNewView  from "./waypoint/new"
-import WaypointEditView from "./waypoint/edit"
-import PhotoNewView     from "./photo/new"
-import PhotoEditView    from "./photo/edit"
+import MainView             from "./main"
+import UserTourIndexView    from "./user/tour/index"
+import UserTourNewView      from "./user/tour/new"
+import UserTourShowView     from "./user/tour/show"
+import UserTourEditView     from "./user/tour/edit"
+import UserWaypointShowView from "./user/waypoint/show"
+import UserWaypointNewView  from "./user/waypoint/new"
+import UserWaypointEditView from "./user/waypoint/edit"
+import UserPhotoNewView     from "./user/photo/new"
+import UserPhotoEditView    from "./user/photo/edit"
 
 
 const views = {
-  TourIndexView,
-  TourNewView,
-  TourShowView,
-  TourEditView,
-  WaypointShowView,
-  WaypointEditView,
-  WaypointNewView,
-  PhotoNewView,
-  PhotoEditView
+  UserTourIndexView,
+  UserTourNewView,
+  UserTourShowView,
+  UserTourEditView,
+  UserWaypointShowView,
+  UserWaypointEditView,
+  UserWaypointNewView,
+  UserPhotoNewView,
+  UserPhotoEditView
 }
 
 export default function loadView(viewName){

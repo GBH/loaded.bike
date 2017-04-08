@@ -5,6 +5,6 @@ defmodule PedalApp.Web.LayoutViewTest do
 
   test "page_identifier" do
     conn = get build_conn(), "/"
-    assert LayoutView.page_identifier(conn) == "PageIndexView"
+    assert LayoutView.page_identifier(conn) == "LandingShowView"
   end
 end

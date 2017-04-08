@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.TourController do
+defmodule PedalApp.Web.User.TourController do
   use PedalApp.Web, :controller
 
   alias PedalApp.{Tour, Waypoint}

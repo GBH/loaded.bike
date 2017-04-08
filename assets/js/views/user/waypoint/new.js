@@ -1,8 +1,8 @@
-import MainView           from "../main"
-import Map                from "../map"
-import autoResizeTextArea from "../textarea"
+import MainView           from "../../main"
+import Map                from "../../map"
+import autoResizeTextArea from "../../textarea"
 
-export default class WaypointNewView extends MainView {
+export default class UserWaypointNewView extends MainView {
   mount(){
     super.mount()
 

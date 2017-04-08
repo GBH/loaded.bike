@@ -23,9 +23,11 @@ defmodule PedalApp.Web.LayoutView do
   defp view_name(conn) do
     conn
     |> view_module
-    |> Phoenix.Naming.resource_name
-    |> String.replace("_view", "")
-    |> String.capitalize
+    |> Atom.to_string
+    |> String.split(".")
+    |> Enum.drop(3)
+    |> Enum.join
+    |> String.replace("View", "")
   end
 
   defp template_name(conn) do

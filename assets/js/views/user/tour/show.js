@@ -1,7 +1,7 @@
-import MainView from "../main"
-import Map      from "../map"
+import MainView from "../../main"
+import Map      from "../../map"
 
-export default class TourShowView extends MainView {
+export default class UserTourShowView extends MainView {
   mount(){
     super.mount()
 

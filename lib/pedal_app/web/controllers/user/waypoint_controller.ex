@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.WaypointController do
+defmodule PedalApp.Web.User.WaypointController do
   use PedalApp.Web, :controller
   alias PedalApp.{Waypoint, Photo}
 

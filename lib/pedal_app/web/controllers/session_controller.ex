@@ -13,7 +13,7 @@ defmodule PedalApp.Web.SessionController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: landing_path(conn, :show))
 
       {:error, _reason, conn} ->
         conn
@@ -26,6 +26,6 @@ defmodule PedalApp.Web.SessionController do
     conn
     |> PedalApp.Auth.logout
     |> put_flash(:info, "Logged out")
-    |> redirect(to: page_path(conn, :index))
+    |> redirect(to: landing_path(conn, :show))
   end
 end

@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.TourControllerTest do
+defmodule PedalApp.Web.User.TourControllerTest do
   use PedalApp.Web.ConnCase
 
   alias PedalApp.Tour

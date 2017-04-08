@@ -26,7 +26,7 @@ defmodule PedalApp.Web.Router do
   scope "/", PedalApp.Web do
     pipe_through [:browser, :with_session]
 
-    get "/", PageController, :index
+    get "/", LandingController, :show
 
     # session management
     get     "/login",   SessionController, :new
@@ -47,9 +47,9 @@ defmodule PedalApp.Web.Router do
       name:       "current_user",
       singleton:  true
     do
-      resources "/tours", TourController do
-        resources "/waypoints", WaypointController, except: [:index] do
-          resources "/photos", PhotoController
+      resources "/tours", User.TourController do
+        resources "/waypoints", User.WaypointController, except: [:index] do
+          resources "/photos", User.PhotoController
         end
       end
     end

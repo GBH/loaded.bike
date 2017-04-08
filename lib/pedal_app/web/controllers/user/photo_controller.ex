@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.PhotoController do
+defmodule PedalApp.Web.User.PhotoController do
   use PedalApp.Web, :controller
 
   alias PedalApp.Photo

@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.PhotoControllerTest do
+defmodule PedalApp.Web.User.PhotoControllerTest do
   use PedalApp.Web.ConnCase
 
   alias PedalApp.Photo
