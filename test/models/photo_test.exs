@@ -1,7 +1,7 @@
-defmodule PedalApp.PhotoTest do
-  use PedalApp.ModelCase
+defmodule LoadedBike.PhotoTest do
+  use LoadedBike.ModelCase
 
-  alias PedalApp.Photo
+  alias LoadedBike.Photo
 
   defp build_upload(path \\ "test/files/test.jpg") do
     %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: Path.basename(path)}

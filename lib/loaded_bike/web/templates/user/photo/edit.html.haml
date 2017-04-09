@@ -1,0 +1,8 @@
+.image
+  - url = LoadedBike.Web.PhotoUploader.url({@photo.file, @photo}, :large)
+  %img(src: "#{url}")
+
+= render "form.html", changeset: @changeset, action: current_user_tour_waypoint_photo_path(@conn, :update, @tour, @waypoint, @photo)
+
+.form-group.form-actions
+  = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, @photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger btn-sm"

@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.ConnCase do
+defmodule LoadedBike.Web.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,18 +20,18 @@ defmodule PedalApp.Web.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias PedalApp.Repo
-      alias PedalApp.{User}
+      alias LoadedBike.Repo
+      alias LoadedBike.{User}
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      import PedalApp.Web.Router.Helpers
-      import PedalApp.TestFactory
+      import LoadedBike.Web.Router.Helpers
+      import LoadedBike.TestFactory
       import unquote(__MODULE__)
 
       # The default endpoint for testing
-      @endpoint PedalApp.Web.Endpoint
+      @endpoint LoadedBike.Web.Endpoint
 
       # guardian login
       def login(user = %User{}, token \\ :token, opts \\ []) do
@@ -57,10 +57,10 @@ defmodule PedalApp.Web.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PedalApp.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(LoadedBike.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PedalApp.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(LoadedBike.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

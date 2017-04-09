@@ -1,4 +1,4 @@
-alias PedalApp.{Repo, User, Tour, Waypoint, Photo}
+alias LoadedBike.{Repo, User, Tour, Waypoint, Photo}
 
 # create user
 user = Repo.insert!(%User{
@@ -50,10 +50,13 @@ data
   waypoint = Repo.insert!(changeset)
 
   Enum.each(wp["photos"] || [], fn(photo) ->
-    changeset = Photo.changeset(Ecto.build_assoc(waypoint, :photos), %{
-      file:         build_photo_upload.(index, photo["file"]),
-      description:  format_description.(photo["description"])
-    })
+    changeset = Ecto.build_assoc(waypoint, :photos)
+      |> Map.put(:waypoint, waypoint)
+      |> Photo.changeset(%{
+        file:         build_photo_upload.(index, photo["file"]),
+        description:  format_description.(photo["description"])
+      })
+
     Repo.insert!(changeset)
   end)
 end)

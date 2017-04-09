@@ -1,8 +1,8 @@
-defmodule PedalApp.Model.HelpersTest do
-  use PedalApp.ModelCase
+defmodule LoadedBike.Model.HelpersTest do
+  use LoadedBike.ModelCase
 
   test "dom_id" do
     photo = insert(:photo)
-    assert PedalApp.Photo.dom_id(photo) == "photo-#{photo.id}"
+    assert LoadedBike.Photo.dom_id(photo) == "photo-#{photo.id}"
   end
 end

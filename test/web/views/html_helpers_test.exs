@@ -1,9 +1,9 @@
-defmodule PedalApp.Web.MarkdownHelperTest do
-  use PedalApp.Web.ConnCase, async: true
+defmodule LoadedBike.Web.MarkdownHelperTest do
+  use LoadedBike.Web.ConnCase, async: true
 
   import Phoenix.HTML, only: [safe_to_string: 1]
 
-  alias PedalApp.Web.HtmlHelpers
+  alias LoadedBike.Web.HtmlHelpers
 
   test "markdown" do
     {:safe, html} = HtmlHelpers.markdown("**bold**")

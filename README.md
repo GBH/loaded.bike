@@ -1,4 +1,4 @@
-# PedalApp [![Build Status](https://travis-ci.org/GBH/pedal.svg?branch=master)](https://travis-ci.org/GBH/pedal)
+# Loaded.Bike [![Build Status](https://travis-ci.org/GBH/pedal.svg?branch=master)](https://travis-ci.org/GBH/loaded.bike)
 
 To start your Phoenix app:
 

@@ -1,9 +1,9 @@
-defmodule PedalApp.WaypointTest do
-  use PedalApp.ModelCase
+defmodule LoadedBike.WaypointTest do
+  use LoadedBike.ModelCase
 
-  import PedalApp.TestFactory
+  import LoadedBike.TestFactory
 
-  alias PedalApp.Waypoint
+  alias LoadedBike.Waypoint
 
   describe "changeset" do
     test "with valid attributes" do

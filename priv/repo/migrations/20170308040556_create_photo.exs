@@ -1,4 +1,4 @@
-defmodule PedalApp.Repo.Migrations.CreatePhoto do
+defmodule LoadedBike.Repo.Migrations.CreatePhoto do
   use Ecto.Migration
 
   def change do

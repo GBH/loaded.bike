@@ -1,7 +1,7 @@
-defmodule PedalApp.Web.User.PhotoControllerTest do
-  use PedalApp.Web.ConnCase
+defmodule LoadedBike.Web.User.PhotoControllerTest do
+  use LoadedBike.Web.ConnCase
 
-  alias PedalApp.Photo
+  alias LoadedBike.Photo
 
   setup do
     waypoint = insert(:waypoint)

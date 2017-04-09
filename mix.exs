@@ -1,8 +1,8 @@
-defmodule PedalApp.Mixfile do
+defmodule LoadedBike.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :pedal_app,
+    [app: :loaded_bike,
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule PedalApp.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {PedalApp, []},
+    [mod: {LoadedBike, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :comeonin, :arc_ecto]]
   end

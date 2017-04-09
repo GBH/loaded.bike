@@ -1,5 +1,5 @@
-defmodule PedalApp.Web.UserControllerTest do
-  use PedalApp.Web.ConnCase
+defmodule LoadedBike.Web.UserControllerTest do
+  use LoadedBike.Web.ConnCase
 
   test "new" do
     conn = get build_conn(), "/rider/new"
@@ -12,7 +12,7 @@ defmodule PedalApp.Web.UserControllerTest do
     user = insert(:user)
     conn = get build_conn(), "/riders/#{user.id}"
     assert response(conn, 200)
-    assert assigns(conn, :user).__struct__ == PedalApp.User
+    assert assigns(conn, :user).__struct__ == LoadedBike.User
     assert template(conn) == "show.html"
   end
 

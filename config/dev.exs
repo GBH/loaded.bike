@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :pedal_app, PedalApp.Web.Endpoint,
+config :loaded_bike, LoadedBike.Web.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -16,13 +16,13 @@ config :pedal_app, PedalApp.Web.Endpoint,
 
 
 # Watch static and templates for browser reloading.
-config :pedal_app, PedalApp.Web.Endpoint,
+config :loaded_bike, LoadedBike.Web.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/pedal_app/web/views/.*(ex)$},
-      ~r{lib/pedal_app/web/templates/.*(eex|haml)$}
+      ~r{lib/loaded_bike/web/views/.*(ex)$},
+      ~r{lib/loaded_bike/web/templates/.*(eex|haml)$}
     ]
   ]
 
@@ -34,7 +34,7 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :pedal_app, PedalApp.Repo,
+config :loaded_bike, LoadedBike.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",

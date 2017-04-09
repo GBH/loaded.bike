@@ -1,5 +1,5 @@
-defmodule PedalApp.Web.SessionControllerTest do
-  use PedalApp.Web.ConnCase
+defmodule LoadedBike.Web.SessionControllerTest do
+  use LoadedBike.Web.ConnCase
 
   test "new" do
     conn = get build_conn(), "/login"

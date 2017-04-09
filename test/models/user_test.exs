@@ -1,7 +1,7 @@
-defmodule PedalApp.UserTest do
-  use PedalApp.ModelCase
+defmodule LoadedBike.UserTest do
+  use LoadedBike.ModelCase
 
-  alias PedalApp.User
+  alias LoadedBike.User
 
   describe "changeset" do
     test "with valid attributes" do

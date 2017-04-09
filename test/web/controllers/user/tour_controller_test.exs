@@ -1,7 +1,7 @@
-defmodule PedalApp.Web.User.TourControllerTest do
-  use PedalApp.Web.ConnCase
+defmodule LoadedBike.Web.User.TourControllerTest do
+  use LoadedBike.Web.ConnCase
 
-  alias PedalApp.Tour
+  alias LoadedBike.Tour
 
   setup do
     user = insert(:user)

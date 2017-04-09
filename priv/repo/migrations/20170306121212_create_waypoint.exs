@@ -1,4 +1,4 @@
-defmodule PedalApp.Repo.Migrations.CreateWaypoint do
+defmodule LoadedBike.Repo.Migrations.CreateWaypoint do
   use Ecto.Migration
 
   def change do

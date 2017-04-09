@@ -1,0 +1,32 @@
+= render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint
+
+.waypoint
+  .actions.clearfix
+    = published_badge(@waypoint.is_published)
+    = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm pull-right"
+
+  - markers = waypoints_to_json(@conn, @tour.waypoints, @waypoint, @prev_waypoint)
+  .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}"}
+
+  .description
+    = markdown(@waypoint.description)
+
+.photos#photos
+  - for photo <- @waypoint.photos do
+    .photo{id: "#{LoadedBike.Photo.dom_id(photo)}"}
+      .image
+        = link "Edit", to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm"
+        - url = LoadedBike.Web.PhotoUploader.url({photo.file, %{photo | waypoint: @waypoint}}, :large)
+        %img(src: "#{url}")
+
+      .description
+        = markdown(photo.description)
+
+  .actions.clearfix
+    = link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-primary pull-right"
+
+= render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint
+
+
+
+

@@ -1,7 +1,7 @@
-defmodule PedalApp.Web.User.WaypointControllerTest do
-  use PedalApp.Web.ConnCase
+defmodule LoadedBike.Web.User.WaypointControllerTest do
+  use LoadedBike.Web.ConnCase
 
-  alias PedalApp.Waypoint
+  alias LoadedBike.Waypoint
 
   setup do
     user = insert(:user)

@@ -1,7 +1,7 @@
-defmodule PedalApp.Web.LayoutViewTest do
-  use PedalApp.Web.ConnCase, async: true
+defmodule LoadedBike.Web.LayoutViewTest do
+  use LoadedBike.Web.ConnCase, async: true
 
-  alias PedalApp.Web.LayoutView
+  alias LoadedBike.Web.LayoutView
 
   test "page_identifier" do
     conn = get build_conn(), "/"

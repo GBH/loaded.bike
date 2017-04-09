@@ -1,4 +1,4 @@
-defmodule PedalApp.Web.ChannelCase do
+defmodule LoadedBike.Web.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,22 +20,22 @@ defmodule PedalApp.Web.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias PedalApp.Repo
+      alias LoadedBike.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
 
       # The default endpoint for testing
-      @endpoint PedalApp.Web.Endpoint
+      @endpoint LoadedBike.Web.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PedalApp.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(LoadedBike.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(PedalApp.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(LoadedBike.Repo, {:shared, self()})
     end
 
     :ok

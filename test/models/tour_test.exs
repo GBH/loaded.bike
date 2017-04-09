@@ -1,9 +1,9 @@
-defmodule PedalApp.TourTest do
-  use PedalApp.ModelCase
+defmodule LoadedBike.TourTest do
+  use LoadedBike.ModelCase
 
-  import PedalApp.TestFactory
+  import LoadedBike.TestFactory
 
-  alias PedalApp.Tour
+  alias LoadedBike.Tour
 
   describe "changeset" do
     test "with valid attributes" do

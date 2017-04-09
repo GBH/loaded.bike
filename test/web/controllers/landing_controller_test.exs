@@ -1,5 +1,5 @@
-defmodule PedalApp.Web.PageControllerTest do
-  use PedalApp.Web.ConnCase
+defmodule LoadedBike.Web.PageControllerTest do
+  use LoadedBike.Web.ConnCase
 
   test "show", %{conn: conn} do
     conn = get conn, "/"

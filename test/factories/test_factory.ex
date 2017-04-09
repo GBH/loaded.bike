@@ -1,8 +1,8 @@
-defmodule PedalApp.TestFactory do
+defmodule LoadedBike.TestFactory do
 
-  use ExMachina.Ecto, repo: PedalApp.Repo
+  use ExMachina.Ecto, repo: LoadedBike.Repo
 
-  alias PedalApp.{User, Tour, Waypoint, Photo}
+  alias LoadedBike.{User, Tour, Waypoint, Photo}
 
   def user_factory do
     %User{
