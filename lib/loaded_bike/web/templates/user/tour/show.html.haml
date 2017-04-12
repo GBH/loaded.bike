@@ -2,7 +2,7 @@
   = published_badge(@tour.is_published)
   = link "Edit", to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm pull-right"
 
-.map#map(data-markers: "#{waypoints_to_json(@conn, @waypoints)}")
+.map#map(data-markers: "#{waypoints_to_json(@conn, :private, @waypoints)}")
 
 .user-content
   = markdown(@tour.description)

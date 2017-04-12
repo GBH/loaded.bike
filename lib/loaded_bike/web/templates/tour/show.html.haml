@@ -1,0 +1,16 @@
+.map#map(data-markers: "#{waypoints_to_json(@conn, :public, @tour.waypoints)}")
+
+.user-content
+  = markdown(@tour.description)
+
+.table-responsive
+  %table.table.table-sm
+
+    - for waypoint <- @tour.waypoints do
+      %tr
+        %td
+          %strong
+            Day
+            = waypoint.position
+        %td.main
+          = link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint)
