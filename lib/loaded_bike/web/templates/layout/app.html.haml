@@ -7,7 +7,7 @@
     %meta(name="description" content="")
     %meta(name="author" content="")
 
-    %title Loaded.Bike
+    %title Loaded.bike
 
     %link(rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css")
 
@@ -20,11 +20,13 @@
       .container
         %button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbarSupportedContent")
           %span.navbar-toggler-icon
-        %a.navbar-brand(href="#") Loaded.bike
+        %a.navbar-brand(href="#{landing_path(@conn, :show)}") Loaded.bike
 
         .collapse.navbar-collapse#navbarSupportedContent
           %ul.navbar-nav.mr-auto
             - if @current_user do
+              %li.nav-item
+                = link "My Tours", to: current_user_tour_path(@conn, :index), class: "nav-link"
               %li.nav-item
                 = link "Sign out", to: session_path(@conn, :delete), method: :delete, class: "nav-link"
             - else

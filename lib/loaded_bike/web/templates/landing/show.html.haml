@@ -1,1 +1,36 @@
-%h1 Hello
+.jumbotron
+  %h1 Hello there
+
+
+%h2 Recently posted tours
+
+.tours
+  - for tour <- @tours do
+    .tour
+      .title
+        = link tour.title, to: tour_path(@conn, :show, tour)
+      .waypoints
+        .count
+          = Enum.count(tour.waypoints)
+          waypoints
+
+        - start = List.first(tour.waypoints)
+        - finish = List.last(tour.waypoints)
+
+        - if start && finish do
+          .from
+            from
+            - start = List.first(tour.waypoints)
+            = link start.title, to: tour_waypoint_path(@conn, :show, tour, start)
+
+          .to
+            to
+            - finish = List.last(tour.waypoints)
+            = link finish.title, to: tour_waypoint_path(@conn, :show, tour, finish)
+
+      .rider
+        by
+        = link tour.user.name, to: user_path(@conn, :show, tour.user)
+
+
+= link "More Tours", to: tour_path(@conn, :index), class: "btn btn-primary"

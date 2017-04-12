@@ -33,7 +33,9 @@ defmodule LoadedBike.Web.Router do
     post    "/login",   SessionController, :create
     delete  "/logout",  SessionController, :delete
 
-    resources "/tours", TourController, only: [:index, :show]
+    resources "/tours", TourController, only: [:index, :show] do
+      resources "/waypoints", WaypointController, only: [:show]
+    end
 
     resources "/riders", UserController, only: [:show] do
       resources "/tours", TourController, only: [:index, :show] do

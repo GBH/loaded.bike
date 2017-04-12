@@ -16,7 +16,8 @@ defmodule LoadedBike.TestFactory do
     %Tour{
       user:         build(:user),
       title:        "Test Tour",
-      description:  "Test Tour Description"
+      description:  "Test Tour Description",
+      is_published: true
     }
   end
 
@@ -26,7 +27,8 @@ defmodule LoadedBike.TestFactory do
       title:        "Test Waypoint",
       description:  "Test Waypoint Description",
       lat:          49.262206,
-      lng:          -123.2616348
+      lng:          -123.2616348,
+      is_published: true
     }
   end
 
