@@ -36,4 +36,11 @@ defmodule LoadedBike.Web.MarkdownHelperTest do
     |> Floki.find("span")
     |> Floki.text == "Draft"
   end
+
+  test "waypoints_to_json" do
+    waypoint = insert(:waypoint)
+    conn = get build_conn(), "/"
+    assert HtmlHelpers.waypoints_to_json(conn, [waypoint]) ==
+      "[{\"url\":\"/rider/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}\",\"title\":\"Test Waypoint\",\"lng\":-123.2616348,\"lat\":49.262206,\"is_previous\":false,\"is_current\":false}]"
+  end
 end
