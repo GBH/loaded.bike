@@ -23,4 +23,13 @@ defmodule LoadedBike.TourTest do
     {status, _} = Repo.insert(Tour.changeset(%Tour{}, %{params_for(:tour) | user_id: user.id}))
     assert status == :ok
   end
+
+  test "scope published" do
+    tour = insert(:tour, %{is_published: false})
+    query = Tour.published(Tour)
+    assert Repo.aggregate(query, :count, :id) == 0
+
+    Repo.update!(change(tour, %{is_published: true}))
+    assert Repo.aggregate(query, :count, :id) == 1
+  end
 end

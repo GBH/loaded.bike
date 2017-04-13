@@ -1,3 +1,6 @@
 %h1 All Tours
-- for tour <- @tours do
-  = inspect tour
+
+.tours
+  - for tour <- @tours do
+    .tour
+      = link tour.title, to: tour_path(@conn, :show, tour)

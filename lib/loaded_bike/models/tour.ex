@@ -19,4 +19,8 @@ defmodule LoadedBike.Tour do
     |> validate_required([:user_id, :title])
     |> assoc_constraint(:user)
   end
+
+  def published(query) do
+    from t in query, where: t.is_published == true
+  end
 end

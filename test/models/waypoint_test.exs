@@ -40,4 +40,13 @@ defmodule LoadedBike.WaypointTest do
     waypoint = insert(:waypoint)
     assert Poison.encode!(waypoint) == "{\"title\":\"Test Waypoint\",\"lng\":-123.2616348,\"lat\":49.262206}"
   end
+
+  test "scope published" do
+    waypoint = insert(:waypoint, %{is_published: false})
+    query = Waypoint.published(Waypoint)
+    assert Repo.aggregate(query, :count, :id) == 0
+
+    Repo.update!(change(waypoint, %{is_published: true}))
+    assert Repo.aggregate(query, :count, :id) == 1
+  end
 end

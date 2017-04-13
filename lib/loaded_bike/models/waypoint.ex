@@ -40,4 +40,8 @@ defmodule LoadedBike.Waypoint do
         changeset
     end
   end
+
+  def published(query) do
+    from w in query, where: w.is_published == true
+  end
 end
