@@ -1,0 +1,21 @@
+= render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint
+
+.waypoint
+
+  - markers = waypoints_to_json(@conn, :private, @tour.waypoints, @waypoint, @prev_waypoint)
+  .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}"}
+
+  .description
+    = markdown(@waypoint.description)
+
+.photos#photos
+  - for photo <- @waypoint.photos do
+    .photo{id: "#{LoadedBike.Photo.dom_id(photo)}"}
+      .image
+        - url = LoadedBike.Web.PhotoUploader.url({photo.file, %{photo | waypoint: @waypoint}}, :large)
+        %img(src: "#{url}")
+
+      .description
+        = markdown(photo.description)
+
+= render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint

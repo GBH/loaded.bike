@@ -1,4 +1,4 @@
-defmodule LoadedBike.Web.Controller.Helpers do
+defmodule LoadedBike.Web.Controller.User.Helpers do
 
   defmacro __using__(_opts) do
     quote do

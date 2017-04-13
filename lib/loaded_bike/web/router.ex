@@ -26,22 +26,18 @@ defmodule LoadedBike.Web.Router do
   scope "/", LoadedBike.Web do
     pipe_through [:browser, :with_session]
 
+    # -- public resources ------------------------------------------------------
     get "/", LandingController, :show
 
-    # session management
-    get     "/login",   SessionController, :new
-    post    "/login",   SessionController, :create
-    delete  "/logout",  SessionController, :delete
-
+    resources "/riders", UserController, only: [:show]
     resources "/tours", TourController, only: [:index, :show] do
       resources "/waypoints", WaypointController, only: [:show]
     end
 
-    resources "/riders", UserController, only: [:show] do
-      resources "/tours", TourController, only: [:index, :show] do
-        resources "/waypoints", WaypointController, only: [:index, :show]
-      end
-    end
+    # -- session management ----------------------------------------------------
+    get     "/login",   SessionController, :new
+    post    "/login",   SessionController, :create
+    delete  "/logout",  SessionController, :delete
 
     # -- logged-in user routes -------------------------------------------------
     resources "/rider", UserController,

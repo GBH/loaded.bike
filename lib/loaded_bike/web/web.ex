@@ -40,7 +40,6 @@ defmodule LoadedBike.Web do
       import LoadedBike.Web.Gettext
 
       use Breadcrumble
-      use LoadedBike.Web.Controller.Helpers
     end
   end
 

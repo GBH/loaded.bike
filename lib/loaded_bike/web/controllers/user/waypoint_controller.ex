@@ -1,5 +1,7 @@
 defmodule LoadedBike.Web.User.WaypointController do
   use LoadedBike.Web, :controller
+  use LoadedBike.Web.Controller.User.Helpers
+
   alias LoadedBike.{Waypoint, Photo}
 
   plug :load_tour, "tour_id"
@@ -14,19 +16,22 @@ defmodule LoadedBike.Web.User.WaypointController do
 
   # -- Actions -----------------------------------------------------------------
   def show(conn, _params, tour, waypoint) do
-    waypoint = Repo.preload(waypoint, photos: from(p in Photo, order_by: p.inserted_at))
+    photos_query = Photo
+      |> order_by(asc: :inserted_at)
 
-    q = from w in assoc(tour, :waypoints),
-      where: w.position < ^waypoint.position,
-      order_by: [desc: w.position],
-      limit: 1
-    prev_waypoint = Repo.one(q)
+    waypoint = Repo.preload(waypoint, photos: photos_query)
 
-    q = from w in assoc(tour, :waypoints),
-      where: w.position > ^waypoint.position,
-      order_by: w.position,
-      limit: 1
-    next_waypoint = Repo.one(q)
+    prev_waypoint = Waypoint
+      |> where([w], w.position < ^waypoint.position)
+      |> order_by(desc: :position)
+      |> limit(1)
+      |> Repo.one
+
+    next_waypoint = Waypoint
+      |> where([w], w.position > ^waypoint.position)
+      |> order_by(asc: :position)
+      |> limit(1)
+      |> Repo.one
 
     render conn, "show.html",
       tour:           tour,
