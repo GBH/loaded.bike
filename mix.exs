@@ -46,10 +46,13 @@ defmodule LoadedBike.Mixfile do
       {:earmark,              "~> 1.2.0"},
       {:html_sanitize_ex,     "~> 1.1.0"},
       {:breadcrumble,         "~> 1.0.0"},
+      {:kerosene,             "~> 0.6.1"},
       {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
 
+      # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
 
+      # -- test ----------------------------------------------------------------
       {:ex_machina,           "~> 1.0", only: :test},
       {:floki,                "~> 0.14.0", only: :test}
     ]

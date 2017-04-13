@@ -4,3 +4,6 @@
   - for tour <- @tours do
     .tour
       = link tour.title, to: tour_path(@conn, :show, tour)
+
+- if @paginator.total_pages > 1 do
+  = paginate @conn, @paginator
