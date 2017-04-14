@@ -25,6 +25,12 @@ defmodule LoadedBike.Web.TourControllerTest do
     assert length(assigns(conn, :tour).waypoints) == 1
   end
 
+  test "show not found" do
+    assert_error_sent 404, fn ->
+      get build_conn(), "/tours/0"
+    end
+  end
+
   test "show unpublished" do
     tour = insert(:tour, %{is_published: false})
     assert_error_sent 404, fn ->
