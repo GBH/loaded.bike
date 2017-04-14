@@ -1,2 +1,10 @@
-%h2
-  = @user.name
+.tours
+  - for tour <- @user.tours do
+    .tour
+      %h2.title
+        = link tour.title, to: current_user_tour_path(@conn, :show, tour)
+
+      .map{data-map: "true", data-markers: "#{waypoints_to_json(@conn, :private, tour.waypoints)}"}
+
+      .description
+        = markdown(tour.description)

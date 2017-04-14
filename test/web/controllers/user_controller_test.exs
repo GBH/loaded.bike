@@ -12,8 +12,8 @@ defmodule LoadedBike.Web.UserControllerTest do
     user = insert(:user)
     conn = get build_conn(), "/riders/#{user.id}"
     assert response(conn, 200)
-    assert assigns(conn, :user).__struct__ == LoadedBike.User
     assert template(conn) == "show.html"
+    assert assigns(conn, :user)
   end
 
   test "show not found" do

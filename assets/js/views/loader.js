@@ -10,6 +10,7 @@ import UserPhotoNewView     from "./user/photo/new"
 import UserPhotoEditView    from "./user/photo/edit"
 import TourShowView         from "./tour/show"
 import WaypointShowView     from "./waypoint/show"
+import UserShowView         from "./user/show"
 
 const views = {
   UserTourIndexView,
@@ -22,7 +23,8 @@ const views = {
   UserPhotoNewView,
   UserPhotoEditView,
   TourShowView,
-  WaypointShowView
+  WaypointShowView,
+  UserShowView
 }
 
 export default function loadView(viewName){

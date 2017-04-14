@@ -1,7 +1,7 @@
 defmodule LoadedBike.Web.UserController do
   use LoadedBike.Web, :controller
 
-  alias LoadedBike.User
+  alias LoadedBike.{User, Tour, Waypoint}
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})
@@ -24,7 +24,17 @@ defmodule LoadedBike.Web.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    render(conn, "show.html", user: user)
+    waypoints_query = Waypoint.published(Waypoint)
+
+    tours_query = Tour
+      |> Tour.published
+      |> preload(waypoints: ^waypoints_query)
+
+    user = User
+      |> preload(tours: ^tours_query)
+      |> Repo.get!(id)
+
+    conn
+    |> render("show.html", user: user)
   end
 end
