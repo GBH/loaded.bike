@@ -1,9 +1,8 @@
 .jumbotron
 
-
 .heading
-  Recently publisheds tours
-  = link "More Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-primary"
+  Recently published tours
+  = link "View All Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-primary"
 
 .tours
   - for tour <- @tours do
