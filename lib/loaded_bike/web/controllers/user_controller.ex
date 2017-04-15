@@ -43,6 +43,7 @@ defmodule LoadedBike.Web.UserController do
     changeset = User.changeset(conn.assigns.current_user)
 
     conn
+    |> add_breadcrumb(name: "Edit Account")
     |> render("edit.html", changeset: changeset)
   end
 
@@ -57,7 +58,7 @@ defmodule LoadedBike.Web.UserController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to update Account")
-        |> add_breadcrumb(name: "Edit")
+        |> add_breadcrumb(name: "Edit Account")
         |> render("edit.html", changeset: changeset)
     end
   end

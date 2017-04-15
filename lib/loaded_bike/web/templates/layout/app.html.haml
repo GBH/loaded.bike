@@ -20,7 +20,7 @@
         %button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbarSupportedContent")
           %span.navbar-toggler-icon
         %a.navbar-brand(href="#{landing_path(@conn, :show)}")
-          = img_tag static_path(@conn, "/images/logo-bike.png"), width: "66px", height: "40px", class: "d-inline-block"
+          = img_tag static_path(@conn, "/images/logo-bike.png"), width: "41px", height: "25px", class: "d-inline-block"
           loaded.bike
 
         .collapse.navbar-collapse#navbarSupportedContent
@@ -37,10 +37,10 @@
                 = link "Sign in", to: session_path(@conn, :new), class: "nav-link"
 
     .container.content
+      = flash_alert(@conn)
+
       - if assigns[:breadcrumb_trails] do
         = render LoadedBike.Web.BreadcrumbView, "breadcrumb.html", assigns
-
-      = flash_alert(@conn)
 
       %main(role="main")
         = render @view_module, @view_template, assigns

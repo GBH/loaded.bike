@@ -1,6 +1,6 @@
 export default class MainView {
   mount(){
-    // global view js goes here
+    $('[data-toggle="tooltip"]').tooltip()
   }
 
   unmount(){

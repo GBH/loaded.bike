@@ -3,24 +3,13 @@
     by
     = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
 
-  .count
-    .number
-      = length(@tour.waypoints)
-    .label
-      waypoints
+  .title
+    %h3
+      = link @tour.title, to: tour_path(@conn, :show, @tour)
 
-  .description
-    .title
-      %h2
-        = link @tour.title, to: tour_path(@conn, :show, @tour)
-
-    - start   = List.first(@tour.waypoints)
-    - finish  = List.last(@tour.waypoints)
-    - if start && finish do
-      .waypoints
-        .start
-          from:
-          = link start.title, to: tour_waypoint_path(@conn, :show, @tour, start)
-        .finish
-          to:
-          = link finish.title, to: tour_waypoint_path(@conn, :show, @tour, finish)
+  .waypoints.clearfix
+    - waypoints = Enum.with_index(@tour.waypoints)
+    - total = length(waypoints)
+    - for {wp, index} <- waypoints do
+      - css_class = waypoint_css_class(total, index)
+      = link content_tag(:span, wp.title), to: tour_waypoint_path(@conn, :show, @tour, wp), data_toggle: "tooltip", title: wp.title, class: css_class

@@ -9,9 +9,11 @@ body
   background: $white url(/images/bg_ultrawide.png) top center
 
   footer
-    padding: 4em 0
-    font-size: 85%
-    background-color: $white
+    .container
+      font-size: 85%
+      padding: 4em 15px
+      border-top: 1px dotted $gray
+      background-color: rgba(255,255,255, 0.7)
 
 // - Common elements -----------------------------------------------------------
 .heading
@@ -25,32 +27,32 @@ body
 
 .tour-card
   margin-bottom: 15px
-  background-color: $gray-lightest
+  border-radius: 5px
+  border: 1px solid $gray-lighter
   padding: 15px
   @include clearfix
   .rider
     float: right
-  .count
-    border-radius: 5px
-    background-color: $white
-    width: 100px
-    height: 100px
-    position: relative
-    float: left
-    .number
-      line-height: 90px
-      font-size: 50px
-      color: $gray-lighter
-      text-align: center
-    .label
-      width: 100px
-      position: absolute
-      bottom: 10px
-      text-align: center
-      color: $gray-lighter
-      font-size: 12px
-  .description
-    margin-left: 115px
+  .waypoints
+    a
+      display: block
+      float: left
+      height: 15px
+      width: 15px
+      margin: 0 2px 2px 0
+      background-color: #5fa6d7
+      border-radius: 2px
+      span
+        display: none
+    a.start
+      background-color: #31c231
+    a.finish
+      background-color: #bd3434
+    a.week
+      background-color: #227bc9
+    a:hover
+      background-color: #c6c630
+
 
 .actions
   background-color: $gray-lightest
