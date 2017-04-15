@@ -39,4 +39,32 @@ defmodule LoadedBike.Web.UserControllerTest do
     assert response(conn, 200)
     assert template(conn) == "new.html"
   end
+
+  test "edit" do
+    user = insert(:user)
+    conn = get login(user), "/rider/edit"
+    assert response(conn, 200)
+    assert template(conn) == "edit.html"
+  end
+
+  test "update" do
+    user = insert(:user)
+    conn = put login(user), "/rider", user: %{
+      name: "Updated user"
+    }
+    assert redirected_to(conn) == "/rider/tours"
+    assert get_flash(conn, :info) == "Account updated"
+    assert Repo.get_by(User, id: user.id, name: "Updated user")
+  end
+
+  test "update failure" do
+    user = insert(:user)
+    conn = put login(user), "/rider", user: %{
+      name: ""
+    }
+    assert response(conn, 200)
+    assert template(conn) == "edit.html"
+    assert get_flash(conn, :error) == "Failed to update Account"
+    refute Repo.get_by(User, id: user.id, name: "")
+  end
 end

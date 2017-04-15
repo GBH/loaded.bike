@@ -38,4 +38,27 @@ defmodule LoadedBike.Web.UserController do
     |> add_breadcrumb(name: "#{user.name} tours")
     |> render("show.html", user: user)
   end
+
+  def edit(conn, _) do
+    changeset = User.changeset(conn.assigns.current_user)
+
+    conn
+    |> render("edit.html", changeset: changeset)
+  end
+
+  def update(conn, %{"user" => user_params}) do
+    changeset = User.changeset(conn.assigns.current_user, user_params)
+
+    case Repo.update(changeset) do
+      {:ok, _user} ->
+        conn
+        |> put_flash(:info, "Account updated")
+        |> redirect(to: current_user_tour_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Failed to update Account")
+        |> add_breadcrumb(name: "Edit")
+        |> render("edit.html", changeset: changeset)
+    end
+  end
 end

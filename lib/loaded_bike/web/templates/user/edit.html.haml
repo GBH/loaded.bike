@@ -1,4 +1,4 @@
-- form_for @changeset, current_user_path(@conn, :create), fn f ->
+- form_for @changeset, current_user_path(@conn, :update), fn f ->
 
   .form-group
     = label f, :name, class: "form-label"
@@ -16,4 +16,4 @@
     = error_tag f, :password
 
   .form-group.form-actions
-    = submit "Create Account", class: "btn btn-primary"
+    = submit "Update Account", class: "btn btn-primary"
