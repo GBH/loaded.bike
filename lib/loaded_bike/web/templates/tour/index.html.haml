@@ -1,9 +1,6 @@
-%h1 All Tours
-
 .tours
   - for tour <- @tours do
-    .tour
-      = link tour.title, to: tour_path(@conn, :show, tour)
+    = render "_tour.html", conn: @conn, tour: tour
 
 - if @paginator.total_pages > 1 do
   = paginate @conn, @paginator

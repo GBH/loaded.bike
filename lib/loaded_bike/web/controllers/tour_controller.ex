@@ -7,22 +7,29 @@ defmodule LoadedBike.Web.TourController do
     {tours, paginator} = Tour
       |> Tour.published
       |> order_by(desc: :id)
+      |> preload([:user, waypoints: ^waypoints_query()])
       |> Repo.paginate(params)
 
     conn
+    |> add_breadcrumb(name: "Tours")
     |> render("index.html", tours: tours, paginator: paginator)
   end
 
   def show(conn, %{"id" => id}) do
-    wp_query = Waypoint
-      |> Waypoint.published
-      |> order_by(asc: :position)
-
     tour = Tour
       |> Tour.published
-      |> preload(waypoints: ^wp_query)
+      |> preload(waypoints: ^waypoints_query())
       |> Repo.get!(id)
 
-    render(conn, "show.html", tour: tour)
+    conn
+    |> add_breadcrumb(name: "Tours", url: tour_path(conn, :index))
+    |> add_breadcrumb(name: tour.title)
+    |> render("show.html", tour: tour)
+  end
+
+  defp waypoints_query do
+    Waypoint
+    |> Waypoint.published
+    |> order_by(asc: :position)
   end
 end

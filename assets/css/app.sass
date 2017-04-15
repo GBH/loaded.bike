@@ -14,6 +14,44 @@ body
     background-color: $white
 
 // - Common elements -----------------------------------------------------------
+.heading
+  padding: $breadcrumb-padding-y $breadcrumb-padding-x
+  margin-bottom: $spacer-y
+  background-color: $breadcrumb-bg
+  @include border-radius($border-radius)
+  @include clearfix
+  a.btn
+    float: right
+
+.tour-card
+  margin-bottom: 15px
+  background-color: $gray-lightest
+  padding: 15px
+  @include clearfix
+  .rider
+    float: right
+  .count
+    border-radius: 5px
+    background-color: $white
+    width: 100px
+    height: 100px
+    position: relative
+    float: left
+    .number
+      line-height: 90px
+      font-size: 50px
+      color: $gray-lighter
+      text-align: center
+    .label
+      width: 100px
+      position: absolute
+      bottom: 10px
+      text-align: center
+      color: $gray-lighter
+      font-size: 12px
+  .description
+    margin-left: 115px
+
 .actions
   background-color: $gray-lightest
   padding: 5px
@@ -47,11 +85,7 @@ textarea[data-autoresize]
   height: 300px
 
 // - Page specific styles ------------------------------------------------------
-.user_tour_index_view
-  .tour
-    margin-bottom: 30px
-
-.user_waypoint_show_view
+.user_waypoint_show_view, .waypoint_show_view
   .waypoint-nav
     margin-bottom: 15px
   .photos
@@ -67,6 +101,10 @@ textarea[data-autoresize]
           right: 5px
         img
           width: 100%
+
+.user_show_view, .user_tour_index_view
+  .tour
+    margin-bottom: 30px
 
 .user_photo_edit_view
   .image

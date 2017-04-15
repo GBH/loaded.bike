@@ -15,8 +15,13 @@ defmodule LoadedBike.Web.User.TourController do
 
   # -- Actions -----------------------------------------------------------------
   def index(conn, _, current_user) do
-    tours = Repo.all(from t in assoc(current_user, :tours), order_by: [desc: t.inserted_at])
-      |> Repo.preload(waypoints: from(w in Waypoint, order_by: w.position))
+    waypoints_query = Waypoint
+      |> order_by(asc: :position)
+
+    tours = assoc(current_user, :tours)
+      |> order_by(desc: :inserted_at)
+      |> preload(waypoints: ^waypoints_query)
+      |> Repo.all
 
     conn
     |> add_breadcrumb(name: "Tours")

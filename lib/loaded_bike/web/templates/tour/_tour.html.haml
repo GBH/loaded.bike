@@ -1,0 +1,26 @@
+.tour-card
+  .rider
+    by
+    = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
+
+  .count
+    .number
+      = length(@tour.waypoints)
+    .label
+      waypoints
+
+  .description
+    .title
+      %h2
+        = link @tour.title, to: tour_path(@conn, :show, @tour)
+
+    - start   = List.first(@tour.waypoints)
+    - finish  = List.last(@tour.waypoints)
+    - if start && finish do
+      .waypoints
+        .start
+          from:
+          = link start.title, to: tour_waypoint_path(@conn, :show, @tour, start)
+        .finish
+          to:
+          = link finish.title, to: tour_waypoint_path(@conn, :show, @tour, finish)
