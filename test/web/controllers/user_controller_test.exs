@@ -35,7 +35,7 @@ defmodule LoadedBike.Web.UserControllerTest do
 
     rider = Repo.get_by(User, email: "test@test.test")
     assert rider
-    assert redirected_to(conn) == "/riders/#{rider.id}"
+    assert redirected_to(conn) == "/"
   end
 
   test "creation with error" do

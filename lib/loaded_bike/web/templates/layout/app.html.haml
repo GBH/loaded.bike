@@ -25,11 +25,33 @@
 
         .collapse.navbar-collapse#navbarSupportedContent
           %ul.navbar-nav.mr-auto
+            %li.nav-item
+              = link "Home", to: landing_path(@conn, :show), class: "nav-link"
             - if @current_user do
               %li.nav-item
                 = link "My Tours", to: current_user_tour_path(@conn, :index), class: "nav-link"
-              %li.nav-item
-                = link "Sign out", to: session_path(@conn, :delete), method: :delete, class: "nav-link"
+
+
+          %ul.navbar-nav.ml-auto
+            - if @current_user do
+
+              %li.nav-item.with-dropdown
+                .dropdown
+                  %button.btn.btn-default.btn-sm.btn-nav.dropdown-toggle(data-toggle="dropdown")
+                    = LoadedBike.Web.UserView.avatar_img(@current_user, :small)
+                  .dropdown-menu.dropdown-menu-right
+                    .dropdown-header
+                      Signed in as
+                      = @current_user.name
+                    .dropdown-divider
+                    = link "Edit Profile", to: current_user_path(@conn, :edit), class: "dropdown-item"
+                    = link "Sign out", to: session_path(@conn, :delete), method: :delete, class: "dropdown-item no-bootstrap"
+
+              %li.nav-item.without-dropdown
+                = link "Edit Profile", to: current_user_path(@conn, :edit), class: "nav-link"
+              %li.nav-item.without-dropdown
+                = link "Sign out", to: session_path(@conn, :delete), method: :delete, class: "nav-link no-bootstrap"
+
             - else
               %li.nav-item
                 = link "Register", to: current_user_path(@conn, :new), class: "nav-link"

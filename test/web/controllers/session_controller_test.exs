@@ -13,7 +13,7 @@ defmodule LoadedBike.Web.SessionControllerTest do
       email: "test@example.org", password: "password"
     }
     assert redirected_to(conn) == "/"
-    assert get_flash(conn, :info) == "Welcome"
+    assert get_flash(conn, :info) == "Welcome back"
 
     assert Guardian.Plug.current_resource(conn).id == user.id
   end

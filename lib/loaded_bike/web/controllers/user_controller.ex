@@ -16,7 +16,7 @@ defmodule LoadedBike.Web.UserController do
         conn
         |> LoadedBike.Auth.login(user)
         |> put_flash(:info, "#{user.name} created")
-        |> redirect(to: user_path(conn, :show, user))
+        |> redirect(to: landing_path(conn, :show))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)

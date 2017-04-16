@@ -4,7 +4,9 @@ defmodule LoadedBike.Web.SessionController do
   plug :scrub_params, "session" when action in ~w(create)a
 
   def new(conn, _) do
-    render conn, "new.html"
+    conn
+    |> add_breadcrumb(name: "Sign in")
+    |> render("new.html")
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
@@ -12,11 +14,12 @@ defmodule LoadedBike.Web.SessionController do
     case LoadedBike.Auth.login_by_email_and_pass(conn, email, password) do
       {:ok, conn} ->
         conn
-        |> put_flash(:info, "Welcome")
+        |> put_flash(:info, "Welcome back")
         |> redirect(to: landing_path(conn, :show))
 
       {:error, _reason, conn} ->
         conn
+        |> add_breadcrumb(name: "Sign in")
         |> put_flash(:error, "Invalid login credentials")
         |> render("new.html")
     end

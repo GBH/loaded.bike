@@ -9,10 +9,30 @@
     .navbar-toggler-right
       right: 0
 
+.btn-nav
+  color: $white
+  border: 0
+  background: transparent
+  padding: 2px
+  img
+    border: 1px solid $gray-light
+
 // -- Structure ----------------------------------------------------------------
-@media(min-width: 1200px)
+@include media-breakpoint-up(lg)
   .container
     max-width: 960px
+  nav.navbar
+    li.with-dropdown
+      display: block
+    li.without-dropdown
+      display: none
+
+@include media-breakpoint-down(md)
+  nav.navbar
+    li.with-dropdown
+      display: none
+    li.without-dropdown
+      display: block
 
 body
   background: $white url(/images/bg_ultrawide.png) top center
@@ -25,6 +45,9 @@ body
       background-color: rgba(255,255,255, 0.7)
 
 // - Common elements -----------------------------------------------------------
+.alert
+  text-align: center
+
 .heading
   padding: $breadcrumb-padding-y $breadcrumb-padding-x
   margin-bottom: $spacer-y
@@ -42,6 +65,13 @@ body
   @include clearfix
   .rider
     float: right
+    border: 1px solid $gray-lighter
+    background: $gray-lightest
+    border-radius: 2px
+    padding: 2px 5px 2px 2px
+    line-height: 20px
+    margin-top: -10px
+    margin-right: -10px
   .waypoints
     a
       display: block
@@ -61,7 +91,6 @@ body
       background-color: #227bc9
     a:hover
       background-color: #c6c630
-
 
 .actions
   background-color: $gray-lightest
@@ -99,6 +128,7 @@ textarea[data-autoresize]
 .landing_show_view
   .jumbotron
     background: url(/images/jumbotron-bg.jpg) center no-repeat
+
 .user_waypoint_show_view, .waypoint_show_view
   .waypoint-nav
     margin-bottom: 15px

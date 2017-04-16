@@ -1,6 +1,6 @@
 .tour-card
   .rider
-    by
+    = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
     = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
 
   .title

@@ -2,7 +2,7 @@ defmodule LoadedBike.Web.AvatarUploader do
   use Arc.Definition
   use Arc.Ecto.Definition
 
-  @versions [:large, :small]
+  @versions [:large, :small, :tiny]
 
   # local storage
   def __storage, do: Arc.Storage.Local
@@ -22,6 +22,10 @@ defmodule LoadedBike.Web.AvatarUploader do
 
   def transform(:small, _) do
     {:convert, "-strip -thumbnail 32x32^ -gravity center -crop 32x32+0+0 -format jpg", :jpg}
+  end
+
+  def transform(:tiny, _) do
+    {:convert, "-strip -thumbnail 20x20^ -gravity center -crop 20x20+0+0 -format jpg", :jpg}
   end
 
   # Override the persisted filenames:

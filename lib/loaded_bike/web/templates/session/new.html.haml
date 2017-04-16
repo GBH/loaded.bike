@@ -1,11 +1,12 @@
-%h1 Sign in
-
 - form_for @conn, session_path(@conn, :create), [as: :session], fn f ->
 
   .form-group
-    = text_input f, :email, placeholder: "Email", class: "form-control"
+    = label f, :email, class: "form-label"
+    = text_input f, :email, class: "form-control"
 
   .form-group
-    = password_input f, :password, placeholder: "Password", class: "form-control"
+    = label f, :password, class: "form-label"
+    = password_input f, :password, class: "form-control"
 
-  = submit "Sign in", class: "btn btn-primary"
+  .form-group.form-actions
+    = submit "Sign in", class: "btn btn-primary"
