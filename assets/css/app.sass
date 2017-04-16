@@ -1,5 +1,14 @@
 @import "bootstrap"
 
+// bootstrap fix https://github.com/twbs/bootstrap/pull/21722
+.navbar
+  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1))
+    > .container
+      margin-right: 0
+      margin-left: 0
+    .navbar-toggler-right
+      right: 0
+
 // -- Structure ----------------------------------------------------------------
 @media(min-width: 1200px)
   .container

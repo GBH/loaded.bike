@@ -1,6 +1,10 @@
 defmodule LoadedBike.Web.UserControllerTest do
   use LoadedBike.Web.ConnCase
 
+  defp build_upload(path \\ "test/files/test.jpg") do
+    %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: Path.basename(path)}
+  end
+
   test "new" do
     conn = get build_conn(), "/rider/new"
     assert response(conn, 200)
@@ -50,7 +54,8 @@ defmodule LoadedBike.Web.UserControllerTest do
   test "update" do
     user = insert(:user)
     conn = put login(user), "/rider", user: %{
-      name: "Updated user"
+      name:   "Updated user",
+      avatar: build_upload()
     }
     assert redirected_to(conn) == "/rider/tours"
     assert get_flash(conn, :info) == "Account updated"

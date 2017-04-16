@@ -3,10 +3,10 @@ defmodule LoadedBike.Photo do
   use Arc.Ecto.Schema
 
   schema "photos" do
-    field :file, LoadedBike.Web.PhotoUploader.Type
+    field :file,        LoadedBike.Web.PhotoUploader.Type
     field :description, :string
-    field :position, :integer
-    field :uuid, :string
+    field :position,    :integer
+    field :uuid,        :string
 
     belongs_to :waypoint, LoadedBike.Waypoint, foreign_key: :waypoint_id
 

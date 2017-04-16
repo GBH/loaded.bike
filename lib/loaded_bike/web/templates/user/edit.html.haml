@@ -1,4 +1,4 @@
-- form_for @changeset, current_user_path(@conn, :update), fn f ->
+- form_for @changeset, current_user_path(@conn, :update), [multipart: true], fn f ->
 
   .form-group
     = label f, :name, class: "form-label"
@@ -9,6 +9,17 @@
     = label f, :email, class: "form-label"
     = text_input f, :email, class: "form-control"
     = error_tag f, :email
+
+  .form-group
+    = label f, :avatar, class: "control-label"
+
+    .avatar
+      - user = @conn.assigns.current_user
+      - url = LoadedBike.Web.AvatarUploader.url({user.avatar, user}, :large)
+      %img(src: "#{url}")
+
+    = file_input f, :avatar, class: "form-control"
+    = error_tag f, :avatar
 
   .form-group
     = label f, :password, class: "form-label"

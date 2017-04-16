@@ -12,4 +12,4 @@
     - total = length(waypoints)
     - for {wp, index} <- waypoints do
       - css_class = waypoint_css_class(total, index)
-      = link content_tag(:span, wp.title), to: tour_waypoint_path(@conn, :show, @tour, wp), data_toggle: "tooltip", title: wp.title, class: css_class
+      = link content_tag(:span, wp.title), to: tour_waypoint_path(@conn, :show, @tour, wp), data_toggle: "tooltip", data_animation: "false", title: wp.title, class: css_class

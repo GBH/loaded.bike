@@ -6,6 +6,7 @@ defmodule LoadedBike.Repo.Migrations.CreateUser do
       add :email,         :string, null: false
       add :name,          :string, null: false
       add :password_hash, :string, null: false
+      add :avatar,        :string
 
       add :is_admin, :boolean, null: false, default: false
 

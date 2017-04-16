@@ -1,11 +1,13 @@
 defmodule LoadedBike.User do
   use LoadedBike.Web, :model
+  use Arc.Ecto.Schema
 
   schema "users" do
     field :email,         :string
     field :name,          :string
     field :password_hash, :string
     field :password,      :string, virtual: true
+    field :avatar,        LoadedBike.Web.AvatarUploader.Type
 
     has_many :tours, LoadedBike.Tour
 
@@ -15,6 +17,7 @@ defmodule LoadedBike.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :name])
+    |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)
   end
