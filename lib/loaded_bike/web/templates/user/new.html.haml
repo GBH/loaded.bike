@@ -1,19 +1,23 @@
 - form_for @changeset, current_user_path(@conn, :create), fn f ->
 
-  .form-group
-    = label f, :name, class: "form-label"
-    = text_input f, :name, class: "form-control"
-    = error_tag f, :name
+  .form-group.row
+    = label f, :name, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = text_input f, :name, class: "form-control"
+      = error_tag f, :name
 
-  .form-group
-    = label f, :email, class: "form-label"
-    = text_input f, :email, class: "form-control"
-    = error_tag f, :email
+  .form-group.row
+    = label f, :email, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = text_input f, :email, class: "form-control"
+      = error_tag f, :email
 
-  .form-group
-    = label f, :password, class: "form-label"
-    = password_input f, :password, class: "form-control"
-    = error_tag f, :password
+  .form-group.row
+    = label f, :password, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = password_input f, :password, class: "form-control"
+      = error_tag f, :password
 
-  .form-group.form-actions
-    = submit "Create Account", class: "btn btn-primary"
+  .form-group.form-actions.row
+    .col-sm-10.offset-sm-2
+      = submit "Create Account", class: "btn btn-primary"
