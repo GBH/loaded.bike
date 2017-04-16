@@ -1,3 +1,6 @@
+.heading
+  %h1 All Tours
+
 .tours
   - for tour <- @tours do
     = render "_tour.html", conn: @conn, tour: tour

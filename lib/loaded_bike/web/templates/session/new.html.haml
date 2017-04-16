@@ -1,12 +1,19 @@
+.heading
+  %h1 Sign in
+
 - form_for @conn, session_path(@conn, :create), [as: :session], fn f ->
 
-  .form-group
-    = label f, :email, class: "form-label"
-    = text_input f, :email, class: "form-control"
+  .form-group.row
+    = label f, :email, class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
+      = text_input f, :email, class: "form-control"
 
-  .form-group
-    = label f, :password, class: "form-label"
-    = password_input f, :password, class: "form-control"
+  .form-group.row
+    = label f, :password, class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
+      = password_input f, :password, class: "form-control"
 
-  .form-group.form-actions
-    = submit "Sign in", class: "btn btn-primary"
+  .form-group.row
+    .col-sm-5.offset-sm-4
+      = submit "Sign in", class: "btn btn-primary"
+      = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"

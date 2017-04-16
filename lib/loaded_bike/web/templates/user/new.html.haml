@@ -1,23 +1,27 @@
+.heading
+  %h1 Register
+
 - form_for @changeset, current_user_path(@conn, :create), fn f ->
 
   .form-group.row
-    = label f, :name, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
+    = label f, :name, class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
       = text_input f, :name, class: "form-control"
       = error_tag f, :name
 
   .form-group.row
-    = label f, :email, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
+    = label f, :email, class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
       = text_input f, :email, class: "form-control"
       = error_tag f, :email
 
   .form-group.row
-    = label f, :password, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
+    = label f, :password, class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
       = password_input f, :password, class: "form-control"
       = error_tag f, :password
 
-  .form-group.form-actions.row
-    .col-sm-10.offset-sm-2
+  .form-group.row
+    .col-sm-5.offset-sm-4
       = submit "Create Account", class: "btn btn-primary"
+      = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"

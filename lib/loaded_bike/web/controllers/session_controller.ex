@@ -5,7 +5,6 @@ defmodule LoadedBike.Web.SessionController do
 
   def new(conn, _) do
     conn
-    |> add_breadcrumb(name: "Sign in")
     |> render("new.html")
   end
 
@@ -19,7 +18,6 @@ defmodule LoadedBike.Web.SessionController do
 
       {:error, _reason, conn} ->
         conn
-        |> add_breadcrumb(name: "Sign in")
         |> put_flash(:error, "Invalid login credentials")
         |> render("new.html")
     end

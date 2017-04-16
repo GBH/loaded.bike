@@ -1,3 +1,7 @@
+.heading
+  = link "New Tour", to: current_user_tour_path(@conn, :new), class: "btn btn-sm btn-success pull-right"
+  %h1 My Tours
+
 .tours
   - for tour <- @tours do
     .tour
@@ -10,7 +14,3 @@
 
       .description
         = markdown(tour.description)
-
-.actions.clearfix
-  = link "New Tour", to: current_user_tour_path(@conn, :new), class: "btn btn-primary pull-right"
-

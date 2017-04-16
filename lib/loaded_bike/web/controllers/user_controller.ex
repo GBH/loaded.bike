@@ -15,11 +15,13 @@ defmodule LoadedBike.Web.UserController do
       {:ok, user} ->
         conn
         |> LoadedBike.Auth.login(user)
-        |> put_flash(:info, "#{user.name} created")
+        |> put_flash(:info, "Account created")
         |> redirect(to: landing_path(conn, :show))
 
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> put_flash(:error, "Failed to create Account")
+        |> render("new.html", changeset: changeset)
     end
   end
 
@@ -43,7 +45,6 @@ defmodule LoadedBike.Web.UserController do
     changeset = User.changeset(conn.assigns.current_user)
 
     conn
-    |> add_breadcrumb(name: "Edit Account")
     |> render("edit.html", changeset: changeset)
   end
 
@@ -58,7 +59,6 @@ defmodule LoadedBike.Web.UserController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to update Account")
-        |> add_breadcrumb(name: "Edit Account")
         |> render("edit.html", changeset: changeset)
     end
   end

@@ -1,30 +1,39 @@
+.heading
+  %h1 Edit Profile
+
 - form_for @changeset, current_user_path(@conn, :update), [multipart: true], fn f ->
 
-  .form-group
-    = label f, :name, class: "form-label"
-    = text_input f, :name, class: "form-control"
-    = error_tag f, :name
+  .form-group.row
+    = label f, :name, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = text_input f, :name, class: "form-control"
+      = error_tag f, :name
 
-  .form-group
-    = label f, :email, class: "form-label"
-    = text_input f, :email, class: "form-control"
-    = error_tag f, :email
+  .form-group.row
+    = label f, :email, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = text_input f, :email, class: "form-control"
+      = error_tag f, :email
 
-  .form-group
-    = label f, :avatar, class: "control-label"
+  .form-group.row
+    %label.col-sm-2.col-form-label.text-sm-right
+      Current Avatar
+    .col-sm-10
+      = LoadedBike.Web.UserView.avatar_img(@conn.assigns.current_user, :large)
 
-    .avatar
-      - user = @conn.assigns.current_user
-      - url = LoadedBike.Web.AvatarUploader.url({user.avatar, user}, :large)
-      %img(src: "#{url}")
+  .form-group.row
+    = label f, :avatar, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = file_input f, :avatar, class: "form-control"
+      = error_tag f, :avatar
 
-    = file_input f, :avatar, class: "form-control"
-    = error_tag f, :avatar
+  .form-group.row
+    = label f, :password, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = password_input f, :password, class: "form-control"
+      = error_tag f, :password
 
-  .form-group
-    = label f, :password, class: "form-label"
-    = password_input f, :password, class: "form-control"
-    = error_tag f, :password
-
-  .form-group.form-actions
-    = submit "Update Account", class: "btn btn-primary"
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = submit "Update Profile", class: "btn btn-primary"
+      = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"

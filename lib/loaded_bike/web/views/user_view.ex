@@ -10,8 +10,9 @@ defmodule LoadedBike.Web.UserView do
     s = case size do
       :small  -> 32
       :tiny   -> 20
+      _       -> 200
     end
     "https://www.gravatar.com/avatar/#{hash}?s=#{s}"
   end
-  defp _avatar_url(user, size, url), do: url
+  defp _avatar_url(_user, _size, url), do: url
 end

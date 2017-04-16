@@ -1,14 +1,17 @@
 - form_for @changeset, @action, [multipart: true], fn f ->
 
-  .form-group
-    = label f, :file, class: "control-label"
-    = file_input f, :file, class: "form-control"
-    = error_tag f, :file
+  .form-group.row
+    = label f, :file, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = file_input f, :file, class: "form-control"
+      = error_tag f, :file
 
-  .form-group
-    = label f, :description, class: "control-label"
-    = textarea f, :description, class: "form-control", data: [autoresize: true]
-    = error_tag f, :description
+  .form-group.row
+    = label f, :description, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = textarea f, :description, class: "form-control", data: [autoresize: true]
+      = error_tag f, :description
 
-  .form-group.form-actions
-    = submit "Submit", class: "btn btn-primary"
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = submit "Submit", class: "btn btn-primary"

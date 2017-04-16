@@ -1,19 +1,23 @@
 - form_for @changeset, @action, fn f ->
 
-  .form-group
-    = label f, :title, class: "control-label"
-    = text_input f, :title, class: "form-control"
-    = error_tag f, :title
+  .form-group.row
+    = label f, :title, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = text_input f, :title, class: "form-control"
+      = error_tag f, :title
 
-  .form-group
-    = label f, :description, class: "control-label"
-    = textarea f, :description, class: "form-control", data: [autoresize: true]
-    = error_tag f, :description
+  .form-group.row
+    = label f, :description, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = textarea f, :description, class: "form-control", data: [autoresize: true]
+      = error_tag f, :description
 
-  .form-group
-    = checkbox f, :is_published
-    = label f, :is_published, "Published"
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = checkbox f, :is_published
+      = label f, :is_published, "Published"
 
-  .form-group.form-actions
-    = submit "Submit", class: "btn btn-primary"
-    = link "Cancel", to: @cancel_url, class: "btn btn-link"
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = submit "Submit", class: "btn btn-primary"
+      = link "Cancel", to: @cancel_url, class: "btn btn-link"

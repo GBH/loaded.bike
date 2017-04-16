@@ -1,3 +1,6 @@
+.heading
+  %h1 Create New Tour
+
 - action_url = current_user_tour_path(@conn, :create)
 - cancel_url = current_user_tour_path(@conn, :index)
 = render "form.html", changeset: @changeset, action: action_url, cancel_url: cancel_url

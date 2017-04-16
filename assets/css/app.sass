@@ -44,21 +44,19 @@ body
       border-top: 1px dotted $gray
       background-color: rgba(255,255,255, 0.7)
 
-// -- Forms --------------------------------------------------------------------
-.form-group.form-actions
-  background-color: $gray-lightest
-  padding: 15px 0
-
 // - Common elements -----------------------------------------------------------
 .alert
   text-align: center
 
 .heading
-  padding: $breadcrumb-padding-y $breadcrumb-padding-x
   margin-bottom: $spacer-y
-  background-color: $breadcrumb-bg
-  @include border-radius($border-radius)
+  background-color: $gray-lightest
+  margin: 0 -15px 2rem -15px
+  padding: 15px
   @include clearfix
+  h1
+    font-size: 125%
+    margin: 0
   a.btn
     float: right
 

@@ -2,5 +2,6 @@
 - cancel_url = current_user_tour_waypoint_path(@conn, :show, @tour, @waypoint)
 = render "form.html", tour: @tour, changeset: @changeset, action: action_url, cancel_url: cancel_url
 
-.form-group.form-actions
-  = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-sm btn-outline-danger", method: :delete, data: [confirm: "Are you sure?"]
+.form-group.row
+  .col-sm-10.offset-sm-2
+    = link "Delete", to: current_user_tour_waypoint_path(@conn, :delete, @tour, @waypoint), class: "btn btn-sm btn-outline-danger", method: :delete, data: [confirm: "Are you sure?"]
