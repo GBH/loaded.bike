@@ -1,11 +1,18 @@
 .map#map(data-markers: "#{waypoints_to_json(@conn, :public, @tour.waypoints)}")
 
-.user-content
+.heading
+  published by
+  = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
+  = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
+
+.description
   = markdown(@tour.description)
+
+.heading
+  %h1 Waypoints
 
 .table-responsive
   %table.table.table-sm
-
     - for waypoint <- @tour.waypoints do
       %tr
         %td

@@ -3,7 +3,8 @@
     .col-sm-7
       %h4
         = link @tour.title, to: tour_path(@conn, :show, @tour)
-      by
+      .description
+        = @tour.short_description
       .rider
         = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
         = link @tour.user.name, to: user_path(@conn, :show, @tour.user)

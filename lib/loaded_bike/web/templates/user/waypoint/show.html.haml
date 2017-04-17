@@ -11,6 +11,11 @@
   .description
     = markdown(@waypoint.description)
 
+
+.heading
+  = link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-sm btn-success pull-right"
+  %h1 Photos
+
 .photos#photos
   - for photo <- @waypoint.photos do
     .photo{id: "#{LoadedBike.Photo.dom_id(photo)}"}
@@ -22,8 +27,7 @@
       .description
         = markdown(photo.description)
 
-  .actions.clearfix
-    = link "Add Photo", to: current_user_tour_waypoint_photo_path(@conn, :new, @tour, @waypoint), class: "btn btn-primary pull-right"
+
 
 = render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint
 

@@ -2,7 +2,7 @@
 
 .heading
   Recently published tours
-  = link "View All Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-primary"
+  = link "View All Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-secondary"
 
 .tours
   - for tour <- @tours do

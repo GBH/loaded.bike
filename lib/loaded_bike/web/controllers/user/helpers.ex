@@ -12,7 +12,7 @@ defmodule LoadedBike.Web.Controller.User.Helpers do
 
         conn
         |> assign(:tour, tour)
-        |> add_breadcrumb(name: "Tours", url: current_user_tour_path(conn, :index))
+        |> add_breadcrumb(name: "My Tours", url: current_user_tour_path(conn, :index))
         |> add_breadcrumb(name: tour.title, url: current_user_tour_path(conn, :show, tour))
       end
 

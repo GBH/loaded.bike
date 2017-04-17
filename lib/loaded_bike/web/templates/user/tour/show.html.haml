@@ -4,8 +4,15 @@
 
 .map#map(data-markers: "#{waypoints_to_json(@conn, :private, @waypoints)}")
 
-.user-content
+.short-description
+  = @tour.short_description
+
+.description
   = markdown(@tour.description)
+
+.heading
+  = link "Add Waypoint", to: current_user_tour_waypoint_path(@conn, :new, @tour), class: "btn btn-sm btn-success"
+  %h1 Waypoints
 
 .table-responsive
   %table.table.table-sm
@@ -23,6 +30,3 @@
         %td
           .btn-group
             = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm"
-
-.actions.clearfix
-  = link "Add Waypoint", to: current_user_tour_waypoint_path(@conn, :new, @tour), class: "btn btn-primary float-lg-right"

@@ -14,10 +14,11 @@ defmodule LoadedBike.TestFactory do
 
   def tour_factory do
     %Tour{
-      user:         build(:user),
-      title:        "Test Tour",
-      description:  "Test Tour Description",
-      is_published: true
+      user:               build(:user),
+      title:              "Test Tour",
+      description:        "Test Tour Description",
+      short_description:  "Test Tour Short Description",
+      is_published:       true
     }
   end
 

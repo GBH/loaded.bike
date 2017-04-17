@@ -11,18 +11,17 @@ defmodule LoadedBike.Web.TourController do
       |> Repo.paginate(params)
 
     conn
-    |> add_breadcrumb(name: "Tours")
     |> render("index.html", tours: tours, paginator: paginator)
   end
 
   def show(conn, %{"id" => id}) do
     tour = Tour
       |> Tour.published
-      |> preload(waypoints: ^waypoints_query())
+      |> preload([:user, waypoints: ^waypoints_query()])
       |> Repo.get!(id)
 
     conn
-    |> add_breadcrumb(name: "Tours", url: tour_path(conn, :index))
+    |> add_breadcrumb(name: "All Tours", url: tour_path(conn, :index))
     |> add_breadcrumb(name: tour.title)
     |> render("show.html", tour: tour)
   end

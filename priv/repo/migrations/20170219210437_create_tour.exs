@@ -5,8 +5,9 @@ defmodule LoadedBike.Repo.Migrations.CreateTour do
     create table(:tours) do
       add :user_id,     references(:users, on_delete: :delete_all), null: false
 
-      add :title,       :string, null: false
-      add :description, :text
+      add :title,             :string, null: false
+      add :short_description, :string
+      add :description,       :text
 
       add :is_published, :boolean, null: false, default: false
 

@@ -35,7 +35,7 @@ defmodule LoadedBike.Web.WaypointController do
       |> Repo.one
 
     conn
-    |> add_breadcrumb(name: "Tours", url: tour_path(conn, :index))
+    |> add_breadcrumb(name: "All Tours", url: tour_path(conn, :index))
     |> add_breadcrumb(name: tour.title, url: tour_path(conn, :show, tour))
     |> add_breadcrumb(name: waypoint.title)
     |> render("show.html",

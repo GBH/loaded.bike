@@ -5,6 +5,12 @@
     = error_tag @f, :title
 
 .form-group.row
+  = label @f, :short_description, class: "col-sm-2 col-form-label text-sm-right"
+  .col-sm-10
+    = text_input @f, :short_description, class: "form-control"
+    = error_tag @f, :short_description
+
+.form-group.row
   = label @f, :description, class: "col-sm-2 col-form-label text-sm-right"
   .col-sm-10
     = textarea @f, :description, class: "form-control", data: [autoresize: true]

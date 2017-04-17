@@ -14,8 +14,6 @@
   border: 0
   background: transparent
   padding: 2px
-  img
-    border: 1px solid $gray-light
 
 // -- Structure ----------------------------------------------------------------
 @include media-breakpoint-up(lg)
@@ -50,12 +48,13 @@ body
 
 .heading
   margin-bottom: $spacer-y
-  background-color: $gray-lightest
-  margin: 0 -15px 2rem -15px
-  padding: 15px
+  background-color: #eceeef
+  padding: 0.75rem 1rem
+  border-radius: 0.25rem
   @include clearfix
   h1
-    font-size: 125%
+    font-size: 1rem
+    line-height: 1.5
     margin: 0
   a.btn
     float: right
@@ -64,7 +63,9 @@ body
   margin-bottom: 15px
   border-radius: 5px
   border: 1px solid $gray-lighter
-  padding: 15px
+  padding: 5px 15px
+  .description
+    margin-bottom: 5px
   .rider
     display: inline-block
     border: 1px solid $gray-lighter
@@ -75,7 +76,7 @@ body
     margin-top: -10px
     margin-right: -10px
   .waypoints
-    padding: 5px
+    padding: 5px 0
     a
       display: block
       float: left
@@ -98,8 +99,6 @@ body
 .actions
   background-color: $gray-lightest
   padding: 5px
-
-
 
 .container.content
   padding: 15px
@@ -155,3 +154,7 @@ textarea[data-autoresize]
   .image
     img
       width: 100%
+
+.user_tour_show_view
+  .short-description, .description
+    margin-bottom: 30px
