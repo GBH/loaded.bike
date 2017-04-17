@@ -69,8 +69,23 @@
 
     %footer.text-muted
       .container
-        Footer content
+        .row
+          .col-sm-6
+            %h6 About
+            %p Goal of loaded.bike is to help you to plan your next bicyle touring adventure. Explore routes and contribute your own.
+
+          .col-sm-6
+            %h6 Contact
+            %ul
+              %li
+                Email:
+                = link "oleg@loaded.bike", to: "mailto://oleg@loaded.bike"
+              %li
+                Experiencing problems with the site?
+                = link "Submit an issue", to: "https://github.com/GBH/loaded.bike/issues"
+              %li
+                Want to add a feature or fix a bug?
+                = link "fork me Github", to: "https://github.com/GBH/loaded.bike"
 
     %script(src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js")
-
     %script(src='#{static_path(@conn, "/js/app.js")}')
