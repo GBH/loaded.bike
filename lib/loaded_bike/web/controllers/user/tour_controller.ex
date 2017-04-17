@@ -60,6 +60,7 @@ defmodule LoadedBike.Web.User.TourController do
   def edit(conn, _params, _current_user, tour) do
     changeset = Tour.changeset(tour)
     conn
+    |> add_breadcrumb(name: "Edit")
     |> render("edit.html", tour: tour, changeset: changeset)
   end
 
@@ -74,6 +75,7 @@ defmodule LoadedBike.Web.User.TourController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to update Tour")
+        |> add_breadcrumb(name: "Edit")
         |> render("edit.html", tour: tour, changeset: changeset)
     end
   end

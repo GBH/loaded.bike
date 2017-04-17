@@ -65,9 +65,8 @@ body
   border-radius: 5px
   border: 1px solid $gray-lighter
   padding: 15px
-  @include clearfix
   .rider
-    float: right
+    display: inline-block
     border: 1px solid $gray-lighter
     background: $gray-lightest
     border-radius: 2px
@@ -76,11 +75,12 @@ body
     margin-top: -10px
     margin-right: -10px
   .waypoints
+    padding: 5px
     a
       display: block
       float: left
-      height: 15px
-      width: 15px
+      height: 17px
+      width: 17px
       margin: 0 2px 2px 0
       background-color: #5fa6d7
       border-radius: 2px

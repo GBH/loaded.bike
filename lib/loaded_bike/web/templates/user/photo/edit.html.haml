@@ -1,8 +1,22 @@
-.image
-  - url = LoadedBike.Web.PhotoUploader.url({@photo.file, @photo}, :large)
-  %img(src: "#{url}")
+- path = current_user_tour_waypoint_photo_path(@conn, :update, @tour, @waypoint, @photo)
+- form_for @changeset, path, [multipart: true], fn f ->
 
-= render "form.html", changeset: @changeset, action: current_user_tour_waypoint_photo_path(@conn, :update, @tour, @waypoint, @photo)
+  .form-group.row
+    %label.col-sm-2.col-form-label.text-sm-right
+      Current Photo
 
-.form-group.form-actions
-  = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, @photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger btn-sm"
+    .col-sm-10
+      - url = LoadedBike.Web.PhotoUploader.url({@photo.file, @photo}, :large)
+      = img_tag url, class: "w-100"
+
+  = render "_form.html", f: f
+
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = submit "Update Photo", class: "btn btn-primary"
+      = link "Cancel", to: current_user_tour_waypoint_path(@conn, :show, @tour, @waypoint), class: "btn btn-link"
+
+.row
+  .col-sm-10.offset-sm-2
+    = link "Delete", to: current_user_tour_waypoint_photo_path(@conn, :delete, @tour, @waypoint, @photo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger btn-sm"
+

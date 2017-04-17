@@ -1,6 +1,10 @@
 .heading
   %h1 Create New Tour
 
-- action_url = current_user_tour_path(@conn, :create)
-- cancel_url = current_user_tour_path(@conn, :index)
-= render "form.html", changeset: @changeset, action: action_url, cancel_url: cancel_url
+- form_for @changeset, current_user_tour_path(@conn, :create), fn f ->
+  = render "_form.html", f: f
+
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = submit "Create Tour", class: "btn btn-primary"
+      = link "Cancel", to: current_user_tour_path(@conn, :index), class: "btn btn-link"

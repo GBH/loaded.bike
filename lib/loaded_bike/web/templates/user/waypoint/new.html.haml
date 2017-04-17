@@ -1,3 +1,7 @@
-- action_url = current_user_tour_waypoint_path(@conn, :create, @tour)
-- cancel_url = current_user_tour_path(@conn, :show, @tour)
-= render "form.html", tour: @tour, changeset: @changeset, action: action_url, cancel_url: cancel_url
+- form_for @changeset, current_user_tour_waypoint_path(@conn, :create, @tour), fn f ->
+  = render "_form.html", f: f, changeset: @changeset, tour: @tour
+
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      = submit "Create Waypoint", class: "btn btn-primary"
+      = link "Cancel", to: current_user_tour_path(@conn, :show, @tour), class: "btn btn-link"

@@ -1,15 +1,16 @@
 .tour-card
-  .rider
-    = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
-    = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
-
-  .title
-    %h4
-      = link @tour.title, to: tour_path(@conn, :show, @tour)
-
-  .waypoints.clearfix
-    - waypoints = Enum.with_index(@tour.waypoints)
-    - total = length(waypoints)
-    - for {wp, index} <- waypoints do
-      - css_class = waypoint_css_class(total, index)
-      = link content_tag(:span, wp.title), to: tour_waypoint_path(@conn, :show, @tour, wp), data_toggle: "tooltip", data_animation: "false", title: wp.title, class: css_class
+  .row
+    .col-sm-7
+      %h4
+        = link @tour.title, to: tour_path(@conn, :show, @tour)
+      by
+      .rider
+        = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
+        = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
+    .col-sm-5
+      .waypoints
+        - waypoints = Enum.with_index(@tour.waypoints)
+        - total = length(waypoints)
+        - for {wp, index} <- waypoints do
+          - css_class = waypoint_css_class(total, index)
+          = link content_tag(:span, wp.title), to: tour_waypoint_path(@conn, :show, @tour, wp), data_toggle: "tooltip", data_animation: "false", title: wp.title, class: css_class
