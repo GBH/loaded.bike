@@ -51,6 +51,12 @@ defmodule LoadedBike.Web.UserControllerTest do
     assert template(conn) == "edit.html"
   end
 
+  test "edit if not signed in" do
+    conn = get build_conn(), "/rider/edit"
+    assert redirected_to(conn) == "/signin"
+    assert get_flash(conn, :error) == "You must be signed in to access"
+  end
+
   test "update" do
     user = insert(:user)
     conn = put login(user), "/rider", user: %{

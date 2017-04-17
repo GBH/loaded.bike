@@ -2,11 +2,7 @@ defmodule LoadedBike.Web.Router do
   use LoadedBike.Web, :router
 
   pipeline :login_required do
-
-  end
-
-  pipeline :admin_required do
-
+    plug Guardian.Plug.EnsureAuthenticated, handler: LoadedBike.Web.Auth.GuardianErrorHandler
   end
 
   pipeline :browser do
@@ -20,7 +16,7 @@ defmodule LoadedBike.Web.Router do
   pipeline :with_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
-    plug LoadedBike.CurrentUser
+    plug LoadedBike.Web.Auth.CurrentUser
   end
 
   scope "/", LoadedBike.Web do
@@ -29,25 +25,34 @@ defmodule LoadedBike.Web.Router do
     # -- public resources ------------------------------------------------------
     get "/", LandingController, :show
 
+    resources "/rider", UserController,
+      only:       [:new, :create],
+      name:       "current_user",
+      singleton:  true
+
     resources "/riders", UserController, only: [:show]
     resources "/tours", TourController, only: [:index, :show] do
       resources "/waypoints", WaypointController, only: [:show]
     end
 
     # -- session management ----------------------------------------------------
-    get     "/login",   SessionController, :new
-    post    "/login",   SessionController, :create
-    delete  "/logout",  SessionController, :delete
+    get     "/signin",  SessionController, :new
+    post    "/signin",  SessionController, :create
+    delete  "/signout", SessionController, :delete
 
     # -- logged-in user routes -------------------------------------------------
-    resources "/rider", UserController,
-      only:       [:new, :create, :edit, :update],
-      name:       "current_user",
-      singleton:  true
-    do
-      resources "/tours", User.TourController do
-        resources "/waypoints", User.WaypointController, except: [:index] do
-          resources "/photos", User.PhotoController
+    scope "/" do
+      pipe_through [:login_required]
+
+      resources "/rider", UserController,
+        only:       [:edit, :update],
+        name:       "current_user",
+        singleton:  true
+      do
+        resources "/tours", User.TourController do
+          resources "/waypoints", User.WaypointController, except: [:index] do
+            resources "/photos", User.PhotoController
+          end
         end
       end
     end

@@ -1,4 +1,4 @@
-defmodule LoadedBike.CurrentUser do
+defmodule LoadedBike.Web.Auth.CurrentUser do
   import Plug.Conn
   import Guardian.Plug
 

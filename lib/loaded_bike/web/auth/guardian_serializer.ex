@@ -1,8 +1,7 @@
-defmodule LoadedBike.GuardianSerializer do
+defmodule LoadedBike.Web.Auth.GuardianSerializer do
   @behaviour Guardian.Serializer
 
-  alias LoadedBike.Repo
-  alias LoadedBike.User
+  alias LoadedBike.{Repo, User}
 
   def for_token(user = %User{}), do: {:ok, "User:#{user.id}"}
   def for_token(_), do: {:error, "Unknown resource type"}

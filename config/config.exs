@@ -29,7 +29,7 @@ config :guardian, Guardian,
   issuer: "LoadedBike.#{Mix.env}",
   ttl: {30, :days},
   verify_issuer: true,
-  serializer: LoadedBike.GuardianSerializer,
+  serializer: LoadedBike.Web.Auth.GuardianSerializer,
   secret_key: to_string(Mix.env) <> "to_be_replaced_with_env_key_later"
 
 config :kerosene, theme: :bootstrap4
