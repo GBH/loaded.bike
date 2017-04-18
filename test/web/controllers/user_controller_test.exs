@@ -14,6 +14,9 @@ defmodule LoadedBike.Web.UserControllerTest do
 
   test "show" do
     user = insert(:user)
+    tour = insert(:tour, %{user: user})
+    insert(:waypoint, %{tour: tour})
+
     conn = get build_conn(), "/riders/#{user.id}"
     assert response(conn, 200)
     assert template(conn) == "show.html"
