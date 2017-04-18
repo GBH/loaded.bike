@@ -5,6 +5,7 @@ defmodule LoadedBike.Tour do
     field :title,             :string
     field :short_description, :string
     field :description,       :string
+    field :is_completed,      :boolean
     field :is_published,      :boolean
 
     belongs_to :user, LoadedBike.User
@@ -16,7 +17,7 @@ defmodule LoadedBike.Tour do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:user_id, :title, :short_description, :description, :is_published])
+    |> cast(params, [:user_id, :title, :short_description, :description, :is_completed, :is_published])
     |> validate_required([:user_id, :title])
     |> assoc_constraint(:user)
   end

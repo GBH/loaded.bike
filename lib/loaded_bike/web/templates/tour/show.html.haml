@@ -1,4 +1,4 @@
-.map#map(data-markers: "#{waypoints_to_json(@conn, :public, @tour.waypoints)}")
+.map#map(data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, :public, @tour.waypoints)}")
 
 .heading
   published by
@@ -9,7 +9,9 @@
   = markdown(@tour.description)
 
 .heading
-  %h1 Waypoints
+  %h1
+    Waypoints
+    = completed_badge(@tour.is_completed)
 
 .table-responsive
   %table.table.table-sm

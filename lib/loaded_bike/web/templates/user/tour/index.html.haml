@@ -8,9 +8,10 @@
       .heading
         - path = current_user_tour_path(@conn, :show, tour)
         = link tour.title, to: path
+        = LoadedBike.Web.TourView.completed_badge(tour.is_completed)
         = link "View", to: path, class: "btn btn-sm btn-secondary"
 
-      .map{data-map: "true", data-markers: "#{waypoints_to_json(@conn, :private, tour.waypoints)}"}
+      .map{data-map: "true", data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, :private, tour.waypoints)}"}
 
       .description
         = markdown(tour.description)

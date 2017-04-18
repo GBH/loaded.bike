@@ -1,8 +1,9 @@
 .actions.clearfix
   = published_badge(@tour.is_published)
+  = LoadedBike.Web.TourView.completed_badge(@tour.is_completed)
   = link "Edit", to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm pull-right"
 
-.map#map(data-markers: "#{waypoints_to_json(@conn, :private, @waypoints)}")
+.map#map(data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, :private, @waypoints)}")
 
 .short-description
   = @tour.short_description

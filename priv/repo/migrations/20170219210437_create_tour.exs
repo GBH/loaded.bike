@@ -9,6 +9,7 @@ defmodule LoadedBike.Repo.Migrations.CreateTour do
       add :short_description, :string
       add :description,       :text
 
+      add :is_completed, :boolean, null: false, default: false
       add :is_published, :boolean, null: false, default: false
 
       timestamps()

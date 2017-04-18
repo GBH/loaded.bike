@@ -3,6 +3,7 @@
     .col-sm-7
       %h4
         = link @tour.title, to: tour_path(@conn, :show, @tour)
+        = completed_badge(@tour.is_completed)
       .description
         = @tour.short_description
       .rider
@@ -11,7 +12,6 @@
     .col-sm-5
       .waypoints
         - waypoints = Enum.with_index(@tour.waypoints)
-        - total = length(waypoints)
         - for {wp, index} <- waypoints do
-          - css_class = waypoint_css_class(total, index)
+          - css_class = waypoint_css_class(@tour, index)
           = link content_tag(:span, wp.title), to: tour_waypoint_path(@conn, :show, @tour, wp), data_toggle: "tooltip", data_animation: "false", title: wp.title, class: css_class

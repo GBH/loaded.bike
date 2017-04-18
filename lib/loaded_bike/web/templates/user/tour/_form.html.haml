@@ -20,5 +20,10 @@
 
 .form-group.row
   .col-sm-10.offset-sm-2
+    = checkbox @f, :is_completed
+    = label @f, :is_completed, "This tour is completed"
+
+.form-group.row
+  .col-sm-10.offset-sm-2
     = checkbox @f, :is_published
     = label @f, :is_published, "Published"
