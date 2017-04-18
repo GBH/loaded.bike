@@ -14,7 +14,7 @@ defmodule LoadedBike.Web.UserController do
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
-        |> LoadedBike.Auth.login(user)
+        |> LoadedBike.Web.Auth.login(user)
         |> put_flash(:info, "Account created")
         |> redirect(to: landing_path(conn, :show))
 

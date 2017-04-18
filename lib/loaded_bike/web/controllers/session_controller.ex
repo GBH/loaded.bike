@@ -10,7 +10,7 @@ defmodule LoadedBike.Web.SessionController do
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
 
-    case LoadedBike.Auth.login_by_email_and_pass(conn, email, password) do
+    case LoadedBike.Web.Auth.login_by_email_and_pass(conn, email, password) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Welcome back")
@@ -25,8 +25,8 @@ defmodule LoadedBike.Web.SessionController do
 
   def delete(conn, _) do
     conn
-    |> LoadedBike.Auth.logout
-    |> put_flash(:info, "Logged out")
+    |> LoadedBike.Web.Auth.logout
+    |> put_flash(:info, "Signed out")
     |> redirect(to: landing_path(conn, :show))
   end
 end

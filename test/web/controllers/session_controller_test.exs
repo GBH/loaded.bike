@@ -37,7 +37,7 @@ defmodule LoadedBike.Web.SessionControllerTest do
 
     conn = delete conn, "/signout"
     assert redirected_to(conn) == "/"
-    assert get_flash(conn, :info) == "Logged out"
+    assert get_flash(conn, :info) == "Signed out"
 
     refute Guardian.Plug.current_resource(conn)
   end
