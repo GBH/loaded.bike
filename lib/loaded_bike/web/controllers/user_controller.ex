@@ -37,7 +37,6 @@ defmodule LoadedBike.Web.UserController do
       |> Repo.get!(id)
 
     conn
-    |> add_breadcrumb(name: "#{user.name} tours")
     |> render("show.html", user: user)
   end
 

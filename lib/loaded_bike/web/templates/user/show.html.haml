@@ -1,3 +1,8 @@
+.heading
+  Tours published by
+  = LoadedBike.Web.UserView.avatar_img(@user, :tiny)
+  = @user.name
+
 .tours
   - for tour <- @user.tours do
     .tour
