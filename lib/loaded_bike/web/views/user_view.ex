@@ -12,7 +12,7 @@ defmodule LoadedBike.Web.UserView do
       :tiny   -> 20
       _       -> 200
     end
-    "https://www.gravatar.com/avatar/#{hash}?s=#{s}"
+    "https://www.gravatar.com/avatar/#{hash}?s=#{s}&d=retro"
   end
   defp _avatar_url(_user, _size, url), do: url
 end
