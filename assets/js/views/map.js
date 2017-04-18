@@ -26,6 +26,7 @@ export default class Map {
       id:      'mapbox.streets'
     })
     this.map.addControl(layer)
+    this.map.addControl(L.control.scale())
   }
 
   loadMarkers() {
