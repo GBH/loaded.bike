@@ -46,7 +46,7 @@ export default class Map {
         icon = this._getIcon('yellow')
       } else if (index == 0) {
         icon = this._getIcon('green')
-      } else if (markers_json.length - 1 == index) {
+      } else if (markers_json.length - 1 == index && marker_json.is_finish == true) {
         icon = this._getIcon('red')
       }
 

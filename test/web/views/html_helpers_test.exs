@@ -2,7 +2,6 @@ defmodule LoadedBike.Web.MarkdownHelperTest do
   use LoadedBike.Web.ConnCase, async: true
 
   import Phoenix.HTML, only: [safe_to_string: 1]
-  import Poison.Parser, only: [parse: 1]
 
   alias LoadedBike.Web.HtmlHelpers
 
@@ -18,18 +17,6 @@ defmodule LoadedBike.Web.MarkdownHelperTest do
   test "markdown sanitized" do
     {:safe, html} = HtmlHelpers.markdown("<script>alert('test')</script>")
     assert html == "<p>alert(‘test’)</p>"
-  end
-
-  test "to_json" do
-    waypoint = insert(:waypoint)
-
-    json = [%{
-      "lat"   => 49.262206,
-      "lng"   => -123.2616348,
-      "title" => "Test Waypoint"
-    }]
-
-    assert parse(HtmlHelpers.to_json([waypoint])) == {:ok, json}
   end
 
   test "published_badge" do

@@ -2,7 +2,7 @@ defmodule LoadedBike.Waypoint do
   use LoadedBike.Web, :model
 
   # is_current, is_previous, url are virtual attrs we populate on the view
-  @derive {Poison.Encoder, only: [:title, :lat, :lng, :is_current, :is_previous, :url]}
+  @derive {Poison.Encoder, only: [:title, :lat, :lng, :is_current, :is_previous, :is_finish, :url]}
 
   schema "waypoints" do
     field :title,         :string

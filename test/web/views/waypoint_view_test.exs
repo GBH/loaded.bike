@@ -4,28 +4,55 @@ defmodule LoadedBike.Web.WaypointViewTest do
 
   alias LoadedBike.Web.WaypointView
 
-  test "waypoints_to_json" do
+  test "waypoints_to_json urls", %{conn: conn} do
     waypoint = insert(:waypoint)
-    conn = get build_conn(), "/"
+    tour = %{waypoint.tour | waypoints: [waypoint]}
 
     json = [%{
       "url"         => "/rider/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
-      "is_previous" => false,
-      "is_current"  => false
+      "is_finish"   => true
     }]
-    assert parse(WaypointView.waypoints_to_json(conn, :private, [waypoint])) == {:ok, json}
+    assert parse(WaypointView.waypoints_to_json(conn, tour, :private)) == {:ok, json}
 
     json = [%{
       "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
-      "is_previous" => false,
-      "is_current"  => false
+      "is_finish"   => true
     }]
-    assert parse(WaypointView.waypoints_to_json(conn, :public, [waypoint])) == {:ok, json}
+    assert parse(WaypointView.waypoints_to_json(conn, tour, :public)) == {:ok, json}
+  end
+
+  test "waypoints_to_json is_finish", %{conn: conn} do
+    tour = insert(:tour, %{is_completed: false})
+    waypoint = insert(:waypoint, %{tour: tour})
+    tour = %{tour | waypoints: [waypoint]}
+
+    json = [%{
+      "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
+      "title"       => "Test Waypoint",
+      "lng"         => -123.2616348,
+      "lat"         => 49.262206
+    }]
+    assert parse(WaypointView.waypoints_to_json(conn, tour, :public)) == {:ok, json}
+  end
+
+  test "waypoints_to_json prev and next flags", %{conn: conn} do
+    waypoint = insert(:waypoint)
+    tour = %{waypoint.tour | waypoints: [waypoint]}
+    json = [%{
+      "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
+      "title"       => "Test Waypoint",
+      "lng"         => -123.2616348,
+      "lat"         => 49.262206,
+      "is_current"  => true,
+      "is_previous" => true,
+      "is_finish"   => true
+    }]
+    assert parse(WaypointView.waypoints_to_json(conn, tour, :public, waypoint, waypoint)) == {:ok, json}
   end
 end

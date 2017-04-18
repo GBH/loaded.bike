@@ -1,6 +1,7 @@
 - lat = Ecto.Changeset.get_field(@changeset, :lat)
 - lng = Ecto.Changeset.get_field(@changeset, :lng)
-.map#map{data-lat: "#{lat}", data-lng: "#{lng}", data-markers: "#{to_json(@tour.waypoints)}"}
+- markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :private)
+.map#map{data-lat: "#{lat}", data-lng: "#{lng}", data-markers: "#{markers}"}
 
 = hidden_input @f, :lat
 = hidden_input @f, :lng

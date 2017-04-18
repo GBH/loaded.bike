@@ -1,7 +1,6 @@
 defmodule LoadedBike.Web.HtmlHelpers do
 
   use Phoenix.HTML
-  import LoadedBike.Web.Router.Helpers
 
   def published_badge(true) do
     content_tag(:span, "Published", class: "badge badge-pill badge-success")
@@ -9,10 +8,6 @@ defmodule LoadedBike.Web.HtmlHelpers do
 
   def published_badge(false) do
     content_tag(:span, "Draft", class: "badge badge-pill badge-default")
-  end
-
-  def to_json(data) do
-    Poison.encode!(data)
   end
 
   def markdown(nil), do: ""

@@ -1,4 +1,5 @@
-.map#map(data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, :public, @tour.waypoints)}")
+- markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :public)
+.map#map(data-markers: "#{markers}")
 
 .heading
   published by

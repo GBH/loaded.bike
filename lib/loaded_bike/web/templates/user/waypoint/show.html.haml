@@ -5,7 +5,7 @@
     = published_badge(@waypoint.is_published)
     = link "Edit", to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm pull-right"
 
-  - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, :private, @tour.waypoints, @waypoint, @prev_waypoint)
+  - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :private, @waypoint, @prev_waypoint)
   .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}"}
 
   .description
