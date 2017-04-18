@@ -42,6 +42,25 @@ defmodule LoadedBike.Waypoint do
   end
 
   def published(query) do
-    from w in query, where: w.is_published == true
+    query
+    |> where([w], w.is_published == true)
+  end
+
+  def previous(waypoint) do
+    __MODULE__
+    |> select([:id])
+    |> where([w], w.position < ^waypoint.position)
+    |> where([w], w.tour_id == ^waypoint.tour_id)
+    |> order_by(desc: :position)
+    |> limit(1)
+  end
+
+  def next(waypoint) do
+    __MODULE__
+    |> select([:id])
+    |> where([w], w.position > ^waypoint.position)
+    |> where([w], w.tour_id == ^waypoint.tour_id)
+    |> order_by(asc: :position)
+    |> limit(1)
   end
 end

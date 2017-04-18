@@ -49,4 +49,23 @@ defmodule LoadedBike.WaypointTest do
     Repo.update!(change(waypoint, %{is_published: true}))
     assert Repo.aggregate(query, :count, :id) == 1
   end
+
+  test "scope previous and next" do
+    wp_1 = insert(:waypoint, %{position: 0})
+    wp_2 = insert(:waypoint, %{position: 1, tour: wp_1.tour})
+    wp_3 = insert(:waypoint, %{position: 2, tour: wp_1.tour})
+
+    # different tour (i hate factories)
+    user = insert(:user, %{email: "test@test.test"})
+    tour = insert(:tour, %{user: user})
+    insert(:waypoint, %{position: 3, tour: tour})
+
+    refute Repo.one(Waypoint.previous(wp_1))
+    assert Repo.one(Waypoint.previous(wp_2)).id == wp_1.id
+    assert Repo.one(Waypoint.previous(wp_3)).id == wp_2.id
+
+    assert Repo.one(Waypoint.next(wp_1)).id == wp_2.id
+    assert Repo.one(Waypoint.next(wp_2)).id == wp_3.id
+    refute Repo.one(Waypoint.next(wp_3))
+  end
 end

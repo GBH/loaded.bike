@@ -21,16 +21,12 @@ defmodule LoadedBike.Web.User.WaypointController do
 
     waypoint = Repo.preload(waypoint, photos: photos_query)
 
-    prev_waypoint = Waypoint
-      |> where([w], w.position < ^waypoint.position)
-      |> order_by(desc: :position)
-      |> limit(1)
+    prev_waypoint = waypoint
+      |> Waypoint.previous
       |> Repo.one
 
-    next_waypoint = Waypoint
-      |> where([w], w.position > ^waypoint.position)
-      |> order_by(asc: :position)
-      |> limit(1)
+    next_waypoint = waypoint
+      |> Waypoint.next
       |> Repo.one
 
     render conn, "show.html",
