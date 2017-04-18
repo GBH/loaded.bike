@@ -1,0 +1,47 @@
+.formatting-help
+  .link.text-sm-right
+    = link "Formatting Help", id: "show-formatting-help", to: "#"
+    = link "Hide Help", id: "hide-formatting-help", to: "#"
+
+  %table#formatting-help-table.table-sm.table-responsive.table-bordered
+    %tr
+      %th you type
+      %th you see
+    %tr
+      %td
+        = "# heading 1"
+        %br
+        = "## heading 2"
+        %br
+        = "### heading 3"
+      %td
+        %h1 heading 1
+        %h2 heading 2
+        %h3 heading 3
+    %tr
+      %td
+        *italics*
+      %td
+        %em italics
+    %tr
+      %td
+        **bold**
+      %td
+        %strong bold
+    %tr
+      %td
+        [google](http://google.com)
+      %td
+        = link "google", to: "http://google.com"
+    %tr
+      %td
+        * item 1
+        %br
+        * item 2
+        %br
+        * item 3
+      %td
+        %ul
+          %li item 1
+          %li item 2
+          %li item 3

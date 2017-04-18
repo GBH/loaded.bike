@@ -9,3 +9,5 @@
   .col-sm-10
     = textarea @f, :description, class: "form-control", data: [autoresize: true]
     = error_tag @f, :description
+
+    = render LoadedBike.Web.UserView, "_formatting_help.html"

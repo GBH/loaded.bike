@@ -1,6 +1,7 @@
-import MainView           from "../../main"
-import Map                from "../../map"
-import autoResizeTextArea from "../../textarea"
+import MainView             from "../../main"
+import Map                  from "../../map"
+import autoResizeTextArea   from "../../textarea"
+import formattingHelpToggle from "../../formatting_help_toggle"
 
 export default class UserWaypointEditView extends MainView {
   mount(){
@@ -13,6 +14,7 @@ export default class UserWaypointEditView extends MainView {
     map.loadMarkers()
 
     autoResizeTextArea()
+    formattingHelpToggle()
   }
 
   unmount(){

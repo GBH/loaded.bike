@@ -16,6 +16,8 @@
     = textarea @f, :description, class: "form-control", data: [autoresize: true]
     = error_tag @f, :description
 
+    = render LoadedBike.Web.UserView, "_formatting_help.html"
+
 .form-group.row
   .col-sm-10.offset-sm-2
     = checkbox @f, :is_published
