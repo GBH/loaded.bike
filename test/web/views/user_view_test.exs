@@ -22,6 +22,6 @@ defmodule LoadedBike.Web.UserViewTest do
       |> safe_to_string
       |> Floki.find("img")
       |> Floki.attribute("src")
-      |> List.first == "https://www.gravatar.com/avatar/0c17bf66e649070167701d2d3cd71711?s=20"
+      |> List.first == "https://www.gravatar.com/avatar/0c17bf66e649070167701d2d3cd71711?s=20&d=retro"
   end
 end
