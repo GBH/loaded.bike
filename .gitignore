@@ -25,3 +25,4 @@ erl_crash.dump
 
 # uploads
 /uploads
+.deliver/releases/

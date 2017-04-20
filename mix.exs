@@ -19,7 +19,7 @@ defmodule LoadedBike.Mixfile do
   def application do
     [mod: {LoadedBike, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :arc_ecto]]
+                    :phoenix_ecto, :postgrex, :comeonin, :arc_ecto, :edeliver]]
   end
 
   # Specifies which paths to compile per environment.
@@ -48,6 +48,8 @@ defmodule LoadedBike.Mixfile do
       {:breadcrumble,         "~> 1.0.0"},
       {:kerosene,             "~> 0.6.1"},
       {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
+      {:edeliver,             "~> 1.4.2"},
+      {:distillery,           ">= 0.8.0", warn_missing: false},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
