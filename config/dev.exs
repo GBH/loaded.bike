@@ -14,7 +14,6 @@ config :loaded_bike, LoadedBike.Web.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../assets", __DIR__)]]
 
-
 # Watch static and templates for browser reloading.
 config :loaded_bike, LoadedBike.Web.Endpoint,
   live_reload: [

@@ -1,6 +1,9 @@
 - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :public)
 .map#map(data-markers: "#{markers}")
 
+.short-description
+  %p= @tour.short_description
+
 .heading
   published by
   = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
