@@ -37,7 +37,7 @@ pre_erlang_clean_compile() {
   __sync_remote " # runs the commands on the build host
     [ -f ~/.profile ] && source ~/.profile # load profile (optional)
     set -e # fail if any command fails (recommended)
-    cd '$BUILD_AT/assets' # enter the build directory on the build host (required)
+    cd '$BUILD_AT' # enter the build directory on the build host (required)
     # prepare something
     mkdir -p priv/static # required by the phoenix.digest task
     # run your custom task
