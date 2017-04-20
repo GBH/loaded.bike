@@ -35,6 +35,6 @@ defmodule LoadedBike.Web.AvatarUploader do
 
   # Override the storage directory:
   def storage_dir(_version, {_file, user}) do
-    "public/uploads/users/#{user.id}/"
+    "uploads/users/#{user.id}/"
   end
 end

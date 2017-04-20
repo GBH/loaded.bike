@@ -27,6 +27,6 @@ defmodule LoadedBike.Web.PhotoUploader do
 
   # Override the storage directory:
   def storage_dir(_version, {_file, photo}) do
-    "public/uploads/tours/#{photo.waypoint.tour_id}/waypoints/#{photo.waypoint.id}/photos/#{photo.uuid}/"
+    "uploads/tours/#{photo.waypoint.tour_id}/waypoints/#{photo.waypoint.id}/photos/#{photo.uuid}/"
   end
 end
