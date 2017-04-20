@@ -40,7 +40,4 @@ end
 
 release :loaded_bike do
   set version: current_version(:loaded_bike)
-  set applications: [
-    :runtime_tools
-  ]
 end
