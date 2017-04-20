@@ -1,5 +1,7 @@
 APP="loaded.bike"
 
+AUTO_VERSION=git-revision
+
 BUILD_HOST="loaded.bike"
 BUILD_USER="deploy"
 BUILD_AT="/home/deploy/builds"
