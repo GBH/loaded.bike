@@ -18,8 +18,28 @@ defmodule LoadedBike.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {LoadedBike, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin, :arc_ecto, :edeliver]]
+     applications: [
+      :phoenix,
+      :phoenix_pubsub,
+      :phoenix_html,
+      :cowboy,
+      :logger,
+      :gettext,
+      :phoenix_ecto,
+      :postgrex,
+      :comeonin,
+      :arc,
+      :arc_ecto,
+      :breadcrumble,
+      :earmark,
+      :guardian,
+      :html_sanitize_ex,
+      :kerosene,
+      :mochiweb,
+      :phoenix_haml,
+      :elixir_make,
+      :edeliver
+    ]]
   end
 
   # Specifies which paths to compile per environment.
