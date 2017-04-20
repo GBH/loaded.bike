@@ -49,7 +49,7 @@ defmodule LoadedBike.Mixfile do
       {:kerosene,             "~> 0.6.1"},
       {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
       {:edeliver,             "~> 1.4.2"},
-      {:distillery,           ">= 0.8.0", warn_missing: false},
+      {:distillery,           "~> 1.0"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
