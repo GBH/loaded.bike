@@ -6,8 +6,8 @@ BUILD_HOST="loaded.bike"
 BUILD_USER="deploy"
 BUILD_AT="/home/deploy/builds"
 
-STAGING_HOSTS="loaded.bike"
-STAGING_USER="deploy"
+PRODUCTION_HOSTS="loaded.bike"
+PRODUCTION_USER="deploy"
 DELIVER_TO="/home/deploy"
 
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
