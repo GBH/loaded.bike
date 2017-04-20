@@ -1,6 +1,6 @@
 APP="loaded_bike"
 
-AUTO_VERSION=git-revision
+AUTO_VERSION=commit-count+git-revision
 
 BUILD_HOST="loaded.bike"
 BUILD_USER="deploy"
@@ -10,14 +10,47 @@ PRODUCTION_HOSTS="loaded.bike"
 PRODUCTION_USER="deploy"
 DELIVER_TO="/home/deploy"
 
+# runs the phoenix.digest mix command, which gets rid of a missing
+# manifest file error
+pre_erlang_clean_compile() {
+  status "Installing NodeJS dependencies"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
+    set -e # fail if any command fails (recommended)
+    cd '$BUILD_AT' # enter the build directory on the build host (required)
+    # prepare something
+    mkdir -p priv/static # required by the phoenix.digest task
+    # run your custom task
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm install
+  "
+  status "Building frontend items"
+  __sync_remote "
+    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
+    set -e # fail if any command fails (recommended)
+    cd '$BUILD_AT' # enter the build directory on the build host (required)
+    # prepare something
+    mkdir -p priv/static # required by the phoenix.digest task
+    # run your custom task
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' npm run deploy
+  "
+  status "Running phoenix.digest" # log output prepended with "----->"
+  __sync_remote " # runs the commands on the build host
+    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
+    set -e # fail if any command fails (recommended)
+    cd '$BUILD_AT' # enter the build directory on the build host (required)
+    # prepare something
+    mkdir -p priv/static # required by the phoenix.digest task
+    # run your custom task
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phoenix.digest $SILENCE
+  "
+}
+
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
 pre_erlang_get_and_update_deps() {
   local _prod_secret_path="/home/deploy/prod.secret.exs"
   if [ "$TARGET_MIX_ENV" = "prod" ]; then
     __sync_remote "
       ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
-
-
     "
   fi
 }
