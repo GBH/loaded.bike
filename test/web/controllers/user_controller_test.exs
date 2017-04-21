@@ -62,13 +62,19 @@ defmodule LoadedBike.Web.UserControllerTest do
 
   test "update" do
     user = insert(:user)
+    old_pass = user.password_hash
+
     conn = put login(user), "/rider", user: %{
       name:   "Updated user",
+      password: "newpassword",
       avatar: build_upload()
     }
     assert redirected_to(conn) == "/rider/tours"
     assert get_flash(conn, :info) == "Account updated"
-    assert Repo.get_by(User, id: user.id, name: "Updated user")
+    user = Repo.get_by(User, id: user.id, name: "Updated user")
+
+    assert user
+    refute old_pass == user.password_hash
   end
 
   test "update failure" do

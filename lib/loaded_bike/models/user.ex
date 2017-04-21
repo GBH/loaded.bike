@@ -20,6 +20,7 @@ defmodule LoadedBike.User do
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)
+    |> hash_password
   end
 
   def registration_changeset(struct, params) do
