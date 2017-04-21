@@ -14,7 +14,7 @@ use Mix.Config
 config :loaded_bike, LoadedBike.Web.Endpoint,
   http: [port: System.get_env("PORT") || 4000],
   url: [host: "loaded.bike", port: 80],
-  cache_static_manifest: "priv/static/manifest.json",
+  cache_static_manifest: "priv/static/cache_manifest.json",
   server: true
 
 # Do not print debug messages in production
