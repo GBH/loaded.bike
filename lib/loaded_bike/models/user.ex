@@ -16,7 +16,7 @@ defmodule LoadedBike.User do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :name])
+    |> cast(params, [:email, :name, :password])
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)

@@ -11,7 +11,7 @@
         = link tour.title, to: path
         = link "View", to: path, class: "btn btn-sm btn-secondary"
 
-      .map{data-map: "true", data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, tour, :private)}"}
+      .map{data-map: "true", data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, tour, :public)}"}
 
       .description
         = markdown(tour.description)
