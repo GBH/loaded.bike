@@ -1,0 +1,17 @@
+- for size <- [57, 114, 72, 144, 60, 120, 76, 152] do
+  - size = "#{size}x#{size}"
+  - url = static_path(@conn, "/images/icons/apple-touch-icon-#{size}.png")
+  %link(rel="apple-touch-icon-precomposed" href='#{url}' sizes='#{size}')
+
+- for size <- [16, 32, 96, 128, 196] do
+  - size = "#{size}x#{size}"
+  - url = static_path(@conn, "/images/icons/favicon-#{size}.png")
+  %link(rel="icon" type="image/png" href="#{url}" sizes="#{size}")
+
+%meta(name="application-name" content="Loaded Bike")
+%meta(name="msapplication-TileColor" content="#FFFFFF")
+%meta(name="msapplication-TileImage" content='#{static_path(@conn, "/images/icons/mstile-144x144.png")}')
+%meta(name="msapplication-square70x70logo" content='#{static_path(@conn, "/images/icons/mstile-70x70.png")}')
+%meta(name="msapplication-square150x150logo" content='#{static_path(@conn, "/images/icons/mstile-150x150.png")}')
+%meta(name="msapplication-wide310x150logo" content='#{static_path(@conn, "/images/icons/mstile-310x150.png")}')
+%meta(name="msapplication-square310x310logo" content='#{static_path(@conn, "/images/icons/mstile-310x310.png")}')

@@ -7,10 +7,12 @@
     %meta(name="description" content="")
     %meta(name="author" content="")
 
-    %title loaded.bike
+    %title Loaded Bike
 
     %link(rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css")
     %link(rel="stylesheet" href='#{static_path(@conn, "/css/app.css")}')
+
+    = render "_favicons.html", conn: @conn
 
   - page_id = page_identifier(@conn)
   %body(class="#{Macro.underscore(page_id)}" data-page-identifier="#{page_id}")
@@ -21,7 +23,7 @@
           %span.navbar-toggler-icon
         %a.navbar-brand(href="#{landing_path(@conn, :show)}")
           = img_tag static_path(@conn, "/images/logo-bike.png"), width: "41px", height: "25px", class: "d-inline-block"
-          loaded.bike
+          Loaded Bike
 
         .collapse.navbar-collapse#navbarSupportedContent
           %ul.navbar-nav.mr-auto
