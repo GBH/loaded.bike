@@ -14,7 +14,7 @@ Code that powers http://loaded.bike
 ## Deployment
 
 * `mix edeliver build release`
-* `mix edeliver deploy release to production`
+* `mix edeliver deploy release to production --clean-deploy`
 * `mix edeliver start production`
 
 ---
