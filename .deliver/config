@@ -56,11 +56,11 @@ pre_erlang_get_and_update_deps() {
 }
 
 post_erlang_update() {
-  symlink_static()
+  symlink_static
 }
 
 post_upgrade_release() {
-  symlink_static()
+  symlink_static
 }
 
 symlink_static(){
