@@ -38,7 +38,8 @@ defmodule LoadedBike.Mixfile do
       :mochiweb,
       :phoenix_haml,
       :elixir_make,
-      :edeliver
+      :edeliver,
+      :rollbax
     ]]
   end
 
@@ -70,6 +71,7 @@ defmodule LoadedBike.Mixfile do
       {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
       {:edeliver,             "~> 1.4.2"},
       {:distillery,           "~> 1.0"},
+      {:rollbax,              "~> 0.6"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},

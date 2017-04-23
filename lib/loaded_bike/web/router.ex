@@ -1,5 +1,10 @@
 defmodule LoadedBike.Web.Router do
   use LoadedBike.Web, :router
+  use Plug.ErrorHandler
+
+  defp handle_errors(conn, %{kind: kind, reason: reason, stack: stacktrace}) do
+    Rollbax.report(kind, reason, stacktrace, %{params: conn.params})
+  end
 
   pipeline :login_required do
     plug Guardian.Plug.EnsureAuthenticated, handler: LoadedBike.Web.Auth.GuardianErrorHandler

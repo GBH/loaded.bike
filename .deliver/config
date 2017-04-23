@@ -55,7 +55,7 @@ pre_erlang_get_and_update_deps() {
   fi
 }
 
-post_erlang_generate_release() {
+post_erlang_update() {
   symlink_static
 }
 
