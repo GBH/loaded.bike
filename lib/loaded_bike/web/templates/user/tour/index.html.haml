@@ -1,8 +1,7 @@
 .heading
-  = link to: current_user_tour_path(@conn, :new), class: "btn btn-sm btn-success pull-right" do
+  - link to: current_user_tour_path(@conn, :new), class: "btn btn-sm btn-success pull-right" do
     %i.fa.fa-plus
     Create New Tour
-  - end
   %h1 My Tours
 
 .tours

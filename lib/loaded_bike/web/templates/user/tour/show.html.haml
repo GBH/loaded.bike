@@ -1,10 +1,9 @@
 .actions.clearfix
   = published_badge(@tour.is_published)
   = LoadedBike.Web.TourView.completed_badge(@tour.is_completed)
-  = link to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm pull-right" do
+  - link to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm pull-right" do
     %i.fa.fa-pencil
     Edit
-  - end
 
 - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :private)
 .map#map(data-markers: "#{markers}")
@@ -16,10 +15,9 @@
   = markdown(@tour.description)
 
 .heading
-  = link to: current_user_tour_waypoint_path(@conn, :new, @tour), class: "btn btn-sm btn-success" do
+  - link to: current_user_tour_waypoint_path(@conn, :new, @tour), class: "btn btn-sm btn-success" do
     %i.fa.fa-plus
     Add Waypoint
-  - end
   %h1 Waypoints
 
 .table-responsive
@@ -37,7 +35,6 @@
           = link waypoint.title, to: current_user_tour_waypoint_path(@conn, :show, @tour, waypoint)
         %td
           .btn-group
-            = link to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm" do
+            - link to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm" do
               %i.fa.fa-pencil
               Edit
-            - end
