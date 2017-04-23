@@ -23,7 +23,8 @@ defmodule LoadedBike.Web.User.PhotoController do
     |> render("new.html", tour: tour, waypoint: waypoint, changeset: changeset)
   end
 
-  def create(conn, %{"photo" => photo_params}, tour, waypoint) do
+
+  def create(conn, params = %{"photo" => photo_params}, tour, waypoint) do
     changeset = build_assoc(waypoint, :photos)
       |> Map.put(:waypoint, waypoint)
       |> Photo.changeset(photo_params)
@@ -33,7 +34,13 @@ defmodule LoadedBike.Web.User.PhotoController do
         dom_id = Photo.dom_id(photo)
         conn
         |> put_flash(:info, "Photo created")
-        |> redirect(to: current_user_tour_waypoint_path(conn, :show, tour, waypoint) <> "##{dom_id}")
+
+        if Map.has_key?(params, "submit_more") do
+          redirect(conn, to: current_user_tour_waypoint_photo_path(conn, :new, tour, waypoint))
+        else
+          redirect(conn, to: current_user_tour_waypoint_path(conn, :show, tour, waypoint) <> "##{dom_id}")
+        end
+
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Failed to create Photo")

@@ -28,6 +28,15 @@ defmodule LoadedBike.Web.User.PhotoControllerTest do
     assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}#photo-#{photo.id}"
   end
 
+  test "create and add more", %{conn: conn, waypoint: wp} do
+    conn = post conn, "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}/photos", submit_more: "", photo: %{
+      file:         build_upload(),
+      description:  "Test Description"
+    }
+    photo = Repo.one(Photo)
+    assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}/photos/new"
+  end
+
   test "create failure", %{conn: conn, waypoint: wp} do
     conn = post conn, "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}/photos", photo: %{}
     assert response(conn, 200)
