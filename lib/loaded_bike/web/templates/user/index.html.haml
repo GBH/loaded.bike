@@ -1,0 +1,23 @@
+.heading
+  %h1 Riders
+
+%table.table.table-sm
+  %tr
+    %th
+    %th Rider
+    %th Tours
+  - for user <- @users do
+    %tr
+      %td
+        = avatar_img(user, :small)
+      %td
+        = link user.name, to: user_path(@conn, :show, user)
+      %td
+        %table.borderless
+          - for tour <- user.tours do
+            %tr
+              %td
+                = link tour.title, to: tour_path(@conn, :show, tour)
+
+- if @paginator.total_pages > 1 do
+  = paginate @conn, @paginator

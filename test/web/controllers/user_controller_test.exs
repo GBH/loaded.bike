@@ -29,6 +29,13 @@ defmodule LoadedBike.Web.UserControllerTest do
     end
   end
 
+  test "index" do
+    conn = get build_conn(), "/riders"
+    assert response(conn, 200)
+    assert template(conn) == "index.html"
+    assert assigns(conn, :users)
+  end
+
   test "creation" do
     conn = post build_conn(), "/rider", user: %{
       email:    "test@test.test",

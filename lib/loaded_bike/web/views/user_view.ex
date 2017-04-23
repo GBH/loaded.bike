@@ -1,5 +1,6 @@
 defmodule LoadedBike.Web.UserView do
   use LoadedBike.Web, :view
+  import Kerosene.HTML
 
   def avatar_img(user, size) do
     img_tag _avatar_url(user, size, LoadedBike.Web.AvatarUploader.url({user.avatar, user}, size))

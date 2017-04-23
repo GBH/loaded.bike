@@ -35,7 +35,7 @@ defmodule LoadedBike.Web.Router do
       name:       "current_user",
       singleton:  true
 
-    resources "/riders", UserController, only: [:show]
+    resources "/riders", UserController, only: [:index, :show]
     resources "/tours", TourController, only: [:index, :show] do
       resources "/waypoints", WaypointController, only: [:show]
     end

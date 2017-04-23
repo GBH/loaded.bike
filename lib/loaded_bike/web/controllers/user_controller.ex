@@ -25,6 +25,16 @@ defmodule LoadedBike.Web.UserController do
     end
   end
 
+  def index(conn, params) do
+    {users, paginator} = User
+      |> order_by(desc: :id)
+      |> preload([tours: ^Tour.published(Tour)])
+      |> Repo.paginate(params)
+
+    conn
+    |> render("index.html", users: users, paginator: paginator)
+  end
+
   def show(conn, %{"id" => id}) do
     waypoints_query = Waypoint.published(Waypoint)
 
