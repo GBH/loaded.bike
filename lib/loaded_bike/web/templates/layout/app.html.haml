@@ -12,6 +12,8 @@
     %link(rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css")
     %link(rel="stylesheet" href='#{static_path(@conn, "/css/app.css")}')
 
+    %script(src="https://use.fontawesome.com/9a1271ffa3.js")
+
     = render "_favicons.html", conn: @conn
 
   - page_id = page_identifier(@conn)
