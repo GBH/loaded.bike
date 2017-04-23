@@ -29,6 +29,17 @@ defmodule LoadedBike.Web.SessionControllerTest do
     refute Guardian.Plug.current_resource(conn)
   end
 
+  test "create with blank credentials" do
+    conn = post build_conn(), "/signin", session: %{
+      email: "", password: ""
+    }
+    assert response(conn, 200)
+    assert get_flash(conn, :error) == "Invalid login credentials"
+    assert template(conn) == "new.html"
+
+    refute Guardian.Plug.current_resource(conn)
+  end
+
   test "delete" do
     user = insert(:user)
     conn = login(user)

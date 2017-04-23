@@ -1,15 +1,12 @@
 defmodule LoadedBike.Web.SessionController do
   use LoadedBike.Web, :controller
 
-  plug :scrub_params, "session" when action in ~w(create)a
-
   def new(conn, _) do
     conn
     |> render("new.html")
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
-
     case LoadedBike.Web.Auth.login_by_email_and_pass(conn, email, password) do
       {:ok, conn} ->
         conn
