@@ -1,3 +1,4 @@
+dist: trusty
 language: elixir
 elixir: 1.4.1
 otp_release: 19.2
@@ -6,5 +7,4 @@ addons:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/test.travis.exs config/test.exs
