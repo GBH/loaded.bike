@@ -96,14 +96,21 @@ export default class Map {
   addPath() {
     if(!(this.currentMarker && this.previousMarker)){ return }
 
-    let line = new L.polyline([this.previousMarker.getLatLng(), this.currentMarker.getLatLng()], {
+    let style = {
       color:        '#4294cf',
-      weight:       2,
-      opacity:      0.5,
+      weight:       5,
+      opacity:      0.75,
       dashArray:    '2, 5',
       smoothFactor: 1
-    })
-    line.addTo(this.map)
+    }
+
+    const trackJson = JSON.parse(this.container.dataset.track)
+
+    if(trackJson){
+      L.geoJSON(trackJson, {style: style}).addTo(this.map)
+    } else {
+      L.polyline([this.previousMarker.getLatLng(), this.currentMarker.getLatLng()], style).addTo(this.map)
+    }
   }
 
   geolocate() {

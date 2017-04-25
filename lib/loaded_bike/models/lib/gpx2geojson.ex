@@ -33,10 +33,7 @@ defp parse_xml(doc) do
 end
 
   defp build_map(points) do
-    coordinates = Enum.map(points, &([&1[:lat], &1[:lng], &1[:ele]]))
-    %{
-      type:     "LineString",
-      geometry: %{ coordinates: coordinates }
-    }
+    coordinates = Enum.map(points, &([&1[:lng], &1[:lat], &1[:ele]]))
+    %{type: "LineString", coordinates: coordinates}
   end
 end

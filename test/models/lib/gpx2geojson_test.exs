@@ -8,13 +8,12 @@ defmodule LoadedBike.Lib.GPX2GeoJSONTest do
   test "convert" do
     map = %{
       type: "LineString",
-      geometry: %{
-        coordinates: [
-          [46.57608333, 8.89241667, 2376],
-          [46.57619444, 8.89252778, 2375],
-          [46.57641667, 8.89266667, 2372]
-        ]
-      }}
+      coordinates: [
+        [8.89241667, 46.57608333, 2376],
+        [8.89252778, 46.57619444, 2375],
+        [8.89266667, 46.57641667, 2372]
+      ]
+    }
     assert {:ok, map} == GPX2GeoJSON.convert(build_upload(path: "test/files/test.gpx"))
   end
 
