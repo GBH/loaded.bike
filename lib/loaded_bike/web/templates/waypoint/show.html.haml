@@ -3,7 +3,8 @@
 .waypoint
 
   - markers = waypoints_to_json(@conn, @tour, :private, @waypoint, @prev_waypoint)
-  .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}"}
+  - track   = LoadedBike.Web.WaypointView.to_json(@waypoint.geojson)
+  .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}", data-track: "#{track}"}
 
   .description
     = markdown(@waypoint.description)
