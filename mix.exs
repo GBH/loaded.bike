@@ -39,7 +39,8 @@ defmodule LoadedBike.Mixfile do
       :phoenix_haml,
       :elixir_make,
       :edeliver,
-      :rollbax
+      :rollbax,
+      :sweet_xml
     ]]
   end
 
