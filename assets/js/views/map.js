@@ -98,7 +98,7 @@ export default class Map {
 
     let style = {
       color:        '#4294cf',
-      weight:       5,
+      weight:       3,
       opacity:      0.75,
       dashArray:    '2, 5',
       smoothFactor: 1
