@@ -18,7 +18,8 @@ defmodule LoadedBike.Photo do
     |> cast(params, [:description, :position])
     |> set_uuid
     |> cast_attachments(params, [:file])
-    |> validate_required([:file, :uuid])
+    |> assoc_constraint(:waypoint)
+    |> validate_required([:waypoint_id, :file, :uuid])
   end
 
   # deleting record and cleaning up attached files

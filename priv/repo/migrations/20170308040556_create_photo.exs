@@ -5,10 +5,10 @@ defmodule LoadedBike.Repo.Migrations.CreatePhoto do
     create table(:photos) do
       add :waypoint_id, references(:waypoints, on_delete: :delete_all)
 
-      add :file, :string
+      add :file,        :string
       add :description, :text
-      add :position, :integer
-      add :uuid, :string, null: false
+      add :position,    :integer
+      add :uuid,        :string, null: false
 
       timestamps()
     end

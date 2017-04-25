@@ -1,9 +1,7 @@
 defmodule LoadedBike.Web.UserControllerTest do
   use LoadedBike.Web.ConnCase
 
-  defp build_upload(path \\ "test/files/test.jpg") do
-    %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: Path.basename(path)}
-  end
+  import LoadedBike.Web.Test.BuildUpload
 
   test "new" do
     conn = get build_conn(), "/rider/new"

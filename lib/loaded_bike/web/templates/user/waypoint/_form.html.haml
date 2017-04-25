@@ -21,6 +21,12 @@
     = render LoadedBike.Web.UserView, "_formatting_help.html"
 
 .form-group.row
+  = label @f, :gpx_file, "GPX file", class: "col-sm-2 col-form-label text-sm-right"
+  .col-sm-10
+    = file_input @f, :gpx_file, class: "form-control"
+    = error_tag @f, :gpx_file
+
+.form-group.row
   .col-sm-10.offset-sm-2
     = checkbox @f, :is_published
     = label @f, :is_published, "Published"

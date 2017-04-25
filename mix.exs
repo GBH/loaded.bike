@@ -72,6 +72,7 @@ defmodule LoadedBike.Mixfile do
       {:edeliver,             "~> 1.4.2"},
       {:distillery,           "~> 1.0"},
       {:rollbax,              "~> 0.6"},
+      {:sweet_xml,            "~> 0.6.5"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},

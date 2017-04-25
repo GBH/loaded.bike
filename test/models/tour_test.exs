@@ -8,7 +8,7 @@ defmodule LoadedBike.TourTest do
   describe "changeset" do
     test "with valid attributes" do
       user = insert(:user)
-      changeset = Tour.changeset(%Tour{}, %{params_for(:tour) | user_id: user.id})
+      changeset = Tour.changeset(build_assoc(user, :tours), params_for(:tour))
       assert changeset.valid?
     end
 
@@ -20,7 +20,7 @@ defmodule LoadedBike.TourTest do
 
   test "insert" do
     user = insert(:user)
-    {status, _} = Repo.insert(Tour.changeset(%Tour{}, %{params_for(:tour) | user_id: user.id}))
+    {status, _} = Repo.insert(Tour.changeset(build_assoc(user, :tours), params_for(:tour)))
     assert status == :ok
   end
 

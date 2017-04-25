@@ -1,11 +1,9 @@
 defmodule LoadedBike.PhotoTest do
   use LoadedBike.ModelCase
 
-  alias LoadedBike.Photo
+  import LoadedBike.Web.Test.BuildUpload
 
-  defp build_upload(path \\ "test/files/test.jpg") do
-    %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: Path.basename(path)}
-  end
+  alias LoadedBike.Photo
 
   describe "changeset" do
     test "with valid attributes" do

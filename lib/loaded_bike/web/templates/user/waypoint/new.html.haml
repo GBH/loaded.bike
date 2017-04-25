@@ -1,4 +1,5 @@
-- form_for @changeset, current_user_tour_waypoint_path(@conn, :create, @tour), fn f ->
+- path = current_user_tour_waypoint_path(@conn, :create, @tour)
+- form_for @changeset, path, [multipart: true], fn f ->
   = render "_form.html", f: f, conn: @conn, changeset: @changeset, tour: @tour
 
   .form-group.row

@@ -10,6 +10,8 @@ defmodule LoadedBike.Waypoint do
     field :lat,           :float
     field :lng,           :float
     field :position,      :integer
+    field :geojson,       :map
+    field :gpx_file,      :any, virtual: true
     field :is_published,  :boolean
 
     belongs_to :tour, LoadedBike.Tour
@@ -21,12 +23,26 @@ defmodule LoadedBike.Waypoint do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:tour_id, :title, :description, :lat, :lng, :position, :is_published])
+    |> cast(params, [:title, :description, :lat, :lng, :position, :gpx_file, :is_published])
+    |> process_gpx_file
     |> set_position
+    |> assoc_constraint(:tour)
     |> validate_required([:tour_id, :title, :lat, :lng])
     |> validate_number(:lat, greater_than_or_equal_to: -90, less_than_or_equal_to: 90)
     |> validate_number(:lng, greater_than_or_equal_to: -180, less_than_or_equal_to: 180)
-    |> assoc_constraint(:tour)
+  end
+
+  defp process_gpx_file(changeset) do
+    gpx_file = get_change(changeset, :gpx_file)
+
+    if gpx_file do
+      case LoadedBike.Lib.GPX2GeoJSON.convert(gpx_file) do
+        {:ok,    geojson} -> change(changeset, geojson: geojson)
+        {:error, message} -> add_error(changeset, :gpx_file, message)
+      end
+    else
+      changeset
+    end
   end
 
   defp set_position(changeset) do

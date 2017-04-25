@@ -17,9 +17,9 @@ defmodule LoadedBike.Tour do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:user_id, :title, :short_description, :description, :is_completed, :is_published])
-    |> validate_required([:user_id, :title])
+    |> cast(params, [:title, :short_description, :description, :is_completed, :is_published])
     |> assoc_constraint(:user)
+    |> validate_required([:user_id, :title])
   end
 
   def published(query) do

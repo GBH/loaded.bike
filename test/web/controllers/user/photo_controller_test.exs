@@ -1,16 +1,14 @@
 defmodule LoadedBike.Web.User.PhotoControllerTest do
   use LoadedBike.Web.ConnCase
 
+  import LoadedBike.Web.Test.BuildUpload
+
   alias LoadedBike.Photo
 
   setup do
     waypoint = insert(:waypoint)
     conn = login(waypoint.tour.user)
     {:ok, conn: conn, waypoint: waypoint}
-  end
-
-  defp build_upload(path \\ "test/files/test.jpg") do
-    %{__struct__: Plug.Upload, content_type: "image/jpg", path: path, filename: Path.basename(path)}
   end
 
   test "new", %{conn: conn, waypoint: wp} do
@@ -33,7 +31,6 @@ defmodule LoadedBike.Web.User.PhotoControllerTest do
       file:         build_upload(),
       description:  "Test Description"
     }
-    photo = Repo.one(Photo)
     assert redirected_to(conn) == "/rider/tours/#{wp.tour.id}/waypoints/#{wp.id}/photos/new"
   end
 
