@@ -26,19 +26,27 @@ export default class ElevationGraph {
     let maxElevation = d3.max(data, function(d) { return d.y }) + 50
     let y = d3.scaleLinear()
         .domain([minElevation, maxElevation])
-        .range([height, 0]);
+        .range([height, 0])
+
+    let xAxisTicksFreq = 10
+    if(width < 768){
+      xAxisTicksFreq = 5
+    }
 
     let xAxis = d3.axisBottom()
       .scale(x)
       .tickSizeInner(-height)
       .tickSizeOuter(0)
       .tickPadding(10)
+      .ticks(xAxisTicksFreq, "r")
       .tickFormat(function(d){ return d + " km"})
 
     let yAxis = d3.axisLeft()
       .scale(y)
+      .tickSizeInner(-width)
       .tickSizeOuter(0)
-      .tickPadding(10)
+      .tickPadding(5)
+      .ticks(5, "r")
       .tickFormat(function(d){ return d + " m"})
 
     let area = d3.area()
@@ -46,7 +54,9 @@ export default class ElevationGraph {
       .y0(height)
       .y1(function(d) { return y(d.y) })
 
-    let svgContainer = document.createElement("div", {id: "elevation-graph"})
+    let svgContainer = document.createElement("div")
+    svgContainer.setAttribute("id", "elevation-graph")
+
     this.container.parentNode.insertBefore(svgContainer, this.container.nextSibling)
 
     let svg = d3.select(svgContainer)
