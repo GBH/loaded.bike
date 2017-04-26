@@ -13,7 +13,7 @@ export default class WaypointShowView extends MainView {
     map.addPath()
 
     let graph = new ElevationGraph()
-    graph.render()
+    graph.init()
   }
 
   unmount(){

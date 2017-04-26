@@ -1,63 +1,83 @@
 export default class ElevationGraph {
 
   constructor(container) {
-    this.container = container || document.getElementById('map')
-
-    let track = JSON.parse(this.container.dataset.track)
-    this.dataPoints = this._transformTrackData(track)
+    this.mapContainer = container || document.getElementById('map')
+    this.x      = null
+    this.y      = null
+    this.xAxis  = null
+    this.yAxis  = null
+    this.area   = null
+    this.data   = null
   }
 
-  render() {
-    let data = this.dataPoints;
+  init() {
+    let track = JSON.parse(this.mapContainer.dataset.track)
 
-    if(!data){ return }
+    // no track, no data, we bail
+    if(!track){ return }
 
-    let containerWidth = this.container.offsetWidth
+    window.addEventListener('resize', this.render.bind(this))
 
+    this.data  = this._transformTrackData(track)
+
+    let minDistance = 0
+    let maxDistance = d3.max(this.data, function(d) { return d.x })
+    this.x = d3.scaleLinear().domain([minDistance, maxDistance])
+
+    let minElevation = d3.min(this.data, function(d) { return d.y }) - 50
+    let maxElevation = d3.max(this.data, function(d) { return d.y }) + 50
+    this.y = d3.scaleLinear().domain([minElevation, maxElevation])
+
+    this.xAxis = d3.axisBottom()
+      .scale(this.x)
+      .tickSizeOuter(0)
+      .tickPadding(10)
+      .tickFormat(function(d){ return d + " km"})
+
+    this.yAxis = d3.axisLeft()
+      .scale(this.y)
+      .tickSizeOuter(0)
+      .tickPadding(5)
+      .tickFormat(function(d){ return d + " m"})
+
+    this.area = d3.area()
+      .x(function(d){ return this.x(d.x) }.bind(this))
+      .y1(function(d){ return this.y(d.y) }.bind(this))
+
+    this.render()
+  }
+
+  render(){
+    // blow away entire container if we need to re-render this
+    let container = document.getElementById("elevation-graph")
+    if (container) {
+      container.remove()
+    }
+
+    let svgContainer = document.createElement("div")
+    svgContainer.setAttribute("id", "elevation-graph")
+    this.mapContainer.parentNode.insertBefore(svgContainer, this.mapContainer.nextSibling)
+
+    let containerWidth = this.mapContainer.offsetWidth
     let margin  = {top: 0, right: 0, bottom: 30, left: 50}
     let width   = containerWidth - margin.left - margin.right
     let height  = 150 - margin.top - margin.bottom
 
-    let x = d3.scaleLinear()
-        .domain([0, d3.max(data, function(d) { return d.x })])
-        .range([0, width]);
-
-    let minElevation = d3.min(data, function(d) { return d.y }) - 50
-    let maxElevation = d3.max(data, function(d) { return d.y }) + 50
-    let y = d3.scaleLinear()
-        .domain([minElevation, maxElevation])
-        .range([height, 0])
+    this.x.range([0, width])
+    this.y.range([height, 0])
 
     let xAxisTicksFreq = 10
-    if(width < 768){
-      xAxisTicksFreq = 5
-    }
+    if(width < 768){ xAxisTicksFreq = 5 }
 
-    let xAxis = d3.axisBottom()
-      .scale(x)
-      .tickSizeInner(-height)
-      .tickSizeOuter(0)
-      .tickPadding(10)
+    this.xAxis
       .ticks(xAxisTicksFreq, "r")
-      .tickFormat(function(d){ return d + " km"})
+      .tickSizeInner(-height)
 
-    let yAxis = d3.axisLeft()
-      .scale(y)
-      .tickSizeInner(-width)
-      .tickSizeOuter(0)
-      .tickPadding(5)
+    this.yAxis
       .ticks(5, "r")
-      .tickFormat(function(d){ return d + " m"})
+      .tickSizeInner(-width)
 
-    let area = d3.area()
-      .x(function(d) { return x(d.x) })
-      .y0(height)
-      .y1(function(d) { return y(d.y) })
-
-    let svgContainer = document.createElement("div")
-    svgContainer.setAttribute("id", "elevation-graph")
-
-    this.container.parentNode.insertBefore(svgContainer, this.container.nextSibling)
+    this.area.y0(height)
 
     let svg = d3.select(svgContainer)
       .append("svg")
@@ -67,18 +87,18 @@ export default class ElevationGraph {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
     svg.append("path")
-      .datum(data)
+      .datum(this.data)
       .attr("class", "area")
-      .attr("d", area)
+      .attr("d", this.area)
 
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
+      .call(this.xAxis)
 
     svg.append("g")
       .attr("class", "y axis")
-      .call(yAxis)
+      .call(this.yAxis)
   }
 
   // transforming GeoJSON into array with current distance and elevation
