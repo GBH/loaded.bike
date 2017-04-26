@@ -97,6 +97,7 @@
                 = link "Fork loaded.bike on Github", to: "https://github.com/GBH/loaded.bike"
 
     %script(src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js")
+    %script(src="https://d3js.org/d3.v4.min.js")
     %script(src='#{static_path(@conn, "/js/app.js")}')
 
     = render "_google_analytics.html"
