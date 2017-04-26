@@ -1,6 +1,12 @@
 defmodule LoadedBike.Web.LayoutView do
   use LoadedBike.Web, :view
 
+  def header_title(conn) do
+    titles = Map.get(conn.assigns, :header_titles, ["Bicycle Touring Routes"])
+    titles = ["Loaded Bike"] ++ titles
+    Enum.join(titles, " - ")
+  end
+
   def page_identifier(conn) do
     view_name(conn) <> template_name(conn) <> "View"
   end

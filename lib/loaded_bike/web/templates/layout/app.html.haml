@@ -6,7 +6,7 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1")
     %meta(name="description" content="Loaded Bike: discover and share bicycle touring routes around the world")
 
-    %title Loaded Bike - Bicycle Touring Routes
+    %title= header_title(@conn)
 
     %link(rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css")
     %link(rel="stylesheet" href='#{static_path(@conn, "/css/app.css")}')

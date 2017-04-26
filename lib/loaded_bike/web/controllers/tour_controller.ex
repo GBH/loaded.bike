@@ -1,5 +1,6 @@
 defmodule LoadedBike.Web.TourController do
   use LoadedBike.Web, :controller
+  use LoadedBike.Web.Controller.Helpers
 
   alias LoadedBike.{Tour, Waypoint}
 
@@ -23,6 +24,7 @@ defmodule LoadedBike.Web.TourController do
     conn
     |> add_breadcrumb(name: "All Tours", url: tour_path(conn, :index))
     |> add_breadcrumb(name: tour.title)
+    |> add_header_title(tour.title)
     |> render("show.html", tour: tour)
   end
 
