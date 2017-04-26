@@ -1,5 +1,6 @@
-import MainView from "../../main"
-import Map      from "../../map"
+import MainView       from "../../main"
+import Map            from "../../map"
+import ElevationGraph from "../../elevation_graph"
 
 export default class UserWaypointShowView extends MainView {
   mount(){
@@ -10,6 +11,9 @@ export default class UserWaypointShowView extends MainView {
     map.loadMarkers()
     map.centerMarkers()
     map.addPath()
+
+    let graph = new ElevationGraph()
+    graph.init()
   }
 
   unmount(){
