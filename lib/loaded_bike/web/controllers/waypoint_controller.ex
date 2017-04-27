@@ -7,6 +7,7 @@ defmodule LoadedBike.Web.WaypointController do
   def show(conn, %{"tour_id" => tour_id, "id" => id}) do
     waypoints_query = Waypoint
       |> Waypoint.published
+      |> Waypoint.select_without_gps
 
     tour = Tour
       |> Tour.published

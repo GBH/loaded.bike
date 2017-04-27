@@ -14,7 +14,7 @@ config :loaded_bike, LoadedBike.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "pedal_test",
+  database: "loaded_bike_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 

@@ -6,9 +6,13 @@ defmodule LoadedBike.Web.Controller.User.Helpers do
       # Loading tour into assigns based on param_key like "tour_id" or "id"
       defp load_tour(conn, param_key) do
         %{^param_key => tour_id} = conn.params
-        tour =
-          LoadedBike.Repo.get!(assoc(conn.assigns.current_user, :tours), tour_id)
-          |> LoadedBike.Repo.preload(waypoints: from(w in LoadedBike.Waypoint, order_by: w.position))
+
+        waypoints_query = LoadedBike.Waypoint
+          |> LoadedBike.Waypoint.select_without_gps
+          |> order_by([w], asc: w.position)
+
+        tour = LoadedBike.Repo.get!(assoc(conn.assigns.current_user, :tours), tour_id)
+          |> LoadedBike.Repo.preload(waypoints: waypoints_query)
 
         conn
         |> assign(:tour, tour)

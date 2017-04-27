@@ -16,6 +16,7 @@ defmodule LoadedBike.Web.User.TourController do
   # -- Actions -----------------------------------------------------------------
   def index(conn, _, current_user) do
     waypoints_query = Waypoint
+      |> Waypoint.select_without_gps
       |> order_by(asc: :position)
 
     tours = assoc(current_user, :tours)

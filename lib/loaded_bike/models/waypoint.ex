@@ -74,8 +74,12 @@ defmodule LoadedBike.Waypoint do
   end
 
   def published(query) do
-    query
-    |> where([w], w.is_published == true)
+    where(query, [w], w.is_published == true)
+  end
+
+  # during association preloads we don't want to load geojson data for every waypoint
+  def select_without_gps(query) do
+    select(query, [:id, :tour_id, :title, :position, :lat, :lng, :is_published])
   end
 
   def previous(waypoint) do
