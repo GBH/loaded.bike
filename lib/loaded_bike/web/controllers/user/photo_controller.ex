@@ -32,8 +32,8 @@ defmodule LoadedBike.Web.User.PhotoController do
     case Repo.insert(changeset) do
       {:ok, photo} ->
         dom_id = Photo.dom_id(photo)
-        conn
-        |> put_flash(:info, "Photo created")
+
+        conn = put_flash(conn, :info, "Photo created")
 
         if Map.has_key?(params, "submit_more") do
           redirect(conn, to: current_user_tour_waypoint_photo_path(conn, :new, tour, waypoint))
