@@ -94,8 +94,6 @@ export default class Map {
   }
 
   addPath() {
-    if(!(this.currentMarker && this.previousMarker)){ return }
-
     let style = {
       color:        '#4294cf',
       weight:       3,
@@ -104,11 +102,11 @@ export default class Map {
       smoothFactor: 1
     }
 
-    const trackJson = JSON.parse(this.container.dataset.track)
+    let trackJson = JSON.parse(this.container.dataset.track)
 
     if(trackJson){
       L.geoJSON(trackJson, {style: style}).addTo(this.map)
-    } else {
+    } else if (this.currentMarker && this.previousMarker) {
       L.polyline([this.previousMarker.getLatLng(), this.currentMarker.getLatLng()], style).addTo(this.map)
     }
   }

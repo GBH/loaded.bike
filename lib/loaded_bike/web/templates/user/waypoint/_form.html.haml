@@ -1,7 +1,9 @@
 - lat = Ecto.Changeset.get_field(@changeset, :lat)
 - lng = Ecto.Changeset.get_field(@changeset, :lng)
 - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :private)
-.map#map{data-lat: "#{lat}", data-lng: "#{lng}", data-markers: "#{markers}"}
+- geojson = Ecto.Changeset.get_field(@changeset, :geojson)
+- track   = LoadedBike.Web.WaypointView.to_json(geojson)
+.map#map{data-lat: "#{lat}", data-lng: "#{lng}", data-markers: "#{markers}", data-track: "#{track}"}
 
 = hidden_input @f, :lat
 = hidden_input @f, :lng
@@ -25,6 +27,10 @@
   .col-sm-10
     = file_input @f, :gpx_file, class: "form-control"
     = error_tag @f, :gpx_file
+
+    - if (Ecto.get_meta(@changeset.data, :state) == :built) do
+      %p.form-text.text-muted
+        map pin will be repositioned as per uploaded .gpx file
 
 .form-group.row
   .col-sm-10.offset-sm-2

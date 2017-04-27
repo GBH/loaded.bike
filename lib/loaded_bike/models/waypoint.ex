@@ -25,6 +25,7 @@ defmodule LoadedBike.Waypoint do
     struct
     |> cast(params, [:title, :description, :lat, :lng, :position, :gpx_file, :is_published])
     |> process_gpx_file
+    |> set_location
     |> set_position
     |> assoc_constraint(:tour)
     |> validate_required([:tour_id, :title, :lat, :lng])
@@ -42,6 +43,21 @@ defmodule LoadedBike.Waypoint do
       end
     else
       changeset
+    end
+  end
+
+  # If we're creating a new waypint with provided .gpx file, let's use that
+  # instead of manual dropped pin. Always correctable via editing later.
+  defp set_location(changeset) do
+    state   = Ecto.get_meta(changeset.data, :state)
+    geojson = get_change(changeset, :geojson)
+    case {state, geojson}  do
+      {:built, geojson} when geojson != nil ->
+        [lng, lat, _ele] = List.last(geojson[:coordinates])
+        change(changeset, lat: lat, lng: lng)
+
+      _ ->
+        changeset
     end
   end
 
