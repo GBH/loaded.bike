@@ -29,6 +29,8 @@ defmodule LoadedBike.Web.User.WaypointControllerTest do
     conn = get conn, "/rider/tours/#{tour.id}/waypoints/new"
     assert response(conn, 200)
     assert template(conn) == "new.html"
+    changeset = assigns(conn, :changeset)
+    assert Ecto.Changeset.get_change(changeset, :is_published)
   end
 
   test "create", %{conn: conn, tour: tour} do
