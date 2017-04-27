@@ -40,6 +40,7 @@ defmodule LoadedBike.Web.User.WaypointController do
     changeset = tour
     |> build_assoc(:waypoints)
     |> Waypoint.changeset
+    |> Ecto.Changeset.put_change(:is_published, true)
 
     conn
     |> add_breadcrumb(name: "New Waypoint")
