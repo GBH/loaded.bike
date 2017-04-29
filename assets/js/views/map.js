@@ -95,9 +95,9 @@ export default class Map {
 
   addPath() {
     let style = {
-      color:        '#4294cf',
-      weight:       3,
-      opacity:      0.75,
+      color:        'red',
+      weight:       2,
+      opacity:      0.5,
       dashArray:    '2, 5',
       smoothFactor: 1
     }
