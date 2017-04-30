@@ -8,6 +8,7 @@ defmodule LoadedBike.Web.WaypointController do
     waypoints_query = Waypoint
       |> Waypoint.published
       |> Waypoint.select_without_gps
+      |> order_by(asc: :position)
 
     tour = Tour
       |> Tour.published
