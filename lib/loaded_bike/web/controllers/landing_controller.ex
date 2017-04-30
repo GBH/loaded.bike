@@ -6,7 +6,8 @@ defmodule LoadedBike.Web.LandingController do
   def show(conn, _params) do
     waypoints_query = Waypoint
       |> Waypoint.published
-      |> select([:id, :title])
+      |> Waypoint.select_without_gps
+      |> order_by(asc: :position)
 
     tours = Tour
       |> Tour.published
