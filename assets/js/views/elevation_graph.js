@@ -59,7 +59,7 @@ export default class ElevationGraph {
     this.mapContainer.parentNode.insertBefore(svgContainer, this.mapContainer.nextSibling)
 
     let containerWidth = this.mapContainer.offsetWidth
-    let margin  = {top: 0, right: 0, bottom: 30, left: 50}
+    let margin  = {top: 5, right: 0, bottom: 30, left: 40}
     let width   = containerWidth - margin.left - margin.right
     let height  = 150 - margin.top - margin.bottom
 

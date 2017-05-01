@@ -23,6 +23,10 @@ defmodule LoadedBike.Tour do
   end
 
   def published(query) do
-    from t in query, where: t.is_published == true
+    where(query, [t], t.is_published == true)
+  end
+
+  def completed(query) do
+    where(query, [t], t.is_completed == true)
   end
 end

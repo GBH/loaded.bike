@@ -8,10 +8,9 @@
       what to see, and more importantly where to stay for the night. Share your tour with others by
       registering and creating waypoints along your jorney.
 
-
 .heading
-  Recently published tours
-  = link "View All Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-secondary"
+  Recently completed tours
+  = link "Browse Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-secondary"
 
 .tours
   - for tour <- @tours do

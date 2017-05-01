@@ -32,4 +32,13 @@ defmodule LoadedBike.TourTest do
     Repo.update!(change(tour, %{is_published: true}))
     assert Repo.aggregate(query, :count, :id) == 1
   end
+
+  test "scope completed" do
+    tour = insert(:tour, %{is_completed: false})
+    query = Tour.completed(Tour)
+    assert Repo.aggregate(query, :count, :id) == 0
+
+    Repo.update!(change(tour, %{is_completed: true}))
+    assert Repo.aggregate(query, :count, :id) == 1
+  end
 end
