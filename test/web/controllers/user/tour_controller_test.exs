@@ -37,7 +37,7 @@ defmodule LoadedBike.Web.User.TourControllerTest do
     assert response(conn, 200)
     assert template(conn) == "new.html"
     changeset = assigns(conn, :changeset)
-    assert Ecto.Changeset.get_change(changeset, :is_published)
+    refute Ecto.Changeset.get_change(changeset, :is_published)
   end
 
   test "create", %{conn: conn} do

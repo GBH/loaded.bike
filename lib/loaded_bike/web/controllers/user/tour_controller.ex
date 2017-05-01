@@ -36,7 +36,6 @@ defmodule LoadedBike.Web.User.TourController do
     changeset = current_user
     |> build_assoc(:tours)
     |> Tour.changeset
-    |> Ecto.Changeset.put_change(:is_published, true)
 
     conn
     |> render("new.html", changeset: changeset)
