@@ -1,29 +1,33 @@
-- markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :public)
-.map#map(data-markers: "#{markers}")
-
-.short-description
-  %p= @tour.short_description
-
 .heading
   published by
   = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
   = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
 
+- if length(@tour.waypoints) > 0 do
+  - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, @tour, :public)
+  .map#map(data-markers: "#{markers}")
+
+.short-description
+  %p= @tour.short_description
+
 .description
   = markdown(@tour.description)
 
-.heading
-  %h1
-    Waypoints
-    = completed_badge(@tour.is_completed)
 
-.table-responsive
-  %table.table.table-sm
-    - for waypoint <- @tour.waypoints do
-      %tr
-        %td
-          %strong
-            Day
-            = waypoint.position
-        %td.main
-          = link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint)
+
+- if length(@tour.waypoints) > 0 do
+  .heading
+    %h1
+      Waypoints
+      = completed_badge(@tour.is_completed)
+
+  .table-responsive
+    %table.table.table-sm
+      - for waypoint <- @tour.waypoints do
+        %tr
+          %td
+            %strong
+              Day
+              = waypoint.position
+          %td.main
+            = link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint)

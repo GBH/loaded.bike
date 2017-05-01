@@ -3,6 +3,12 @@ export default class Map {
   constructor(container) {
 
     this.container = container || document.getElementById('map')
+
+    // failure to init as there's no map
+    if (!this.container) {
+      return {invalid: true}
+    }
+
     this.map  = L.map(this.container, {attributionControl: false})
 
     // defaulting location to Stanley Park if geolocation fails

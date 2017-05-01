@@ -6,9 +6,11 @@ export default class TourShowView extends MainView {
     super.mount()
 
     var map = new Map()
-    map.init()
-    map.loadMarkers()
-    map.centerMarkers()
+    if (!map.invalid){
+      map.init()
+      map.loadMarkers()
+      map.centerMarkers()
+    }
   }
 
   unmount(){
