@@ -38,8 +38,9 @@ defmodule LoadedBike.Waypoint do
 
     if gpx_file do
       case LoadedBike.Lib.GPX2GeoJSON.convert(gpx_file) do
-        {:ok,    geojson} -> change(changeset, geojson: geojson)
-        {:error, message} -> add_error(changeset, :gpx_file, message)
+        {:ok,   %{coordinates: []}} -> add_error(changeset, :gpx_file, ".gpx file doesn't contain track data")
+        {:ok,    geojson}           -> change(changeset, geojson: geojson)
+        {:error, message}           -> add_error(changeset, :gpx_file, message)
       end
     else
       changeset

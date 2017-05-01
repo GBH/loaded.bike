@@ -62,6 +62,13 @@ defmodule LoadedBike.WaypointTest do
       changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
       refute get_field(changeset, :geojson)
     end
+
+    test "with gpx no track" do
+      tour = insert(:tour)
+      params = %{params_for(:waypoint) | gpx_file: build_upload(path: "test/files/test-blank.gpx")}
+      changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
+      refute get_field(changeset, :geojson)
+    end
   end
 
   test "insert" do

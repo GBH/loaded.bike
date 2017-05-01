@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0">
+  <name>Example gpx</name>
+  <wpt lat="46.57638889" lon="8.89263889">
+    <ele>2372</ele>
+    <name>LAGORETICO</name>
+  </wpt>
+</gpx>
