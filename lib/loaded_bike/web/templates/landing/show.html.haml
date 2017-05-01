@@ -4,9 +4,12 @@
   .col-sm-9
     %p
       Hello there. Are you planning a bicycle touring adventure? Maybe you are on one right now?
-      This site should be a pretty good resource to discover routes and relevant info on where to go,
-      what to see, and more importantly where to stay for the night. Share your tour with others by
-      registering and creating waypoints along your jorney.
+      This site is a great resource to discover routes and relevant info on where to go,
+      what to see, and more importantly where to stay for the night.
+      = link "Browse Tours", to: tour_path(@conn, :index)
+      created by other riders.
+      = link "Register", to: current_user_path(@conn, :new)
+      and share your own.
 
 .heading
   Recently completed tours

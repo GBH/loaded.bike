@@ -28,6 +28,8 @@
 
         .collapse.navbar-collapse#navbarSupportedContent
           %ul.navbar-nav.mr-auto
+            %li.nav-item
+              = link "Browse Tours", to: tour_path(@conn, :index), class: "nav-link"
             - if @current_user do
               %li.nav-item
                 = link "My Tours", to: current_user_tour_path(@conn, :index), class: "nav-link"
