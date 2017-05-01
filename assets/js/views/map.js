@@ -5,9 +5,7 @@ export default class Map {
     this.container = container || document.getElementById('map')
 
     // failure to init as there's no map
-    if (!this.container) {
-      return {invalid: true}
-    }
+    if (!this.container) { return false }
 
     this.map  = L.map(this.container, {attributionControl: false})
 
