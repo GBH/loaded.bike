@@ -43,7 +43,8 @@ defmodule LoadedBike.Web.User.TourControllerTest do
   test "create", %{conn: conn} do
     conn = post conn, "/rider/tours", tour: %{
       title:        "Test Tour",
-      description:  "Test Description"
+      description:  "Test Description",
+      status:       "active"
     }
     tour = Repo.one(Tour)
     assert redirected_to(conn) == "/rider/tours/#{tour.id}"

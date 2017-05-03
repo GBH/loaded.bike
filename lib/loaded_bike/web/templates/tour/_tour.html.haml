@@ -3,7 +3,7 @@
     .col-sm-7
       %h4
         = link @tour.title, to: tour_path(@conn, :show, @tour)
-        = completed_badge(@tour.is_completed)
+        = status_badge(@tour.status)
       .description
         = @tour.short_description
       .rider

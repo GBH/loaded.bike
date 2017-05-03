@@ -10,7 +10,7 @@
       .heading
         - path = current_user_tour_path(@conn, :show, tour)
         = link tour.title, to: path
-        = LoadedBike.Web.TourView.completed_badge(tour.is_completed)
+        = LoadedBike.Web.TourView.status_badge(tour.status)
         = link "View", to: path, class: "btn btn-sm btn-secondary"
 
       - markers = LoadedBike.Web.WaypointView.waypoints_to_json(@conn, tour, :private)

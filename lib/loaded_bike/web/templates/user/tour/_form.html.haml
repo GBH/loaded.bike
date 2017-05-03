@@ -5,7 +5,7 @@
     = error_tag @f, :title
 
 .form-group.row
-  = label @f, :short_description, class: "col-sm-2 col-form-label text-sm-right"
+  = label @f, :short_description, "Short Desc", class: "col-sm-2 col-form-label text-sm-right"
   .col-sm-10
     = text_input @f, :short_description, class: "form-control"
     = error_tag @f, :short_description
@@ -19,9 +19,21 @@
     = render LoadedBike.Web.UserView, "_formatting_help.html"
 
 .form-group.row
-  .col-sm-10.offset-sm-2
-    = checkbox @f, :is_completed
-    = label @f, :is_completed, "This tour is completed"
+  %label.col-sm-2.col-form-label.text-sm-right
+    Status
+  .col-sm-10
+    .form-check
+      %label.form-check-label
+        = radio_button @f, :status, "planned", class: "form-check-input"
+        In planning stage
+    .form-check
+      %label.form-check-label
+        = radio_button @f, :status, "active", class: "form-check-input"
+        Currently on the road
+    .form-check
+      %label.form-check-label
+        = radio_button @f, :status, "completed", class: "form-check-input"
+        It's finished!
 
 .form-group.row
   .col-sm-10.offset-sm-2

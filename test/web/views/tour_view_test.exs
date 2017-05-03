@@ -14,19 +14,24 @@ defmodule LoadedBike.Web.TourViewTest do
     assert TourView.waypoint_css_class(tour, 6) == "week"
     assert TourView.waypoint_css_class(tour, 9) == "finish"
 
-    tour = %{tour | is_completed: false}
+    tour = %{tour | status: :active}
     assert TourView.waypoint_css_class(tour, 9) == ""
   end
 
-  test "completed_badge" do
-    assert TourView.completed_badge(true)
+  test "status_badge" do
+    assert TourView.status_badge(:completed)
     |> safe_to_string
     |> Floki.find("span")
     |> Floki.text == "Completed"
 
-    assert TourView.completed_badge(false)
+    assert TourView.status_badge(:active)
     |> safe_to_string
     |> Floki.find("span")
     |> Floki.text == "On the road"
+
+    assert TourView.status_badge(:planned)
+    |> safe_to_string
+    |> Floki.find("span")
+    |> Floki.text == "Planned"
   end
 end

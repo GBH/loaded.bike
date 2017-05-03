@@ -12,7 +12,7 @@ defmodule LoadedBike.Web.WaypointView do
     |> Enum.map(&set_is_marked(&1, :is_current, curr_waypoint))
     |> Enum.map(&set_is_marked(&1, :is_previous, prev_waypoint))
     |> Enum.map(&Map.put(&1, :url, set_link(conn, &1, type)))
-    |> set_is_finish(tour.is_completed)
+    |> set_is_finish(tour.status == :completed)
     |> to_json
   end
 

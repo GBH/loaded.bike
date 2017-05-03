@@ -18,7 +18,7 @@ defmodule LoadedBike.TestFactory do
       title:              "Test Tour",
       description:        "Test Tour Description",
       short_description:  "Test Tour Short Description",
-      is_completed:       true,
+      status:             :completed,
       is_published:       true
     }
   end

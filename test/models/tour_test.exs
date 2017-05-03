@@ -33,12 +33,18 @@ defmodule LoadedBike.TourTest do
     assert Repo.aggregate(query, :count, :id) == 1
   end
 
-  test "scope completed" do
-    tour = insert(:tour, %{is_completed: false})
-    query = Tour.completed(Tour)
+  test "scope with_status" do
+    tour = insert(:tour, %{status: :planned})
+    query = Tour.with_status(Tour, :planned)
+    assert Repo.aggregate(query, :count, :id) == 1
+
+    query = Tour.with_status(Tour, :active)
     assert Repo.aggregate(query, :count, :id) == 0
 
-    Repo.update!(change(tour, %{is_completed: true}))
+    query = Tour.with_status(Tour, :completed)
+    assert Repo.aggregate(query, :count, :id) == 0
+
+    Repo.update!(change(tour, %{status: :completed}))
     assert Repo.aggregate(query, :count, :id) == 1
   end
 end

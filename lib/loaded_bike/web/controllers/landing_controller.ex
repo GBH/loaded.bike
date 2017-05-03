@@ -11,7 +11,7 @@ defmodule LoadedBike.Web.LandingController do
 
     tours = Tour
       |> Tour.published
-      |> Tour.completed
+      |> Tour.with_status(:completed)
       |> order_by(desc: :inserted_at)
       |> preload([:user, waypoints: ^waypoints_query])
       |> limit(3)

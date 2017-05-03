@@ -7,7 +7,7 @@ defmodule LoadedBike.Web.TourView do
     cond do
       index == 0 ->
         "start"
-      index == total - 1 && tour.is_completed ->
+      index == total - 1 && tour.status == :completed ->
         "finish"
       rem(index + 1, 7) == 0 ->
         "week"
@@ -16,11 +16,15 @@ defmodule LoadedBike.Web.TourView do
     end
   end
 
-  def completed_badge(true) do
+  def status_badge(:completed) do
     content_tag(:span, "Completed", class: "badge badge-pill badge-success")
   end
 
-  def completed_badge(false) do
+  def status_badge(:active) do
     content_tag(:span, "On the road", class: "badge badge-pill badge-warning")
+  end
+
+  def status_badge(:planned) do
+    content_tag(:span, "Planned", class: "badge badge-pill badge-default")
   end
 end

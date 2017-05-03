@@ -5,7 +5,7 @@ defmodule LoadedBike.Tour do
     field :title,             :string
     field :short_description, :string
     field :description,       :string
-    field :is_completed,      :boolean
+    field :status,            TourStateEnum
     field :is_published,      :boolean
 
     belongs_to :user, LoadedBike.User
@@ -17,16 +17,16 @@ defmodule LoadedBike.Tour do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :short_description, :description, :is_completed, :is_published])
+    |> cast(params, [:title, :short_description, :description, :status, :is_published])
     |> assoc_constraint(:user)
-    |> validate_required([:user_id, :title])
+    |> validate_required([:user_id, :title, :status])
   end
 
   def published(query) do
     where(query, [t], t.is_published == true)
   end
 
-  def completed(query) do
-    where(query, [t], t.is_completed == true)
+  def with_status(query, status) do
+    where(query, [t], t.status == ^status)
   end
 end

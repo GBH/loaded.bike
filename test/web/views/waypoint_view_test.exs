@@ -28,7 +28,7 @@ defmodule LoadedBike.Web.WaypointViewTest do
   end
 
   test "waypoints_to_json is_finish", %{conn: conn} do
-    tour = insert(:tour, %{is_completed: false})
+    tour = insert(:tour, %{status: :active})
     waypoint = insert(:waypoint, %{tour: tour})
     tour = %{tour | waypoints: [waypoint]}
 

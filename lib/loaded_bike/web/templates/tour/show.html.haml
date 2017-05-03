@@ -19,7 +19,7 @@
   .heading
     %h1
       Waypoints
-      = completed_badge(@tour.is_completed)
+      = status_badge(@tour.status)
 
   .table-responsive
     %table.table.table-sm

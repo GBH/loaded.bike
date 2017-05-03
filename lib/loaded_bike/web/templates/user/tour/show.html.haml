@@ -1,6 +1,6 @@
 .actions.clearfix
   = published_badge(@tour.is_published)
-  = LoadedBike.Web.TourView.completed_badge(@tour.is_completed)
+  = LoadedBike.Web.TourView.status_badge(@tour.status)
   - link to: current_user_tour_path(@conn, :edit, @tour), class: "btn btn-secondary btn-sm pull-right" do
     %i.fa.fa-pencil
     Edit
