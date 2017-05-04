@@ -1,8 +1,18 @@
 defmodule LoadedBike.Web.WaypointViewTest do
   use LoadedBike.Web.ConnCase, async: true
   import Poison.Parser, only: [parse: 1]
+  import Phoenix.HTML, only: [safe_to_string: 1]
 
   alias LoadedBike.Web.WaypointView
+
+  test "status_badge" do
+    assert WaypointView.status_badge(true)
+    |> safe_to_string
+    |> Floki.find("span")
+    |> Floki.text == "Planned"
+
+    assert WaypointView.status_badge(false) == ""
+  end
 
   test "waypoints_to_json urls", %{conn: conn} do
     waypoint = insert(:waypoint)
