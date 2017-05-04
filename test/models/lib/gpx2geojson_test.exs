@@ -5,7 +5,7 @@ defmodule LoadedBike.Lib.GPX2GeoJSONTest do
 
   alias LoadedBike.Lib.GPX2GeoJSON
 
-  test "convert" do
+  test "convert track" do
     map = %{
       type: "LineString",
       coordinates: [
@@ -15,6 +15,18 @@ defmodule LoadedBike.Lib.GPX2GeoJSONTest do
       ]
     }
     assert {:ok, map} == GPX2GeoJSON.convert(build_upload(path: "test/files/test.gpx"))
+  end
+
+  test "convert route" do
+    map = %{
+      type: "LineString",
+      coordinates: [
+        [141.6774785, 42.7832427],
+        [141.6776047, 42.7832561],
+        [141.6784915, 42.7751368]
+      ]
+    }
+    assert {:ok, map} == GPX2GeoJSON.convert(build_upload(path: "test/files/test-route.gpx"))
   end
 
   test "convert with wrong extension" do

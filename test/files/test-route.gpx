@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.0">
+  <name>Example gpx</name>
+  <wpt lat="46.57638889" lon="8.89263889">
+    <ele>2372</ele>
+    <name>LAGORETICO</name>
+  </wpt>
+  <rte>
+    <name>Chitose Airport to Hakodate Terminal</name>
+    <rtept lat="42.7832427" lon="141.6774785">
+      <name>RP001</name>
+    </rtept>
+    <rtept lat="42.7832561" lon="141.6776047">
+      <name>RP002</name>
+    </rtept>
+    <rtept lat="42.7751368" lon="141.6784915">
+      <name>RP003</name>
+    </rtept>
+  </rte>
+</gpx>

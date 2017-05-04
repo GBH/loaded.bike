@@ -30,7 +30,7 @@ defmodule LoadedBike.WaypointTest do
       refute changeset.changes[:position]
     end
 
-    test "new with gpx" do
+    test "new with gpx track" do
       tour = insert(:tour)
       params = %{params_for(:waypoint) | gpx_file: build_upload(path: "test/files/test.gpx")}
       changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
@@ -47,6 +47,25 @@ defmodule LoadedBike.WaypointTest do
 
       assert get_field(changeset, :lat) == 46.57641667
       assert get_field(changeset, :lng) == 8.89266667
+    end
+
+    test "new with gpx route" do
+      tour = insert(:tour)
+      params = %{params_for(:waypoint) | gpx_file: build_upload(path: "test/files/test-route.gpx")}
+      changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
+      data = get_field(changeset, :geojson)
+      map = %{
+        type: "LineString",
+        coordinates: [
+          [141.6774785, 42.7832427],
+          [141.6776047, 42.7832561],
+          [141.6784915, 42.7751368]
+        ]
+      }
+      assert data == map
+
+      assert get_field(changeset, :lat) == 42.7751368
+      assert get_field(changeset, :lng) == 141.6784915
     end
 
     test "existing with gpx" do

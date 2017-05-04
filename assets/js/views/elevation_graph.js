@@ -16,9 +16,12 @@ export default class ElevationGraph {
     // no track, no data, we bail
     if(!track){ return }
 
-    window.addEventListener('resize', this.render.bind(this))
-
     this.data  = this._transformTrackData(track)
+
+    // if we got no elevation data
+    if (this.data[0].y == undefined){ return }
+
+    window.addEventListener('resize', this.render.bind(this))
 
     let minDistance = 0
     let maxDistance = d3.max(this.data, function(d) { return d.x })
