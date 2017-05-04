@@ -40,7 +40,8 @@ defmodule LoadedBike.Mixfile do
       :elixir_make,
       :edeliver,
       :rollbax,
-      :sweet_xml
+      :sweet_xml,
+      :ecto_enum
     ]]
   end
 
