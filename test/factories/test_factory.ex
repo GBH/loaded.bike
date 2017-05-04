@@ -30,6 +30,7 @@ defmodule LoadedBike.TestFactory do
       description:  "Test Waypoint Description",
       lat:          49.262206,
       lng:          -123.2616348,
+      is_planned:   false,
       is_published: true
     }
   end

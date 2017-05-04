@@ -29,10 +29,10 @@
           %strong
             Day
             = waypoint.position
-        %td
-          = published_badge(waypoint.is_published)
         %td.main
           = link waypoint.title, to: current_user_tour_waypoint_path(@conn, :show, @tour, waypoint)
+          = published_badge(waypoint.is_published)
+          = LoadedBike.Web.WaypointView.status_badge(waypoint.is_planned)
         %td
           .btn-group
             - link to: current_user_tour_waypoint_path(@conn, :edit, @tour, waypoint), class: "btn btn-secondary btn-sm" do

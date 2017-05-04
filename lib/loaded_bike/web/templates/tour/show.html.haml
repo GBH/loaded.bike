@@ -1,5 +1,6 @@
 .heading
-  published by
+  = status_badge(@tour.status)
+  Tour published by
   = LoadedBike.Web.UserView.avatar_img(@tour.user, :tiny)
   = link @tour.user.name, to: user_path(@conn, :show, @tour.user)
 
@@ -13,13 +14,10 @@
 .description
   = markdown(@tour.description)
 
-
-
 - if length(@tour.waypoints) > 0 do
   .heading
     %h1
       Waypoints
-      = status_badge(@tour.status)
 
   .table-responsive
     %table.table.table-sm
@@ -31,3 +29,4 @@
               = waypoint.position
           %td.main
             = link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint)
+            = LoadedBike.Web.WaypointView.status_badge(waypoint.is_planned)

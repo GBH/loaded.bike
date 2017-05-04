@@ -34,5 +34,10 @@
 
 .form-group.row
   .col-sm-10.offset-sm-2
+    = checkbox @f, :is_planned
+    = label @f, :is_planned, "Planned Waypoint (not there yet)"
+
+.form-group.row
+  .col-sm-10.offset-sm-2
     = checkbox @f, :is_published
     = label @f, :is_published, "Published"

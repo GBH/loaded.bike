@@ -49,6 +49,8 @@ export default class Map {
       let icon = iconDefault
       if(marker_json.is_current){
         icon = this._getIcon('yellow')
+      } else if (marker_json.is_planned){
+        icon = this._getIcon('gray')
       } else if (index == 0) {
         icon = this._getIcon('green')
       } else if (markers_json.length - 1 == index && marker_json.is_finish == true) {

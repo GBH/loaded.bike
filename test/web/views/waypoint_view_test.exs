@@ -13,7 +13,8 @@ defmodule LoadedBike.Web.WaypointViewTest do
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
-      "is_finish"   => true
+      "is_finish"   => true,
+      "is_planned"  => false
     }]
     assert parse(WaypointView.waypoints_to_json(conn, tour, :private)) == {:ok, json}
 
@@ -22,7 +23,8 @@ defmodule LoadedBike.Web.WaypointViewTest do
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
-      "is_finish"   => true
+      "is_finish"   => true,
+      "is_planned"  => false
     }]
     assert parse(WaypointView.waypoints_to_json(conn, tour, :public)) == {:ok, json}
   end
@@ -36,7 +38,8 @@ defmodule LoadedBike.Web.WaypointViewTest do
       "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
-      "lat"         => 49.262206
+      "lat"         => 49.262206,
+      "is_planned"  => false
     }]
     assert parse(WaypointView.waypoints_to_json(conn, tour, :public)) == {:ok, json}
   end
@@ -51,7 +54,8 @@ defmodule LoadedBike.Web.WaypointViewTest do
       "lat"         => 49.262206,
       "is_current"  => true,
       "is_previous" => true,
-      "is_finish"   => true
+      "is_finish"   => true,
+      "is_planned"  => false
     }]
     assert parse(WaypointView.waypoints_to_json(conn, tour, :public, waypoint, waypoint)) == {:ok, json}
   end

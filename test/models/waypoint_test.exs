@@ -98,7 +98,7 @@ defmodule LoadedBike.WaypointTest do
 
   test "to_json" do
     waypoint = insert(:waypoint)
-    assert Poison.encode!(waypoint) == "{\"title\":\"Test Waypoint\",\"lng\":-123.2616348,\"lat\":49.262206}"
+    assert Poison.encode!(waypoint) == "{\"title\":\"Test Waypoint\",\"lng\":-123.2616348,\"lat\":49.262206,\"is_planned\":false}"
   end
 
   describe "scope" do

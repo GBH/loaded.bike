@@ -2,7 +2,7 @@ defmodule LoadedBike.Waypoint do
   use LoadedBike.Web, :model
 
   # is_current, is_previous, url are virtual attrs we populate on the view
-  @derive {Poison.Encoder, only: [:title, :lat, :lng, :is_current, :is_previous, :is_finish, :url]}
+  @derive {Poison.Encoder, only: [:title, :lat, :lng, :is_planned, :is_current, :is_previous, :is_finish, :url]}
 
   schema "waypoints" do
     field :title,         :string
@@ -12,6 +12,7 @@ defmodule LoadedBike.Waypoint do
     field :position,      :integer
     field :geojson,       :map
     field :gpx_file,      :any, virtual: true
+    field :is_planned,    :boolean
     field :is_published,  :boolean
 
     belongs_to :tour, LoadedBike.Tour
@@ -23,7 +24,7 @@ defmodule LoadedBike.Waypoint do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description, :lat, :lng, :position, :gpx_file, :is_published])
+    |> cast(params, [:title, :description, :lat, :lng, :position, :gpx_file, :is_planned, :is_published])
     |> process_gpx_file
     |> set_location
     |> set_position
@@ -80,7 +81,7 @@ defmodule LoadedBike.Waypoint do
 
   # during association preloads we don't want to load geojson data for every waypoint
   def select_without_gps(query) do
-    select(query, [:id, :tour_id, :title, :position, :lat, :lng, :is_published])
+    select(query, [:id, :tour_id, :title, :position, :lat, :lng, :is_planned, :is_published])
   end
 
   def previous(waypoint) do
