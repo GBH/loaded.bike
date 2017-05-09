@@ -18,5 +18,8 @@ config :loaded_bike, LoadedBike.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+config :loaded_bike, LoadedBike.Mailer,
+  adapter: Bamboo.TestAdapter
+
 # Speeding up BCrypt things for test env
 config :comeonin, :bcrypt_log_rounds, 1

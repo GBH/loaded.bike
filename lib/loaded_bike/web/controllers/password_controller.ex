@@ -1,7 +1,7 @@
 defmodule LoadedBike.Web.PasswordController do
   use LoadedBike.Web, :controller
 
-  alias LoadedBike.User
+  alias LoadedBike.{User, Mailer, Email}
 
   plug :load_user_from_email when action in [:create]
   plug :load_user_from_token when action in [:edit, :update]
@@ -47,7 +47,7 @@ defmodule LoadedBike.Web.PasswordController do
     user = conn.assigns.user
       |> User.generate_password_reset_token!
 
-    # TODO: send actual email
+    Email.password_reset(user) |> Mailer.deliver_later()
 
     conn
     |> put_flash(:info, "Password reset email is sent")
@@ -69,7 +69,7 @@ defmodule LoadedBike.Web.PasswordController do
         |> put_flash(:info, "Password successfully changed")
         |> redirect(to: landing_path(conn, :show))
 
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
         |> put_flash(:error, "Invalid password")
         |> render("edit.html")

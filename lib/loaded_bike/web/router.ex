@@ -2,6 +2,10 @@ defmodule LoadedBike.Web.Router do
   use LoadedBike.Web, :router
   use Plug.ErrorHandler
 
+  if Mix.env == :dev do
+    forward "/sent-emails", Bamboo.EmailPreviewPlug
+  end
+
   defp handle_errors(conn, %{kind: kind, reason: reason, stack: stacktrace}) do
     Rollbax.report(kind, reason, stacktrace, %{params: conn.params})
   end

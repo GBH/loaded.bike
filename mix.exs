@@ -42,7 +42,8 @@ defmodule LoadedBike.Mixfile do
       :rollbax,
       :sweet_xml,
       :ecto_enum,
-      :secure_random
+      :secure_random,
+      :bamboo
     ]]
   end
 
@@ -78,6 +79,7 @@ defmodule LoadedBike.Mixfile do
       {:sweet_xml,            "~> 0.6.5"},
       {:ecto_enum,            "~> 1.0"},
       {:secure_random,        "~> 0.5"},
+      {:bamboo,               "~> 0.8"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},

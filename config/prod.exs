@@ -17,6 +17,9 @@ config :loaded_bike, LoadedBike.Web.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true
 
+config :loaded_bike, LoadedBike.Mailer,
+  adapter: Bamboo.LocalAdapter
+
 # Do not print debug messages in production
 config :logger, level: :info
 

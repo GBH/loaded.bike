@@ -1,5 +1,6 @@
 defmodule LoadedBike.Web.PasswordControllerTest do
   use LoadedBike.Web.ConnCase
+  use Bamboo.Test
 
   test "new" do
     conn = get build_conn(), "/password/new"
@@ -18,7 +19,9 @@ defmodule LoadedBike.Web.PasswordControllerTest do
     user = Repo.get_by(User, email: user.email)
     assert String.match?(user.password_reset_token, ~r/\w{32}/)
 
-    # TODO: assert email
+    email = LoadedBike.Email.password_reset(user)
+    assert_delivered_email email
+    assert email.html_body =~ user.password_reset_token
   end
 
   test "create invalid" do
