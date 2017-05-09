@@ -1,0 +1,14 @@
+.heading
+  %h1 Reset Password
+
+- form_for @conn, password_path(@conn, :create), [as: :password], fn f ->
+
+  .form-group.row
+    = label f, :email, "Email Address", class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
+      = text_input f, :email, class: "form-control"
+
+  .form-group.row
+    .col-sm-5.offset-sm-4
+      = submit "Send Recovery Email", class: "btn btn-primary"
+      = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"

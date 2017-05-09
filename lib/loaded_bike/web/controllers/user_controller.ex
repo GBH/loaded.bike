@@ -9,7 +9,7 @@ defmodule LoadedBike.Web.UserController do
   end
 
   def create(conn, %{"user" => params}) do
-    changeset = %User{} |> User.registration_changeset(params)
+    changeset = %User{} |> User.changeset(params)
 
     case Repo.insert(changeset) do
       {:ok, user} ->

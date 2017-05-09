@@ -41,8 +41,8 @@ defmodule LoadedBike.Web.UserControllerTest do
       password: "password"
     }
 
-    rider = Repo.get_by(User, email: "test@test.test")
-    assert rider
+    user = Repo.get_by(User, email: "test@test.test")
+    assert user
     assert redirected_to(conn) == "/"
   end
 

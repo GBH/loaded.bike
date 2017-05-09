@@ -40,6 +40,10 @@ defmodule LoadedBike.Web.Router do
       resources "/waypoints", WaypointController, only: [:show]
     end
 
+    resources "/password", PasswordController,
+      only: [:new, :create, :edit, :update],
+      singleton: true
+
     # -- session management ----------------------------------------------------
     get     "/signin",  SessionController, :new
     post    "/signin",  SessionController, :create

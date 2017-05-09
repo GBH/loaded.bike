@@ -2,8 +2,7 @@ defmodule LoadedBike.Web.SessionController do
   use LoadedBike.Web, :controller
 
   def new(conn, _) do
-    conn
-    |> render("new.html")
+    render(conn, "new.html")
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do

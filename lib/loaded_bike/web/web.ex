@@ -20,6 +20,7 @@ defmodule LoadedBike.Web do
     quote do
       use Ecto.Schema
 
+      alias LoadedBike.Repo
       import Ecto
       import Ecto.Changeset
       import Ecto.Query

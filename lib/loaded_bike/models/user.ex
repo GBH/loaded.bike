@@ -3,11 +3,13 @@ defmodule LoadedBike.User do
   use Arc.Ecto.Schema
 
   schema "users" do
-    field :email,         :string
-    field :name,          :string
-    field :password_hash, :string
-    field :password,      :string, virtual: true
-    field :avatar,        LoadedBike.Web.AvatarUploader.Type
+    field :email,                 :string
+    field :name,                  :string
+    field :password_hash,         :string
+    field :password,              :string, virtual: true
+    field :password_reset_token,  :string
+
+    field :avatar, LoadedBike.Web.AvatarUploader.Type
 
     has_many :tours, LoadedBike.Tour
 
@@ -20,16 +22,35 @@ defmodule LoadedBike.User do
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)
-    |> hash_password
+    |> changeset_set_password
   end
 
-  def registration_changeset(struct, params) do
+  def generate_password_reset_token!(struct) do
     struct
-    |> changeset(params)
-    |> cast(params, [:password])
-    |> validate_required([:password])
-    |> validate_length(:password, min: 6, max: 100)
-    |> hash_password
+    |> change(password_reset_token: SecureRandom.urlsafe_base64)
+    |> Repo.update!
+  end
+
+  def change_password!(struct, password) do
+    struct
+    |> changeset(%{password: password})
+    |> put_change(:password_reset_token, nil)
+    |> Repo.update()
+  end
+
+  defp changeset_set_password(changeset) do
+    state = Ecto.get_meta(changeset.data, :state)
+    new_password = get_change(changeset, :password)
+
+    cond do
+      state == :built or new_password ->
+        changeset
+        |> validate_required([:password])
+        |> validate_length(:password, min: 6, max: 100)
+        |> hash_password()
+      true ->
+        changeset
+    end
   end
 
   defp hash_password(changeset) do

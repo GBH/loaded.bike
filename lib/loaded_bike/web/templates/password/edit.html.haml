@@ -1,0 +1,14 @@
+.heading
+  %h1 New Password
+
+- path = password_path(@conn, :update, token: @user.password_reset_token)
+- form_for @conn, path, [as: :password, method: :put], fn f ->
+
+  .form-group.row
+    = label f, :password, "Password", class: "col-sm-4 col-form-label text-sm-right"
+    .col-sm-5
+      = password_input f, :password, class: "form-control"
+
+  .form-group.row
+    .col-sm-5.offset-sm-4
+      = submit "Save Password", class: "btn btn-primary"
