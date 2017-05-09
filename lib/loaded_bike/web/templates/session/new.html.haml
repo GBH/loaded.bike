@@ -12,6 +12,9 @@
     = label f, :password, class: "col-sm-4 col-form-label text-sm-right"
     .col-sm-5
       = password_input f, :password, class: "form-control"
+      %p.form-text
+        = link "Forgot password?", to: password_path(@conn, :new)
+
 
   .form-group.row
     .col-sm-5.offset-sm-4
