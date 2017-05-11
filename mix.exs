@@ -80,6 +80,7 @@ defmodule LoadedBike.Mixfile do
       {:ecto_enum,            "~> 1.0"},
       {:secure_random,        "~> 0.5"},
       {:bamboo,               "~> 0.8"},
+      {:bamboo_postageapp,    "~> 0.0.1"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},

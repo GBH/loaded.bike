@@ -47,7 +47,7 @@ defmodule LoadedBike.Web.PasswordController do
     user = conn.assigns.user
       |> User.generate_password_reset_token!
 
-    Email.password_reset(user) |> Mailer.deliver_later()
+    Email.password_reset(conn, user) |> Mailer.deliver_later()
 
     conn
     |> put_flash(:info, "Password reset email is sent")

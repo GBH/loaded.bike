@@ -19,9 +19,14 @@ defmodule LoadedBike.Web.PasswordControllerTest do
     user = Repo.get_by(User, email: user.email)
     assert String.match?(user.password_reset_token, ~r/\w{32}/)
 
-    email = LoadedBike.Email.password_reset(user)
+    email = LoadedBike.Email.password_reset(conn, user)
     assert_delivered_email email
-    assert email.html_body =~ user.password_reset_token
+    assert email.private == %{
+      postageapp_template: "password-reset",
+      postageapp_variables: %{
+        password_reset_url: password_url(conn, :edit, token: user.password_reset_token)
+      }
+    }
   end
 
   test "create invalid" do
