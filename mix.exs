@@ -43,7 +43,8 @@ defmodule LoadedBike.Mixfile do
       :sweet_xml,
       :ecto_enum,
       :secure_random,
-      :bamboo
+      :bamboo,
+      :bamboo_postageapp
     ]]
   end
 
