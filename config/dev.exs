@@ -26,9 +26,9 @@ config :loaded_bike, LoadedBike.Web.Endpoint,
   ]
 
 config :loaded_bike, LoadedBike.Mailer,
-  # adapter: Bamboo.LocalAdapter
-  adapter: Bamboo.PostageAppAdapter,
-  api_key: "nLiSpwfhsRxuqmNSaW8MdhvIH1KwE9Pk"
+  adapter: Bamboo.LocalAdapter
+  # adapter: Bamboo.PostageAppAdapter,
+  # api_key: ""
 
 
 # Do not include metadata nor timestamps in development logs

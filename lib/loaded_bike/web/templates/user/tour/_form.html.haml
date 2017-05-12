@@ -39,3 +39,5 @@
   .col-sm-10.offset-sm-2
     = checkbox @f, :is_published
     = label @f, :is_published, "Published"
+    .form-control-feedback
+      = error_tag @f, :is_published
