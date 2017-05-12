@@ -35,9 +35,12 @@ defmodule LoadedBike.Web.Router do
     get "/", LandingController, :show
 
     resources "/rider", UserController,
-      only:       [:new, :create],
+      only:       [:new, :create, :verify],
       name:       "current_user",
       singleton:  true
+    do
+      get "/verify", UserController, :verify
+    end
 
     resources "/riders", UserController, only: [:index, :show]
     resources "/tours", TourController, only: [:index, :show] do

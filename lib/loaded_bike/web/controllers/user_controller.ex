@@ -1,7 +1,7 @@
 defmodule LoadedBike.Web.UserController do
   use LoadedBike.Web, :controller
 
-  alias LoadedBike.{User, Tour, Waypoint}
+  alias LoadedBike.{User, Tour, Waypoint, Mailer, Email}
 
   def new(conn, _params) do
     changeset = User.changeset(%User{})
@@ -13,6 +13,9 @@ defmodule LoadedBike.Web.UserController do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
+
+        Email.verify_account(conn, user) |> Mailer.deliver_later()
+
         conn
         |> LoadedBike.Web.Auth.login(user)
         |> put_flash(:info, "Account created")
@@ -72,6 +75,20 @@ defmodule LoadedBike.Web.UserController do
         conn
         |> put_flash(:error, "Failed to update Account")
         |> render("edit.html", changeset: changeset)
+    end
+  end
+
+  def verify(conn, %{"token" => token}) do
+    user = Repo.get_by(User, verification_token: token)
+    if user do
+      User.verify!(user)
+      conn
+      |> put_flash(:info, "Thanks for confirming your account")
+      |> redirect(to: landing_path(conn, :show))
+    else
+      conn
+      |> put_flash(:error, "Unable to find unverified user for this token")
+      |> redirect(to: landing_path(conn, :show))
     end
   end
 end

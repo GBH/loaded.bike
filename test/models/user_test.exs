@@ -8,6 +8,7 @@ defmodule LoadedBike.UserTest do
       user = insert(:user)
       changeset = User.changeset(user, params_for(:user))
       assert changeset.valid?
+      refute changeset.changes[:verification_token]
     end
 
     test "with invalid attributes" do
@@ -23,6 +24,7 @@ defmodule LoadedBike.UserTest do
       changeset = User.changeset(%User{}, %{params_for(:user) | password: "passpass"})
       assert changeset.valid?
       refute changeset.changes.password_hash == ""
+      assert String.match?(changeset.changes.verification_token, ~r/\w{32}/)
     end
 
     test "with invalid attributes" do
@@ -55,5 +57,12 @@ defmodule LoadedBike.UserTest do
     user = insert(:user)
     {:error, changeset} = User.change_password!(user, "short")
     assert errors_on(changeset) == [:password]
+  end
+
+  test "verify!" do
+    user = insert(:user, %{verification_token: "abc123"})
+    {status, user} = User.verify!(user)
+    assert status == :ok
+    refute user.verification_token
   end
 end

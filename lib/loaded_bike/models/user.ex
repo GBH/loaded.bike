@@ -8,6 +8,7 @@ defmodule LoadedBike.User do
     field :password_hash,         :string
     field :password,              :string, virtual: true
     field :password_reset_token,  :string
+    field :verification_token,    :string
 
     field :avatar, LoadedBike.Web.AvatarUploader.Type
 
@@ -23,12 +24,19 @@ defmodule LoadedBike.User do
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)
     |> changeset_set_password
+    |> changeset_set_verification_token
   end
 
   def generate_password_reset_token!(struct) do
     struct
     |> change(password_reset_token: SecureRandom.urlsafe_base64)
     |> Repo.update!
+  end
+
+  def verify!(user) do
+    user
+    |> change(verification_token: nil)
+    |> Repo.update()
   end
 
   def change_password!(struct, password) do
@@ -49,6 +57,15 @@ defmodule LoadedBike.User do
         |> validate_length(:password, min: 6, max: 100)
         |> hash_password()
       true ->
+        changeset
+    end
+  end
+
+  defp changeset_set_verification_token(changeset) do
+    case Ecto.get_meta(changeset.data, :state) do
+      :built ->
+        put_change(changeset, :verification_token, SecureRandom.urlsafe_base64)
+      _ ->
         changeset
     end
   end

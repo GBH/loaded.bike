@@ -1,5 +1,6 @@
 defmodule LoadedBike.Web.UserControllerTest do
   use LoadedBike.Web.ConnCase
+  use Bamboo.Test
 
   import LoadedBike.Web.Test.BuildUpload
 
@@ -44,6 +45,15 @@ defmodule LoadedBike.Web.UserControllerTest do
     user = Repo.get_by(User, email: "test@test.test")
     assert user
     assert redirected_to(conn) == "/"
+
+    email = LoadedBike.Email.verify_account(conn, user)
+    assert_delivered_email email
+    assert email.private == %{
+      postageapp_template: "verify-account",
+      postageapp_variables: %{
+        verify_url: current_user_user_url(conn, :verify, token: user.verification_token)
+      }
+    }
   end
 
   test "creation with error" do
@@ -91,5 +101,19 @@ defmodule LoadedBike.Web.UserControllerTest do
     assert template(conn) == "edit.html"
     assert get_flash(conn, :error) == "Failed to update Account"
     refute Repo.get_by(User, id: user.id, name: "")
+  end
+
+  test "verify" do
+    user = insert(:user, %{verification_token: "123abc"})
+    conn = get build_conn(), "/rider/verify", token: user.verification_token
+    assert redirected_to(conn) == "/"
+    assert get_flash(conn, :info) == "Thanks for confirming your account"
+  end
+
+  test "verify failure" do
+    insert(:user, %{verification_token: "123abc"})
+    conn = get build_conn(), "/rider/verify", token: "invalid"
+    assert redirected_to(conn) == "/"
+    assert get_flash(conn, :error) == "Unable to find unverified user for this token"
   end
 end
