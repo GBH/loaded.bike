@@ -16,6 +16,16 @@ defmodule LoadedBike.TourTest do
       changeset = Tour.changeset(%Tour{}, %{})
       refute changeset.valid?
     end
+
+    test "publishing" do
+      user = insert(:user, %{verification_token: "unverified"})
+      changeset = Tour.changeset(build_assoc(user, :tours), %{params_for(:tour) | is_published: true})
+      refute changeset.valid?
+
+      user = Repo.update!(Ecto.Changeset.change(user, verification_token: nil))
+      changeset = Tour.changeset(build_assoc(user, :tours), %{params_for(:tour) | is_published: true})
+      assert changeset.valid?
+    end
   end
 
   test "insert" do
