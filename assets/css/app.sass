@@ -169,6 +169,27 @@ textarea[data-autoresize]
     margin-bottom: 30px
     font-size: 125%
 
+.user_show_view
+  .heading.user-info
+    .avatar
+      float: left
+      img
+        border-radius: 5px
+    .info
+      margin-left: 220px
+      .name
+        font-size: 200%
+
+@include media-breakpoint-down(md)
+  .user_show_view
+    .heading.user-info
+      .avatar
+        float: none
+        img
+          width: 100%
+      .info
+        margin: 0
+
 .user_waypoint_show_view, .waypoint_show_view
   .waypoint-nav
     margin-bottom: 15px

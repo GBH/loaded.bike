@@ -16,6 +16,27 @@
       = error_tag f, :email
 
   .form-group.row
+    = label f, :twitter, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      .input-group
+        .input-group-addon @
+        = text_input f, :twitter, class: "form-control"
+      = error_tag f, :twitter
+
+  .form-group.row
+    = label f, :instagram, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = text_input f, :instagram, class: "form-control"
+      = error_tag f, :instagram
+
+  .form-group.row
+    = label f, :bio, class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = textarea f, :bio, class: "form-control", data: [autoresize: true]
+      = error_tag f, :bio
+      = render LoadedBike.Web.UserView, "_formatting_help.html"
+
+  .form-group.row
     %label.col-sm-2.col-form-label.text-sm-right
       Current Avatar
     .col-sm-10

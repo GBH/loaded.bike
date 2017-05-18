@@ -1,7 +1,22 @@
-.heading
-  Tours published by
-  = LoadedBike.Web.UserView.avatar_img(@user, :tiny)
-  = @user.name
+.heading.user-info
+  .avatar
+    = LoadedBike.Web.UserView.avatar_img(@user, :large)
+  .info
+    .name
+      = @user.name
+    - if @user.bio do
+      .bio
+        = markdown(@user.bio)
+
+    - if @user.twitter do
+      .twitter
+        %i.fa.fa-twitter
+        = link @user.twitter, to: "https://twitter.com/#{@user.twitter}", target: "_blank"
+
+    - if @user.instagram do
+      .instagram
+        %i.fa.fa-instagram
+        = link @user.instagram, to: "https://instagram.com/#{@user.instagram}", target: "_blank"
 
 .tours
   - for tour <- @user.tours do

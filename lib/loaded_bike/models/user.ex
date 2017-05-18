@@ -5,6 +5,9 @@ defmodule LoadedBike.User do
   schema "users" do
     field :email,                 :string
     field :name,                  :string
+    field :bio,                   :string
+    field :twitter,               :string
+    field :instagram,             :string
     field :password_hash,         :string
     field :password,              :string, virtual: true
     field :password_reset_token,  :string
@@ -19,7 +22,7 @@ defmodule LoadedBike.User do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :name, :password])
+    |> cast(params, [:email, :name, :password, :twitter, :bio, :instagram])
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)

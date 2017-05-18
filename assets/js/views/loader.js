@@ -11,6 +11,7 @@ import UserPhotoEditView    from "./user/photo/edit"
 import TourShowView         from "./tour/show"
 import WaypointShowView     from "./waypoint/show"
 import UserShowView         from "./user/show"
+import UserEditView         from "./user/edit"
 
 const views = {
   UserTourIndexView,
@@ -24,7 +25,8 @@ const views = {
   UserPhotoEditView,
   TourShowView,
   WaypointShowView,
-  UserShowView
+  UserShowView,
+  UserEditView
 }
 
 export default function loadView(viewName){
