@@ -39,7 +39,8 @@ defmodule LoadedBike.Web.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_loaded_bike_key",
-    signing_salt: "ALstBhsg"
+    signing_salt: "ALstBhsg",
+    max_age: 30 * 24 * 60 * 60
 
   plug LoadedBike.Web.Router
 end
