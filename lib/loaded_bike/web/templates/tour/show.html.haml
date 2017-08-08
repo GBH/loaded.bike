@@ -11,7 +11,7 @@
 .short-description
   %p= @tour.short_description
 
-.description
+.description.markdown
   = markdown(@tour.description)
 
 - if length(@tour.waypoints) > 0 do

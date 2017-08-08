@@ -5,7 +5,7 @@
     .name
       = @user.name
     - if @user.bio do
-      .bio
+      .bio.markdown
         = markdown(@user.bio)
 
     - if @user.twitter do
@@ -29,5 +29,5 @@
       - if length(tour.waypoints) > 0 do
         .map{data-map: "true", data-markers: "#{LoadedBike.Web.WaypointView.waypoints_to_json(@conn, tour, :public)}"}
 
-      .description
+      .description.markdown
         = markdown(tour.description)

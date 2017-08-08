@@ -12,7 +12,7 @@
   - track   = LoadedBike.Web.WaypointView.to_json(@waypoint.geojson)
   .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}", data-track: "#{track}"}
 
-  .description
+  .description.markdown
     = markdown(@waypoint.description)
 
 .heading
@@ -33,7 +33,7 @@
         - url = LoadedBike.Web.PhotoUploader.url({photo.file, %{photo | waypoint: @waypoint}}, :large)
         %img(src: "#{url}")
 
-      .description
+      .description.markdown
         = markdown(photo.description)
 
 = render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint

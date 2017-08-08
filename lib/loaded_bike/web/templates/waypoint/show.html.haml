@@ -6,7 +6,7 @@
   - track   = LoadedBike.Web.WaypointView.to_json(@waypoint.geojson)
   .map#map{data-lat: "#{@waypoint.lat}", data-lng: "#{@waypoint.lng}", data-markers: "#{markers}", data-track: "#{track}"}
 
-  .description
+  .description.markdown
     = markdown(@waypoint.description)
 
 .photos#photos
