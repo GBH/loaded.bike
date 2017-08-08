@@ -1,5 +1,11 @@
 @import "bootstrap"
 
+.btn-default
+  &.btn-inverse
+    @include button-variant($white, $black, $black)
+    &:hover
+      @include button-variant($black, $white, $black)
+
 // bootstrap fix https://github.com/twbs/bootstrap/pull/21722
 .navbar
   @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1))
