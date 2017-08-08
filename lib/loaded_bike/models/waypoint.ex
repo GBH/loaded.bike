@@ -86,7 +86,7 @@ defmodule LoadedBike.Waypoint do
 
   def previous(waypoint) do
     __MODULE__
-    |> select([:id])
+    |> select([:id, :title])
     |> where([w], w.position < ^waypoint.position)
     |> where([w], w.tour_id == ^waypoint.tour_id)
     |> order_by(desc: :position)
@@ -95,7 +95,7 @@ defmodule LoadedBike.Waypoint do
 
   def next(waypoint) do
     __MODULE__
-    |> select([:id])
+    |> select([:id, :title])
     |> where([w], w.position > ^waypoint.position)
     |> where([w], w.tour_id == ^waypoint.tour_id)
     |> order_by(asc: :position)
