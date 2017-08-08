@@ -47,7 +47,7 @@ defmodule LoadedBike.Web.User.TourControllerTest do
       status:       "active"
     }
     tour = Repo.one(Tour)
-    assert redirected_to(conn) == "/rider/tours/#{tour.id}"
+    assert redirected_to(conn) == "/rider/tours/#{tour.id}-test-tour"
     assert get_flash(conn, :info) == "Tour created"
   end
 
@@ -72,7 +72,7 @@ defmodule LoadedBike.Web.User.TourControllerTest do
     conn = put conn, "/rider/tours/#{tour.id}", tour: %{
       title: "Updated tour"
     }
-    assert redirected_to(conn) == "/rider/tours/#{tour.id}"
+    assert redirected_to(conn) == "/rider/tours/#{tour.id}-updated-tour"
     assert get_flash(conn, :info) == "Tour updated"
     assert Repo.get_by(Tour, id: tour.id, title: "Updated tour")
   end

@@ -46,7 +46,8 @@ defmodule LoadedBike.Mixfile do
       :ecto_enum,
       :secure_random,
       :bamboo,
-      :bamboo_postageapp
+      :bamboo_postageapp,
+      :slugger
     ]]
   end
 
@@ -84,6 +85,7 @@ defmodule LoadedBike.Mixfile do
       {:secure_random,        "~> 0.5"},
       {:bamboo,               "~> 0.8"},
       {:bamboo_postageapp,    "~> 0.0.1"},
+      {:slugger,              "~> 0.2"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},

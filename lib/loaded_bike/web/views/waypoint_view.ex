@@ -16,7 +16,7 @@ defmodule LoadedBike.Web.WaypointView do
     tour.waypoints
     |> Enum.map(&set_is_marked(&1, :is_current, curr_waypoint))
     |> Enum.map(&set_is_marked(&1, :is_previous, prev_waypoint))
-    |> Enum.map(&Map.put(&1, :url, set_link(conn, &1, type)))
+    |> Enum.map(&Map.put(&1, :url, set_link(conn, tour, &1, type)))
     |> set_is_finish(tour.status == :completed)
     |> to_json
   end
@@ -30,11 +30,11 @@ defmodule LoadedBike.Web.WaypointView do
     end
   end
 
-  defp set_link(conn, waypoint, :public) do
-    tour_waypoint_path(conn, :show, waypoint.tour_id, waypoint)
+  defp set_link(conn, tour, waypoint, :public) do
+    tour_waypoint_path(conn, :show, tour, waypoint)
   end
-  defp set_link(conn, waypoint, :private) do
-    current_user_tour_waypoint_path(conn, :show, waypoint.tour_id, waypoint)
+  defp set_link(conn, tour, waypoint, :private) do
+    current_user_tour_waypoint_path(conn, :show, tour, waypoint)
   end
 
   defp set_is_finish([], _),             do: []

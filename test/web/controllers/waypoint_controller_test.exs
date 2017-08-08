@@ -4,7 +4,7 @@ defmodule LoadedBike.Web.WaypointControllerTest do
   test "show" do
     waypoint = insert(:waypoint)
     tour = waypoint.tour
-    conn = get build_conn(), "/tours/#{tour.id}/waypoints/#{waypoint.id}"
+    conn = get build_conn(), "/tours/#{tour.id}-test-tour/waypoints/#{waypoint.id}-test-waypoint"
     assert response(conn, 200)
     assert template(conn) == "show.html"
     assert assigns(conn, :waypoint)

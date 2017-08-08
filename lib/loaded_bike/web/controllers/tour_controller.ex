@@ -19,7 +19,7 @@ defmodule LoadedBike.Web.TourController do
     tour = Tour
       |> Tour.published
       |> preload([:user, waypoints: ^waypoints_query()])
-      |> Repo.get!(id)
+      |> Repo.get!(id_from_param(id))
 
     conn
     |> add_breadcrumb(name: "All Tours", url: tour_path(conn, :index))

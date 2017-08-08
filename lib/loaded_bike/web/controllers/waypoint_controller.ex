@@ -13,7 +13,7 @@ defmodule LoadedBike.Web.WaypointController do
     tour = Tour
       |> Tour.published
       |> preload(waypoints: ^waypoints_query)
-      |> Repo.get!(tour_id)
+      |> Repo.get!(id_from_param(tour_id))
 
     photos_query = Photo
       |> order_by(asc: :inserted_at)
@@ -21,7 +21,7 @@ defmodule LoadedBike.Web.WaypointController do
     waypoint = assoc(tour, :waypoints)
       |> Waypoint.published
       |> preload(photos: ^photos_query)
-      |> Repo.get!(id)
+      |> Repo.get!(id_from_param(id))
 
     prev_waypoint = waypoint
       |> Waypoint.previous

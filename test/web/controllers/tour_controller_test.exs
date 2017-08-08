@@ -19,7 +19,7 @@ defmodule LoadedBike.Web.TourControllerTest do
   test "show" do
     waypoint = insert(:waypoint)
     tour = waypoint.tour
-    conn = get build_conn(), "/tours/#{tour.id}"
+    conn = get build_conn(), "/tours/#{tour.id}-test-tour"
     assert response(conn, 200)
     assert template(conn) == "show.html"
     assert length(assigns(conn, :tour).waypoints) == 1

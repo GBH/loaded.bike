@@ -1,5 +1,6 @@
 defmodule LoadedBike.Web.User.PhotoController do
   use LoadedBike.Web, :controller
+  use LoadedBike.Web.Controller.Helpers
   use LoadedBike.Web.Controller.User.Helpers
 
   alias LoadedBike.Photo

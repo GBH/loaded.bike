@@ -7,6 +7,11 @@ defmodule LoadedBike.Web.Controller.Helpers do
         titles = titles ++ [title]
         %{conn | assigns: Map.put(conn.assigns, :header_titles, titles)}
       end
+
+      def id_from_param(param) do
+        [id] = Regex.run(~r/\A\d+/, param)
+        id
+      end
     end
   end
 end

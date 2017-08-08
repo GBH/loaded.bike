@@ -41,7 +41,7 @@ defmodule LoadedBike.Web.User.WaypointControllerTest do
       lng:          "56.78"
     }
     waypoint = Repo.one(Waypoint)
-    assert redirected_to(conn) == "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
+    assert redirected_to(conn) == "/rider/tours/#{tour.id}-test-tour/waypoints/#{waypoint.id}-test-waypoint"
     assert get_flash(conn, :info) == "Waypoint created"
   end
 
@@ -66,7 +66,7 @@ defmodule LoadedBike.Web.User.WaypointControllerTest do
     conn = put conn, "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}", waypoint: %{
       title: "Updated waypoint"
     }
-    assert redirected_to(conn) == "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
+    assert redirected_to(conn) == "/rider/tours/#{tour.id}-test-tour/waypoints/#{waypoint.id}-updated-waypoint"
     assert get_flash(conn, :info) == "Waypoint updated"
     assert Repo.get_by(Waypoint, id: waypoint.id, title: "Updated waypoint")
   end
@@ -85,7 +85,7 @@ defmodule LoadedBike.Web.User.WaypointControllerTest do
   test "delete", %{conn: conn, tour: tour} do
     waypoint = insert(:waypoint, tour: tour)
     conn = delete conn, "/rider/tours/#{tour.id}/waypoints/#{waypoint.id}"
-    assert redirected_to(conn) == "/rider/tours/#{tour.id}"
+    assert redirected_to(conn) == "/rider/tours/#{tour.id}-test-tour"
     refute Repo.get(Waypoint, waypoint.id)
   end
 end

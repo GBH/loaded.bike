@@ -19,7 +19,7 @@ defmodule LoadedBike.Web.WaypointViewTest do
     tour = %{waypoint.tour | waypoints: [waypoint]}
 
     json = [%{
-      "url"         => "/rider/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
+      "url"         => "/rider/tours/#{waypoint.tour_id}-test-tour/waypoints/#{waypoint.id}-test-waypoint",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
@@ -29,7 +29,7 @@ defmodule LoadedBike.Web.WaypointViewTest do
     assert parse(WaypointView.waypoints_to_json(conn, tour, :private)) == {:ok, json}
 
     json = [%{
-      "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
+      "url"         => "/tours/#{waypoint.tour_id}-test-tour/waypoints/#{waypoint.id}-test-waypoint",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
@@ -45,7 +45,7 @@ defmodule LoadedBike.Web.WaypointViewTest do
     tour = %{tour | waypoints: [waypoint]}
 
     json = [%{
-      "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
+      "url"         => "/tours/#{waypoint.tour_id}-test-tour/waypoints/#{waypoint.id}-test-waypoint",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
@@ -58,7 +58,7 @@ defmodule LoadedBike.Web.WaypointViewTest do
     waypoint = insert(:waypoint)
     tour = %{waypoint.tour | waypoints: [waypoint]}
     json = [%{
-      "url"         => "/tours/#{waypoint.tour_id}/waypoints/#{waypoint.id}",
+      "url"         => "/tours/#{waypoint.tour_id}-test-tour/waypoints/#{waypoint.id}-test-waypoint",
       "title"       => "Test Waypoint",
       "lng"         => -123.2616348,
       "lat"         => 49.262206,
