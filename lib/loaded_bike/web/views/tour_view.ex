@@ -2,6 +2,13 @@ defmodule LoadedBike.Web.TourView do
   use LoadedBike.Web, :view
   import Kerosene.HTML
 
+  # loading drab js only on the tour show page
+  def render("scripts.html", %{conn: conn}) do
+    if conn.private.phoenix_action == :show do
+      Drab.Client.js(conn)
+    end
+  end
+
   def waypoint_css_class(tour, index) do
     total = length(tour.waypoints)
     cond do

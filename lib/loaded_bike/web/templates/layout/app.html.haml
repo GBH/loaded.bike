@@ -102,4 +102,6 @@
     %script(src="https://d3js.org/d3.v4.min.js")
     %script(src='#{static_path(@conn, "/js/app.js")}')
 
+    = render_existing @view_module, "scripts.html", assigns
+
     = render "_google_analytics.html"

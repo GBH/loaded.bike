@@ -47,7 +47,8 @@ defmodule LoadedBike.Mixfile do
       :secure_random,
       :bamboo,
       :bamboo_postageapp,
-      :slugger
+      :slugger,
+      :drab
     ]]
   end
 
@@ -86,13 +87,14 @@ defmodule LoadedBike.Mixfile do
       {:bamboo,               "~> 0.8"},
       {:bamboo_postageapp,    "~> 0.0.1"},
       {:slugger,              "~> 0.2"},
+      {:drab,                 "~> 0.5"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
 
       # -- test ----------------------------------------------------------------
       {:ex_machina,           "~> 1.0", only: :test},
-      {:floki,                "~> 0.14.0", only: :test}
+      # {:floki,              "~> 0.17.0", only: :test} # part of drab now
     ]
   end
 

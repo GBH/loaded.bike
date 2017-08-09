@@ -21,7 +21,7 @@ config :loaded_bike, LoadedBike.Web.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/loaded_bike/web/views/.*(ex)$},
-      ~r{lib/loaded_bike/web/templates/.*(eex|haml)$}
+      ~r{lib/loaded_bike/web/templates/.*(eex|haml|drab)$}
     ]
   ]
 

@@ -1,0 +1,35 @@
+<% @last_waypoint # gotta keep it here for drab commander to use it %>
+
+<%= for waypoint <- @waypoints do %>
+  <div class="waypoint">
+    <div class="heading">
+      <strong>
+        <%= "Day #{waypoint.position} :" %>
+      </strong>
+      <%= link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint) %>
+      <%= LoadedBike.Web.WaypointView.status_badge(waypoint.is_planned) %>
+    </div>
+
+    <div class="description markdown">
+      <%= LoadedBike.Web.HtmlHelpers.markdown(waypoint.description) %>
+    </div>
+
+    <div class="photos">
+      <%= for photo <- waypoint.photos do %>
+        <div class="photo">
+          <div class="image">
+            <img src="<%= LoadedBike.Web.PhotoUploader.url({photo.file, %{photo | waypoint: waypoint}}, :large)  %>"/>
+          </div>
+
+          <div class="description markdown">
+            <%= LoadedBike.Web.HtmlHelpers.markdown(photo.description) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= if Enum.count(@tour.waypoints) > Enum.count(@waypoints) do %>
+  <button class="btn btn-primary btn-lg btn-block" drab-click="load_more">Load More</button>
+<% end %>

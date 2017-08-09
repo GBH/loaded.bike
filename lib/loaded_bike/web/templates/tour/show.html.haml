@@ -14,19 +14,4 @@
 .description.markdown
   = markdown(@tour.description)
 
-- if length(@tour.waypoints) > 0 do
-  .heading
-    %h1
-      Waypoints
-
-  .table-responsive
-    %table.table.table-sm
-      - for waypoint <- @tour.waypoints do
-        %tr
-          %td
-            %strong
-              Day
-              = waypoint.position
-          %td.main
-            = link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint)
-            = LoadedBike.Web.WaypointView.status_badge(waypoint.is_planned)
+= render "_waypoints.html", assigns

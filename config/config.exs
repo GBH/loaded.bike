@@ -25,7 +25,8 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :phoenix, :template_engines,
-  haml: PhoenixHaml.Engine
+  haml: PhoenixHaml.Engine,
+  drab: Drab.Live.Engine
 
 config :guardian, Guardian,
   issuer:         "LoadedBike.#{Mix.env}",
