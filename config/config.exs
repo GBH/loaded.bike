@@ -24,6 +24,9 @@ config :logger, :console,
   format:   "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :drab,
+  main_phoenix_app: :loaded_bike
+
 config :phoenix, :template_engines,
   haml: PhoenixHaml.Engine,
   drab: Drab.Live.Engine
