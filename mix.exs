@@ -78,7 +78,7 @@ defmodule LoadedBike.Mixfile do
       {:breadcrumble,         "~> 1.0.0"},
       {:kerosene,             "~> 0.6.1"},
       {:mochiweb,             "~> 2.15.0", override: true}, #dependency hell
-      {:edeliver,             "~> 1.4.2"},
+      {:edeliver,             "~> 1.4.4"},
       {:distillery,           "~> 1.0"},
       {:rollbax,              "~> 0.6"},
       {:sweet_xml,            "~> 0.6.5"},
