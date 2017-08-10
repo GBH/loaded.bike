@@ -20,7 +20,7 @@ defmodule LoadedBike.Web.TourCommander do
       |> preload(photos: ^photos_query)
       |> order_by(asc: :position)
       |> where([w], w.id > ^last_waypoint.id)
-      |> limit(5)
+      |> limit(3)
       |> Repo.all
 
 

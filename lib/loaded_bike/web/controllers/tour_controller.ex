@@ -30,9 +30,8 @@ defmodule LoadedBike.Web.TourController do
       |> select([:id, :tour_id, :title, :description, :position, :is_planned])
       |> preload(photos: ^photos_query)
       |> order_by(asc: :position)
-      |> limit(5)
+      |> limit(3)
       |> Repo.all
-
 
     conn
     |> add_breadcrumb(name: "All Tours", url: tour_path(conn, :index))
