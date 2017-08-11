@@ -36,8 +36,8 @@ defmodule LoadedBike.Web.TourViewTest do
   end
 
   test "waypoints_remaining" do
-    list_b = [1,2,3,4,5,6]
-    list_a = [1,2,3]
+    list_a = [1,2,3,4,5,6]
+    list_b = [1,2,3]
     assert TourView.waypoints_remaining(list_a, list_b) == [4,5,6]
   end
 end
