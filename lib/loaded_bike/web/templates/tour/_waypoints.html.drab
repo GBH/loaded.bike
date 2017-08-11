@@ -2,13 +2,8 @@
 
 <%= for waypoint <- @waypoints do %>
   <div class="waypoint">
-    <div class="heading">
-      <strong>
-        <%= "Day #{waypoint.position} :" %>
-      </strong>
-      <%= link waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, waypoint) %>
-      <%= LoadedBike.Web.WaypointView.status_badge(waypoint.is_planned) %>
-    </div>
+
+    <%= render "_waypoint_header.html", conn: @conn, tour: @tour, waypoint: waypoint %>
 
     <div class="description markdown">
       <%= LoadedBike.Web.HtmlHelpers.markdown(waypoint.description) %>
@@ -31,5 +26,9 @@
 <% end %>
 
 <%= if Enum.count(@tour.waypoints) > Enum.count(@waypoints) do %>
-  <button class="btn btn-primary btn-lg btn-block" drab-click="load_more">Load More</button>
+  <button class="btn btn-primary btn-lg btn-block load-more" drab-click="load_more">Load More</button>
+<% end %>
+
+<%= for waypoint <- LoadedBike.Web.TourView.waypoints_remaining(@tour.waypoints, @waypoints) do %>
+  <%= render "_waypoint_header.html", conn: @conn, tour: @tour, waypoint: waypoint %>
 <% end %>

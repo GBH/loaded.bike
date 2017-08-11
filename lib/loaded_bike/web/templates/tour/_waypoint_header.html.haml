@@ -1,0 +1,5 @@
+.heading
+  %strong
+    = "Day #{@waypoint.position} :"
+  = link @waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, @waypoint)
+  = LoadedBike.Web.WaypointView.status_badge(@waypoint.is_planned)

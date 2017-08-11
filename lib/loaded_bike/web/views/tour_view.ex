@@ -9,6 +9,10 @@ defmodule LoadedBike.Web.TourView do
     end
   end
 
+  def waypoints_remaining(all, visible) do
+    Enum.take(all, -(Enum.count(all) - Enum.count(visible)))
+  end
+
   def waypoint_css_class(tour, index) do
     total = length(tour.waypoints)
     cond do

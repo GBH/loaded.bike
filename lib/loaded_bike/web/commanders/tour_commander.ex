@@ -23,7 +23,6 @@ defmodule LoadedBike.Web.TourCommander do
       |> limit(3)
       |> Repo.all
 
-
     Drab.Live.poke(socket,
       waypoints:      waypoints ++ new_waypoints,
       last_waypoint:  List.last(new_waypoints)
