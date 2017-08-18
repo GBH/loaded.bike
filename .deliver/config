@@ -58,6 +58,6 @@ pre_erlang_get_and_update_deps() {
 post_extract_release_archive() {
   status "Creating Static Assets Symlink for Release"
   __sync_remote "
-      ln -sfn $DELIVER_TO/$APP/lib/$APP-$VERSION/priv $DELIVER_TO/$APP/priv
+      ln -sfn $DELIVER_TO/$APP/lib/$APP-$VERSION/priv/static $DELIVER_TO/$APP/static
   "
 }

@@ -87,7 +87,7 @@ defmodule LoadedBike.Mixfile do
       {:bamboo,               "~> 0.8"},
       {:bamboo_postageapp,    "~> 0.0.1"},
       {:slugger,              "~> 0.2"},
-      {:drab,                 "~> 0.5"},
+      {:drab,                 "0.5.4"},
 
       # -- dev -----------------------------------------------------------------
       {:phoenix_live_reload,  "~> 1.0", only: :dev},
