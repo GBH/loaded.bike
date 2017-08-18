@@ -2,8 +2,6 @@ defmodule LoadedBike.User do
   use LoadedBike.Web, :model
   use Arc.Ecto.Schema
 
-  require IEx
-
   schema "users" do
     field :email,                 :string
     field :name,                  :string
