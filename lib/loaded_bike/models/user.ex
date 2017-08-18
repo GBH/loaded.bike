@@ -2,6 +2,8 @@ defmodule LoadedBike.User do
   use LoadedBike.Web, :model
   use Arc.Ecto.Schema
 
+  require IEx
+
   schema "users" do
     field :email,                 :string
     field :name,                  :string
@@ -26,6 +28,7 @@ defmodule LoadedBike.User do
     |> cast_attachments(params, [:avatar])
     |> validate_required([:email, :name])
     |> validate_format(:email, ~r/@/)
+    |> validate_email_uniqueness
     |> changeset_set_password
     |> changeset_set_verification_token
   end
@@ -61,6 +64,15 @@ defmodule LoadedBike.User do
         |> hash_password()
       true ->
         changeset
+    end
+  end
+
+  defp validate_email_uniqueness(changeset) do
+    email = get_change(changeset, :email)
+    if __MODULE__ |> where(email: ^email) |> Repo.one do
+      changeset |> add_error(:email, "Email address already taken")
+    else
+      changeset
     end
   end
 

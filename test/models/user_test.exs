@@ -17,6 +17,13 @@ defmodule LoadedBike.UserTest do
       refute changeset.valid?
       assert errors_on(changeset) == [:email, :name]
     end
+
+    test "validate_email_uniqueness" do
+      user = insert(:user)
+      changeset = User.changeset(%User{}, %{email: user.email, name: "New User", password: "passpass"})
+      refute changeset.valid?
+      assert errors_on(changeset) == [:email]
+    end
   end
 
   describe "registration changeset" do
