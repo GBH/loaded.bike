@@ -3,3 +3,5 @@
     = "Day #{@waypoint.position} :"
   = link @waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, @waypoint)
   = LoadedBike.Web.WaypointView.status_badge(@waypoint.is_planned)
+
+  = link "View Map", to: tour_waypoint_path(@conn, :show, @tour, @waypoint), class: "btn btn-sm btn-secondary hidden-md-down"

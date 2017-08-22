@@ -65,21 +65,21 @@ defmodule LoadedBike.User do
     end
   end
 
-  defp validate_email_uniqueness(changeset) do
-    email = get_change(changeset, :email)
-    if __MODULE__ |> where(email: ^email) |> Repo.one do
-      changeset |> add_error(:email, "Email address already taken")
-    else
-      changeset
-    end
-  end
-
   defp changeset_set_verification_token(changeset) do
     case Ecto.get_meta(changeset.data, :state) do
       :built ->
         put_change(changeset, :verification_token, SecureRandom.urlsafe_base64)
       _ ->
         changeset
+    end
+  end
+
+   defp validate_email_uniqueness(changeset) do
+    email = get_change(changeset, :email)
+    if __MODULE__ |> where(email: ^email) |> Repo.one do
+      changeset |> add_error(:email, "Email address already taken")
+    else
+      changeset
     end
   end
 
