@@ -22,15 +22,16 @@
 
     = render LoadedBike.Web.UserView, "_formatting_help.html"
 
-.form-group.row
-  = label @f, :gpx_file, "GPX file", class: "col-sm-2 col-form-label text-sm-right"
-  .col-sm-10
-    = file_input @f, :gpx_file, class: "form-control"
-    = error_tag @f, :gpx_file
+- if Enum.count(@tour.waypoints) > 0 do
+  .form-group.row
+    = label @f, :gpx_file, "GPX file", class: "col-sm-2 col-form-label text-sm-right"
+    .col-sm-10
+      = file_input @f, :gpx_file, class: "form-control"
+      = error_tag @f, :gpx_file
 
-    - if (Ecto.get_meta(@changeset.data, :state) == :built) do
-      %p.form-text.text-muted
-        map pin will be repositioned as per uploaded .gpx file
+      - if (Ecto.get_meta(@changeset.data, :state) == :built) do
+        %p.form-text.text-muted
+          map pin will be repositioned as per uploaded .gpx file
 
 .form-group.row
   .col-sm-10.offset-sm-2

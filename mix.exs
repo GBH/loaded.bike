@@ -68,7 +68,7 @@ defmodule LoadedBike.Mixfile do
       {:gettext,              "~> 0.11"},
       {:cowboy,               "~> 1.0"},
 
-      {:phoenix_haml,         "~> 0.2.3"},
+      {:phoenix_haml,         "0.2.3"},
       {:comeonin,             "~> 3.0"},
       {:guardian,             "~> 0.14"},
       {:arc,                  "~> 0.7.0", override: true},

@@ -8,4 +8,4 @@
 
 .row
   .col-sm-10.offset-sm-2
-    = link "Delete", to: current_user_tour_path(@conn, :delete, @tour), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-outline-danger btn-sm"
+    = link "Delete", to: current_user_tour_path(@conn, :delete, @tour), method: :delete, data: [confirm: "Are you sure? This will also remove all waypoints and photos. You can't revert this."], class: "btn btn-outline-danger btn-sm"
