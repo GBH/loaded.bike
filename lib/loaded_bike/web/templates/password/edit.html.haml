@@ -2,12 +2,9 @@
   %h1 New Password
 
 - path = password_path(@conn, :update, token: @user.password_reset_token)
-- form_for @conn, path, [as: :password, method: :put], fn f ->
-
-  .form-group.row
-    = label f, :password, "Password", class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = password_input f, :password, class: "form-control"
+- opts = [as: :password, method: :put, label_col: "col-sm-4", control_col: "col-sm-5"]
+- form_for @conn, path, opts, fn f ->
+  = F.password_input f, :password
 
   .form-group.row
     .col-sm-5.offset-sm-4

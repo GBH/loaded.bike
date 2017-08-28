@@ -3,38 +3,13 @@
 
 - form_for @changeset, current_user_path(@conn, :update), [multipart: true], fn f ->
 
-  .form-group.row
-    = label f, :name, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = text_input f, :name, class: "form-control"
-      = error_tag f, :name
+  = F.text_input f, :name
+  = F.email_input f, :email
+  = F.text_input f, :twitter, prepend: "@"
+  = F.text_input f, :instagram
 
-  .form-group.row
-    = label f, :email, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = text_input f, :email, class: "form-control"
-      = error_tag f, :email
-
-  .form-group.row
-    = label f, :twitter, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      .input-group
-        .input-group-addon @
-        = text_input f, :twitter, class: "form-control"
-      = error_tag f, :twitter
-
-  .form-group.row
-    = label f, :instagram, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = text_input f, :instagram, class: "form-control"
-      = error_tag f, :instagram
-
-  .form-group.row
-    = label f, :bio, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = textarea f, :bio, class: "form-control", data: [autoresize: true]
-      = error_tag f, :bio
-      = render LoadedBike.Web.UserView, "_formatting_help.html"
+  - help = render LoadedBike.Web.UserView, "_formatting_help.html"
+  = F.textarea f, :bio, input_opts: [data: [autoresize: true]], help: help
 
   .form-group.row
     %label.col-sm-2.col-form-label.text-sm-right
@@ -42,17 +17,8 @@
     .col-sm-10
       = LoadedBike.Web.UserView.avatar_img(@conn.assigns.current_user, :large)
 
-  .form-group.row
-    = label f, :avatar, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = file_input f, :avatar, class: "form-control"
-      = error_tag f, :avatar
-
-  .form-group.row
-    = label f, :password, class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = password_input f, :password, class: "form-control"
-      = error_tag f, :password
+  = F.file_input f, :avatar
+  = F.password_input f, :password
 
   .form-group.row
     .col-sm-10.offset-sm-2

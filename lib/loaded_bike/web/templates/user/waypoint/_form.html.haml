@@ -8,37 +8,15 @@
 = hidden_input @f, :lat
 = hidden_input @f, :lng
 
-.form-group.row
-  = label @f, :title, class: "col-sm-2 col-form-label text-sm-right"
-  .col-sm-10
-    = text_input @f, :title, class: "form-control"
-    = error_tag @f, :title
+= F.text_input @f, :title
 
-.form-group.row
-  = label @f, :description, class: "col-sm-2 col-form-label text-sm-right"
-  .col-sm-10
-    = textarea @f, :description, class: "form-control", data: [autoresize: true]
-    = error_tag @f, :description
+- help = render LoadedBike.Web.UserView, "_formatting_help.html"
+= F.textarea @f, :description, input_opts: [data: [autoresize: true]], help: help
 
-    = render LoadedBike.Web.UserView, "_formatting_help.html"
+= F.file_input @f, :gpx_file, label: "GPX file", help: "map pin will be repositioned as per uploaded .gpx file"
 
-- if Enum.count(@tour.waypoints) > 0 do
-  .form-group.row
-    = label @f, :gpx_file, "GPX file", class: "col-sm-2 col-form-label text-sm-right"
-    .col-sm-10
-      = file_input @f, :gpx_file, class: "form-control"
-      = error_tag @f, :gpx_file
+- F.form_group @f, :is_planned, label: "" do
+  = F.checkbox @f, :is_planned, label: "Planned Waypoint (not there yet)"
 
-      - if (Ecto.get_meta(@changeset.data, :state) == :built) do
-        %p.form-text.text-muted
-          map pin will be repositioned as per uploaded .gpx file
-
-.form-group.row
-  .col-sm-10.offset-sm-2
-    = checkbox @f, :is_planned
-    = label @f, :is_planned, "Planned Waypoint (not there yet)"
-
-.form-group.row
-  .col-sm-10.offset-sm-2
-    = checkbox @f, :is_published
-    = label @f, :is_published, "Published"
+- F.form_group @f, :is_published, label: "" do
+  = F.checkbox @f, :is_published, label: "Published"

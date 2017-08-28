@@ -1,25 +1,12 @@
 .heading
   %h1 Register
 
-- form_for @changeset, current_user_path(@conn, :create), fn f ->
+- opts = [label_col: "col-sm-4", control_col: "col-sm-5"]
+- form_for @changeset, current_user_path(@conn, :create), opts, fn f ->
 
-  .form-group.row
-    = label f, :name, class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = text_input f, :name, class: "form-control"
-      = error_tag f, :name
-
-  .form-group.row
-    = label f, :email, class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = email_input f, :email, class: "form-control"
-      = error_tag f, :email
-
-  .form-group.row
-    = label f, :password, class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = password_input f, :password, class: "form-control"
-      = error_tag f, :password
+  = F.text_input f, :name
+  = F.email_input f, :email
+  = F.password_input f, :password
 
   .form-group.row
     .col-sm-5.offset-sm-4

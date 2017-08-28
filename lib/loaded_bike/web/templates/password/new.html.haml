@@ -1,12 +1,10 @@
 .heading
   %h1 Reset Password
 
-- form_for @conn, password_path(@conn, :create), [as: :password], fn f ->
+- opts = [as: :password, label_col: "col-sm-4", control_col: "col-sm-5"]
+- form_for @conn, password_path(@conn, :create), opts, fn f ->
 
-  .form-group.row
-    = label f, :email, "Email Address", class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = text_input f, :email, class: "form-control"
+  = F.email_input f, :email
 
   .form-group.row
     .col-sm-5.offset-sm-4

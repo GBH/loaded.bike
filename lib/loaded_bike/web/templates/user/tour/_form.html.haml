@@ -1,10 +1,8 @@
 = F.text_input @f, :title
 = F.text_input @f, :short_description, label: "Short Desc"
-= F.textarea @f, :description, input_opts: [data: [autoresize: true]]
 
-.form-group.row
-  .col-sm-10.offset-sm-2
-    = render LoadedBike.Web.UserView, "_formatting_help.html"
+- help = render LoadedBike.Web.UserView, "_formatting_help.html"
+= F.textarea @f, :description, input_opts: [data: [autoresize: true]], help: help
 
 - F.form_group @f, :status do
   = F.radio_button @f, :status, "planned", label: "Planned"

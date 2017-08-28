@@ -1,20 +1,13 @@
 .heading
   %h1 Sign in
 
-- form_for @conn, session_path(@conn, :create), [as: :session], fn f ->
+- opts = [as: :session, label_col: "col-sm-4", control_col: "col-sm-5"]
+- form_for @conn, session_path(@conn, :create), opts, fn f ->
 
-  .form-group.row
-    = label f, :email, class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = email_input f, :email, class: "form-control"
+  = F.email_input f, :email
 
-  .form-group.row
-    = label f, :password, class: "col-sm-4 col-form-label text-sm-right"
-    .col-sm-5
-      = password_input f, :password, class: "form-control"
-      %p.form-text
-        = link "Forgot password?", to: password_path(@conn, :new)
-
+  - forgot_password = link("Forgot password?", to: password_path(@conn, :new))
+  = F.password_input f, :password, help: forgot_password
 
   .form-group.row
     .col-sm-5.offset-sm-4
