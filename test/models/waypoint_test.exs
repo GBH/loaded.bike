@@ -30,8 +30,15 @@ defmodule LoadedBike.WaypointTest do
       refute changeset.changes[:position]
     end
 
-    test "new with gpx track" do
+    test "new with gpx track on first waypoint" do
       tour = insert(:tour)
+      params = %{params_for(:waypoint) | gpx_file: build_upload(path: "test/files/test.gpx")}
+      changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
+      refute get_field(changeset, :geojson)
+    end
+
+    test "new with gpx track" do
+      tour = insert(:waypoint).tour
       params = %{params_for(:waypoint) | gpx_file: build_upload(path: "test/files/test.gpx")}
       changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
       data = get_field(changeset, :geojson)
@@ -50,7 +57,7 @@ defmodule LoadedBike.WaypointTest do
     end
 
     test "new with gpx route" do
-      tour = insert(:tour)
+      tour = insert(:waypoint).tour
       params = %{params_for(:waypoint) | gpx_file: build_upload(path: "test/files/test-route.gpx")}
       changeset = Waypoint.changeset(build_assoc(tour, :waypoints), params)
       data = get_field(changeset, :geojson)

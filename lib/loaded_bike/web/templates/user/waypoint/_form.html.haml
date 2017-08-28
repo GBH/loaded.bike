@@ -13,7 +13,8 @@
 - help = render LoadedBike.Web.UserView, "_formatting_help.html"
 = F.textarea @f, :description, input_opts: [data: [autoresize: true]], help: help
 
-= F.file_input @f, :gpx_file, label: "GPX file", help: "map pin will be repositioned as per uploaded .gpx file"
+- if Ecto.Changeset.get_field(@changeset, :position) != 0 do
+  = F.file_input @f, :gpx_file, label: "GPX file", help: "map pin will be repositioned as per uploaded .gpx file"
 
 - F.form_group @f, :is_planned, label: "" do
   = F.checkbox @f, :is_planned, label: "Planned Waypoint (not there yet)"

@@ -31,7 +31,8 @@ defmodule LoadedBike.TestFactory do
       lat:          49.262206,
       lng:          -123.2616348,
       is_planned:   false,
-      is_published: true
+      is_published: true,
+      position:     0
     }
   end
 

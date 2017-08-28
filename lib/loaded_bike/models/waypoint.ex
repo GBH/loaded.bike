@@ -25,9 +25,9 @@ defmodule LoadedBike.Waypoint do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:title, :description, :lat, :lng, :position, :gpx_file, :is_planned, :is_published])
+    |> set_position
     |> process_gpx_file
     |> set_location
-    |> set_position
     |> assoc_constraint(:tour)
     |> validate_required([:tour_id, :title, :lat, :lng])
     |> validate_number(:lat, greater_than_or_equal_to: -90, less_than_or_equal_to: 90)
@@ -37,7 +37,7 @@ defmodule LoadedBike.Waypoint do
   defp process_gpx_file(changeset) do
     gpx_file = get_change(changeset, :gpx_file)
 
-    if gpx_file do
+    if gpx_file && get_field(changeset, :position) != 0 do
       case LoadedBike.Lib.GPX2GeoJSON.convert(gpx_file) do
         {:ok,   %{coordinates: []}} -> add_error(changeset, :gpx_file, ".gpx file doesn't contain track data")
         {:ok,    geojson}           -> change(changeset, geojson: geojson)
