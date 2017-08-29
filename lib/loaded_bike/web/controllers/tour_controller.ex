@@ -27,7 +27,7 @@ defmodule LoadedBike.Web.TourController do
 
     waypoints = assoc(tour, :waypoints)
       |> Waypoint.published
-      |> select([:id, :tour_id, :title, :description, :position, :is_planned])
+      |> select([:id, :tour_id, :title, :description, :position])
       |> preload(photos: ^photos_query)
       |> order_by(asc: :position)
       |> limit(3)

@@ -16,7 +16,7 @@ defmodule LoadedBike.Web.TourCommander do
 
     new_waypoints = assoc(tour, :waypoints)
       |> Waypoint.published
-      |> select([:id, :tour_id, :title, :description, :position, :is_planned])
+      |> select([:id, :tour_id, :title, :description, :position])
       |> preload(photos: ^photos_query)
       |> order_by(asc: :position)
       |> where([w], w.id > ^last_waypoint.id)

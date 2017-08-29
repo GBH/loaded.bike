@@ -1,11 +1,6 @@
 defmodule LoadedBike.Web.WaypointView do
   use LoadedBike.Web, :view
 
-  def status_badge(false), do: ""
-  def status_badge(true) do
-    content_tag(:span, "Planned", class: "badge badge-pill badge-default")
-  end
-
   def to_json(data) do
     Poison.encode!(data)
   end
