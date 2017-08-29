@@ -116,7 +116,7 @@ defmodule LoadedBike.Web.FormHelpers do
 
   defp error_tag(form, field) do
     if error = form.errors[field] do
-      Tag.content_tag :div, LoadedBike.Web.TranslationHelpers.translate_error(error), class: "form-control-feedback"
+      Tag.content_tag :div, LoadedBike.Web.ErrorHelpers.translate_error(error), class: "form-control-feedback"
     end
   end
 end

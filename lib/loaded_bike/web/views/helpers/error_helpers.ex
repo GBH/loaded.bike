@@ -1,4 +1,4 @@
-defmodule LoadedBike.Web.TranslationHelpers do
+defmodule LoadedBike.Web.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """

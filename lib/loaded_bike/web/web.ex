@@ -55,7 +55,7 @@ defmodule LoadedBike.Web do
       use Phoenix.HTML
 
       import LoadedBike.Web.Router.Helpers
-      import LoadedBike.Web.TranslationHelpers
+      import LoadedBike.Web.ErrorHelpers
       import LoadedBike.Web.Gettext
 
       import LoadedBike.Web.HtmlHelpers
