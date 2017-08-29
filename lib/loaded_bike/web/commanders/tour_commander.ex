@@ -7,6 +7,7 @@ defmodule LoadedBike.Web.TourCommander do
   alias LoadedBike.{Repo, Waypoint, Photo}
 
   def load_more(socket, _sender) do
+
     tour          = Drab.Live.peek(socket, :tour)
     last_waypoint = Drab.Live.peek(socket, :last_waypoint)
     waypoints     = Drab.Live.peek(socket, :waypoints)
