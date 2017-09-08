@@ -6,15 +6,6 @@
     &:hover
       @include button-variant($black, $white, $black)
 
-// bootstrap fix https://github.com/twbs/bootstrap/pull/21722
-.navbar
-  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1))
-    > .container
-      margin-right: 0
-      margin-left: 0
-    .navbar-toggler-right
-      right: 0
-
 .btn-nav
   color: $white
   border: 0
@@ -45,7 +36,7 @@ body
     .container
       font-size: 75%
       padding: 4em 15px
-      border-top: 1px dotted $gray-lighter
+      border-top: 1px dotted $gray-300
       background-color: rgba(255,255,255, 0.75)
       ul
         padding: 0
@@ -56,14 +47,14 @@ body
   text-align: center
 
 .heading
-  margin-bottom: $spacer-y
+  margin-bottom: 1rem
   background-color: #eceeef
   padding: 0.75rem 1rem
   border-radius: 0.25rem
   @include clearfix
   h1
     font-size: 1rem
-    line-height: 1.5
+    line-height: 2
     margin: 0
   a.btn
     float: right
@@ -71,14 +62,14 @@ body
 .tour-card
   margin-bottom: 15px
   border-radius: 5px
-  border: 1px solid $gray-lighter
+  border: 1px solid $gray-300
   padding: 5px 15px
   .description
     margin-bottom: 5px
   .rider
     display: inline-block
-    border: 1px solid $gray-lighter
-    background: $gray-lightest
+    border: 1px solid $gray-300
+    background: $gray-100
     border-radius: 2px
     padding: 2px 5px 2px 2px
     line-height: 20px
@@ -106,7 +97,7 @@ body
       background-color: #c6c630
 
 .actions
-  background-color: $gray-lightest
+  background-color: $gray-100
   padding: 5px
 
 .container.content
@@ -121,7 +112,7 @@ body
 .map
   height: 350px
   margin-bottom: 15px
-  background-color: $gray-lightest
+  background-color: $gray-100
 
 table.table
   th, td
@@ -151,7 +142,7 @@ textarea[data-autoresize]
     display: none
   table#formatting-help-table
     th
-      background-color: $gray-lightest
+      background-color: $gray-100
 
 #elevation-graph
   svg
@@ -165,7 +156,7 @@ textarea[data-autoresize]
       opacity: 0.4
     .tick
       text
-        fill: $gray
+        fill: $gray-500
 
 .a2a_kit
   display: flex

@@ -18,22 +18,20 @@
   - page_id = page_identifier(@conn)
   %body(class="#{Macro.underscore(page_id)}" data-page-identifier="#{page_id}")
 
-    %nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse
+    %nav.navbar.navbar-dark.bg-dark.navbar-expand-sm
       .container
-        %button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbarSupportedContent")
-          %span.navbar-toggler-icon
         %a.navbar-brand(href="#{landing_path(@conn, :show)}")
           = img_tag static_path(@conn, "/images/logo-bike.png"), width: "41px", height: "25px", class: "d-inline-block"
           Loaded Bike
-
-        .collapse.navbar-collapse#navbarSupportedContent
+        %button.navbar-toggler.collapsed(type="button" data-toggle="collapse" data-target="#navbarSupportedContent")
+          %span.navbar-toggler-icon
+        .navbar-collapse.collapse#navbarSupportedContent
           %ul.navbar-nav.mr-auto
             %li.nav-item
               = link "Browse Tours", to: tour_path(@conn, :index), class: "nav-link"
             - if @current_user do
               %li.nav-item
                 = link "My Tours", to: current_user_tour_path(@conn, :index), class: "nav-link"
-
           %ul.navbar-nav.ml-auto
             - if @current_user do
 
