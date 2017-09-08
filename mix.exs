@@ -48,7 +48,8 @@ defmodule LoadedBike.Mixfile do
       :bamboo,
       :bamboo_postageapp,
       :slugger,
-      :drab
+      :drab,
+      :phoenix_bootstrap_form
     ]]
   end
 
