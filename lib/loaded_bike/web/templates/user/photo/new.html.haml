@@ -1,8 +1,6 @@
 - form_for @changeset, current_user_tour_waypoint_photo_path(@conn, :create, @tour, @waypoint), [multipart: true], fn f ->
   = render "_form.html", f: f
 
-  .form-group.row
-    .col-sm-10.offset-sm-2
-      = submit "Upload", class: "btn btn-primary"
-      = submit "Upload & Add More", name: "submit_more", class: "btn btn-primary"
-      = link "Cancel", to: current_user_tour_waypoint_path(@conn, :show, @tour, @waypoint), class: "btn btn-link"
+  - add_more  = submit "Upload & Add More", name: "submit_more", class: "btn btn-primary"
+  - cancel    = link "Cancel", to: current_user_tour_waypoint_path(@conn, :show, @tour, @waypoint), class: "btn btn-link"
+  = PBF.submit f, "Upload", class: "btn-primary", alternative: [" ", add_more, cancel]

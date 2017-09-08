@@ -1,14 +1,15 @@
 .heading
   %h1 Register
 
-- opts = [label_col: "col-sm-4", control_col: "col-sm-5"]
-- form_for @changeset, current_user_path(@conn, :create), opts, fn f ->
+.row
+  .col-sm-3
+  .col-sm-6
+    - form_for @changeset, current_user_path(@conn, :create), fn f ->
 
-  = F.text_input f, :name
-  = F.email_input f, :email
-  = F.password_input f, :password
+      = PBF.text_input f, :name
+      = PBF.email_input f, :email
+      = PBF.password_input f, :password
 
-  .form-group.row
-    .col-sm-5.offset-sm-4
-      = submit "Create Account", class: "btn btn-primary"
-      = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"
+      - cancel = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"
+      = PBF.submit f, "Create Account", class: "btn-primary", alternative: cancel
+  .col-sm-3

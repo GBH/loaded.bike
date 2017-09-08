@@ -1,11 +1,14 @@
 .heading
   %h1 New Password
 
-- path = password_path(@conn, :update, token: @user.password_reset_token)
-- opts = [as: :password, method: :put, label_col: "col-sm-4", control_col: "col-sm-5"]
-- form_for @conn, path, opts, fn f ->
-  = F.password_input f, :password
+.row
+  .col-sm-3
+  .col-sm-6
+    - path = password_path(@conn, :update, token: @user.password_reset_token)
+    - opts = [as: :password, method: :put]
+    - form_for @conn, path, opts, fn f ->
+      = PBF.password_input f, :password
 
-  .form-group.row
-    .col-sm-5.offset-sm-4
-      = submit "Save Password", class: "btn btn-primary"
+      = PBF.submit f, "Save Password", class: "btn-primary"
+
+  .col-sm-3

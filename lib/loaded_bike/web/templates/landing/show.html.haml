@@ -13,7 +13,7 @@
 
 .heading
   Recently completed tours
-  = link "Browse Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-secondary"
+  = link "Browse Tours", to: tour_path(@conn, :index), class: "btn btn-sm btn-light"
 
 .tours
   - for tour <- @tours do

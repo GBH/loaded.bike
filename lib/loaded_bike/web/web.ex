@@ -59,7 +59,7 @@ defmodule LoadedBike.Web do
       import LoadedBike.Web.Gettext
 
       import LoadedBike.Web.HtmlHelpers
-      alias LoadedBike.Web.FormHelpers, as: F
+      alias PhoenixBootstrapForm, as: PBF
     end
   end
 

@@ -1,11 +1,5 @@
 @import "bootstrap"
 
-.btn-default
-  &.btn-inverse
-    @include button-variant($white, $black, $black)
-    &:hover
-      @include button-variant($black, $white, $black)
-
 .btn-nav
   color: $white
   border: 0
@@ -49,9 +43,11 @@ body
 .heading
   margin-bottom: 1rem
   background-color: #eceeef
-  padding: 0.75rem 1rem
+  padding: 5px 5px 5px 15px
   border-radius: 0.25rem
   @include clearfix
+  font-size: 1rem
+  line-height: 2
   h1
     font-size: 1rem
     line-height: 2
@@ -63,7 +59,7 @@ body
   margin-bottom: 15px
   border-radius: 5px
   border: 1px solid $gray-300
-  padding: 5px 15px
+  padding: 15px
   .description
     margin-bottom: 5px
   .rider

@@ -1,11 +1,6 @@
 - form_for @changeset, current_user_tour_path(@conn, :update, @tour), fn f ->
   = render "_form.html", f: f
 
-  .form-group.row
-    .col-sm-10.offset-sm-2
-      = submit "Update Tour", class: "btn btn-primary"
-      = link "Cancel", to: current_user_tour_path(@conn, :show, @tour), class: "btn btn-link"
-
-.row
-  .col-sm-10.offset-sm-2
-    = link "Delete", to: current_user_tour_path(@conn, :delete, @tour), method: :delete, data: [confirm: "Are you sure? This will also remove all waypoints and photos. You can't revert this."], class: "btn btn-outline-danger btn-sm"
+  - cancel = link "Cancel", to: current_user_tour_path(@conn, :show, @tour), class: "btn btn-link"
+  - delete = link "Delete", to: current_user_tour_path(@conn, :delete, @tour), method: :delete, data: [confirm: "Are you sure? This will also remove all waypoints and photos. You can't revert this."], class: "btn btn-outline-danger"
+  = PBF.submit f, "Update Tour", class: "btn-primary", alternative: [cancel, delete]

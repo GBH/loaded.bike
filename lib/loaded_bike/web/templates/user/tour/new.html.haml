@@ -4,7 +4,5 @@
 - form_for @changeset, current_user_tour_path(@conn, :create), fn f ->
   = render "_form.html", f: f
 
-  .form-group.row
-    .col-sm-10.offset-sm-2
-      = submit "Create Tour", class: "btn btn-primary"
-      = link "Cancel", to: current_user_tour_path(@conn, :index), class: "btn btn-link"
+  - cancel = link "Cancel", to: current_user_tour_path(@conn, :index), class: "btn btn-link"
+  = PBF.submit f, "Create Tour", class: "btn-primary", alternative: cancel

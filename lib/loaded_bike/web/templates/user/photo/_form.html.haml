@@ -1,4 +1,4 @@
-= F.file_input @f, :file
+= PBF.file_input @f, :file
 
 - help = render LoadedBike.Web.UserView, "_formatting_help.html"
-= F.textarea @f, :description, input_opts: [data: [autoresize: true]], help: help
+= PBF.textarea @f, :description, input: [help: help, data: [autoresize: true]]

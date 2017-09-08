@@ -1,11 +1,11 @@
 .actions.waypoint-nav.clearfix
   - if @prev_waypoint do
-    - link to: current_user_tour_waypoint_path(@conn, :show, @tour, @prev_waypoint), class: "btn btn-secondary btn-sm pull-left" do
+    - link to: current_user_tour_waypoint_path(@conn, :show, @tour, @prev_waypoint), class: "btn btn-dark btn-sm pull-left" do
       %i.fa.fa-arrow-circle-left
       Previous
 
   - if @next_waypoint do
-    - link to: current_user_tour_waypoint_path(@conn, :show, @tour, @next_waypoint), class: "btn btn-secondary btn-sm pull-right" do
+    - link to: current_user_tour_waypoint_path(@conn, :show, @tour, @next_waypoint), class: "btn btn-dark btn-sm pull-right" do
       Next
       %i.fa.fa-arrow-circle-right
 

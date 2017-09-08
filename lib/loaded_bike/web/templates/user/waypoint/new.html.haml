@@ -2,7 +2,5 @@
 - form_for @changeset, path, [multipart: true], fn f ->
   = render "_form.html", f: f, conn: @conn, changeset: @changeset, tour: @tour
 
-  .form-group.row
-    .col-sm-10.offset-sm-2
-      = submit "Create Waypoint", class: "btn btn-primary"
-      = link "Cancel", to: current_user_tour_path(@conn, :show, @tour), class: "btn btn-link"
+  - cancel = link "Cancel", to: current_user_tour_path(@conn, :show, @tour), class: "btn btn-link"
+  = PBF.submit f, "Create Waypoint", class: "btn-primary", alternative: cancel

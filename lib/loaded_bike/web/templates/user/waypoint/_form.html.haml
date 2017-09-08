@@ -8,13 +8,13 @@
 = hidden_input @f, :lat
 = hidden_input @f, :lng
 
-= F.text_input @f, :title
+= PBF.text_input @f, :title
 
 - help = render LoadedBike.Web.UserView, "_formatting_help.html"
-= F.textarea @f, :description, input_opts: [data: [autoresize: true]], help: help
+= PBF.textarea @f, :description, input: [help: help, data: [autoresize: true]]
 
 - if Ecto.Changeset.get_field(@changeset, :position) != 0 do
-  = F.file_input @f, :gpx_file, label: "GPX file", help: "map pin will be repositioned as per uploaded .gpx file"
+  = PBF.file_input @f, :gpx_file, label: [text: "GPX file"], input: [help: "map pin will be repositioned as per uploaded .gpx file"]
 
-- F.form_group @f, :is_published, label: "" do
-  = F.checkbox @f, :is_published, label: "Published"
+
+= PBF.checkbox @f, :is_published, label: [text: "Published"]

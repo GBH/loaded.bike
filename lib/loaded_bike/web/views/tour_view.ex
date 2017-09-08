@@ -36,6 +36,6 @@ defmodule LoadedBike.Web.TourView do
   end
 
   def status_badge(:planned) do
-    content_tag(:span, "Planned", class: "badge badge-pill badge-default")
+    content_tag(:span, "Planned", class: "badge badge-pill badge-secondary")
   end
 end

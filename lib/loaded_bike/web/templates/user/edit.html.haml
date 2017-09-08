@@ -3,24 +3,19 @@
 
 - form_for @changeset, current_user_path(@conn, :update), [multipart: true], fn f ->
 
-  = F.text_input f, :name
-  = F.email_input f, :email
-  = F.text_input f, :twitter, prepend: "@"
-  = F.text_input f, :instagram
+  = PBF.text_input f, :name
+  = PBF.email_input f, :email
+  = PBF.text_input f, :twitter, input: [prepend: "@"]
+  = PBF.text_input f, :instagram
 
   - help = render LoadedBike.Web.UserView, "_formatting_help.html"
-  = F.textarea f, :bio, input_opts: [data: [autoresize: true]], help: help
+  = PBF.textarea f, :bio, input: [help: help, data: [autoresize: true]]
 
-  .form-group.row
-    %label.col-sm-2.col-form-label.text-sm-right
-      Current Avatar
-    .col-sm-10
-      = LoadedBike.Web.UserView.avatar_img(@conn.assigns.current_user, :large)
+  - avatar = LoadedBike.Web.UserView.avatar_img(@conn.assigns.current_user, :large)
+  = PBF.static f, "Current Avatar", avatar
 
-  = F.file_input f, :avatar
-  = F.password_input f, :password
+  = PBF.file_input f, :avatar
+  = PBF.password_input f, :password
 
-  .form-group.row
-    .col-sm-10.offset-sm-2
-      = submit "Update Profile", class: "btn btn-primary"
-      = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"
+  - cancel = link "Cancel", to: landing_path(@conn, :show), class: "btn btn-link"
+  = PBF.submit f, "Update Profile", class: "btn-primary", alternative: cancel

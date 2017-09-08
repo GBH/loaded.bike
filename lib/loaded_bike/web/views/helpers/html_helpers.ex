@@ -7,7 +7,7 @@ defmodule LoadedBike.Web.HtmlHelpers do
   end
 
   def published_badge(false) do
-    content_tag(:span, "Draft", class: "badge badge-pill badge-default")
+    content_tag(:span, "Draft", class: "badge badge-pill badge-light")
   end
 
   def markdown(nil), do: ""

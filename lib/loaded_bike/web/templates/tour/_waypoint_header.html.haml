@@ -3,4 +3,4 @@
     = "Day #{@waypoint.position} :"
   = link @waypoint.title, to: tour_waypoint_path(@conn, :show, @tour, @waypoint)
 
-  = link "View Map", to: tour_waypoint_path(@conn, :show, @tour, @waypoint), class: "btn btn-sm btn-secondary hidden-md-down"
+  = link "View Map", to: tour_waypoint_path(@conn, :show, @tour, @waypoint), class: "btn btn-sm btn-light hidden-md-down"

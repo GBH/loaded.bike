@@ -3,7 +3,7 @@
 .waypoint
   .actions.clearfix
     = published_badge(@waypoint.is_published)
-    - link to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-secondary btn-sm pull-right" do
+    - link to: current_user_tour_waypoint_path(@conn, :edit, @tour, @waypoint), class: "btn btn-light btn-sm pull-right" do
       %i.fa.fa-pencil
       Edit
 
@@ -25,7 +25,7 @@
   - for photo <- @waypoint.photos do
     .photo{id: "#{LoadedBike.Photo.dom_id(photo)}"}
       .image
-        - link to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-secondary btn-sm" do
+        - link to: current_user_tour_waypoint_photo_path(@conn, :edit, @tour, @waypoint, photo), class: "btn btn-light btn-sm" do
           %i.fa.fa-pencil
           Edit
 
