@@ -22,4 +22,15 @@ defmodule LoadedBike.Email do
     |> postageapp_template("verify-account")
     |> postageapp_variables(%{verify_url: url})
   end
+
+  def comment_callback(user, url, comment) do
+    new_email()
+    |> from("oleg@loaded.bike")
+    |> to({user.name, user.email})
+    |> postageapp_template("comment-callback")
+    |> postageapp_variables(%{
+      url:      url,
+      comment:  comment
+    })
+  end
 end

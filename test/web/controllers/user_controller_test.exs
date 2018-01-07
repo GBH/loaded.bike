@@ -116,4 +116,26 @@ defmodule LoadedBike.Web.UserControllerTest do
     assert redirected_to(conn) == "/"
     assert get_flash(conn, :error) == "Unable to find unverified user for this token"
   end
+
+  test "comment_callback" do
+    user    = insert(:user)
+    url     = "http://example.com/"
+    comment = "test comment"
+
+    conn = post build_conn(), "/riders/#{user.id}/comment-callback", %{
+      url:      url,
+      comment:  comment
+    }
+    assert response(conn, :ok)
+
+    email = LoadedBike.Email.comment_callback(user, url, comment)
+    assert_delivered_email email
+    assert email.private == %{
+      postageapp_template: "comment-callback",
+      postageapp_variables: %{
+        url:      url,
+        comment:  comment
+      }
+    }
+  end
 end

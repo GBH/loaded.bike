@@ -1,4 +1,5 @@
 import "phoenix_html"
+import "phoenix_ujs"
 
 import loadView from './views/loader';
 

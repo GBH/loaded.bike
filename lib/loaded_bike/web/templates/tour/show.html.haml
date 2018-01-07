@@ -16,6 +16,6 @@
 
 = render "_waypoints.html", assigns
 
-= disqus(url: tour_url(@conn, :show, @tour.id), id: tour_path(@conn, :show, @tour.id))
+= disqus(@conn, @tour)
 
 = render LoadedBike.Web.SocialView, "share.html", assigns

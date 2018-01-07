@@ -91,4 +91,13 @@ defmodule LoadedBike.Web.UserController do
       |> redirect(to: landing_path(conn, :show))
     end
   end
+
+  def comment_callback(conn, %{"user_id" => id, "url" => url, "comment" => comment}) do
+    user = Repo.get!(User, id)
+
+    Email.comment_callback(user, url, comment)
+    |> Mailer.deliver_later()
+
+    send_resp(conn, :ok, "")
+  end
 end

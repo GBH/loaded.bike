@@ -74,7 +74,8 @@ exports.config = {
       jQuery: 'jquery',
       Tether: 'tether',
       Popper: 'popper.js',
-      bootstrap: 'bootstrap'
+      bootstrap: 'bootstrap',
+      UJS: 'phoenix_ujs'
     }
   }
 };

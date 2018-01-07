@@ -15,7 +15,7 @@ defmodule LoadedBike.Web.Router do
   end
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
@@ -42,7 +42,9 @@ defmodule LoadedBike.Web.Router do
       get "/verify", UserController, :verify
     end
 
-    resources "/riders", UserController, only: [:index, :show]
+    resources "/riders", UserController, only: [:index, :show] do
+      post "/comment-callback", UserController, :comment_callback, as: :comment_callback
+    end
     resources "/tours", TourController, only: [:index, :show] do
       resources "/waypoints", WaypointController, only: [:show]
     end
