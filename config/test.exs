@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :loaded_bike, LoadedBike.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "",
+  password: "postgres",
   database: "loaded_bike_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

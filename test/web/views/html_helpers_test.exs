@@ -1,4 +1,4 @@
-defmodule LoadedBike.Web.MarkdownHelperTest do
+defmodule LoadedBike.Web.HtmlHelpersTest do
   use LoadedBike.Web.ConnCase, async: true
 
   import Phoenix.HTML, only: [safe_to_string: 1]

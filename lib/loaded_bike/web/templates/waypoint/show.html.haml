@@ -21,4 +21,6 @@
 
 = render "_navigation.html", conn: @conn, tour: @tour, prev_waypoint: @prev_waypoint, next_waypoint: @next_waypoint
 
-= render "_social.html"
+= disqus(url: tour_waypoint_url(@conn, :show, @tour.id, @waypoint.id), id: tour_waypoint_path(@conn, :show, @tour.id, @waypoint.id))
+
+= render LoadedBike.Web.SocialView, "share.html", assigns

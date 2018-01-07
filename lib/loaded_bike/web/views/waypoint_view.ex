@@ -1,6 +1,8 @@
 defmodule LoadedBike.Web.WaypointView do
   use LoadedBike.Web, :view
 
+  import LoadedBike.Web.SharedView, only: [disqus: 1]
+
   def to_json(data) do
     Poison.encode!(data)
   end

@@ -2,6 +2,8 @@ defmodule LoadedBike.Web.TourView do
   use LoadedBike.Web, :view
   import Kerosene.HTML
 
+  import LoadedBike.Web.SharedView, only: [disqus: 1]
+
   # loading drab js only on the tour show page
   def render("scripts.html", %{conn: conn}) do
     if conn.private.phoenix_action == :show do
